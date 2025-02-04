@@ -1,0 +1,48 @@
+﻿using SchoolManagementSystem.Data;
+using SchoolManagementSystem.Infrastructure.Repositories;
+using SchoolManagementSystem.Services.Abstracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SchoolManagementSystem.Services.ImpelmentationService
+{
+    internal class StudentService : IStudentService
+    {
+        private readonly IStudentRepository _StudentRepository;
+        public StudentService(IStudentRepository studentRepository)
+        {
+            _StudentRepository = studentRepository;
+        }
+
+        public async Task<List<Student>> GetStudentAsync()
+        {
+            return await _StudentRepository.GetAllAsync();
+        }     
+
+        public async Task<Student> GetStudentAsyncByID(int studentID)
+        {
+            return await _StudentRepository.GetByIdAsync(studentID);
+        }      
+     
+        public  async Task<bool> DeleteStudentAsync(int studentID)
+        {
+            var deletedStudent = await _StudentRepository.GetByIdAsync(studentID);
+
+            if (deletedStudent == null)
+            {
+                return false;
+            }
+
+            await _StudentRepository.DeleteAsync(deletedStudent);
+            return true;
+        }
+
+        Task<Student> IStudentService.UpdateStudentAsync(Student student)
+        {
+            return  _StudentRepository.UpdateAsync(student);
+        }
+    }
+}
