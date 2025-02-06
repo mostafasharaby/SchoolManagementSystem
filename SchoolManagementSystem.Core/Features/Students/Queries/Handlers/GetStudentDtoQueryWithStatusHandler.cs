@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
 {
-    internal class GetStudentDtoQueryWithStatusHandler : ResponseHandler, IRequestHandler<GetStudentDtoQueryWithStatus, Response<List<StudentDto>>>
+    public class GetStudentDtoQueryWithStatusHandler : ResponseHandler, IRequestHandler<GetStudentDtoQueryWithStatus, Response<List<StudentDto>>>
     {
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;

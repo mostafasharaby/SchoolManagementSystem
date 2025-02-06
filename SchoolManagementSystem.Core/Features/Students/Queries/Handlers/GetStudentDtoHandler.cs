@@ -6,7 +6,6 @@ using SchoolManagementSystem.Services.Abstracts;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
 {
     public class GetStudentDtoHandler : IRequestHandler<GetStudentDtoQuery, List<StudentDto>>

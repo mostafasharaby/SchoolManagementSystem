@@ -12,6 +12,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         Task<List<T>> GetAllAsync();
         Task DeleteRangeAsync(ICollection<T> entities);
         Task<T> GetByIdAsync(int id);
+        Task<T> GetByNameAsync(string name);
         Task SaveChangesAsync();
         IDbContextTransaction BeginTransaction();
         void Commit();
@@ -23,6 +24,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         Task<T> UpdateAsync(T entity);
         Task UpdateRangeAsync(ICollection<T> entities);
         Task DeleteAsync(T entity);
+        string Exsitance(string message);
 
     }
 

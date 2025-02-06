@@ -20,22 +20,30 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<bool> DeleteTeacherAsync(int teacherID)
         {
-            return await _teacherRepository.DeleteTeacherAsync(teacherID);
+            var deletedStudent = await _teacherRepository.GetByIdAsync(teacherID);
+
+            if (deletedStudent == null)
+            {
+                return false;
+            }
+
+            await _teacherRepository.DeleteAsync(deletedStudent);
+            return true;
         }
 
         public async Task<Teacher> GetTeacherAsyncByID(int teacherID)
         {
-            return await _teacherRepository.GetTeacherByIdAsync(teacherID);
+            return await _teacherRepository.GetByIdAsync(teacherID);
         }
 
         public async Task<List<Teacher>> GetTeachersAsync()
         {
-           return await _teacherRepository.GetAllTeachersAsync();
+           return await _teacherRepository.GetAllAsync();
         }
 
         public Task<Teacher> UpdateTeacherAsync(Teacher teacher)
         {
-            return  _teacherRepository.UpdateTeacherAsync(teacher);
+            return  _teacherRepository.UpdateAsync(teacher);
         }
     }
 }

@@ -19,15 +19,28 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Student>> GetStudentAsync()
         {
-            return await _StudentRepository.GetAllAsync();
+            return await _StudentRepository.GetAllStudentsAsync(); // related to studentRepository not Generic one 
         }     
 
         public async Task<Student> GetStudentAsyncByID(int studentID)
         {
             return await _StudentRepository.GetByIdAsync(studentID);
-        }      
-     
-        public  async Task<bool> DeleteStudentAsync(int studentID)
+        }
+
+        public async Task<Student?> AddStudentAsync(Student student)
+        {
+            var studentExists = _StudentRepository.GetTableNoTracking()
+                .Any(i => i.StudentFirstName == student.StudentFirstName && i.StudentLastName == student.StudentLastName);
+
+            if (studentExists)
+            {
+                return null; 
+            }
+
+            return await _StudentRepository.AddAsync(student);
+        }
+
+        public async Task<bool> DeleteStudentAsync(int studentID)
         {
             var deletedStudent = await _StudentRepository.GetByIdAsync(studentID);
 

@@ -14,7 +14,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 
     public interface IStudentRepository:IGenericRepository<Student>
     {
-        //Task<List<Student>> GetAllStudentsAsync();
+         Task<List<Student>> GetAllStudentsAsync();
         //Task<Student> GetStudentByIdAsync(int studentId);
         //Task AddStudentAsync(Student student);
         //Task<Student> UpdateStudentAsync(Student student);

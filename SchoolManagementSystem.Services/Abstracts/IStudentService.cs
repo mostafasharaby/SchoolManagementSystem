@@ -11,7 +11,8 @@ namespace SchoolManagementSystem.Services.Abstracts
     {
         public Task<List<Student>> GetStudentAsync();
         public Task<Student> GetStudentAsyncByID(int studentID);
-         Task<Student>UpdateStudentAsync(Student student);
+        Task<Student> AddStudentAsync(Student student);
+        Task<Student>UpdateStudentAsync(Student student);
          Task<bool> DeleteStudentAsync(int studentID);
 
 

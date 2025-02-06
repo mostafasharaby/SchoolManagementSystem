@@ -29,7 +29,7 @@ namespace SchoolManagementSystem.Core.Bases
                 Data = entity,
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Succeeded = true,
-                Message = "Added Successfully",
+                Message = "Got Successfully",
                 Meta = Meta
             };
         }

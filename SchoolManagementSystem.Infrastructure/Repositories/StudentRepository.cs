@@ -32,11 +32,15 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
             return await GetByIdAsync(studentId);
         }
-
-        public async Task AddStudentAsync(Student student)
+        public async Task<Student> GetStudentByNameAsync(string name)
         {
-             await AddAsync(student);
+            return await GetByNameAsync(name);
         }
+        public async Task AddStudentAsync(Student student)
+        {          
+            await AddAsync(student);           
+        }
+
 
         public async Task<Student> UpdateStudentAsync(Student student)
         {

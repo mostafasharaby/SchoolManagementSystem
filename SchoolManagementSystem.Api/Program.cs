@@ -1,6 +1,7 @@
+using SchoolManagementSystem.Api.Middleware;
+using SchoolManagementSystem.Core;
 using SchoolManagementSystem.Infrastructure;
 using SchoolManagementSystem.Services;
-using SchoolManagementSystem.Core;
 namespace SchoolManagementSystem.Api
 {
     public class Program
@@ -9,9 +10,9 @@ namespace SchoolManagementSystem.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            
 
-            builder.Services.AddControllers();           
+
+            builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -25,7 +26,7 @@ namespace SchoolManagementSystem.Api
 
 
             var app = builder.Build();
-        
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -33,7 +34,7 @@ namespace SchoolManagementSystem.Api
             }
 
             app.UseHttpsRedirection();
-
+            app.UseMiddleware<ExceptionHandlingMiddleware>(); //  custom middleware for error handling
             app.UseAuthorization();
 
             app.MapControllers();

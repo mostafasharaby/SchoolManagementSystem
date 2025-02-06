@@ -12,7 +12,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {       
 
-        protected readonly SchoolContext _dbContext;       
+        protected readonly SchoolContext _dbContext;            
         public GenericRepository(SchoolContext dbContext)
         {
             _dbContext = dbContext;
@@ -21,6 +21,11 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         public virtual async Task<T> GetByIdAsync(int id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
+        }
+
+        public virtual async Task<T> GetByNameAsync(string name)
+        {
+            return await _dbContext.Set<T>().FirstOrDefaultAsync(e => EF.Property<string>(e, "Name") == name);
         }
 
         public IQueryable<T> GetTableNoTracking()
@@ -97,6 +102,10 @@ namespace SchoolManagementSystem.Infrastructure.Basics
             return await _dbContext.Set<T>().ToListAsync();
         }
 
+        public  string Exsitance(string message)
+        {
+            return  message;
+        }
     }
 
 }

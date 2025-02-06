@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagementSystem.Data;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Commands.Models;
-using SchoolManagementSystem.Core.Features.Students.Queries.Models;
+using SchoolManagementSystem.Core.Features.Teachers.Queries.Results;
+using SchoolManagementSystem.Api.AppRouting;
 namespace SchoolManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
@@ -17,15 +17,15 @@ namespace SchoolManagementSystem.Api.Controllers
         {
             _mediator = mediator;
         }
-        [HttpGet]
+        [HttpGet(Routing.TeacherRouting.List)]
         public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachers()
         {
             return await _mediator.Send(new GetAllTeachersQuery());
         }
-        [HttpGet("{id}")]
+        [HttpGet(Routing.TeacherRouting.ById)]
         public async Task<ActionResult<Teacher>> GetTeacherById(int id)
         {
-            var teacher = await _mediator.Send(new GetStudentByIdQuery(id));
+            var teacher = await _mediator.Send(new GetTeacherByIdQuery(id));
 
             if (teacher == null)
             {
@@ -35,8 +35,13 @@ namespace SchoolManagementSystem.Api.Controllers
             return Ok(teacher);
         }
 
+        [HttpGet("Dto")]
+        public async Task<ActionResult<IEnumerable<TeacherDto>>> GetTeacherDto()
+        {
+            return await _mediator.Send(new GetTeacherDtoQuery());
+        }
 
-        [HttpPut("{id}")]
+        [HttpPut(Routing.TeacherRouting.Update)]
         public async Task<IActionResult> UpdateTeacher(int id, [FromBody] UpdateTeacherCommand command)
         {
             if (id != command.TeacherID) return BadRequest("Teacher ID mismatch.");
@@ -47,7 +52,7 @@ namespace SchoolManagementSystem.Api.Controllers
             return Ok("Teacher updated successfully.");
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete(Routing.TeacherRouting.Delete)]
         public async Task<IActionResult> DeleteTeacher(int id)
         {
             var result = await _mediator.Send(new DeleteTeacherCommand(id));
