@@ -1,10 +1,5 @@
 ﻿using SchoolManagementSystem.Core.Features.Students.Queries.Results;
-using SchoolManagementSystem.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Core.Mapping.StudentMapping
 {
@@ -13,11 +8,16 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
         public void getStudentDtoQueryMapping()
         {
             CreateMap<Student, StudentDto>()
-               .ForMember(dest => dest.ParentFirstName, opt => opt.MapFrom(src => src.Parent.FirstName))
-               .ForMember(dest => dest.ClassroomName, opt => opt.MapFrom(src => src.Classroom.ClassroomName))
-               .ForMember(dest => dest.TeacherFirstName, opt => opt.MapFrom(src => src.Classroom.Teacher.TeacherFirstName));
+            .ForMember(dest => dest.StudentFirstName, opt => opt.MapFrom(new LocalizedResolver<Student>(
+                s => s.StudentFirstNameAr,
+                s => s.StudentFirstNameEn)))
+            .ForMember(dest => dest.StudentLastName, opt => opt.MapFrom(new LocalizedResolver<Student>(
+                s => s.StudentLastNameAr,
+                s => s.StudentLastNameEn)))
+            .ForMember(dest => dest.ClassroomName, opt => opt.MapFrom(src => src.Classroom.ClassroomName))
+                  .ForMember(dest => dest.TeacherFirstName, opt => opt.MapFrom(src => src.Classroom.Teacher.TeacherFirstName));
         }
-           
-       
+
+
     }
 }

@@ -1,7 +1,10 @@
+using Microsoft.Extensions.Options;
 using SchoolManagementSystem.Api.Middleware;
 using SchoolManagementSystem.Core;
+using SchoolManagementSystem.Core.Resources;
 using SchoolManagementSystem.Infrastructure;
 using SchoolManagementSystem.Services;
+using System.Globalization;
 namespace SchoolManagementSystem.Api
 {
     public class Program
@@ -15,6 +18,8 @@ namespace SchoolManagementSystem.Api
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSingleton<SharedResource>();
+
 
             #region Dependency Injection
             builder.Services.AddInfrastructurefDependencyInjection(builder.Configuration);
@@ -26,6 +31,22 @@ namespace SchoolManagementSystem.Api
 
 
             var app = builder.Build();
+
+            app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value); // for localization
+
+            #region Middle ware
+            app.Use(async (context, next) =>
+            {
+                var culture = context.Request.Query["culture"]; // Read culture from query
+                if (!string.IsNullOrWhiteSpace(culture))
+                {
+                    CultureInfo cultureInfo = new CultureInfo(culture);
+                    CultureInfo.CurrentCulture = cultureInfo;
+                    CultureInfo.CurrentUICulture = cultureInfo;
+                }
+                await next();
+            });
+            #endregion
 
             if (app.Environment.IsDevelopment())
             {

@@ -1,11 +1,7 @@
-﻿using SchoolManagementSystem.Data;
+﻿using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Data.Helpers;
 using SchoolManagementSystem.Infrastructure.Repositories;
 using SchoolManagementSystem.Services.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolManagementSystem.Services.ImpelmentationService
 {
@@ -20,7 +16,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         public async Task<List<Student>> GetStudentAsync()
         {
             return await _StudentRepository.GetAllStudentsAsync(); // related to studentRepository not Generic one 
-        }     
+        }
 
         public async Task<Student> GetStudentAsyncByID(int studentID)
         {
@@ -30,11 +26,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         public async Task<Student?> AddStudentAsync(Student student)
         {
             var studentExists = _StudentRepository.GetTableNoTracking()
-                .Any(i => i.StudentFirstName == student.StudentFirstName && i.StudentLastName == student.StudentLastName);
+                .Any(i => i.StudentFirstNameAr == student.StudentFirstNameAr || i.StudentFirstNameEn == student.StudentFirstNameEn);
 
             if (studentExists)
             {
-                return null; 
+                return null;
             }
 
             return await _StudentRepository.AddAsync(student);
@@ -55,7 +51,32 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         Task<Student> IStudentService.UpdateStudentAsync(Student student)
         {
-            return  _StudentRepository.UpdateAsync(student);
+            return _StudentRepository.UpdateAsync(student);
+        }
+
+        public IQueryable<Student> GetStudentAsyncQureryable()
+        {
+            return _StudentRepository.GetTableNoTracking().AsQueryable();
+        }
+
+        public IQueryable<Student> GetStudentAsyncFilter(string search)
+        {
+            return _StudentRepository.GetTableNoTracking().
+                Where(item => item.GetCultureLanguage(item.StudentFirstNameAr, item.StudentFirstNameEn).Contains(search)
+                || item.GetCultureLanguage(item.StudentLastNameAr, item.StudentLastNameEn).Contains(search)).AsQueryable();
+        }
+
+        public IQueryable<Student> GetStudentAsyncOrderd(StudentOrderingEnum order)
+        {
+            var students = _StudentRepository.GetTableNoTracking();
+            return order switch
+            {
+                StudentOrderingEnum.up2down => students.OrderBy(s => s.StudentID),
+                StudentOrderingEnum.down2up => students.OrderByDescending(s => s.StudentID),
+                StudentOrderingEnum.NameUp2Down => students.OrderBy(s => s.GetCultureLanguage(s.StudentFirstNameAr, s.StudentFirstNameEn)),
+                StudentOrderingEnum.NameDownUp => students.OrderByDescending(s => s.GetCultureLanguage(s.StudentLastNameAr, s.StudentLastNameEn)),
+                _ => students
+            };
         }
     }
 }

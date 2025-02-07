@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Behavoir;
 using System.Reflection;
 namespace SchoolManagementSystem.Core
@@ -13,6 +14,8 @@ namespace SchoolManagementSystem.Core
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());// Without this, you would need to manually register each validator services.AddTransient<IValidator<AddStudentCommandWithResponse>, AddStudentValidator>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+            services.AddTransient<ResponseHandler>(); // 
         }
 
     }

@@ -1,14 +1,9 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Models
 {
-    public class GetStudentByIdQuery:IRequest<Student>
+    public class GetStudentByIdQuery : IRequest<Student>
     {
         public int StudentID { get; }
 

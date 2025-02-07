@@ -15,13 +15,21 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Validator
             RuleFor(x => x.StudentID)
                 .GreaterThan(0).WithMessage("Student ID is required and must be greater than zero.");
 
-            RuleFor(x => x.StudentFirstName)
+            RuleFor(x => x.StudentFirstNameEn)
                 .NotEmpty().WithMessage("Student first name is required.")
                 .MaximumLength(50).WithMessage("Student first name must be at most 50 characters.");
 
-            RuleFor(x => x.StudentLastName)
+            RuleFor(x => x.StudentLastNameEn)
                 .NotEmpty().WithMessage("Student last name is required.")
                 .MaximumLength(50).WithMessage("Student last name must be at most 50 characters.");
+
+            RuleFor(x => x.StudentFirstNameAr)
+                .NotEmpty().WithMessage("الاسم الاول مطلوب")
+                .MaximumLength(50).WithMessage("الاسم الاول لا يتخطي ال 50 حرفا");
+
+            RuleFor(x => x.StudentLastNameAr)
+                .NotEmpty().WithMessage("الاسم الاخير مطلوب")
+                .MaximumLength(50).WithMessage("الاسم الاخير لا يتخطي ال 50 حرفا");
 
             RuleFor(x => x.StudentGender)
                 .NotEmpty().WithMessage("Student gender is required.")

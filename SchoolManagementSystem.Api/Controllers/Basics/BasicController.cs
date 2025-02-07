@@ -1,6 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagementSystem.Core.Bases;
 using System.Net;
@@ -12,9 +10,11 @@ namespace SchoolManagementSystem.Api.Controllers.Basics
     public class BasicController : ControllerBase
     {
         public IMediator _mediator;
-        public BasicController(IMediator _mediator)
+        public readonly ResponseHandler _responseHandler;
+        public BasicController(IMediator _mediator, ResponseHandler responseHandler)
         {
             this._mediator = _mediator;
+            _responseHandler = responseHandler;
         }
 
         #region Actions

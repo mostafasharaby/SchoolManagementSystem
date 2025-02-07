@@ -1,21 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using SchoolManagementSystem.Data;
-using SchoolManagementSystem.Infrastructure.Data;
-using SchoolManagementSystem.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Basics;
+using SchoolManagementSystem.Infrastructure.Data;
 namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     public class StudentRepository : GenericRepository<Student>, IStudentRepository
     {
         private readonly SchoolContext _context;
 
-        public StudentRepository(SchoolContext context):base(context) 
+        public StudentRepository(SchoolContext context) : base(context)
         {
             _context = context;
         }
@@ -37,14 +30,14 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             return await GetByNameAsync(name);
         }
         public async Task AddStudentAsync(Student student)
-        {          
-            await AddAsync(student);           
+        {
+            await AddAsync(student);
         }
 
 
         public async Task<Student> UpdateStudentAsync(Student student)
         {
-           await UpdateAsync(student);
+            await UpdateAsync(student);
             return student;
         }
 
@@ -52,12 +45,12 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
             var student = await GetByIdAsync(studentId);
             if (student != null)
-            {               
+            {
                 await DeleteAsync(student);
                 return true;
             }
             return false;
         }
- 
+
     }
 }

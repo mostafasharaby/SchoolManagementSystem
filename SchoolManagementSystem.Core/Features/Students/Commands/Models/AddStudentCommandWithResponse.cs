@@ -1,22 +1,20 @@
 ﻿using MediatR;
 using SchoolManagementSystem.Core.Bases;
-using SchoolManagementSystem.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Core.Features.Students.Commands.Models
 {
-    public class AddStudentCommandWithResponse:IRequest<Response<Student>>
-    {     
-        public string? StudentFirstName { get; set; }
-        public string? StudentLastName { get; set; }       
+    public class AddStudentCommandWithResponse : IRequest<Response<Student>>
+    {
+
+        public string? StudentLastNameAr { get; set; }
+        public string? StudentLastNameEn { get; set; }
         public string? StudentGender { get; set; }
-        public string? StudentAddress { get; set; }      
-        public int? ParentIDDD { get; set; } 
+        public string? StudentAddress { get; set; }
+        public int? ParentIDDD { get; set; }
         public int? ClassroomIDDD { get; set; }
+        public string? StudentFirstNameAr { get; set; }
+        public string? StudentFirstNameEn { get; set; }
 
     }
 }

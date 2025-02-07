@@ -6,7 +6,7 @@ using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Students.Commands.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Results;
-using SchoolManagementSystem.Data;
+using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Api.Controllers
 {
@@ -15,7 +15,7 @@ namespace SchoolManagementSystem.Api.Controllers
     public class StudentsController : BasicController
     {
 
-        public StudentsController(IMediator _mediator) : base(_mediator) { }
+        public StudentsController(IMediator _mediator, ResponseHandler _responseHandler) : base(_mediator, _responseHandler) { }
 
 
         // GET: api/Students
@@ -23,19 +23,29 @@ namespace SchoolManagementSystem.Api.Controllers
         public async Task<ActionResult<IEnumerable<StudentDto>>> GetStudentsDto()
         {
             var studentDtos = await _mediator.Send(new GetStudentDtoQuery());
-
-            var responseHandler = new ResponseHandler();
-            var response = responseHandler.Success(studentDtos);
-
+            var response = _responseHandler.Success(studentDtos);
+            response.Meta = response.Data.Count();
             return NewResult(response);  // this will return same result that DtoWithStatus 
         }
 
 
-        // GET: api/Students
+        // GET: api/Students GetStudentsPaginatedQuery 
         [HttpGet("DtoWithStatus")]
         public async Task<ActionResult<Response<List<StudentDto>>>> GetStudentsDtoWithStatus()
         {
             return await _mediator.Send(new GetStudentDtoQueryWithStatus());
+        }
+
+
+        [HttpGet("ListWithPagination")]
+        public async Task<ActionResult<List<Student>>> GetStudentsWithPagination([FromQuery] GetStudentsPaginatedQuery studentsPaginatedQuery)
+        {
+            var studentPagination = await _mediator.Send(studentsPaginatedQuery);
+            var response = _responseHandler.Success(studentPagination);
+            response.Meta = response.Data.Data.Count();
+            return NewResult(response);
+
+            // return NewResult(_responseHandler.Success(_mediator.Send()));
         }
 
 
@@ -44,7 +54,7 @@ namespace SchoolManagementSystem.Api.Controllers
         {
             //return await _mediator.Send(new GetAllStudentsQuery());
             var studentList = await _mediator.Send(new GetAllStudentsQuery());
-            return NewResult(new ResponseHandler().Success(studentList));
+            return NewResult(_responseHandler.Success(studentList));
         }
 
 
@@ -55,10 +65,10 @@ namespace SchoolManagementSystem.Api.Controllers
 
             if (student == null)
             {
-                return NewResult(new ResponseHandler().BadRequest<Student>("Student is Not Exist"));
+                return NewResult(_responseHandler.BadRequest<Student>(""));
             }
 
-            return NewResult(new ResponseHandler().Success(student));
+            return NewResult(_responseHandler.Success(student));
         }  //    AddStudentCommandWithResponse
 
 
@@ -68,16 +78,16 @@ namespace SchoolManagementSystem.Api.Controllers
         {
             if (command == null)
             {
-                return BadRequest("Student data is required.");
+                return BadRequest("");
             }
 
             var result = await _mediator.Send(command);
 
             if (result == null || result.Data == null)
             {
-                //var responseHandler = new ResponseHandler();
+                //var responseHandler = _responseHandler;
                 //return StatusCode(500, responseHandler.BadRequest<Student>("Failed to create student."));
-                return NewResult(new ResponseHandler().BadRequest<Student>(string.Join(", ", result.Errors)));
+                return NewResult(_responseHandler.BadRequest<Student>(string.Join(", ", result.Errors)));
 
             }
             //return Ok(result);
@@ -90,14 +100,14 @@ namespace SchoolManagementSystem.Api.Controllers
         {
             if (command == null || command.Student == null)
             {
-                return BadRequest("Student data is required.");
+                return BadRequest("");
             }
 
             var result = await _mediator.Send(command);
 
             if (result == null)
             {
-                return StatusCode(500, "Failed to create student.");
+                return StatusCode(500, "");
             }
 
             return CreatedAtAction(nameof(GetStudentById), new { id = result.StudentID }, result);
@@ -110,7 +120,7 @@ namespace SchoolManagementSystem.Api.Controllers
         {
             if (id != command.StudentID)
             {
-                return BadRequest("Student ID mismatch.");
+                return BadRequest("");
             }
 
             var result = await _mediator.Send(command);
@@ -118,10 +128,10 @@ namespace SchoolManagementSystem.Api.Controllers
             if (result == null)
             {
                 // return NotFound("Student not found.");
-                return NewResult(new ResponseHandler().BadRequest<Student>("Student not found ."));
+                return NewResult(_responseHandler.BadRequest<Student>(""));
             }
             //return Ok("Student updated successfully.");
-            return NewResult(new ResponseHandler().Success(result, "Student Updated Sudccessfully ."));
+            return NewResult(_responseHandler.Success(result, ""));
 
         }
 
@@ -131,7 +141,7 @@ namespace SchoolManagementSystem.Api.Controllers
         {
             if (id != command.StudentID)
             {
-                return BadRequest("Student ID mismatch.");
+                return BadRequest("");
             }
 
             var result = await _mediator.Send(command);
@@ -139,10 +149,10 @@ namespace SchoolManagementSystem.Api.Controllers
             if (result == null)
             {
                 // return NotFound("Student not found.");
-                return NewResult(new ResponseHandler().BadRequest<Student>("Student not found ."));
+                return NewResult(_responseHandler.BadRequest<Student>());
             }
             //return Ok("Student updated successfully.");
-            return NewResult(new ResponseHandler().Success(result, "Student Updated Sudccessfully ."));
+            return NewResult(_responseHandler.Success(result, ""));
 
         }
 
@@ -155,7 +165,7 @@ namespace SchoolManagementSystem.Api.Controllers
 
             if (!result)
             {
-                return NotFound("Student not found");
+                return NewResult(_responseHandler.BadRequest<Student>());
             }
 
             return Ok(result);

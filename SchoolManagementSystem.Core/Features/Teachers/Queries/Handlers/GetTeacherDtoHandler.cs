@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using SchoolManagementSystem.Core.Features.Students.Queries.Results;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Results;
 using SchoolManagementSystem.Services.Abstracts;
@@ -21,7 +20,7 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Handlers
         {
             var TeacherList = await _teacherService.GetTeachersAsync();
             return _mapper.Map<List<TeacherDto>>(TeacherList);
-          
+
         }
     }
 }

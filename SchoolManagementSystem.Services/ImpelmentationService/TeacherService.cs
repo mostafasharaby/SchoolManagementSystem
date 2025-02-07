@@ -1,11 +1,6 @@
-﻿using SchoolManagementSystem.Data;
+﻿using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Repositories;
 using SchoolManagementSystem.Services.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolManagementSystem.Services.ImpelmentationService
 {
@@ -38,12 +33,12 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Teacher>> GetTeachersAsync()
         {
-           return await _teacherRepository.GetAllAsync();
+            return await _teacherRepository.GetAllAsync();
         }
 
         public Task<Teacher> UpdateTeacherAsync(Teacher teacher)
         {
-            return  _teacherRepository.UpdateAsync(teacher);
+            return _teacherRepository.UpdateAsync(teacher);
         }
     }
 }

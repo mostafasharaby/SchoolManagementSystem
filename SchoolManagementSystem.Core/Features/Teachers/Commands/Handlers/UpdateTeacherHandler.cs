@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Core.Features.Students.Commands.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Commands.Models;
-using SchoolManagementSystem.Data;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Handlers
@@ -20,7 +19,7 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Handlers
             return _teacherService.UpdateTeacherAsync(request.Teacher);
         }
 
-      
 
-    } 
+
+    }
 }

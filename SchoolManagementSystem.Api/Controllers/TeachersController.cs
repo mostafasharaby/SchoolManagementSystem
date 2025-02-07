@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Data;
-using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
-using SchoolManagementSystem.Core.Features.Teachers.Commands.Models;
-using SchoolManagementSystem.Core.Features.Teachers.Queries.Results;
 using SchoolManagementSystem.Api.AppRouting;
+using SchoolManagementSystem.Core.Features.Teachers.Commands.Models;
+using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
+using SchoolManagementSystem.Core.Features.Teachers.Queries.Results;
+using SchoolManagementSystem.Data.Entities;
 namespace SchoolManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]

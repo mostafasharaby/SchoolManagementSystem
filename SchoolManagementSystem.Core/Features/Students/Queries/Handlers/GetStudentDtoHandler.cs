@@ -3,9 +3,6 @@ using MediatR;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Results;
 using SchoolManagementSystem.Services.Abstracts;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
 {
     public class GetStudentDtoHandler : IRequestHandler<GetStudentDtoQuery, List<StudentDto>>
@@ -17,7 +14,7 @@ namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
         {
             _studentService = studentService;
             _mapper = mapper;
-        }     
+        }
         public async Task<List<StudentDto>> Handle(GetStudentDtoQuery request, CancellationToken cancellationToken)
         {
             var studentList = await _studentService.GetStudentAsync();

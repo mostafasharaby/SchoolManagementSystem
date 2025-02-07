@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using SchoolManagementSystem.Core.Features.Students.Commands.Models;
-using SchoolManagementSystem.Data;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Students.Commands.Handlers

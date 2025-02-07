@@ -1,18 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Infrastructure.Data
 {
     public class SchoolContext : DbContext
     {
         // Constructor to configure the DbContext
-        public SchoolContext() { }   
-        public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }      
+        //  public SchoolContext() { }
+        public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
 
         // DbSet properties for each table
         public DbSet<Student> Students { get; set; }

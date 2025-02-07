@@ -1,9 +1,5 @@
-﻿using SchoolManagementSystem.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Data.Helpers;
 
 namespace SchoolManagementSystem.Services.Abstracts
 {
@@ -12,9 +8,10 @@ namespace SchoolManagementSystem.Services.Abstracts
         public Task<List<Student>> GetStudentAsync();
         public Task<Student> GetStudentAsyncByID(int studentID);
         Task<Student> AddStudentAsync(Student student);
-        Task<Student>UpdateStudentAsync(Student student);
-         Task<bool> DeleteStudentAsync(int studentID);
-
-
+        Task<Student> UpdateStudentAsync(Student student);
+        Task<bool> DeleteStudentAsync(int studentID);
+        IQueryable<Student> GetStudentAsyncQureryable();
+        IQueryable<Student> GetStudentAsyncFilter(string search);
+        IQueryable<Student> GetStudentAsyncOrderd(StudentOrderingEnum order);
     }
 }

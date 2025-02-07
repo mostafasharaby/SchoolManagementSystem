@@ -1,23 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using SchoolManagementSystem.Infrastructure.Data;
 
 namespace SchoolManagementSystem.Infrastructure.Basics
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
-    {       
+    {
 
-        protected readonly SchoolContext _dbContext;            
+        protected readonly SchoolContext _dbContext;
         public GenericRepository(SchoolContext dbContext)
         {
             _dbContext = dbContext;
         }
-        
+
         public virtual async Task<T> GetByIdAsync(int id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
@@ -50,7 +45,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         {
             _dbContext.Set<T>().Update(entity);
             await _dbContext.SaveChangesAsync();
-            return entity;  
+            return entity;
         }
 
         public virtual async Task DeleteAsync(T entity)
@@ -102,9 +97,9 @@ namespace SchoolManagementSystem.Infrastructure.Basics
             return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public  string Exsitance(string message)
+        public string Exsitance(string message)
         {
-            return  message;
+            return message;
         }
     }
 

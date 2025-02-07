@@ -1,13 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SchoolManagementSystem.Data;
+﻿using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Basics;
 using SchoolManagementSystem.Infrastructure.Data;
 using SchoolManagementSystem.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
 {
@@ -15,7 +9,7 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
     {
         private readonly SchoolContext _context;
 
-        public TeacherRepository(SchoolContext context):base(context) 
+        public TeacherRepository(SchoolContext context) : base(context)
         {
             _context = context;
         }
@@ -32,12 +26,12 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
 
         public async Task AddTeacherAsync(Teacher teacher)
         {
-           AddAsync(teacher);
+            AddAsync(teacher);
         }
 
         public async Task<Teacher> UpdateTeacherAsync(Teacher teacher)
         {
-           await UpdateAsync(teacher);
+            await UpdateAsync(teacher);
             return teacher;
         }
 
@@ -52,9 +46,9 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
                 return true;
             }
             return false;
-           
+
         }
 
-       
+
     }
 }

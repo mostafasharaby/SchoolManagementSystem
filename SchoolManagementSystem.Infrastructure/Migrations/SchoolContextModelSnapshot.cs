@@ -22,7 +22,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Assignment", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Assignment", b =>
                 {
                     b.Property<int>("AssignmentID")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Assignments");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Attendance", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Attendance", b =>
                 {
                     b.Property<int>("AttendanceID")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Attendances");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.BorrowedBook", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.BorrowedBook", b =>
                 {
                     b.Property<int>("BorrowID")
                         .ValueGeneratedOnAdd()
@@ -94,7 +94,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("BorrowedBooks");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Classroom", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Classroom", b =>
                 {
                     b.Property<int>("ClassroomID")
                         .ValueGeneratedOnAdd()
@@ -113,10 +113,12 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
 
                     b.HasKey("ClassroomID");
 
+                    b.HasIndex("TeacherID");
+
                     b.ToTable("Classrooms");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Course", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Course", b =>
                 {
                     b.Property<int>("CourseID")
                         .ValueGeneratedOnAdd()
@@ -141,7 +143,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Department", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Department", b =>
                 {
                     b.Property<int>("DepartmentID")
                         .ValueGeneratedOnAdd()
@@ -157,7 +159,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Enrollment", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Enrollment", b =>
                 {
                     b.Property<int>("EnrollmentID")
                         .ValueGeneratedOnAdd()
@@ -179,7 +181,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Enrollments");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Exam", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Exam", b =>
                 {
                     b.Property<int>("ExamID")
                         .ValueGeneratedOnAdd()
@@ -204,7 +206,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Exams");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.ExamResult", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.ExamResult", b =>
                 {
                     b.Property<int>("ExamResultID")
                         .ValueGeneratedOnAdd()
@@ -226,7 +228,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("ExamResults");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.ExamType", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.ExamType", b =>
                 {
                     b.Property<int>("ExamTypeID")
                         .ValueGeneratedOnAdd()
@@ -242,7 +244,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("ExamTypes");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Fee", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Fee", b =>
                 {
                     b.Property<int>("FeeID")
                         .ValueGeneratedOnAdd()
@@ -267,7 +269,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Fees");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Grade", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Grade", b =>
                 {
                     b.Property<int>("GradeID")
                         .ValueGeneratedOnAdd()
@@ -283,7 +285,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Grades");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Library", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Library", b =>
                 {
                     b.Property<int>("LibraryID")
                         .ValueGeneratedOnAdd()
@@ -308,7 +310,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Libraries");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Parent", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Parent", b =>
                 {
                     b.Property<int>("ParentID")
                         .ValueGeneratedOnAdd()
@@ -333,7 +335,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Parents");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Student", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Student", b =>
                 {
                     b.Property<int>("StudentID")
                         .ValueGeneratedOnAdd()
@@ -356,13 +358,19 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.Property<string>("StudentEmail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentFirstName")
+                    b.Property<string>("StudentFirstNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentFirstNameEn")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentGender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentLastName")
+                    b.Property<string>("StudentLastNameAr")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StudentLastNameEn")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentPhoneNumber")
@@ -370,10 +378,14 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
 
                     b.HasKey("StudentID");
 
+                    b.HasIndex("ClassroomID");
+
+                    b.HasIndex("ParentID");
+
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.StudentClassroom", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.StudentClassroom", b =>
                 {
                     b.Property<int>("StudentClassroomID")
                         .ValueGeneratedOnAdd()
@@ -395,7 +407,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("StudentClassrooms");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.Teacher", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Teacher", b =>
                 {
                     b.Property<int>("TeacherID")
                         .ValueGeneratedOnAdd()
@@ -435,7 +447,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.TeacherDepartment", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.TeacherDepartment", b =>
                 {
                     b.Property<int>("DepartmentID")
                         .ValueGeneratedOnAdd()
@@ -451,7 +463,7 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.ToTable("TeacherDepartments");
                 });
 
-            modelBuilder.Entity("SchoolManagementSystem.Data.TeacherType", b =>
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.TeacherType", b =>
                 {
                     b.Property<int>("TeacherTypeID")
                         .ValueGeneratedOnAdd()
@@ -465,6 +477,30 @@ namespace SchoolManagementSystem.Infrastructure.Migrations
                     b.HasKey("TeacherTypeID");
 
                     b.ToTable("TeacherTypes");
+                });
+
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Classroom", b =>
+                {
+                    b.HasOne("SchoolManagementSystem.Data.Entities.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherID");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("SchoolManagementSystem.Data.Entities.Student", b =>
+                {
+                    b.HasOne("SchoolManagementSystem.Data.Entities.Classroom", "Classroom")
+                        .WithMany()
+                        .HasForeignKey("ClassroomID");
+
+                    b.HasOne("SchoolManagementSystem.Data.Entities.Parent", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentID");
+
+                    b.Navigation("Classroom");
+
+                    b.Navigation("Parent");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,20 +1,11 @@
-﻿using SchoolManagementSystem.Data;
+﻿using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Basics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace SchoolManagementSystem.Infrastructure.Repositories
 {
-    //public interface IStudentRepository
-    //{
-    //   
-    //}
-
-    public interface IStudentRepository:IGenericRepository<Student>
+    public interface IStudentRepository : IGenericRepository<Student>
     {
-         Task<List<Student>> GetAllStudentsAsync();
+        Task<List<Student>> GetAllStudentsAsync();
+        //IQueryable<Student> GetAllStudentsAsyncQueryable();
         //Task<Student> GetStudentByIdAsync(int studentId);
         //Task AddStudentAsync(Student student);
         //Task<Student> UpdateStudentAsync(Student student);

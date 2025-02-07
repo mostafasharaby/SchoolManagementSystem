@@ -1,12 +1,7 @@
 ﻿using MediatR;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
-using SchoolManagementSystem.Data;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Services.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Handlers
 {
@@ -20,7 +15,7 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Handlers
         }
         public Task<Teacher> Handle(GetTeacherByIdQuery request, CancellationToken cancellationToken)
         {
-           return _teacherService.GetTeacherAsyncByID(request.TeacherID);
+            return _teacherService.GetTeacherAsyncByID(request.TeacherID);
         }
     }
 }
