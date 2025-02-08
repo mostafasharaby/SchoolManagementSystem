@@ -1,6 +1,5 @@
 ﻿using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Helpers;
-using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Infrastructure.Repositories;
 using SchoolManagementSystem.Services.Abstracts;
 namespace SchoolManagementSystem.Services.ImpelmentationService
@@ -8,13 +7,10 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     internal class StudentService : IStudentService
     {
         private readonly IStudentRepository _StudentRepository;
-        private readonly IClassRoomRepository _ClassRoomRepository;
-        private readonly IParentRepository _ParentRepository;
-        public StudentService(IStudentRepository studentRepository, IClassRoomRepository ClassRoomRepository, IParentRepository ParentRepository)
+
+        public StudentService(IStudentRepository studentRepository)
         {
             _StudentRepository = studentRepository;
-            _ClassRoomRepository = ClassRoomRepository;
-            _ParentRepository = ParentRepository;
         }
 
         public async Task<List<Student>> GetStudentAsync()
@@ -69,22 +65,30 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public IQueryable<Student> GetStudentAsyncFilter(string search)
         {
-            return _StudentRepository.GetTableNoTracking().
-                Where(item => item.GetCultureLanguage(item.StudentFirstNameAr, item.StudentFirstNameEn).Contains(search)
-                || item.GetCultureLanguage(item.StudentLastNameAr, item.StudentLastNameEn).Contains(search)).AsQueryable();
+            return _StudentRepository.GetTableNoTracking()
+                .Where(item =>
+                    (item.StudentFirstNameAr != null && item.StudentFirstNameAr.Contains(search)) ||
+                    (item.StudentFirstNameEn != null && item.StudentFirstNameEn.Contains(search)) ||
+                    (item.StudentLastNameAr != null && item.StudentLastNameAr.Contains(search)) ||
+                    (item.StudentLastNameEn != null && item.StudentLastNameEn.Contains(search))
+                ).AsQueryable();
         }
 
         public IQueryable<Student> GetStudentAsyncOrderd(StudentOrderingEnum order)
         {
             var students = _StudentRepository.GetTableNoTracking();
+
             return order switch
             {
                 StudentOrderingEnum.up2down => students.OrderBy(s => s.StudentID),
                 StudentOrderingEnum.down2up => students.OrderByDescending(s => s.StudentID),
-                StudentOrderingEnum.NameUp2Down => students.OrderBy(s => s.GetCultureLanguage(s.StudentFirstNameAr, s.StudentFirstNameEn)),
-                StudentOrderingEnum.NameDownUp => students.OrderByDescending(s => s.GetCultureLanguage(s.StudentLastNameAr, s.StudentLastNameEn)),
+                StudentOrderingEnum.NameUp2Down => students.OrderBy(s => s.StudentFirstNameAr)
+                                                           .ThenBy(s => s.StudentFirstNameEn),
+                StudentOrderingEnum.NameDownUp => students.OrderByDescending(s => s.StudentFirstNameAr)
+                                                          .ThenByDescending(s => s.StudentFirstNameEn),
                 _ => students
             };
         }
+
     }
 }

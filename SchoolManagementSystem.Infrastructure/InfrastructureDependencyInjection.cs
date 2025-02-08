@@ -2,18 +2,19 @@
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using SchoolManagementSystem.Data.Entities.Identity;
 using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Infrastructure.Data;
 using SchoolManagementSystem.Infrastructure.Repositories;
 using SchoolManagementSystem.Infrastructure.RepositoryImpelementation;
 using System.Globalization;
 using System.Text;
-
 
 namespace SchoolManagementSystem.Infrastructure
 {
@@ -34,6 +35,12 @@ namespace SchoolManagementSystem.Infrastructure
 
 
 
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultProvider;
+            })
+            .AddEntityFrameworkStores<SchoolContext>()
+            .AddDefaultTokenProviders();
 
 
             // Step 1: Add localization services

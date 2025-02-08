@@ -1,6 +1,6 @@
-﻿
-using SchoolManagementSystem.Core.Features.Students.Queries.Results;
+﻿using SchoolManagementSystem.Core.Features.Students.Queries.Results;
 using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Data.General;
 
 namespace SchoolManagementSystem.Core.Mapping.StudentMapping
 {
@@ -9,26 +9,24 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
         public void StudentByIdResponseMapping()
         {
             CreateMap<Student, StudentByIdResponse>()
-                .ForMember(dest => dest.ID, opt => opt.MapFrom(src => src.StudentID))
-
-            .ForMember(dest => dest.StudentFirstName, opt => opt.MapFrom(new LocalizedResolver<Student>(
+            .ForMember(dest => dest.StudentID, opt => opt.MapFrom(src => src.StudentID))
+                    .ForMember(dest => dest.StudentFirstName, opt => opt.MapFrom(new LocalizedResolver<Student>(
                 s => s.StudentFirstNameAr,
                 s => s.StudentFirstNameEn)))
             .ForMember(dest => dest.StudentLastName, opt => opt.MapFrom(new LocalizedResolver<Student>(
                 s => s.StudentLastNameAr,
-                s => s.StudentLastNameEn)))
+                s => s.StudentLastNameEn)));
+            //.ForMember(dest => dest.ParentResponse, opt => opt.MapFrom(src => src.Parent)) // ✅ Correct mapping
+            //.ForMember(dest => dest.ClassroomResponse, opt => opt.MapFrom(src => src.Classroom));
 
-            .ForMember(dest => dest.ParentResponse, opt => opt.MapFrom(src => src.Parent))
-             .ForMember(dest => dest.ClassroomResponse, opt => opt.MapFrom(src => src.Classroom));
 
+            // CreateMap<Parent, ParentResponse>()
+            //     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FirstName))
+            // .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ParentID));
 
-            CreateMap<Parent, ParentResponse>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.FirstName))
-            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ParentID));
-
-            CreateMap<Classroom, ClassroomResponse>()
-               .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ClassroomName))
-           .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ClassroomID));
+            // CreateMap<Classroom, ClassroomResponse>()
+            //    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ClassroomName))
+            //.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ClassroomID));
         }
 
 

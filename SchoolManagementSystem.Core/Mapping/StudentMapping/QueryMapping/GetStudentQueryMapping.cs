@@ -1,5 +1,6 @@
 ﻿using SchoolManagementSystem.Core.Features.Students.Queries.Results;
 using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Data.General;
 
 namespace SchoolManagementSystem.Core.Mapping.StudentMapping
 {

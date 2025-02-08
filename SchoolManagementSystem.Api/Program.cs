@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 using SchoolManagementSystem.Api.Middleware;
 using SchoolManagementSystem.Core;
 using SchoolManagementSystem.Core.Resources;
@@ -17,10 +18,44 @@ namespace SchoolManagementSystem.Api
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
             builder.Services.AddSingleton<SharedResource>();
+            #region Swagger Registration
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "School Management System",
+                    Description = "ASP.NET Core Web API"
+                });
 
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme."
+                });
 
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
+            });
+            #endregion
             #region Dependency Injection
             builder.Services.AddInfrastructurefDependencyInjection(builder.Configuration);
             builder.Services.AddServiceDependencyInjection();

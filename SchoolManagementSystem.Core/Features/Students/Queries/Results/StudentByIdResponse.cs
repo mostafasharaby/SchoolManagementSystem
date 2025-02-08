@@ -2,11 +2,11 @@
 {
     public class StudentByIdResponse
     {
-        public int ID { get; set; } // Primary Key
+        public int StudentID { get; set; } // Primary Key
         public string? StudentFirstName { get; set; }
         public string? StudentLastName { get; set; }
-        public List<ParentResponse>? ParentResponse { get; set; }
-        public List<ClassroomResponse>? ClassroomResponse { get; set; }
+        //public ParentResponse? ParentResponse { get; set; }
+        //public ClassroomResponse? ClassroomResponse { get; set; }
     }
 
     public class ParentResponse

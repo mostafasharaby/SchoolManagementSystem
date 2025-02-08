@@ -17,11 +17,13 @@ namespace SchoolManagementSystem.Api.Controllers
         {
             _mediator = mediator;
         }
+
         [HttpGet(Routing.TeacherRouting.List)]
         public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachers()
         {
             return await _mediator.Send(new GetAllTeachersQuery());
         }
+
         [HttpGet(Routing.TeacherRouting.ById)]
         public async Task<ActionResult<Teacher>> GetTeacherById(int id)
         {
@@ -35,11 +37,13 @@ namespace SchoolManagementSystem.Api.Controllers
             return Ok(teacher);
         }
 
+
         [HttpGet("Dto")]
         public async Task<ActionResult<IEnumerable<TeacherDto>>> GetTeacherDto()
         {
             return await _mediator.Send(new GetTeacherDtoQuery());
         }
+
 
         [HttpPut(Routing.TeacherRouting.Update)]
         public async Task<IActionResult> UpdateTeacher(int id, [FromBody] UpdateTeacherCommand command)

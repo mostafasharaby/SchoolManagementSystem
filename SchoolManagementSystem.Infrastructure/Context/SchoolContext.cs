@@ -1,12 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Data.Entities.Identity;
 
 namespace SchoolManagementSystem.Infrastructure.Data
 {
-    public class SchoolContext : DbContext
+    public class SchoolContext : IdentityDbContext<AppUser>
     {
         // Constructor to configure the DbContext
-        //  public SchoolContext() { }
+        public SchoolContext() { }
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
 
         // DbSet properties for each table
@@ -26,6 +28,7 @@ namespace SchoolManagementSystem.Infrastructure.Data
         public DbSet<TeacherType> TeacherTypes { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
+        public DbSet<ExamScore> ExamScores { get; set; }
         public DbSet<Library> Libraries { get; set; }
         public DbSet<BorrowedBook> BorrowedBooks { get; set; }
         public DbSet<Fee> Fees { get; set; }
@@ -33,13 +36,12 @@ namespace SchoolManagementSystem.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BorrowedBook>()
-                .HasKey(b => b.BorrowID); // Explicitly setting BorrowID as Primary Key
+               .HasKey(b => b.BorrowID); // Explicitly setting BorrowID as Primary Key
 
             modelBuilder.Entity<TeacherDepartment>()
                .HasKey(b => b.DepartmentID);
 
-
-
+            base.OnModelCreating(modelBuilder);
 
             // modelBuilder.ApplyConfiguration(new StudentConfig());  the 4-way 
         }
