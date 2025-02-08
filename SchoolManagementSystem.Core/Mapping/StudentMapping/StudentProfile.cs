@@ -9,6 +9,7 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
             getStudentDtoQueryMapping();
             AddStudentProfile();
             UpdateStudentProfile();
+            //StudentByIdResponseMapping();
         }
     }
 

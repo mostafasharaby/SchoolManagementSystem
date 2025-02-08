@@ -1,12 +1,18 @@
 ﻿using FluentValidation;
 using SchoolManagementSystem.Core.Features.Students.Commands.Models;
+using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Infrastructure.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Students.Commands.Validator
 {
     public class AddStudentValidator : AbstractValidator<AddStudentCommandWithResponse>
     {
-        public AddStudentValidator()
+        private readonly IClassRoomRepository _ClassRoomRepository;
+        private readonly IParentRepository _ParentRepository;
+        public AddStudentValidator(IClassRoomRepository ClassRoomRepository, IParentRepository ParentRepository)
         {
+            _ClassRoomRepository = ClassRoomRepository;
+            _ParentRepository = ParentRepository;
             ApplyValidation();
         }
         public void ApplyValidation()
@@ -27,7 +33,6 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Validator
                 .NotEmpty().WithMessage("الاسم الاخير مطلوب")
                 .MaximumLength(50).WithMessage("الاسم الاخير لا يتخطي ال 50 حرفا");
 
-
             RuleFor(x => x.StudentGender)
                 .NotEmpty().WithMessage("Student gender is required.")
                 .Must(gender => gender == "Male" || gender == "Female")
@@ -38,12 +43,21 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Validator
                 .MaximumLength(100).WithMessage("Student address must be at most 100 characters.");
 
             RuleFor(x => x.ParentIDDD)
-                .GreaterThan(0).WithMessage("Parent ID must be greater than zero.")
-                .When(x => x.ParentIDDD.HasValue);
+            .NotNull().WithMessage("الرقم القومي للاب مطلوب")
+            .GreaterThan(0).WithMessage("Parent ID must be greater than zero.")
+            .MustAsync(async (parentId, cancellation) =>
+            {
+                return parentId.HasValue && await _ParentRepository.ExistsAsync<Parent>(i => i.ParentID == parentId);
+            }).WithMessage("Parent ID does not exist.");
+
 
             RuleFor(x => x.ClassroomIDDD)
+                .NotNull().WithMessage("رقم الصف مطلوب")
                 .GreaterThan(0).WithMessage("Classroom ID must be greater than zero.")
-                .When(x => x.ClassroomIDDD.HasValue);
+                .MustAsync(async (classroomId, cancellation) =>
+                {
+                    return classroomId.HasValue && await _ClassRoomRepository.ExistsAsync<Classroom>(i => i.ClassroomID == classroomId);
+                }).WithMessage("Classroom ID does not exist.");
         }
     }
 }

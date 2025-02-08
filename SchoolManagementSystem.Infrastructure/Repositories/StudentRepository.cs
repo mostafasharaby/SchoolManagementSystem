@@ -21,6 +21,17 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
                                           .ToListAsync();
         }
 
+
+        public async Task<Student> GetStudentByIdResponseAsync(int studentId)
+        {
+            return await _context.Students
+                         .Include(st => st.Parent)
+                         .Include(st => st.Classroom)
+                         .FirstOrDefaultAsync(st => st.StudentID == studentId);
+
+        }
+
+
         public async Task<Student> GetStudentByIdAsync(int studentId)
         {
             return await GetByIdAsync(studentId);

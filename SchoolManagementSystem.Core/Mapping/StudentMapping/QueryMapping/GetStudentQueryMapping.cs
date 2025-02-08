@@ -15,7 +15,7 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
                 s => s.StudentLastNameAr,
                 s => s.StudentLastNameEn)))
             .ForMember(dest => dest.ClassroomName, opt => opt.MapFrom(src => src.Classroom.ClassroomName))
-                  .ForMember(dest => dest.TeacherFirstName, opt => opt.MapFrom(src => src.Classroom.Teacher.TeacherFirstName));
+             .ForMember(dest => dest.TeacherFirstName, opt => opt.MapFrom(src => src.Classroom.Teacher.TeacherFirstName));
         }
 
 

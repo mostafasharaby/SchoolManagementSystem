@@ -25,6 +25,7 @@ namespace SchoolManagementSystem.Api
             builder.Services.AddInfrastructurefDependencyInjection(builder.Configuration);
             builder.Services.AddServiceDependencyInjection();
             builder.Services.AddCoreDependencyInjection();
+            builder.Services.AddAuthenticationServices(builder.Configuration);
             #endregion
 
 
@@ -56,6 +57,9 @@ namespace SchoolManagementSystem.Api
 
             app.UseHttpsRedirection();
             app.UseMiddleware<ExceptionHandlingMiddleware>(); //  custom middleware for error handling
+            app.UseStaticFiles();
+            app.UseCors("MyPolicy");
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

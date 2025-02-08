@@ -19,5 +19,9 @@ namespace SchoolManagementSystem.Data.Entities
 
         public Parent? Parent { get; set; }
         public Classroom? Classroom { get; set; }
+
+        public List<Parent>? ParentList { get; set; }
+        public List<Classroom>? ClassroomLsit { get; set; }
+
     }
 }

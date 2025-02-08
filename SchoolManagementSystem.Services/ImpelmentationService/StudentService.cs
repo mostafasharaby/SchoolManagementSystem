@@ -1,16 +1,20 @@
 ﻿using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Helpers;
+using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Infrastructure.Repositories;
 using SchoolManagementSystem.Services.Abstracts;
-
 namespace SchoolManagementSystem.Services.ImpelmentationService
 {
     internal class StudentService : IStudentService
     {
         private readonly IStudentRepository _StudentRepository;
-        public StudentService(IStudentRepository studentRepository)
+        private readonly IClassRoomRepository _ClassRoomRepository;
+        private readonly IParentRepository _ParentRepository;
+        public StudentService(IStudentRepository studentRepository, IClassRoomRepository ClassRoomRepository, IParentRepository ParentRepository)
         {
             _StudentRepository = studentRepository;
+            _ClassRoomRepository = ClassRoomRepository;
+            _ParentRepository = ParentRepository;
         }
 
         public async Task<List<Student>> GetStudentAsync()
@@ -23,6 +27,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _StudentRepository.GetByIdAsync(studentID);
         }
 
+        public async Task<Student> GetStudentAsyncByIDResponse(int studentID)
+        {
+            return await _StudentRepository.GetStudentByIdResponseAsync(studentID);
+        }
+
         public async Task<Student?> AddStudentAsync(Student student)
         {
             var studentExists = _StudentRepository.GetTableNoTracking()
@@ -32,7 +41,6 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             {
                 return null;
             }
-
             return await _StudentRepository.AddAsync(student);
         }
 

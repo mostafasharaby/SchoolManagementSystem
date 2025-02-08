@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using SchoolManagementSystem.Infrastructure.Data;
+using System.Linq.Expressions;
 
 namespace SchoolManagementSystem.Infrastructure.Basics
 {
@@ -100,6 +101,10 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         public string Exsitance(string message)
         {
             return message;
+        }
+        public async Task<bool> ExistsAsync<T>(Expression<Func<T, bool>> predicate) where T : class
+        {
+            return await _dbContext.Set<T>().AnyAsync(predicate);
         }
     }
 

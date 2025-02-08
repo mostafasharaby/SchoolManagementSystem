@@ -69,7 +69,21 @@ namespace SchoolManagementSystem.Api.Controllers
             }
 
             return NewResult(_responseHandler.Success(student));
-        }  //    AddStudentCommandWithResponse
+        }
+
+
+        [HttpGet("WithResponse/{id}")]
+        public async Task<ActionResult<Student>> GetStudentByIdResponse(int id)
+        {
+            var student = await _mediator.Send(new StudentByIdResponseQuery(id));
+
+            if (student == null)
+            {
+                return NewResult(_responseHandler.NotFound<Student>(""));
+            }
+
+            return NewResult(_responseHandler.Success(student));
+        }
 
 
 

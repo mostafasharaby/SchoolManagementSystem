@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using System.Linq.Expressions;
 
 namespace SchoolManagementSystem.Infrastructure.Basics
 {
@@ -7,6 +8,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         Task<List<T>> GetAllAsync();
         Task DeleteRangeAsync(ICollection<T> entities);
         Task<T> GetByIdAsync(int id);
+        public Task<bool> ExistsAsync<T>(Expression<Func<T, bool>> predicate) where T : class;
         Task<T> GetByNameAsync(string name);
         Task SaveChangesAsync();
         IDbContextTransaction BeginTransaction();

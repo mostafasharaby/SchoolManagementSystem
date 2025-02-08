@@ -37,7 +37,20 @@ namespace SchoolManagementSystem.Infrastructure.Data
 
             modelBuilder.Entity<TeacherDepartment>()
                .HasKey(b => b.DepartmentID);
+
+
+
+
+            // modelBuilder.ApplyConfiguration(new StudentConfig());  the 4-way 
         }
+        /// <summary>
+        /// Only 4 Ways to Mapp Object Model to Storage Model
+        /// 1. Follow EF Core Convensions
+        /// 2. Data Annotation (in Entity Class)
+        /// 3. Fluent API ( OnModelCreating Funciton in Context class)
+        /// 4. Configuration Class (separate Configuration class per Entity)
+        /// </summary>
+
 
     }
 
