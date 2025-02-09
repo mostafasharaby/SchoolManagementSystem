@@ -14,6 +14,13 @@ namespace SchoolManagementSystem.Core.Bases
             Message = message;
             Data = data;
         }
+
+        public Response(bool succeeded, string message, T? data = default)
+        {
+            Succeeded = succeeded;
+            Message = message;
+            Data = data;
+        }
         public Response(string message)
         {
             Succeeded = false;

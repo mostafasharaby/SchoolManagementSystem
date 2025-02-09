@@ -22,4 +22,13 @@
     <ProjectReference Include="..\SchoolManagementSystem.Services\SchoolManagementSystem.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\ApplicationUser\Queries\Handlers\" />
+    <Folder Include="Features\ApplicationUser\Queries\Models\" />
+    <Folder Include="Features\ApplicationUser\Queries\Results\" />
+    <Folder Include="Features\Authentication\Queries\" />
+    <Folder Include="Mapping\AppUserMapping\QueryMapping\" />
+    <Folder Include="Mapping\AuthMapping\QueryMapping\" />
+  </ItemGroup>
+
 </Project>

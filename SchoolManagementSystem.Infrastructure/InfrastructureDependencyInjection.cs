@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using AngularApi.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +25,19 @@ namespace SchoolManagementSystem.Infrastructure
 
         public static void AddInfrastructurefDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
+            #region Email Messages
+            services.AddScoped<IUserService, UserService>();
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<EmailTemplateService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            #endregion
+
+            #region Reps Registeration
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<IParentRepository, ParentRepository>();
             services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
+            #endregion
 
             services.AddDbContext<SchoolContext>(option =>
             {
