@@ -13,6 +13,8 @@ using Microsoft.IdentityModel.Tokens;
 using SchoolManagementSystem.Data.Entities.Identity;
 using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Infrastructure.Data;
+using SchoolManagementSystem.Infrastructure.GoogleServices;
+using SchoolManagementSystem.Infrastructure.JwtServices;
 using SchoolManagementSystem.Infrastructure.Repositories;
 using SchoolManagementSystem.Infrastructure.RepositoryImpelementation;
 using System.Globalization;
@@ -37,6 +39,14 @@ namespace SchoolManagementSystem.Infrastructure
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<IParentRepository, ParentRepository>();
             services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
+            #endregion
+
+            #region JwtService
+            services.AddScoped<IJwtService, JwtService>();
+            #endregion
+
+            #region GoogleService
+            services.AddScoped<IGoogleService, GoogleService>();
             #endregion
 
             services.AddDbContext<SchoolContext>(option =>

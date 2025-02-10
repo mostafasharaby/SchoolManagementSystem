@@ -43,3 +43,4 @@ namespace SchoolManagementSystem.Api.Controllers.Basics
         #endregion
     }
 }
+
