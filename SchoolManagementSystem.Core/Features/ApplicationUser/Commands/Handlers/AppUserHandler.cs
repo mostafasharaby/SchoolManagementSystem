@@ -49,13 +49,17 @@ namespace SchoolManagementSystem.Core.Features.ApplicationUser.Commands.Handlers
         //}
         public async Task<Response<string>> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            var existingUser = await _userManager.FindByEmailAsync(request.Email);
-            if (existingUser != null)
-            {
+            var existingUserEmail = await _userManager.FindByEmailAsync(request.Email);
+            if (existingUserEmail != null)
                 return _responseHandler.BadRequest<string>("Email is already in use.");
-            }
 
-            var user = new AppUser { UserName = request.UserName, Email = request.Email };
+            var existingUserName = await _userManager.FindByNameAsync(request.UserName);
+
+            if (existingUserName != null)
+                return _responseHandler.BadRequest<string>("UserName is already in use.");
+
+
+            var user = _mapper.Map<AppUser>(request);
             var result = await _userManager.CreateAsync(user, request.Password);
 
             if (!result.Succeeded)

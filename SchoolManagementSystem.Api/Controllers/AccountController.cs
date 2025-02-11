@@ -66,6 +66,17 @@ namespace SchoolManagementSystem.Api.Controllers
             return Ok(response);
         }
 
+        [HttpGet("Users")]
+        public async Task<IActionResult> GetUsers()
+        {
+            var result = await _mediator.Send(new GetUsersDtoCommand());
+
+            if (!result.Succeeded)
+                return NotFound(result); // 404 if no users found
+
+            return Ok(result); // 200 with user list
+        }
+
         [HttpPut("update-user/{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateAppUserCommand command)
         {
