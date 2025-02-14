@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using SchoolManagementSystem.Api.Middleware;
@@ -10,7 +11,7 @@ namespace SchoolManagementSystem.Api
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +64,19 @@ namespace SchoolManagementSystem.Api
             builder.Services.AddAuthenticationServices(builder.Configuration);
             #endregion
 
+            //builder.Services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.Events.OnRedirectToLogin = context =>
+            //    {
+            //        if (context.Request.Path.StartsWithSegments("/api"))
+            //        {
+            //            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            //            return Task.CompletedTask;
+            //        }
+            //        context.Response.Redirect(context.RedirectUri);
+            //        return Task.CompletedTask;
+            //    };
+            //});
 
 
 
@@ -83,6 +97,12 @@ namespace SchoolManagementSystem.Api
                 await next();
             });
             #endregion
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                await roleManager.EnsureRolesCreatedAsync();
+            }
 
             if (app.Environment.IsDevelopment())
             {

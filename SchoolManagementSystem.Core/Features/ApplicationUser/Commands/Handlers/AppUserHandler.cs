@@ -61,6 +61,8 @@ namespace SchoolManagementSystem.Core.Features.ApplicationUser.Commands.Handlers
 
             var user = _mapper.Map<AppUser>(request);
             var result = await _userManager.CreateAsync(user, request.Password);
+            await _userManager.AddToRoleAsync(user, "student");
+            await _userManager.AddToRoleAsync(user, "admin");  //              ------------ 
 
             if (!result.Succeeded)
             {

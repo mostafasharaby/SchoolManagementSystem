@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using SchoolManagementSystem.Services.Abstracts;
 using SchoolManagementSystem.Services.ImpelmentationService;
+using SchoolManagementSystem.Services.ImplementationService;
 
 namespace SchoolManagementSystem.Services
 {
@@ -12,6 +13,9 @@ namespace SchoolManagementSystem.Services
         {
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IClaimService, ClaimService>();
+
         }
     }
 }

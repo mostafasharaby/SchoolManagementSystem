@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagementSystem.Api.AppRouting;
 using SchoolManagementSystem.Api.Controllers.Basics;
@@ -11,6 +12,8 @@ using SchoolManagementSystem.Data.Entities;
 namespace SchoolManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
+
+    [Authorize(Roles = "student")]
     [ApiController]
     public class StudentsController : BasicController
     {
@@ -20,6 +23,8 @@ namespace SchoolManagementSystem.Api.Controllers
 
         // GET: api/Students
         [HttpGet("Dto")]
+
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult<IEnumerable<StudentDto>>> GetStudentsDto()
         {
             var studentDtos = await _mediator.Send(new GetStudentDtoQuery());

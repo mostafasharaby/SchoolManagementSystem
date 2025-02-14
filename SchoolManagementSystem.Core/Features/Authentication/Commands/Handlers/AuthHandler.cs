@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Authentication.Commands.Models;
 using SchoolManagementSystem.Data.Entities.Identity;
@@ -21,7 +22,8 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
                                  IRequestHandler<ResetPasswordCommand, Response<string>>,
                                  IRequestHandler<GoogleLoginCommand, AuthenticationProperties>,
                                  IRequestHandler<GoogleLoginCallbackCommand, string>,
-                                 IRequestHandler<ConfirmEmailCommand, Response<AppUser>>
+                                 IRequestHandler<ConfirmEmailCommand, Response<AppUser>>,
+                                 IRequestHandler<RefreshTokenCommand, Response<AuthResponse>>
 
     {
         private readonly UserManager<AppUser> _userManager;
@@ -59,15 +61,8 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
             {
                 return _responseHandler.BadRequest<AuthResponse>("Invalid email or password.");
             }
-            var tokenGenerated = _jwtService.GenerateJwtToken(existingUser);
 
-            var authResponse = new AuthResponse
-            {
-                Token = tokenGenerated,
-                IsAuthenticated = true,
-                UserName = existingUser.UserName
-            };
-
+            var authResponse = _jwtService.GenerateJwtToken(existingUser);
             return _responseHandler.Success(authResponse);
         }
 
@@ -153,5 +148,25 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
 
             return _responseHandler.Success<AppUser>(user, "Email confirmed successfully.");
         }
+
+        public async Task<Response<AuthResponse>> Handle(RefreshTokenCommand request, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrEmpty(request.AccessToken) || string.IsNullOrEmpty(request.RefreshToken))
+            {
+                return _responseHandler.BadRequest<AuthResponse>("Access token or refresh token is missing.");
+            }
+
+            try
+            {
+                var authResponse = _jwtService.RefreshToken(request.AccessToken, request.RefreshToken);
+
+                return _responseHandler.Success(authResponse);
+            }
+            catch (SecurityTokenException ex)
+            {
+                return _responseHandler.BadRequest<AuthResponse>($"Token refresh failed: {ex.Message}");
+            }
+        }
+
     }
 }

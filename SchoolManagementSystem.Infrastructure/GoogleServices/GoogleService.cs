@@ -56,7 +56,7 @@ namespace SchoolManagementSystem.Infrastructure.GoogleServices
                 await _userManager.AddLoginAsync(user, new UserLoginInfo("Google", externalUser.FindFirstValue(ClaimTypes.NameIdentifier), "Google"));
             }
 
-            return _jwtService.GenerateJwtToken(user);
+            return _jwtService.GenerateJwtToken(user).Token;
         }
     }
 }

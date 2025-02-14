@@ -32,6 +32,7 @@ namespace SchoolManagementSystem.Core.Bases
                 Meta = Meta
             };
         }
+
         public Response<T> Unauthorized<T>()
         {
             return new Response<T>()

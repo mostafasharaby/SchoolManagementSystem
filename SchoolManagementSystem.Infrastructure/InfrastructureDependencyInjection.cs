@@ -1,6 +1,5 @@
 ﻿using AngularApi.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -91,7 +90,8 @@ namespace SchoolManagementSystem.Infrastructure
                 //options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+                //options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
             {
@@ -103,6 +103,8 @@ namespace SchoolManagementSystem.Infrastructure
                     ValidIssuer = configuration["Jwt:ValidIssuer"],
                     ValidateAudience = true,
                     ValidAudience = configuration["Jwt:ValidAudience"],
+                    ValidateLifetime = true, //  Enforce expiration check
+                    ClockSkew = TimeSpan.Zero,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Secret"]))
                 };
             })
@@ -123,7 +125,18 @@ namespace SchoolManagementSystem.Infrastructure
             });
         }
 
+        public static async Task EnsureRolesCreatedAsync(this RoleManager<IdentityRole> roleManager)
+        {
+            var roles = new[] { "admin", "student", "teacher" };
 
+            foreach (var role in roles)
+            {
+                if (!await roleManager.RoleExistsAsync(role))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
+        }
         //public static void AddSwaggerServices(this IServiceCollection services)
         //{
         //    services.AddSwaggerGen(c =>
