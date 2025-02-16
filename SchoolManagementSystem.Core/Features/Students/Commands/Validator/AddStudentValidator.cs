@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using SchoolManagementSystem.Core.Features.Students.Commands.Models;
 using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Abstracts;
@@ -58,6 +59,24 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Validator
                 {
                     return classroomId.HasValue && await _ClassRoomRepository.ExistsAsync<Classroom>(i => i.ClassroomID == classroomId);
                 }).WithMessage("Classroom ID does not exist.");
+
+
+
+            RuleFor(x => x.Image)
+               .NotNull().WithMessage("Image is required")
+               .Must(BeAValidImage).WithMessage("Invalid Image type. Allowed: jpg, png, jpeg");
+
+            RuleFor(x => x.Image.Length)
+                .LessThanOrEqualTo(5 * 1024 * 1024) // 5MB max
+                .WithMessage("File size must be less than 5MB");
+
+        }
+        private bool BeAValidImage(IFormFile file)
+        {
+            if (file == null) return false;
+            var allowedExtensions = new[] { ".jpg", ".png", ".jpeg" };
+            var fileExtension = System.IO.Path.GetExtension(file.FileName).ToLower();
+            return allowedExtensions.Contains(fileExtension);
         }
     }
 }

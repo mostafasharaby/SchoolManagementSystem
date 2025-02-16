@@ -15,6 +15,8 @@ namespace SchoolManagementSystem.Data.Entities
         public string? StudentAddress { get; set; }
         public string? StudentPhoneNumber { get; set; }
         public string? StudentEmail { get; set; }
+        public string? Image { get; set; }
+
         public int? ParentID { get; set; } // Foreign Key (nullable)
         public int? ClassroomID { get; set; } // Foreign Key (nullable)
 

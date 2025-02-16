@@ -8,6 +8,8 @@ namespace AngularApi.Services
     public interface IUserService
     {
         Task<AppUser> GetCurrentUserAsync();
+        Task<AppUser?> FindUserByIdAsync(string userId);
+        Task<AppUser?> FindUserByEmailAsync(string email);
     }
     public class UserService : IUserService
     {
@@ -18,6 +20,16 @@ namespace AngularApi.Services
         {
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
+        }
+
+        public async Task<AppUser?> FindUserByEmailAsync(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+
+        public async Task<AppUser?> FindUserByIdAsync(string userId)
+        {
+            return await _userManager.FindByIdAsync(userId);
         }
 
         public async Task<AppUser> GetCurrentUserAsync()

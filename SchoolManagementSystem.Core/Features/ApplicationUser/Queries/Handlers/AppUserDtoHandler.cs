@@ -11,15 +11,21 @@ namespace SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Handlers
 {
     internal class AppUserDtoHandler : IRequestHandler<AppUserDtoCommamd, Response<AppUserDto>>,
                                        IRequestHandler<GetUsersDtoCommand, PaginatedResult<AppUserDto>>
+
+
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
         public readonly ResponseHandler _responseHandler;
+
+
+
         public AppUserDtoHandler(UserManager<AppUser> userManager, IMapper mapper, ResponseHandler responseHandler)
         {
             _userManager = userManager;
             _mapper = mapper;
             _responseHandler = responseHandler;
+
         }
         public async Task<Response<AppUserDto>> Handle(AppUserDtoCommamd request, CancellationToken cancellationToken)
         {
@@ -44,6 +50,9 @@ namespace SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Handlers
 
             return await paginatedResult;
         }
+
+
+
 
     }
 }

@@ -1,16 +1,19 @@
-﻿using SchoolManagementSystem.Data.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Helpers;
 using SchoolManagementSystem.Infrastructure.Repositories;
 using SchoolManagementSystem.Services.Abstracts;
+using Serilog;
 namespace SchoolManagementSystem.Services.ImpelmentationService
 {
     internal class StudentService : IStudentService
     {
         private readonly IStudentRepository _StudentRepository;
-
-        public StudentService(IStudentRepository studentRepository)
+        private readonly IFileService _fileService;
+        public StudentService(IStudentRepository studentRepository, IFileService fileService)
         {
             _StudentRepository = studentRepository;
+            _fileService = fileService;
         }
 
         public async Task<List<Student>> GetStudentAsync()
@@ -28,6 +31,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _StudentRepository.GetStudentByIdResponseAsync(studentID);
         }
 
+
         public async Task<Student?> AddStudentAsync(Student student)
         {
             var studentExists = _StudentRepository.GetTableNoTracking()
@@ -40,12 +44,31 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _StudentRepository.AddAsync(student);
         }
 
+
+        public async Task<Student?> AddStudentWithImageAsync(Student student, IFormFile file)
+        {
+            var studentExists = _StudentRepository.GetTableNoTracking()
+                .Any(i => i.StudentFirstNameAr == student.StudentFirstNameAr || i.StudentFirstNameEn == student.StudentFirstNameEn);
+
+            if (studentExists)
+            {
+                return null;
+            }
+            student.Image = await _fileService.UploadFileAsync(file, "uploads");
+            if (student.Image == null)
+            {
+                return null;
+            }
+            return await _StudentRepository.AddAsync(student);
+        }
+
         public async Task<bool> DeleteStudentAsync(int studentID)
         {
             var deletedStudent = await _StudentRepository.GetByIdAsync(studentID);
 
             if (deletedStudent == null)
             {
+                Log.Error("this student not exist");
                 return false;
             }
 

@@ -7,13 +7,14 @@ using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Students.Commands.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Results;
+using SchoolManagementSystem.Core.Filter;
 using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
 
-    [Authorize(Roles = "student")]
+    // [Authorize(Roles = "student")]
     [ApiController]
     public class StudentsController : BasicController
     {
@@ -35,13 +36,15 @@ namespace SchoolManagementSystem.Api.Controllers
 
 
         // GET: api/Students GetStudentsPaginatedQuery 
+        [Authorize(Policy = "PermissionPolicy")]
+        [Authorize(Policy = "EmailPolicy")]
         [HttpGet("DtoWithStatus")]
         public async Task<ActionResult<Response<List<StudentDto>>>> GetStudentsDtoWithStatus()
         {
             return await _mediator.Send(new GetStudentDtoQueryWithStatus());
         }
 
-
+        [ServiceFilter(typeof(AuthFilter))]
         [HttpGet("ListWithPagination")]
         public async Task<ActionResult<List<Student>>> GetStudentsWithPagination([FromQuery] GetStudentsPaginatedQuery studentsPaginatedQuery)
         {
@@ -53,7 +56,8 @@ namespace SchoolManagementSystem.Api.Controllers
             // return NewResult(_responseHandler.Success(_mediator.Send()));
         }
 
-
+        [Authorize(Roles = "student")]
+        [ServiceFilter(typeof(AuthFilter))]
         [HttpGet(Routing.StudentRouting.List)]
         public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
         {
@@ -93,7 +97,7 @@ namespace SchoolManagementSystem.Api.Controllers
 
 
         [HttpPost("WithResponse")]
-        public async Task<ActionResult<Response<Student>>> CreateStudentWithResponse([FromBody] AddStudentCommandWithResponse command)
+        public async Task<ActionResult<Response<Student>>> CreateStudentWithResponse([FromForm] AddStudentCommandWithResponse command)
         {
             if (command == null)
             {

@@ -6,6 +6,7 @@ using SchoolManagementSystem.Core;
 using SchoolManagementSystem.Core.Resources;
 using SchoolManagementSystem.Infrastructure;
 using SchoolManagementSystem.Services;
+using Serilog;
 using System.Globalization;
 namespace SchoolManagementSystem.Api
 {
@@ -64,19 +65,26 @@ namespace SchoolManagementSystem.Api
             builder.Services.AddAuthenticationServices(builder.Configuration);
             #endregion
 
-            //builder.Services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.Events.OnRedirectToLogin = context =>
-            //    {
-            //        if (context.Request.Path.StartsWithSegments("/api"))
-            //        {
-            //            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-            //            return Task.CompletedTask;
-            //        }
-            //        context.Response.Redirect(context.RedirectUri);
-            //        return Task.CompletedTask;
-            //    };
-            //});
+
+            #region Logger configuration 
+            // Step 1: Configure Serilog
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day) // Logs to File
+                                                                                     // .WriteTo.Seq("http://localhost:5341") // Logs to Seq (for structured logging)
+
+                .WriteTo.MSSqlServer(
+                    connectionString: builder.Configuration.GetConnectionString("connection"),
+                    sinkOptions: new Serilog.Sinks.MSSqlServer.MSSqlServerSinkOptions { TableName = "Logs", AutoCreateSqlTable = true }
+                )
+                .Enrich.FromLogContext() // Adds contextual information
+                .CreateLogger();
+
+            builder.Host.UseSerilog(); // Step 2: Use Serilog as the logging provider
+
+            #endregion
+
+
 
 
 
@@ -112,6 +120,10 @@ namespace SchoolManagementSystem.Api
 
             app.UseHttpsRedirection();
             app.UseMiddleware<ExceptionHandlingMiddleware>(); //  custom middleware for error handling
+
+
+            app.UseSerilogRequestLogging(); // Logs HTTP requests automatically
+
             app.UseStaticFiles();
             app.UseCors("MyPolicy");
             app.UseAuthentication();

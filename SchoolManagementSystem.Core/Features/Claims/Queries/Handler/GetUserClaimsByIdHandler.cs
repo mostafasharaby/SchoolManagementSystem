@@ -4,11 +4,14 @@ using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Claims.Queries.Models;
 using SchoolManagementSystem.Data.Entities.Identity;
 using SchoolManagementSystem.Data.Responses;
+using SchoolManagementSystem.Data.Views;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Claims.Queries.Handler
 {
-    internal class GetUserClaimsByIdHandler : IRequestHandler<GetUserClaimsByIdQuery, Response<UserClaims>>
+    internal class GetUserClaimsByIdHandler : IRequestHandler<GetUserClaimsByIdQuery, Response<UserClaims>>,
+                                              IRequestHandler<UserRoleClaimQuery, Response<List<UserRolesClaimsView>>>,
+                                              IRequestHandler<GetGroupedUserRoleClaimsQuery, Response<List<UserRoleClaimGroupedDto>>>
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IClaimService _claimService;
@@ -35,5 +38,17 @@ namespace SchoolManagementSystem.Core.Features.Claims.Queries.Handler
             };
             return _responseHandler.Success(userClaims, "User claims retrieved successfully");
         }
+        public async Task<Response<List<UserRolesClaimsView>>> Handle(UserRoleClaimQuery request, CancellationToken cancellationToken)
+        {
+            var roleClaims = await _claimService.GetUserClaimsDetailsAsync();
+            return _responseHandler.Success(roleClaims);
+        }
+        public async Task<Response<List<UserRoleClaimGroupedDto>>> Handle(GetGroupedUserRoleClaimsQuery request, CancellationToken cancellationToken)
+        {
+            var roleClaims = await _claimService.GetGroupedUserClaimsAsync();
+
+            return _responseHandler.Success(roleClaims);
+        }
     }
+
 }

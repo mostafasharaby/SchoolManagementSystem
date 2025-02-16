@@ -1,4 +1,5 @@
-﻿using SchoolManagementSystem.Data.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Helpers;
 
 namespace SchoolManagementSystem.Services.Abstracts
@@ -9,6 +10,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         public Task<Student> GetStudentAsyncByID(int studentID);
         public Task<Student> GetStudentAsyncByIDResponse(int studentID);
         Task<Student> AddStudentAsync(Student student);
+        Task<Student> AddStudentWithImageAsync(Student student, IFormFile file);
         Task<Student> UpdateStudentAsync(Student student);
         Task<bool> DeleteStudentAsync(int studentID);
         IQueryable<Student> GetStudentAsyncQureryable();

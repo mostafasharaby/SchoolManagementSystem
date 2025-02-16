@@ -15,7 +15,8 @@ namespace SchoolManagementSystem.Services
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IClaimService, ClaimService>();
-
+            services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IClassRoomService, ClassRoomService>();
         }
     }
 }

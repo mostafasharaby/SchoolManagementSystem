@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementSystem.Data.Entities.Identity;
 using SchoolManagementSystem.Data.Responses;
+using SchoolManagementSystem.Infrastructure.Data;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Services.ImplementationService
@@ -10,11 +11,14 @@ namespace SchoolManagementSystem.Services.ImplementationService
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly SchoolContext _context;
 
-        public RoleService(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+
+        public RoleService(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, SchoolContext context)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _context = context;
         }
 
         public async Task<List<RoleResponse>> GetAllRolesAsync()
@@ -91,6 +95,14 @@ namespace SchoolManagementSystem.Services.ImplementationService
         public Task<List<RolesDetails>> GetUserRolesDetailsAsync(IdentityUser user)
         {
             throw new NotImplementedException();
+        }
+
+
+        public async Task<int> GetUserCountByRoleAsync(string roleName)
+        {
+            return await _context.UserRoles
+                .Where(ur => _context.Roles.Any(r => r.Id == ur.RoleId && r.Name == roleName))  //[AspNetUserRoles]
+                .CountAsync();
         }
     }
 }

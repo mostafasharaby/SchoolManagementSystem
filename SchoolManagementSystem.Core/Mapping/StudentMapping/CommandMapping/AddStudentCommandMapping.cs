@@ -22,6 +22,7 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
                 .ForMember(des => des.ParentID, op => op.MapFrom(src => src.ParentIDDD))
                 .ForMember(des => des.StudentGender, op => op.MapFrom(src => src.StudentGender))
                 .ForMember(des => des.StudentAddress, op => op.MapFrom(src => src.StudentAddress));
+
         }
     }
 }

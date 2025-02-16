@@ -48,5 +48,24 @@ namespace SchoolManagementSystem.Api.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("roles-claims")]
+        public async Task<IActionResult> GetUserRolesAndClaims()
+        {
+            var result = await _mediator.Send(new UserRoleClaimQuery());
+            if (!result.Succeeded)
+                return BadRequest(result);
+            return Ok(result);
+        }
+
+        [HttpGet("roles-claims-grouped")]
+        public async Task<IActionResult> GetGroupedUserRoleClaims()
+        {
+            var result = await _mediator.Send(new GetGroupedUserRoleClaimsQuery());
+            return Ok(result);
+        }
+
+
+
     }
 }

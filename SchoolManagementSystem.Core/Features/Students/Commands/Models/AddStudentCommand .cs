@@ -9,6 +9,7 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Models
         public AddStudentCommand(Student student)
         {
             Student = student;
+
         }
     }
 }

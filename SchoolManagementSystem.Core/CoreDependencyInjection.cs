@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Behavoir;
+using SchoolManagementSystem.Core.Filter;
 using System.Reflection;
 namespace SchoolManagementSystem.Core
 {
@@ -16,6 +17,8 @@ namespace SchoolManagementSystem.Core
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             services.AddTransient<ResponseHandler>(); // 
+            services.AddScoped<AuthFilter>();
+
         }
 
     }

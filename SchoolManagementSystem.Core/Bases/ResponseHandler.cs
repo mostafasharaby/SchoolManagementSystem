@@ -69,7 +69,7 @@ namespace SchoolManagementSystem.Core.Bases
                 Data = entity,
                 StatusCode = System.Net.HttpStatusCode.Created,
                 Succeeded = true,
-                Message = _localizer[SharedResourceKeys.FailedToCreate],
+                Message = _localizer[SharedResourceKeys.MessageSuccess],
                 Meta = Meta
             };
         }

@@ -1,5 +1,6 @@
 ﻿using SchoolManagementSystem.Data.Entities.Identity;
 using SchoolManagementSystem.Data.Responses;
+using SchoolManagementSystem.Data.Views;
 using System.Security.Claims;
 
 namespace SchoolManagementSystem.Services.Abstracts
@@ -12,5 +13,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> AddOnlyClaimAsync(AppUser user, ClaimDetails claim);
         Task<bool> DeleteClaimAsync(AppUser user, ClaimDetails claim);
         Task<Claim> ClaimTypeExistsAsync(AppUser user, string claimType);
+        Task<List<UserRolesClaimsView>> GetUserClaimsDetailsAsync();
+        Task<List<UserRoleClaimGroupedDto>> GetGroupedUserClaimsAsync();
     }
 }

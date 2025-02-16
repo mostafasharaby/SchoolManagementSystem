@@ -28,7 +28,8 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Handlers
                 return new Response<Student>("Mapping failed");
             }
 
-            var result = await _studentService.AddStudentAsync(studentMapped);
+            //var result = await _studentService.AddStudentAsync(studentMapped);
+            var result = await _studentService.AddStudentWithImageAsync(studentMapped, request.Image);
             if (result == null)
             {
                 return new Response<Student>("this student is exist");

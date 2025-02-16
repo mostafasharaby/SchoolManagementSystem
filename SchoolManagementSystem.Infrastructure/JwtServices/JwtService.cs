@@ -70,11 +70,9 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
             };
 
             var roles = _userManager.GetRolesAsync(user).Result;
-            //foreach (var role in roles)
-            //{
-            //    claims.Add(new Claim(ClaimTypes.Role, role));
-            //}
+            var userClaims = _userManager.GetClaimsAsync(user).Result;
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+            claims.AddRange(userClaims);
             return claims;
         }
 

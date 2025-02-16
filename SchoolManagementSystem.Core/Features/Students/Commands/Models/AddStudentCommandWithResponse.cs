@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Data.Entities;
 
@@ -15,6 +16,7 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Models
         public int? ClassroomIDDD { get; set; }
         public string? StudentFirstNameAr { get; set; }
         public string? StudentFirstNameEn { get; set; }
+        public IFormFile? Image { get; set; }
 
     }
 }

@@ -37,7 +37,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         public virtual async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            //  await _dbContext.SaveChangesAsync();          // i will use unit of work here 
 
             return entity;
         }
@@ -45,14 +45,14 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         public async Task<T> UpdateAsync(T entity)
         {
             _dbContext.Set<T>().Update(entity);
-            await _dbContext.SaveChangesAsync();
+            //  await _dbContext.SaveChangesAsync();  // i will use unit of work here 
             return entity;
         }
 
         public virtual async Task DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
-            await _dbContext.SaveChangesAsync();
+            // await _dbContext.SaveChangesAsync(); // i will use unit of work here 
         }
         public virtual async Task DeleteRangeAsync(ICollection<T> entities)
         {

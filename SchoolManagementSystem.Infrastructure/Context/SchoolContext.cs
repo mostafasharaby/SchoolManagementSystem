@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Entities.Identity;
+using SchoolManagementSystem.Data.Views;
 
 namespace SchoolManagementSystem.Infrastructure.Data
 {
@@ -33,6 +34,10 @@ namespace SchoolManagementSystem.Infrastructure.Data
         public DbSet<BorrowedBook> BorrowedBooks { get; set; }
         public DbSet<Fee> Fees { get; set; }
 
+
+
+        //views 
+        public DbSet<UserRolesClaimsView> UserRolesClaimsView { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BorrowedBook>()
@@ -42,6 +47,11 @@ namespace SchoolManagementSystem.Infrastructure.Data
                .HasKey(b => b.DepartmentID);
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder
+               .Entity<UserRolesClaimsView>()
+               .ToView("UserRolesClaimsView") // Explicitly map to the view
+               .HasNoKey();
 
             // modelBuilder.ApplyConfiguration(new StudentConfig());  the 4-way 
         }

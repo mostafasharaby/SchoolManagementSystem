@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagementSystem.Api.AppRouting;
+using SchoolManagementSystem.Core.Features.Files.Commands.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Commands.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Results;
@@ -63,6 +64,17 @@ namespace SchoolManagementSystem.Api.Controllers
             if (!result) return NotFound("Teacher not found.");
 
             return Ok("Teacher deleted successfully.");
+        }
+
+
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadFile([FromForm] UploadFileCommand command)
+        {
+            var result = await _mediator.Send(command);
+            if (!result.Succeeded)
+                return BadRequest(result);
+
+            return Ok(result);
         }
 
     }

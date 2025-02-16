@@ -12,6 +12,7 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Handlers
         public AddStudentHandler(IStudentService studentService)
         {
             _studentService = studentService;
+
         }
 
         public Task<Student> Handle(AddStudentCommand request, CancellationToken cancellationToken)

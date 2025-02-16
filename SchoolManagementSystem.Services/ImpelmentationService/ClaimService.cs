@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using SchoolManagementSystem.Data.Entities.Identity;
 using SchoolManagementSystem.Data.Responses;
+using SchoolManagementSystem.Data.Views;
+using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Services.Abstracts;
 using System.Security.Claims;
 
@@ -9,9 +11,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class ClaimService : IClaimService
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly IUserRolesClaimsRepository _userRolesClaimsRepository;
 
-        public ClaimService(UserManager<AppUser> userManager)
+        public ClaimService(IUserRolesClaimsRepository userRolesClaimsRepository, UserManager<AppUser> userManager)
         {
+            _userRolesClaimsRepository = userRolesClaimsRepository;
             _userManager = userManager;
         }
 
@@ -55,6 +59,37 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             var claims = await _userManager.GetClaimsAsync(user);
             var result = claims.FirstOrDefault(item => item.Type == claimType);
             return result;
+        }
+
+        public async Task<List<UserRolesClaimsView>> GetUserClaimsDetailsAsync()
+        {
+            return await _userRolesClaimsRepository.GetAllUserRoleClaims();
+        }
+
+        public async Task<List<UserRoleClaimGroupedDto>> GetGroupedUserClaimsAsync()
+        {
+            var roleClaims = await GetUserClaimsDetailsAsync();
+
+            var groupedData = roleClaims
+                .GroupBy(urc => new { urc.UserId, urc.UserName })
+                .Select(group => new UserRoleClaimGroupedDto
+                {
+                    UserId = group.Key.UserId,
+                    UserName = group.Key.UserName,
+                    Roles = group.Select(rc => rc.RoleName).Distinct().ToList(),
+                    Claims = group
+                        .Where(rc => !string.IsNullOrEmpty(rc.ClaimType))
+                        .Select(rc => new ClaimDto
+                        {
+                            ClaimType = rc.ClaimType,
+                            ClaimValue = rc.ClaimValue
+                        })
+                        .Distinct()
+                        .ToList()
+                })
+                .ToList();
+
+            return groupedData;
         }
     }
 }

@@ -4,6 +4,7 @@ using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Results;
 using SchoolManagementSystem.Services.Abstracts;
+using Serilog;
 
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
 {
@@ -26,6 +27,8 @@ namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
                 _responseHandler.NotFound<StudentByIdResponse>();
                 return null;
             }
+            Log.Information("User {UserName} performed an action at {Time}", request.StudentID, DateTime.UtcNow);
+
             return _mapper.Map<StudentByIdResponse>(student);
         }
     }

@@ -10,7 +10,8 @@ using SchoolManagementSystem.Services.Abstracts;
 namespace SchoolManagementSystem.Core.Features.Roles.Queries.Handlers
 {
     internal class GetRolesHandler : IRequestHandler<GetRolesQuery, Response<List<RoleResponse>>>,
-                                     IRequestHandler<GetUserRolesByIdQuery, Response<UserRoles>>
+                                     IRequestHandler<GetUserRolesByIdQuery, Response<UserRoles>>,
+                                     IRequestHandler<GetUserCountByRoleQuery, Response<int>>
 
     {
         private readonly ResponseHandler _responseHandler;
@@ -46,6 +47,10 @@ namespace SchoolManagementSystem.Core.Features.Roles.Queries.Handlers
             return _responseHandler.Success(UserRoles, "User roles retrieved successfully");
         }
 
-
+        public async Task<Response<int>> Handle(GetUserCountByRoleQuery request, CancellationToken cancellationToken)
+        {
+            var count = await _roleService.GetUserCountByRoleAsync(request.RoleName);
+            return _responseHandler.Success(count, "User count retrieved successfully.");
+        }
     }
 }

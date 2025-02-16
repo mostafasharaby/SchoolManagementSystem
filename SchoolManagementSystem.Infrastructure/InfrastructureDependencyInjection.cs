@@ -38,6 +38,8 @@ namespace SchoolManagementSystem.Infrastructure
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<IParentRepository, ParentRepository>();
             services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
+            services.AddScoped<IUserRolesClaimsRepository, UserRolesClaimsRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             #endregion
 
             #region JwtService
@@ -121,6 +123,20 @@ namespace SchoolManagementSystem.Infrastructure
                 options.AddPolicy("MyPolicy", builder =>
                 {
                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("PermissionPolicy", builder =>
+                {
+                    builder.RequireClaim("Permission", "CanEditUsers");
+                });
+                options.AddPolicy("EmailPolicy", builder =>
+                {
+                    builder.RequireClaim("EmailVerified", "falsse")
+                    ;
                 });
             });
         }
