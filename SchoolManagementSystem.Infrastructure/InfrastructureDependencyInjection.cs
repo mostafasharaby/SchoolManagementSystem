@@ -36,8 +36,13 @@ namespace SchoolManagementSystem.Infrastructure
             #region Reps Registeration
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
-            services.AddScoped<IParentRepository, ParentRepository>();
             services.AddScoped<IClassRoomRepository, ClassRoomRepository>();
+            services.AddScoped<IParentRepository, ParentRepository>();
+            services.AddScoped<ILibraryRepository, LibraryRepository>();
+            services.AddScoped<IBorrowedBookRepository, BorrowedBookRepository>();
+            services.AddScoped<IFeeRepository, FeeRepository>();
+
+
             services.AddScoped<IUserRolesClaimsRepository, UserRolesClaimsRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             #endregion

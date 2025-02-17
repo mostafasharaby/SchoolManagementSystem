@@ -11,7 +11,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
         }
 
-        public async Task<List<Classroom>> GetAllStudentsAsync()
+        public async Task<List<Classroom>> GetAllClassroomsAsync()
         {
             return await GetAllAsync();
         }
@@ -21,13 +21,13 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
             return await GetByIdAsync(ClassRommId);
         }
-        public async Task AddStudentAsync(Classroom Classroom)
+        public async Task AddClassroomAsync(Classroom Classroom)
         {
             await AddAsync(Classroom);
         }
 
 
-        public async Task<Classroom> UpdateStudentAsync(Classroom Classroom)
+        public async Task<Classroom> UpdateClassroomAsync(Classroom Classroom)
         {
             await UpdateAsync(Classroom);
             return Classroom;

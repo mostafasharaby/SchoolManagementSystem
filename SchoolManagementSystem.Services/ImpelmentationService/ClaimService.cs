@@ -11,12 +11,12 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class ClaimService : IClaimService
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly IUserRolesClaimsRepository _userRolesClaimsRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ClaimService(IUserRolesClaimsRepository userRolesClaimsRepository, UserManager<AppUser> userManager)
+        public ClaimService(IUnitOfWork unitOfWork, UserManager<AppUser> userManager)
         {
-            _userRolesClaimsRepository = userRolesClaimsRepository;
             _userManager = userManager;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<List<ClaimDetails>> GetUserClaimsDetailsAsync(AppUser user)
@@ -63,7 +63,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<UserRolesClaimsView>> GetUserClaimsDetailsAsync()
         {
-            return await _userRolesClaimsRepository.GetAllUserRoleClaims();
+            return await _unitOfWork.UserRolesClaims.GetAllUserRoleClaims();
         }
 
         public async Task<List<UserRoleClaimGroupedDto>> GetGroupedUserClaimsAsync()

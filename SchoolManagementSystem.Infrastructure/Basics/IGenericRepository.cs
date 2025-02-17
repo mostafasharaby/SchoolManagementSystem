@@ -21,6 +21,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         Task<T> UpdateAsync(T entity);
         Task UpdateRangeAsync(ICollection<T> entities);
         Task DeleteAsync(T entity);
+        Task<bool> DeleteByIdAsync(int id);
         string Exsitance(string message);
 
     }

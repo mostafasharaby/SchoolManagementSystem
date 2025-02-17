@@ -1,44 +1,41 @@
 ﻿using SchoolManagementSystem.Data.Entities;
-using SchoolManagementSystem.Infrastructure.Repositories;
+using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Services.ImpelmentationService
 {
     internal class TeacherService : ITeacherService
     {
-        private readonly ITeacherRepository _teacherRepository;
-
-        public TeacherService(ITeacherRepository teacherRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public TeacherService(IUnitOfWork unitOfWork)
         {
-            _teacherRepository = teacherRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<bool> DeleteTeacherAsync(int teacherID)
         {
-            var deletedStudent = await _teacherRepository.GetByIdAsync(teacherID);
-
-            if (deletedStudent == null)
+            var deletedStudent = await _unitOfWork.Teachers.DeleteByIdAsync(teacherID);
+            if (deletedStudent)
             {
-                return false;
+                await _unitOfWork.CompleteAsync();
+                return true;
             }
-
-            await _teacherRepository.DeleteAsync(deletedStudent);
-            return true;
+            return false;
         }
 
         public async Task<Teacher> GetTeacherAsyncByID(int teacherID)
         {
-            return await _teacherRepository.GetByIdAsync(teacherID);
+            return await _unitOfWork.Teachers.GetByIdAsync(teacherID);
         }
 
         public async Task<List<Teacher>> GetTeachersAsync()
         {
-            return await _teacherRepository.GetAllAsync();
+            return await _unitOfWork.Teachers.GetAllAsync();
         }
 
         public Task<Teacher> UpdateTeacherAsync(Teacher teacher)
         {
-            return _teacherRepository.UpdateAsync(teacher);
+            return _unitOfWork.Teachers.UpdateAsync(teacher);
         }
     }
 }

@@ -1,53 +1,54 @@
 ﻿using Microsoft.AspNetCore.Http;
 using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Helpers;
-using SchoolManagementSystem.Infrastructure.Repositories;
+using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Services.Abstracts;
-using Serilog;
 namespace SchoolManagementSystem.Services.ImpelmentationService
 {
     internal class StudentService : IStudentService
     {
-        private readonly IStudentRepository _StudentRepository;
         private readonly IFileService _fileService;
-        public StudentService(IStudentRepository studentRepository, IFileService fileService)
+        private readonly IUnitOfWork _unitOfWork;
+
+
+        public StudentService(IFileService fileService, IUnitOfWork unitOfWork)
         {
-            _StudentRepository = studentRepository;
             _fileService = fileService;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<List<Student>> GetStudentAsync()
         {
-            return await _StudentRepository.GetAllStudentsAsync(); // related to studentRepository not Generic one 
+            return await _unitOfWork.Students.GetAllStudentsAsync(); // related to studentRepository not Generic one 
         }
 
         public async Task<Student> GetStudentAsyncByID(int studentID)
         {
-            return await _StudentRepository.GetByIdAsync(studentID);
+            return await _unitOfWork.Students.GetByIdAsync(studentID);
         }
 
         public async Task<Student> GetStudentAsyncByIDResponse(int studentID)
         {
-            return await _StudentRepository.GetStudentByIdResponseAsync(studentID);
+            return await _unitOfWork.Students.GetStudentByIdResponseAsync(studentID);
         }
 
 
         public async Task<Student?> AddStudentAsync(Student student)
         {
-            var studentExists = _StudentRepository.GetTableNoTracking()
+            var studentExists = _unitOfWork.Students.GetTableNoTracking()
                 .Any(i => i.StudentFirstNameAr == student.StudentFirstNameAr || i.StudentFirstNameEn == student.StudentFirstNameEn);
 
             if (studentExists)
             {
                 return null;
             }
-            return await _StudentRepository.AddAsync(student);
+            return await _unitOfWork.Students.AddAsync(student);
         }
 
 
         public async Task<Student?> AddStudentWithImageAsync(Student student, IFormFile file)
         {
-            var studentExists = _StudentRepository.GetTableNoTracking()
+            var studentExists = _unitOfWork.Students.GetTableNoTracking()
                 .Any(i => i.StudentFirstNameAr == student.StudentFirstNameAr || i.StudentFirstNameEn == student.StudentFirstNameEn);
 
             if (studentExists)
@@ -59,36 +60,33 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             {
                 return null;
             }
-            return await _StudentRepository.AddAsync(student);
+            return await _unitOfWork.Students.AddAsync(student);
         }
 
         public async Task<bool> DeleteStudentAsync(int studentID)
         {
-            var deletedStudent = await _StudentRepository.GetByIdAsync(studentID);
-
-            if (deletedStudent == null)
+            var deletedStudent = await _unitOfWork.Students.DeleteByIdAsync(studentID);
+            if (deletedStudent)
             {
-                Log.Error("this student not exist");
-                return false;
+                await _unitOfWork.CompleteAsync();
+                return true;
             }
-
-            await _StudentRepository.DeleteAsync(deletedStudent);
-            return true;
+            return false;
         }
 
         Task<Student> IStudentService.UpdateStudentAsync(Student student)
         {
-            return _StudentRepository.UpdateAsync(student);
+            return _unitOfWork.Students.UpdateAsync(student);
         }
 
         public IQueryable<Student> GetStudentAsyncQureryable()
         {
-            return _StudentRepository.GetTableNoTracking().AsQueryable();
+            return _unitOfWork.Students.GetTableNoTracking().AsQueryable();
         }
 
         public IQueryable<Student> GetStudentAsyncFilter(string search)
         {
-            return _StudentRepository.GetTableNoTracking()
+            return _unitOfWork.Students.GetTableNoTracking()
                 .Where(item =>
                     (item.StudentFirstNameAr != null && item.StudentFirstNameAr.Contains(search)) ||
                     (item.StudentFirstNameEn != null && item.StudentFirstNameEn.Contains(search)) ||
@@ -99,7 +97,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public IQueryable<Student> GetStudentAsyncOrderd(StudentOrderingEnum order)
         {
-            var students = _StudentRepository.GetTableNoTracking();
+            var students = _unitOfWork.Students.GetTableNoTracking();
 
             return order switch
             {

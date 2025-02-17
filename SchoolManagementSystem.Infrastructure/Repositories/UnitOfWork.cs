@@ -7,15 +7,29 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
     {
         public SchoolContext _context;
         public IClassRoomRepository Classrooms { get; }
-
+        public IParentRepository Parents { get; }
+        public ITeacherRepository Teachers { get; }
         public IStudentRepository Students { get; }
+        public ILibraryRepository Library { get; }
+        public IFeeRepository Fee { get; }
+        public IBorrowedBookRepository BorrowedBooks { get; }
+        public IUserRolesClaimsRepository UserRolesClaims { get; }
 
-        //    IClassRoomRepository IUnitOfWork.Classrooms => throw new NotImplementedException();
 
-        public UnitOfWork(SchoolContext context, IClassRoomRepository ClassRoomRepository)
+        public UnitOfWork(SchoolContext context, IClassRoomRepository ClassRoomRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository,
+                           IStudentRepository studentRepository, IBorrowedBookRepository borrowedBookRepository, ILibraryRepository libraryRepository,
+                           IUserRolesClaimsRepository userRolesClaims, IFeeRepository feeRepository)
+
         {
             _context = context;
             Classrooms = ClassRoomRepository;
+            Parents = parentRepository;
+            Teachers = teacherRepository;
+            Students = studentRepository;
+            UserRolesClaims = userRolesClaims;
+            Library = libraryRepository;
+            BorrowedBooks = borrowedBookRepository;
+            Fee = feeRepository;
         }
 
         public async Task<bool> ExecuteTransactionAsync(Func<Task> action)

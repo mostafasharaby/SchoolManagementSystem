@@ -1,7 +1,6 @@
 ﻿using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Services.Abstracts;
-using Serilog;
 
 namespace SchoolManagementSystem.Services.ImpelmentationService
 {
@@ -28,16 +27,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<bool> DeleteClassroomAsync(int classroomID)
         {
-            var classroom = await _unitOfWork.Classrooms.GetByIdAsync(classroomID);
-            if (classroom == null)
+            var check = await _unitOfWork.Classrooms.DeleteByIdAsync(classroomID);
+            if (check)
             {
-                Log.Error("this student not exist");
-                return false;
-
+                await _unitOfWork.CompleteAsync();
+                return true;
             }
-            await _unitOfWork.Classrooms.DeleteAsync(classroom);
-            await _unitOfWork.CompleteAsync();
-            return true;
+            return false;
         }
 
         public async Task<Classroom> GetClassroomByIdAsync(int classroomID)
@@ -61,6 +57,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
                     student.ClassroomID = classroom.ClassroomID; // Assign student to this classroom
                     await _unitOfWork.Students.UpdateAsync(student);
                 }
+                await _unitOfWork.CompleteAsync();
             });
         }
     }

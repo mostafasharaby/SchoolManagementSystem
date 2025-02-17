@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using SchoolManagementSystem.Infrastructure.Data;
+using Serilog;
 using System.Linq.Expressions;
 
 namespace SchoolManagementSystem.Infrastructure.Basics
@@ -54,6 +55,22 @@ namespace SchoolManagementSystem.Infrastructure.Basics
             _dbContext.Set<T>().Remove(entity);
             // await _dbContext.SaveChangesAsync(); // i will use unit of work here 
         }
+
+        public async Task<bool> DeleteByIdAsync(int id)
+        {
+            var entity = await GetByIdAsync(id);
+            if (entity == null)
+            {
+                Log.Error($"{typeof(T).Name} with ID {id} not found.");
+                return false;
+            }
+
+            _dbContext.Set<T>().Remove(entity);
+            return true;
+        }
+
+
+
         public virtual async Task DeleteRangeAsync(ICollection<T> entities)
         {
             foreach (var entity in entities)
