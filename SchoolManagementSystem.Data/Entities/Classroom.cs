@@ -10,7 +10,7 @@
         // Navigation Properties
         public Grade? Grade { get; set; }
         public Teacher? Teacher { get; set; }
-        public ICollection<StudentClassroom>? StudentClassrooms { get; set; }
+        public ICollection<Student>? Students { get; set; }
         public ICollection<Attendance>? Attendances { get; set; }
     }
 

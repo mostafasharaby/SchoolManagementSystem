@@ -9,6 +9,6 @@
         public int? Quantity { get; set; }
 
         // Navigation Properties
-        public ICollection<BorrowedBook>? BorrowedBooks { get; set; }
+        public ICollection<BorrowedBook>? BorrowedBooks { get; set; }  /// added
     }
 }

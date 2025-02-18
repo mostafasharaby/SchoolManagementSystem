@@ -28,16 +28,6 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Handlers
             return _responseHandler.Created(" created successfully");
         }
 
-        //public async Task<Response<string>> Handle(UpdateBorrowedBookCommand request, CancellationToken cancellationToken)
-        //{
-        //    var borrowedBook = _mapper.Map<BorrowedBook>(request);
-        //    var check = await _borrowedBookService.UpdateBorrowedBookAsync(borrowedBook);
-        //    if (!check)
-        //        return _responseHandler.NotFound<string>("StudentId or Library not found.");
-
-        //    return _responseHandler.Success("Borrowed Book updated successfully.");
-        //}
-
         public async Task<Response<string>> Handle(UpdateBorrowedBookCommand request, CancellationToken cancellationToken)  /// issue here !!!
         {
             try
@@ -55,7 +45,6 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Handlers
                 return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
             }
         }
-
 
 
         public async Task<Response<string>> Handle(DeleteBorrowedBookCommand request, CancellationToken cancellationToken)

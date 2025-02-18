@@ -4,7 +4,7 @@ namespace SchoolManagementSystem.Data.Entities
 {
     public class Student : LocalizedEntityGeneral
     {
-        public int StudentID { get; set; } // Primary Key (non-nullable)
+        public int StudentID { get; set; }
         public string? StudentFirstNameAr { get; set; }
         public string? StudentFirstNameEn { get; set; }
 
@@ -17,10 +17,9 @@ namespace SchoolManagementSystem.Data.Entities
         public string? StudentEmail { get; set; }
         public string? Image { get; set; }
 
-        public int? ParentID { get; set; } // Foreign Key (nullable)
-        public int? ClassroomID { get; set; } // Foreign Key (nullable)
+        public int? ParentID { get; set; }
+        public int? ClassroomID { get; set; }
 
-        // Navigation Properties
         public Parent? Parent { get; set; }
         public Classroom? Classroom { get; set; }
         public ICollection<Enrollment>? Enrollments { get; set; }

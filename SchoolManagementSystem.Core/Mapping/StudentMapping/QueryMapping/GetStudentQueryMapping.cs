@@ -15,8 +15,8 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
             .ForMember(dest => dest.StudentLastName, opt => opt.MapFrom(new LocalizedResolver<Student>(
                 s => s.StudentLastNameAr,
                 s => s.StudentLastNameEn)))
-            .ForMember(dest => dest.ClassroomName, opt => opt.MapFrom(src => src.Classroom.ClassroomName))
-             .ForMember(dest => dest.TeacherFirstName, opt => opt.MapFrom(src => src.Classroom.Teacher.TeacherFirstName));
+            .ForMember(dest => dest.ClassroomName, opt => opt.MapFrom(src => src.Classroom!.ClassroomName))
+             .ForMember(dest => dest.TeacherFirstName, opt => opt.MapFrom(src => src.Classroom!.Teacher!.TeacherFirstName));
         }
 
 

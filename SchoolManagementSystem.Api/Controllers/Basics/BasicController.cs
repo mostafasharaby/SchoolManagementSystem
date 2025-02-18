@@ -16,6 +16,10 @@ namespace SchoolManagementSystem.Api.Controllers.Basics
             this._mediator = _mediator;
             _responseHandler = responseHandler;
         }
+        public BasicController(IMediator _mediator)
+        {
+            this._mediator = _mediator;
+        }
 
         #region Actions
         public ObjectResult NewResult<T>(Response<T> response)

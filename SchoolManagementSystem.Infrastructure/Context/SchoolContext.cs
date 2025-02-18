@@ -9,14 +9,14 @@ namespace SchoolManagementSystem.Infrastructure.Data
     public class SchoolContext : IdentityDbContext<AppUser>
     {
         // Constructor to configure the DbContext
-        public SchoolContext() { }
+        //public SchoolContext() { }
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
 
         // DbSet properties for each table
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }
-        public DbSet<StudentClassroom> StudentClassrooms { get; set; }
+        // public DbSet<StudentClassroom> StudentClassrooms { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Classroom> Classrooms { get; set; }
@@ -25,7 +25,8 @@ namespace SchoolManagementSystem.Infrastructure.Data
         public DbSet<Exam> Exams { get; set; }
         public DbSet<ExamType> ExamTypes { get; set; }
         public DbSet<ExamResult> ExamResults { get; set; }
-        public DbSet<TeacherDepartment> TeacherDepartments { get; set; }
+        // public DbSet<TeacherDepartment> TeacherDepartments { get; set; }  
+        public DbSet<TeacherCourse> TeacherCourses { get; set; }
         public DbSet<TeacherType> TeacherTypes { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
@@ -43,8 +44,8 @@ namespace SchoolManagementSystem.Infrastructure.Data
             modelBuilder.Entity<BorrowedBook>()
                .HasKey(b => b.BorrowID); // Explicitly setting BorrowID as Primary Key
 
-            modelBuilder.Entity<TeacherDepartment>()
-               .HasKey(b => b.DepartmentID);
+            //modelBuilder.Entity<TeacherDepartment>()
+            //   .HasKey(b => b.DepartmentID);
 
             base.OnModelCreating(modelBuilder);
 
@@ -53,6 +54,9 @@ namespace SchoolManagementSystem.Infrastructure.Data
                .ToView("UserRolesClaimsView") // Explicitly map to the view
                .HasNoKey();
 
+
+            modelBuilder.Entity<TeacherCourse>()
+               .HasKey(tc => new { tc.TeacherID, tc.CourseID });
             // modelBuilder.ApplyConfiguration(new StudentConfig());  the 4-way 
         }
         /// <summary>

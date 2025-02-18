@@ -10,6 +10,10 @@ namespace SchoolManagementSystem.Infrastructure.Abstracts
         ITeacherRepository Teachers { get; }
         IBorrowedBookRepository BorrowedBooks { get; }
         ILibraryRepository Library { get; }
+        IAttendanceRepository Attendances { get; }
+        IEnrollmentRepository Enrollments { get; }
+        ICourseRepository Courses { get; }
+        IDepartmentRepository Departments { get; }
         IFeeRepository Fee { get; }
         // GenericRepository<Fee> Fee { get; }
         IUserRolesClaimsRepository UserRolesClaims { get; }

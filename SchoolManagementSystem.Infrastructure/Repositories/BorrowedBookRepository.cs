@@ -14,6 +14,12 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
+        public async override Task<BorrowedBook> GetByIdAsync(int id)
+        {
+            return await _dbContext.BorrowedBooks.AsNoTracking()
+          .FirstOrDefaultAsync(b => b.BorrowID == id);
+
+        }
         public async Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(int studentId)
         {
             return await _dbContext.BorrowedBooks

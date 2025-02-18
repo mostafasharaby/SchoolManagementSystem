@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageReference Include="EntityFramework" Version="5.0.0" />
     <PackageReference Include="FluentValidation" Version="12.0.0-preview1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0-preview1" />
     <PackageReference Include="MediatR" Version="12.4.1" />
@@ -27,11 +26,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\aaa\Commands\Handlers\" />
-    <Folder Include="Features\aaa\Commands\Models\" />
-    <Folder Include="Features\aaa\Commands\Validator\" />
-    <Folder Include="Features\aaa\Queries\Handlers\" />
-    <Folder Include="Features\aaa\Queries\Models\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy %282%29\Commands\Handlers\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy %282%29\Commands\Models\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy %282%29\Commands\Validator\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy %282%29\Queries\Handlers\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy %282%29\Queries\Models\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy\Commands\Handlers\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy\Commands\Models\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy\Commands\Validator\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy\Queries\Handlers\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy\Queries\Models\" />
+    <Folder Include="Features\Departments\Commands\Validator\" />
+    <Folder Include="Features\Attendances\Commands\Validator\" />
     <Folder Include="Features\Authentication\Queries\" />
     <Folder Include="Mapping\AuthMapping\QueryMapping\" />
     <Folder Include="Mapping\ParentMapping\QueryMapping\" />

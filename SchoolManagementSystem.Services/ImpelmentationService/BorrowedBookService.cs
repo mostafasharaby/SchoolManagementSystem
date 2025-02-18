@@ -15,6 +15,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         }
         public async Task AddBorrowedBookAsync(BorrowedBook borrowedBook)
         {
+            var checkid = _unitOfWork.BorrowedBooks.GetByIdAsync(borrowedBook.BorrowID);
             await _unitOfWork.BorrowedBooks.AddAsync(borrowedBook);
             await _unitOfWork.CompleteAsync();
         }
@@ -64,6 +65,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         public async Task<bool> UpdateBorrowedBookAsync(BorrowedBook borrowedBook)
         {
             var borrowedBookExists = await _unitOfWork.BorrowedBooks.GetByIdAsync(borrowedBook.BorrowID);
+
             if (borrowedBookExists == null)
             {
                 throw new KeyNotFoundException("Borrowed Book not found.");

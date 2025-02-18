@@ -11,14 +11,19 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         public ITeacherRepository Teachers { get; }
         public IStudentRepository Students { get; }
         public ILibraryRepository Library { get; }
+        public IAttendanceRepository Attendances { get; }
         public IFeeRepository Fee { get; }
+        public IEnrollmentRepository Enrollments { get; }
         public IBorrowedBookRepository BorrowedBooks { get; }
-        public IUserRolesClaimsRepository UserRolesClaims { get; }
+        public IDepartmentRepository Departments { get; }
 
+        public IUserRolesClaimsRepository UserRolesClaims { get; }
+        public ICourseRepository Courses { get; }
 
         public UnitOfWork(SchoolContext context, IClassRoomRepository ClassRoomRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository,
                            IStudentRepository studentRepository, IBorrowedBookRepository borrowedBookRepository, ILibraryRepository libraryRepository,
-                           IUserRolesClaimsRepository userRolesClaims, IFeeRepository feeRepository)
+                           IUserRolesClaimsRepository userRolesClaims, IFeeRepository feeRepository, IAttendanceRepository attendances, IEnrollmentRepository enrollment,
+                           ICourseRepository courses, IDepartmentRepository departments)
 
         {
             _context = context;
@@ -30,6 +35,10 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             Library = libraryRepository;
             BorrowedBooks = borrowedBookRepository;
             Fee = feeRepository;
+            Attendances = attendances;
+            Enrollments = enrollment;
+            Courses = courses;
+            Departments = departments;
         }
 
         public async Task<bool> ExecuteTransactionAsync(Func<Task> action)

@@ -41,6 +41,10 @@ namespace SchoolManagementSystem.Infrastructure
             services.AddScoped<ILibraryRepository, LibraryRepository>();
             services.AddScoped<IBorrowedBookRepository, BorrowedBookRepository>();
             services.AddScoped<IFeeRepository, FeeRepository>();
+            services.AddScoped<IAttendanceRepository, AttendanceRepository>();
+            services.AddScoped<IEnrollmentRepository, EnrollmentRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
 
             services.AddScoped<IUserRolesClaimsRepository, UserRolesClaimsRepository>();

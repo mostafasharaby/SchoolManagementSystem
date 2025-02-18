@@ -2,14 +2,16 @@
 {
     public class Course
     {
-        public int CourseID { get; set; } // Primary Key (non-nullable)
+        public int CourseID { get; set; }
         public string? CourseName { get; set; }
         public string? Description { get; set; }
-        public int? TeacherID { get; set; } // Foreign Key (nullable)
-        public int? DepartmentID { get; set; } // Foreign Key (nullable)
+        public int? TeacherID { get; set; }
+        public int DepartmentID { get; set; }
 
-        // Navigation Properties
-        public Teacher? Teacher { get; set; }
+
+        // public Teacher? Teacher { get; set; }
+        public ICollection<TeacherCourse> TeacherCourses { get; set; } = new List<TeacherCourse>(); // new class 
+
         public Department? Department { get; set; }
         public ICollection<Enrollment>? Enrollments { get; set; }
         public ICollection<Assignment>? Assignments { get; set; }
