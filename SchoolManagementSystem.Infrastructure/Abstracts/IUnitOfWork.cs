@@ -14,6 +14,7 @@ namespace SchoolManagementSystem.Infrastructure.Abstracts
         IEnrollmentRepository Enrollments { get; }
         ICourseRepository Courses { get; }
         IDepartmentRepository Departments { get; }
+        IAssignmentRepository Assignments { get; }
         IFeeRepository Fee { get; }
         // GenericRepository<Fee> Fee { get; }
         IUserRolesClaimsRepository UserRolesClaims { get; }

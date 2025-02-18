@@ -3257,3 +3257,412 @@ WHERE [a].[NormalizedName] = @__normalizedName_0
 2025-02-18 02:55:43.444 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.5122ms
 2025-02-18 02:55:43.512 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
 2025-02-18 02:55:43.574 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 62.3966ms
+2025-02-18 03:17:24.966 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:17:25.010 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:17:25.013 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:17:25.493 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:17:25.562 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:17:25.569 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:17:25.663 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:17:25.733 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:17:25.797 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:17:25.801 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:17:25.805 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:17:25.847 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-02-18 03:17:26.018 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 172.0849ms
+2025-02-18 03:17:26.038 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-02-18 03:17:26.038 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-18 03:17:26.054 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 16.265ms
+2025-02-18 03:17:26.083 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 44.5245ms
+2025-02-18 03:17:26.291 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-02-18 03:17:26.381 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 89.6879ms
+2025-02-18 03:17:52.184 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:17:52.233 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:17:52.239 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:17:52.748 +02:00 [INF] Executed DbCommand (29ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:17:52.831 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:17:52.837 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:17:52.931 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:17:53.012 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:17:53.078 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-02-18 03:17:53.092 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:17:53.095 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:17:53.098 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:17:53.276 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 200.3637ms
+2025-02-18 03:17:53.289 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-02-18 03:17:53.294 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-18 03:17:53.304 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 9.8135ms
+2025-02-18 03:17:53.330 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.2562ms
+2025-02-18 03:17:53.412 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-02-18 03:17:53.505 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 93.1597ms
+2025-02-18 03:21:50.790 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:21:50.839 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:21:50.844 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:21:51.353 +02:00 [INF] Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:21:51.430 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:21:51.436 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:21:51.538 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:21:51.615 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:21:51.674 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:21:51.678 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:21:51.681 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:29:09.616 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:09.677 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:09.679 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:10.154 +02:00 [INF] Executed DbCommand (39ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:10.234 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:10.239 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:10.331 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:29:10.405 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:29:10.461 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:29:10.465 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:29:10.467 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:29:14.794 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:14.836 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:14.842 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:15.228 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:15.296 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:15.304 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:15.423 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:29:15.506 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:29:15.561 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:29:15.565 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:29:15.568 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:29:30.062 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:30.110 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:30.113 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:32.801 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:32.840 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:32.844 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:29:33.221 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:33.278 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:33.283 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:29:33.368 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:29:33.436 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:29:33.490 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:29:33.494 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:29:33.496 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:31:21.789 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:31:21.835 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:31:21.841 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:31:22.273 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:31:22.337 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:31:22.345 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:31:22.448 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:31:22.520 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:31:22.570 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:31:22.575 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:31:22.577 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:31:28.676 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:31:28.721 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:31:28.725 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:31:29.240 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:31:29.332 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:31:29.340 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:31:29.454 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:31:29.530 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:31:29.605 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:31:29.609 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:31:29.611 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:33:11.100 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:11.158 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:11.164 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:11.665 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:11.731 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:11.737 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:11.830 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:33:11.898 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:33:11.944 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:33:11.948 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:33:11.950 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:33:18.472 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:18.512 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:18.515 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:18.892 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:18.951 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:18.956 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:19.040 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:33:19.125 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:33:19.197 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:33:19.202 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:33:19.205 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:33:47.653 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:47.687 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:47.692 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:33:48.047 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:48.108 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:48.115 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:33:48.196 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:33:48.261 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:33:48.308 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:33:48.312 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:33:48.314 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:35:20.860 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:35:20.902 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:35:20.907 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:35:21.416 +02:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:35:21.497 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:35:21.505 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:35:21.615 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:35:21.686 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:35:21.743 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:35:21.747 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:35:21.750 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:35:28.527 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:35:28.582 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:35:28.587 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:35:29.019 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:35:29.115 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:35:29.121 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:35:29.222 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:35:29.285 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:35:29.335 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:35:29.338 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:35:29.340 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:36:27.360 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:36:27.404 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:36:27.408 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:36:27.900 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:36:27.970 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:36:27.976 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:36:28.074 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:36:28.142 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:36:28.198 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:36:28.201 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:36:28.202 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:36:34.981 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:36:35.017 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:36:35.022 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:36:35.376 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:36:35.440 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:36:35.449 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:36:35.547 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:36:35.615 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:36:35.667 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:36:35.671 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:36:35.672 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 03:43:28.973 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:43:29.028 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:43:29.033 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 03:43:29.486 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:43:29.547 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:43:29.553 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 03:43:29.637 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 03:43:29.697 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 03:43:29.751 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 03:43:29.755 +02:00 [INF] Hosting environment: Development
+2025-02-18 03:43:29.757 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 04:15:36.533 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 04:15:36.583 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 04:15:36.587 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-02-18 04:15:37.000 +02:00 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 04:15:37.058 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 04:15:37.065 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-02-18 04:15:37.152 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-18 04:15:37.223 +02:00 [INF] Now listening on: http://localhost:5253
+2025-02-18 04:15:37.273 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-18 04:15:37.278 +02:00 [INF] Hosting environment: Development
+2025-02-18 04:15:37.282 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-02-18 04:15:37.812 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-02-18 04:15:37.981 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 170.9955ms
+2025-02-18 04:15:37.995 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-02-18 04:15:38.008 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 13.8937ms
+2025-02-18 04:15:38.040 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-02-18 04:15:38.089 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 48.6673ms
+2025-02-18 04:15:38.263 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-02-18 04:15:38.377 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 114.0176ms
+2025-02-18 04:15:52.925 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Assignment/get/1 - null null
+2025-02-18 04:15:52.941 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-02-18 04:15:52.985 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.GetAssignmentById (SchoolManagementSystem.Api)'
+2025-02-18 04:15:53.022 +02:00 [INF] Route matched with {action = "GetAssignmentById", controller = "Assignment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAssignmentById(Int32) on controller SchoolManagementSystem.Api.Controllers.AssignmentController (SchoolManagementSystem.Api).
+2025-02-18 04:15:53.262 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[AssignmentID], [a].[AssignmentName], [a].[CourseID], [a].[DueDate]
+FROM [Assignments] AS [a]
+WHERE [a].[AssignmentID] = @__id_0
+2025-02-18 04:15:53.281 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.DTO.AssignmentDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-18 04:15:53.307 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AssignmentController.GetAssignmentById (SchoolManagementSystem.Api) in 254.6533ms
+2025-02-18 04:15:53.326 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.GetAssignmentById (SchoolManagementSystem.Api)'
+2025-02-18 04:15:53.355 +02:00 [INF] HTTP GET /api/Assignment/get/1 responded 400 in 401.6411 ms
+2025-02-18 04:15:53.364 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Assignment/get/1 - 400 null application/json; charset=utf-8 438.6995ms
+2025-02-18 04:15:57.679 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Assignment/all - null null
+2025-02-18 04:15:57.695 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.GetAllAssignments (SchoolManagementSystem.Api)'
+2025-02-18 04:15:57.705 +02:00 [INF] Route matched with {action = "GetAllAssignments", controller = "Assignment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAssignments() on controller SchoolManagementSystem.Api.Controllers.AssignmentController (SchoolManagementSystem.Api).
+2025-02-18 04:15:57.797 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[AssignmentID], [a].[AssignmentName], [a].[CourseID], [a].[DueDate]
+FROM [Assignments] AS [a]
+2025-02-18 04:15:57.849 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.AssignmentDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-18 04:15:57.860 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AssignmentController.GetAllAssignments (SchoolManagementSystem.Api) in 102.1375ms
+2025-02-18 04:15:57.869 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.GetAllAssignments (SchoolManagementSystem.Api)'
+2025-02-18 04:15:57.886 +02:00 [INF] HTTP GET /api/Assignment/all responded 200 in 192.3200 ms
+2025-02-18 04:15:57.910 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Assignment/all - 200 null application/json; charset=utf-8 230.8854ms
+2025-02-18 04:16:21.813 +02:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5253/api/Assignment/update - application/json 105
+2025-02-18 04:16:21.820 +02:00 [INF] CORS policy execution successful.
+2025-02-18 04:16:21.828 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.UpdateAssignment (SchoolManagementSystem.Api)'
+2025-02-18 04:16:21.835 +02:00 [INF] Route matched with {action = "UpdateAssignment", controller = "Assignment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateAssignment(SchoolManagementSystem.Core.Features.Assignments.Commands.Models.UpdateAssignmentCommand) on controller SchoolManagementSystem.Api.Controllers.AssignmentController (SchoolManagementSystem.Api).
+2025-02-18 04:16:21.983 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-02-18 04:16:21.990 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AssignmentController.UpdateAssignment (SchoolManagementSystem.Api) in 82.0407ms
+2025-02-18 04:16:22.000 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.UpdateAssignment (SchoolManagementSystem.Api)'
+2025-02-18 04:16:22.017 +02:00 [INF] HTTP PUT /api/Assignment/update responded 400 in 198.3910 ms
+2025-02-18 04:16:22.036 +02:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5253/api/Assignment/update - 400 null application/json; charset=utf-8 222.9746ms
+2025-02-18 04:16:31.313 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5253/api/Assignment/add - application/json 84
+2025-02-18 04:16:31.320 +02:00 [INF] CORS policy execution successful.
+2025-02-18 04:16:31.322 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.AddAssignment (SchoolManagementSystem.Api)'
+2025-02-18 04:16:31.335 +02:00 [INF] Route matched with {action = "AddAssignment", controller = "Assignment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddAssignment(SchoolManagementSystem.Core.Features.Assignments.Commands.Models.AddAssignmentCommand) on controller SchoolManagementSystem.Api.Controllers.AssignmentController (SchoolManagementSystem.Api).
+2025-02-18 04:16:31.419 +02:00 [INF] Executing CreatedAtActionResult, writing value of type '<>f__AnonymousType3`1[[SchoolManagementSystem.Core.Bases.Response`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], SchoolManagementSystem.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-02-18 04:16:31.451 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AssignmentController.AddAssignment (SchoolManagementSystem.Api) in 41.541ms
+2025-02-18 04:16:31.466 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AssignmentController.AddAssignment (SchoolManagementSystem.Api)'
+2025-02-18 04:16:31.481 +02:00 [INF] HTTP POST /api/Assignment/add responded 201 in 161.7601 ms
+2025-02-18 04:16:31.487 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5253/api/Assignment/add - 201 null application/json; charset=utf-8 173.9728ms

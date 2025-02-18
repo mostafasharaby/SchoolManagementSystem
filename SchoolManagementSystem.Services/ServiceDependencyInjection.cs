@@ -26,6 +26,7 @@ namespace SchoolManagementSystem.Services
             services.AddScoped<IEnrollmentService, EnrollmentService>();
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IAssignmentService, AssignmentService>();
 
         }
     }
