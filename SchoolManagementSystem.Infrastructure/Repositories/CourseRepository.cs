@@ -8,11 +8,8 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     internal class CourseRepository : GenericRepository<Course>, ICourseRepository
     {
-
-        SchoolContext _dbContext;
         public CourseRepository(SchoolContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
 
         public async override Task<Course> GetByIdAsync(int id)
@@ -20,6 +17,29 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             return await _dbContext.Courses.AsNoTracking()
           .FirstOrDefaultAsync(b => b.CourseID == id);
 
+        }
+
+        public async Task<List<Student>> GetStudentsInCourseAsync(int courseId)
+        {
+            return await _dbContext.Courses
+                .Where(cs => cs.CourseID == courseId)
+                .SelectMany(i => i.Enrollments)
+                .Select(o => o.Student)
+                .ToListAsync();
+        }
+
+        public async Task<List<Assignment>> GetAssignmentsForCourseAsync(int courseId)
+        {
+            return await _dbContext.Assignments
+                .Where(a => a.CourseID == courseId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Exam>> GetExamsForCourseAsync(int courseId)
+        {
+            return await _dbContext.Exams
+                .Where(e => e.CourseID == courseId)
+                .ToListAsync();
         }
 
     }

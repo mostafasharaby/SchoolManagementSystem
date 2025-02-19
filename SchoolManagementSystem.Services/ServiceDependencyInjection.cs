@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using SchoolManagementSystem.Services.Abstracts;
 using SchoolManagementSystem.Services.ImpelmentationService;
 using SchoolManagementSystem.Services.ImplementationService;
@@ -27,6 +26,10 @@ namespace SchoolManagementSystem.Services
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IAssignmentService, AssignmentService>();
+            services.AddScoped<IExamService, ExamService>();
+            services.AddScoped<IExamResultService, ExamResultService>();
+            services.AddScoped<IExamScoreService, ExamScoreService>();
+            services.AddScoped<IExamTypeService, ExamTypeService>();
 
         }
     }

@@ -14,39 +14,48 @@ namespace SchoolManagementSystem.Api.Controllers
         public FeesController(IMediator _mediator, ResponseHandler _responseHandler) : base(_mediator, _responseHandler) { }
 
 
-        [HttpPost("add")]
-        public async Task<IActionResult> Create([FromBody] CreateFeeCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
-
-        [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] UpdateFeeCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return Ok(result);
-        }
-
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var result = await _mediator.Send(new DeleteFeeCommand { FeeID = id });
-            return Ok(result);
-        }
-
         [HttpGet("all")]
         public async Task<IActionResult> GetAll()
         {
             var result = await _mediator.Send(new GetAllFeesQuery());
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{studentId}/outstanding-fees")]
+        public async Task<IActionResult> GetOutstandingFees(int studentId)
+        {
+            var result = await _mediator.Send(new GetOutstandingFeesQuery { StudentID = studentId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("get/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _mediator.Send(new GetFeeByIdQuery { FeeID = id });
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> Create([FromBody] CreateFeeCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update([FromBody] UpdateFeeCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _mediator.Send(new DeleteFeeCommand { FeeID = id });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
     }
 }

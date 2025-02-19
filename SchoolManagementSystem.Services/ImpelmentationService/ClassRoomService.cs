@@ -19,6 +19,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             await _unitOfWork.CompleteAsync(); // Saves changes to the database
         }
 
+
         public async Task UpdateClassroomAsync(Classroom classroom)
         {
             await _unitOfWork.Classrooms.UpdateAsync(classroom);
@@ -54,11 +55,38 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
                 foreach (var student in students)
                 {
-                    student.ClassroomID = classroom.ClassroomID; // Assign student to this classroom
+                    student.ClassroomID = classroom.ClassroomID;
                     await _unitOfWork.Students.UpdateAsync(student);
                 }
                 await _unitOfWork.CompleteAsync();
             });
         }
+
+        public async Task<List<Student>> GetStudentsInClassroomAsync(int classroomId)
+        {
+            var classRoomExist = await _unitOfWork.Classrooms.GetByIdAsync(classroomId);
+            if (classRoomExist == null)
+            {
+                throw new KeyNotFoundException("Classroom id not found.");
+            }
+
+            return await _unitOfWork.Classrooms.GetStudentsInClassroomAsync(classroomId);
+        }
+
+        public async Task<List<Attendance>> GetAttendanceRecordsAsync(int classroomId)
+        {
+            var classRoomExist = await _unitOfWork.Classrooms.GetByIdAsync(classroomId);
+            if (classRoomExist == null)
+            {
+                throw new KeyNotFoundException("Classroom id not found.");
+            }
+            return await _unitOfWork.Classrooms.GetAttendanceRecordsAsync(classroomId);
+        }
+
+        public async Task<Teacher> GetTeacherInClassroomAsync(int classroomId)
+        {
+            return await _unitOfWork.Classrooms.GetTeacherInClassroomAsync(classroomId);
+        }
+
     }
 }

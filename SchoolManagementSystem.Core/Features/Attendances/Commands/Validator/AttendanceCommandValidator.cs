@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using SchoolManagementSystem.Core.Features.Attendances.Commands.Models;
-using SchoolManagementSystem.Core.Features.Attendances.Queries.Dto;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.Attendances.Commands.Validator
 {

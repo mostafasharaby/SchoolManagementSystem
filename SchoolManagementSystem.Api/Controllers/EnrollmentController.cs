@@ -14,34 +14,11 @@ namespace SchoolManagementSystem.Api.Controllers
         public EnrollmentController(IMediator _mediator, ResponseHandler _responseHandler) : base(_mediator, _responseHandler) { }
 
 
-        [HttpPost("add")]
-        public async Task<IActionResult> AddEnrollment([FromBody] AddEnrollmentCommand command)
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllEnrollments()
         {
-            var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpPut("update")]
-        public async Task<IActionResult> UpdateEnrollment([FromBody] UpdateEnrollmentCommand command)
-        {
-            var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteEnrollment(int id)
-        {
-            var result = await _mediator.Send(new DeleteEnrollmentCommand { EnrollmentID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            var result = await _mediator.Send(new GetAllEnrollmentsQuery());
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("get/{id}")]
@@ -51,11 +28,29 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllEnrollments()
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddEnrollment([FromBody] AddEnrollmentCommand command)
         {
-            var result = await _mediator.Send(new GetAllEnrollmentsQuery());
-            return Ok(result);
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateEnrollment([FromBody] UpdateEnrollmentCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteEnrollment(int id)
+        {
+            var result = await _mediator.Send(new DeleteEnrollmentCommand { EnrollmentID = id });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
+
     }
 }

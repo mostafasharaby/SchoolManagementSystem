@@ -15,6 +15,30 @@ namespace SchoolManagementSystem.Api.Controllers
         {
         }
 
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllBorrowedBooks()
+        {
+            var result = await _mediator.Send(new GetAllBorrowedBooksQuery());
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("get/{id}")]
+        public async Task<IActionResult> GetBorrowedBookById(int id)
+        {
+            var result = await _mediator.Send(new GetBorrowedBookByIdQuery { BorrowedBookId = id });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
+        [HttpGet("by-student/{studentId}")]
+        public async Task<IActionResult> GetBorrowedBooksByStudent(int studentId)
+        {
+            var query = new GetBorrowedBooksByStudentQuery { StudentID = studentId };
+            var result = await _mediator.Send(query);
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
         [HttpPost("add")]
         public async Task<IActionResult> AddBorrowedBook([FromBody] AddBorrowedBookCommand command)
         {
@@ -26,53 +50,15 @@ namespace SchoolManagementSystem.Api.Controllers
         public async Task<IActionResult> UpdateBorrowedBook([FromBody] UpdateBorrowedBookCommand command)
         {
             var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
 
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteBorrowedBook(int id)
         {
             var result = await _mediator.Send(new DeleteBorrowedBookCommand { BorrowID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
-
-        [HttpGet("get/{id}")]
-        public async Task<IActionResult> GetBorrowedBookById(int id)
-        {
-            var result = await _mediator.Send(new GetBorrowedBookByIdQuery { BorrowedBookId = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllBorrowedBooks()
-        {
-            var result = await _mediator.Send(new GetAllBorrowedBooksQuery());
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpGet("by-student/{studentId}")]
-        public async Task<IActionResult> GetBorrowedBooksByStudent(int studentId)
-        {
-            var query = new GetBorrowedBooksByStudentQuery { StudentID = studentId };
-            var result = await _mediator.Send(query);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
 
     }
 }

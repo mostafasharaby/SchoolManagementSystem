@@ -9,5 +9,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<List<Fee>> GetAllFeessAsync();
         Task UpdatelFeesAsync(Fee Fee);
         Task<bool> DeletelFeesAsync(int FeesId);
+        Task<List<Fee>> GetOutstandingFeesAsync(int studentId);
+
     }
 }

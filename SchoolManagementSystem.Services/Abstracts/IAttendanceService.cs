@@ -1,4 +1,5 @@
-﻿using SchoolManagementSystem.Data.Entities;
+﻿using SchoolManagementSystem.Data.DTO;
+using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Services.Abstracts
 {
@@ -9,5 +10,8 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> DeleteAttendanceAsync(int attendanceId);
         Task<Attendance?> GetAttendanceByIdAsync(int attendanceId);
         Task<List<Attendance>> GetAllAttendancesAsync();
+        Task MarkAttendanceAsync(int classroomId, DateTime attendanceDate, List<StudentAttendanceDto> studentAttendances);
+        Task<AttendanceSummaryDto> GetAttendanceSummaryAsync(int classroomId);
+
     }
 }

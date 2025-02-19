@@ -13,32 +13,48 @@ namespace SchoolManagementSystem.Api.Controllers
     {
         public ParentController(IMediator _mediator, ResponseHandler _responseHandler) : base(_mediator, _responseHandler) { }
 
-        [HttpPost("add")]
-        public async Task<IActionResult> AddParent([FromBody] AddParentCommand command, CancellationToken cancellationToken)
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllParents(CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(command, cancellationToken);
-            return Ok(result);
+            var result = await _mediator.Send(new GetAllParentsQuery(), cancellationToken);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("get/{id}")]
         public async Task<IActionResult> GetParentById(int id, CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetParentByIdQuery(id), cancellationToken);
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllParents(CancellationToken cancellationToken)
+        [HttpGet("{parentId}/students")]
+        public async Task<IActionResult> GetStudentsByParent(int parentId)
         {
-            var result = await _mediator.Send(new GetAllParentsQuery(), cancellationToken);
-            return Ok(result);
+            var result = await _mediator.Send(new GetStudentsByParentQuery { ParentID = parentId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{parentId}/fee-history")]
+        public async Task<IActionResult> GetFeePaymentHistoryByParent(int parentId)
+        {
+            var result = await _mediator.Send(new GetFeePaymentHistoryByParentQuery { ParentID = parentId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddParent([FromBody] AddParentCommand command, CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(command, cancellationToken);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
 
         [HttpPut("update")]
         public async Task<IActionResult> UpdateParent([FromBody] UpdateParentCommand command)
         {
             var result = await _mediator.Send(command);
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
 
 
@@ -46,7 +62,7 @@ namespace SchoolManagementSystem.Api.Controllers
         public async Task<IActionResult> DeleteParent(int id)
         {
             var result = await _mediator.Send(new DeleteParentCommand { ParentID = id });
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
     }
 }

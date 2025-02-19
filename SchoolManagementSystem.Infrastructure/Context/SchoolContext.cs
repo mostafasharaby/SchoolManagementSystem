@@ -8,11 +8,9 @@ namespace SchoolManagementSystem.Infrastructure.Data
 {
     public class SchoolContext : IdentityDbContext<AppUser>
     {
-        // Constructor to configure the DbContext
         //public SchoolContext() { }
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
 
-        // DbSet properties for each table
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }

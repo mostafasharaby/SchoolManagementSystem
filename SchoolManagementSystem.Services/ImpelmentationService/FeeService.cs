@@ -39,6 +39,17 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Fee.GetByIdAsync(FeesId);
         }
 
+        public async Task<List<Fee>> GetOutstandingFeesAsync(int studentId)
+        {
+            var studentExist = await _unitOfWork.Students.GetByIdAsync(studentId);
+            if (studentExist == null)
+            {
+                throw new KeyNotFoundException("Student not found.");
+            }
+            return await _unitOfWork.Fee.GetOutstandingFeesAsync(studentId);
+        }
+
+
         public async Task UpdatelFeesAsync(Fee Fee)
         {
             await _unitOfWork.Fee.UpdateAsync(Fee);

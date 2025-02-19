@@ -2,7 +2,7 @@
 using MediatR;
 using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
-using SchoolManagementSystem.Core.Features.Students.Queries.Results;
+using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers

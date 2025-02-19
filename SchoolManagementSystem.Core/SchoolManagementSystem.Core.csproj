@@ -26,11 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\aaa - Copy %282%29 - Copy\Commands\Handlers\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy\Commands\Models\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy\Commands\Validator\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy\Queries\Handlers\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy\Queries\Models\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Commands\Handlers\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Commands\Models\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Commands\Validator\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Queries\Handlers\" />
+    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Queries\Models\" />
     <Folder Include="Features\Departments\Commands\Validator\" />
     <Folder Include="Features\Authentication\Queries\" />
     <Folder Include="Mapping\AssignmentMapping\QueryMapping\" />

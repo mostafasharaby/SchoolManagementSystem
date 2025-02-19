@@ -8,11 +8,23 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     internal class AttendanceRepository : GenericRepository<Attendance>, IAttendanceRepository
     {
-        private readonly SchoolContext _dbContext;
         public AttendanceRepository(SchoolContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
+
+        public async Task AddRangeAsync(List<Attendance> attendances)
+        {
+            await _dbContext.Attendances.AddRangeAsync(attendances);
+            //     await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<List<Attendance>> GetByClassroomAsync(int classroomId)
+        {
+            return await _dbContext.Attendances
+             .Where(a => a.ClassroomID == classroomId)
+             .ToListAsync();
+        }
+
         public async override Task<Attendance> GetByIdAsync(int id)
         {
             return await _dbContext.Attendances.AsNoTracking()

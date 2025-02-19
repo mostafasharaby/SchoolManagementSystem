@@ -10,8 +10,8 @@
         public string? TeacherAddress { get; set; }
         public string? TeacherPhoneNumber { get; set; }
         public string? TeacherEmail { get; set; }
-        public int? DepartmentID { get; set; }
-        public int? TeacherTypeID { get; set; }
+        public int DepartmentID { get; set; }
+        public int TeacherTypeID { get; set; }
 
 
         public Department? Department { get; set; }

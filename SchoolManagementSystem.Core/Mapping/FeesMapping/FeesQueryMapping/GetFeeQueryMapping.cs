@@ -1,4 +1,4 @@
-﻿using SchoolManagementSystem.Core.Features.Fees.Queries.Dto;
+﻿using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Core.Mapping.FeesMapping

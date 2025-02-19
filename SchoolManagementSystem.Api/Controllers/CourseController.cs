@@ -13,65 +13,73 @@ namespace SchoolManagementSystem.Api.Controllers
     {
         public CourseController(IMediator _mediator, ResponseHandler _responseHandler) : base(_mediator, _responseHandler) { }
 
-        [HttpPost("add")]
-        public async Task<IActionResult> AddCourse([FromBody] AddCourseCommand command)
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllCourses()
         {
-            var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpPut("update")]
-        public async Task<IActionResult> UpdateCourse([FromBody] UpdateCourseCommand command)
-        {
-            var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteCourse(int id)
-        {
-            var result = await _mediator.Send(new DeleteCourseCommand { CourseID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            var result = await _mediator.Send(new GetAllCoursesQuery());
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("get/{id}")]
         public async Task<IActionResult> GetCourseById(int id)
         {
             var result = await _mediator.Send(new GetCourseByIdQuery { CourseID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllCourses()
-        {
-            var result = await _mediator.Send(new GetAllCoursesQuery());
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
 
         [HttpGet("by-department/{departmentId}")]
         public async Task<IActionResult> GetCoursesByDepartment(int departmentId)
         {
             var query = new GetCoursesByDepartmentQuery { DepartmentID = departmentId };
             var result = await _mediator.Send(query);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
+
+        [HttpGet("{courseId}/students")]
+        public async Task<IActionResult> GetStudentsInCourse(int courseId)
+        {
+            var result = await _mediator.Send(new GetStudentsInCourseQuery { CourseID = courseId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{courseId}/assignments")]
+        public async Task<IActionResult> GetAssignmentsForCourse(int courseId)
+        {
+            var result = await _mediator.Send(new GetAssignmentsForCourseQuery { CourseID = courseId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{courseId}/exams")]
+        public async Task<IActionResult> GetExamsForCourse(int courseId)
+        {
+            var result = await _mediator.Send(new GetExamsForCourseQuery { CourseID = courseId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddCourse([FromBody] AddCourseCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateCourse([FromBody] UpdateCourseCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteCourse(int id)
+        {
+            var result = await _mediator.Send(new DeleteCourseCommand { CourseID = id });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
     }
 }

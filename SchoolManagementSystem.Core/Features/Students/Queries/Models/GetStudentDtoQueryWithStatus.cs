@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using SchoolManagementSystem.Core.Bases;
-using SchoolManagementSystem.Core.Features.Students.Queries.Results;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Models
 {

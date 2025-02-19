@@ -1,4 +1,5 @@
-﻿using SchoolManagementSystem.Data.Entities;
+﻿using SchoolManagementSystem.Data.DTO;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Services.Abstracts;
 
@@ -30,6 +31,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
+
         public async Task<List<Attendance>> GetAllAttendancesAsync()
         {
             return await _unitOfWork.Attendances.GetAllAsync();
@@ -38,6 +40,37 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         public async Task<Attendance?> GetAttendanceByIdAsync(int attendanceId)
         {
             return await _unitOfWork.Attendances.GetByIdAsync(attendanceId);
+        }
+
+        public async Task<AttendanceSummaryDto> GetAttendanceSummaryAsync(int classroomId)
+        {
+            var attendances = await _unitOfWork.Attendances.GetByClassroomAsync(classroomId);
+            var summary = new AttendanceSummaryDto
+            {
+                ClassroomID = classroomId,
+                AttendanceDate = DateTime.UtcNow,
+                TotalStudents = attendances.Count,
+                PresentStudents = attendances.Count(a => a.Status == "present"),
+                AbsentStudents = attendances.Count(a => a.Status == "absent")
+            };
+            return summary;
+            //  return await _unitOfWork.Attendances.GetByClassroomAsync(classroomId);
+        }
+
+        public Task MarkAttendanceAsync(int classroomId, DateTime attendanceDate, List<StudentAttendanceDto> studentAttendances)
+        {
+            var attendances = studentAttendances.Select(sa => new Attendance
+            {
+                ClassroomID = classroomId,
+                StudentID = sa.StudentID,
+                Date = attendanceDate,
+                Status = sa.AttendanceStatus
+            }).ToList();
+
+
+            var result = _unitOfWork.Attendances.AddRangeAsync(attendances);
+            _unitOfWork.Attendances.SaveChangesAsync();
+            return result;
         }
 
         public async Task<bool> UpdateAttendanceAsync(Attendance attendance)

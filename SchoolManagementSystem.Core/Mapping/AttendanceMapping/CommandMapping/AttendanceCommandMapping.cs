@@ -1,5 +1,5 @@
 ﻿using SchoolManagementSystem.Core.Features.Attendances.Commands.Models;
-using SchoolManagementSystem.Core.Features.Attendances.Queries.Dto;
+using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Core.Mapping.AttendanceMapping

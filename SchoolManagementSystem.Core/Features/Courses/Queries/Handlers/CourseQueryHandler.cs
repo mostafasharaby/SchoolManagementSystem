@@ -9,7 +9,10 @@ namespace SchoolManagementSystem.Core.Features.Courses.Queries.Handlers
 {
     public class CourseQueryHandler : IRequestHandler<GetCourseByIdQuery, Response<CourseDto>>,
                                       IRequestHandler<GetAllCoursesQuery, Response<List<CourseDto>>>,
-                                      IRequestHandler<GetCoursesByDepartmentQuery, Response<List<CourseDto>>>
+                                      IRequestHandler<GetCoursesByDepartmentQuery, Response<List<CourseDto>>>,
+                                      IRequestHandler<GetStudentsInCourseQuery, Response<List<StudentDto>>>,
+                                      IRequestHandler<GetAssignmentsForCourseQuery, Response<List<AssignmentDto>>>,
+                                      IRequestHandler<GetExamsForCourseQuery, Response<List<ExamDto>>>
     {
         private readonly ICourseService _courseService;
         private readonly IMapper _mapper;
@@ -44,6 +47,48 @@ namespace SchoolManagementSystem.Core.Features.Courses.Queries.Handlers
             var courses = await _courseService.GetCoursesByDepartmentAsync(request.DepartmentID);
             var dtoList = _mapper.Map<List<CourseDto>>(courses);
             return _responseHandler.Success(dtoList);
+        }
+
+        public async Task<Response<List<StudentDto>>> Handle(GetStudentsInCourseQuery request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var students = await _courseService.GetStudentsInCourseAsync(request.CourseID);
+                var dtoList = _mapper.Map<List<StudentDto>>(students);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<StudentDto>>(ex.Message);
+            }
+        }
+
+        public async Task<Response<List<AssignmentDto>>> Handle(GetAssignmentsForCourseQuery request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var assignments = await _courseService.GetAssignmentsForCourseAsync(request.CourseID);
+                var dtoList = _mapper.Map<List<AssignmentDto>>(assignments);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<AssignmentDto>>(ex.Message);
+            }
+        }
+
+        public async Task<Response<List<ExamDto>>> Handle(GetExamsForCourseQuery request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var exams = await _courseService.GetExamsForCourseAsync(request.CourseID);
+                var dtoList = _mapper.Map<List<ExamDto>>(exams);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ExamDto>>(ex.Message);
+            }
         }
     }
 

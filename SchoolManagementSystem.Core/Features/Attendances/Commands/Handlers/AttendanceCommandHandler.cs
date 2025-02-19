@@ -9,7 +9,9 @@ namespace SchoolManagementSystem.Core.Features.Attendances.Commands.Handlers
 {
     internal class AttendanceCommandHandler : IRequestHandler<AddAttendanceCommand, Response<string>>,
                                               IRequestHandler<UpdateAttendanceCommand, Response<string>>,
-                                              IRequestHandler<DeleteAttendanceCommand, Response<string>>
+                                              IRequestHandler<DeleteAttendanceCommand, Response<string>>,
+                                              IRequestHandler<MarkAttendanceCommand, Response<string>>
+
 
 
     {
@@ -57,6 +59,13 @@ namespace SchoolManagementSystem.Core.Features.Attendances.Commands.Handlers
 
             return _responseHandler.Success("Attendance record deleted successfully.");
         }
+
+        public async Task<Response<string>> Handle(MarkAttendanceCommand request, CancellationToken cancellationToken)
+        {
+            await _attendanceService.MarkAttendanceAsync(request.ClassroomID, request.AttendanceDate, request.StudentAttendances);
+            return _responseHandler.Success("Attendance marked successfully.");
+        }
+
 
     }
 }

@@ -7,7 +7,7 @@
         public int ClassroomID { get; set; }
         public DateTime? Date { get; set; }
         public string? Status { get; set; } // e.g., Present, Absent
-
+                                            // public bool? IsPresent { get; set; }
         public Student? Student { get; set; }
         public Classroom? Classroom { get; set; }
     }

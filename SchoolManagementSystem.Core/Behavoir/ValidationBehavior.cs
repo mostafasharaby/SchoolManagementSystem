@@ -53,7 +53,5 @@ namespace SchoolManagementSystem.Core.Behavoir
 ✔️ When CreateStudentWithResponse is called, MediatR sends AddStudentCommandWithResponse.
 ✔️ Before the request reaches the handler, --->ValidationBehavior runs FluentValidation<---.
 ✔️ If validation fails, it stops execution and returns an error response.
-✔️ If validation passes, the request proceeds to the handler.
-
-
+✔️ If validation passes, the request proceeds to the handler.  
  */

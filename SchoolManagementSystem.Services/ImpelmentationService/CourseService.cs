@@ -35,14 +35,52 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Courses.GetAllAsync();
         }
 
+        public async Task<List<Assignment>> GetAssignmentsForCourseAsync(int courseId)
+        {
+            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
+            if (courseExist == null)
+            {
+                throw new KeyNotFoundException("Course not found.");
+
+            }
+            return await _unitOfWork.Courses.GetAssignmentsForCourseAsync(courseId);
+        }
+
         public async Task<Course> GetCourseByIdAsync(int courseId)
         {
+            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
+            if (courseExist == null)
+            {
+                throw new KeyNotFoundException("Course not found.");
+            }
             return await _unitOfWork.Courses.GetByIdAsync(courseId);
         }
 
         public async Task<List<Course>> GetCoursesByDepartmentAsync(int departmentId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<List<Exam>> GetExamsForCourseAsync(int courseId)
+        {
+            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
+            if (courseExist == null)
+            {
+                throw new KeyNotFoundException("Course not found.");
+            }
+
+            return await _unitOfWork.Courses.GetExamsForCourseAsync(courseId);
+        }
+
+        public async Task<List<Student>> GetStudentsInCourseAsync(int courseId)
+        {
+            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
+            if (courseExist == null)
+            {
+                throw new KeyNotFoundException("Course not found.");
+            }
+
+            return await _unitOfWork.Courses.GetStudentsInCourseAsync(courseId);
         }
 
         public async Task<bool> UpdateCourseAsync(Course course)

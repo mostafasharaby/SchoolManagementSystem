@@ -1,6 +1,5 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Core.Features.Students.Queries.Results;
-
+using SchoolManagementSystem.Data.DTO;
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Models
 {
     public class GetStudentDtoQuery : IRequest<List<StudentDto>>

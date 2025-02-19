@@ -10,5 +10,9 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<Classroom> GetClassroomByIdAsync(int classroomID);
         Task<List<Classroom>> GetAllClassroomsAsync();
         Task<bool> AddClassroomWithStudentsAsync(Classroom classroom, List<Student> students);
+        Task<List<Student>> GetStudentsInClassroomAsync(int classroomId);
+        Task<List<Attendance>> GetAttendanceRecordsAsync(int classroomId);
+        Task<Teacher> GetTeacherInClassroomAsync(int classroomId);
+
     }
 }

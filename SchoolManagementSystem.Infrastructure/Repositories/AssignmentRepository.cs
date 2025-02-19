@@ -8,10 +8,8 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     internal class AssignmentRepository : GenericRepository<Assignment>, IAssignmentRepository
     {
-        private readonly SchoolContext _dbContext;
         public AssignmentRepository(SchoolContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
         public async override Task<Assignment> GetByIdAsync(int id)
         {

@@ -35,9 +35,30 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Parents.GetAllAsync();
         }
 
+        public async Task<List<Fee>> GetFeePaymentHistoryByParentAsync(int parentId)
+        {
+            var parentExist = await _unitOfWork.Parents.GetByIdAsync(parentId);
+            if (parentExist == null)
+            {
+                throw new KeyNotFoundException("Parent not found.");
+            }
+
+            return await _unitOfWork.Parents.GetFeePaymentHistoryByParentAsync(parentId);
+        }
+
         public async Task<Parent> GetParentsByIdAsync(int ParentID)
         {
             return await _unitOfWork.Parents.GetByIdAsync(ParentID);
+        }
+
+        public async Task<List<Student>> GetStudentsByParentAsync(int parentId)
+        {
+            var parentExist = await _unitOfWork.Parents.GetByIdAsync(parentId);
+            if (parentExist == null)
+            {
+                throw new KeyNotFoundException("Parent not found.");
+            }
+            return await _unitOfWork.Parents.GetStudentsByParentAsync(parentId);
         }
 
         public async Task UpdateParentsAsync(Parent Parent)

@@ -1,11 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Api.AppRouting;
 using SchoolManagementSystem.Core.Features.Files.Commands.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Commands.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
-using SchoolManagementSystem.Core.Features.Teachers.Queries.Results;
-using SchoolManagementSystem.Data.Entities;
 namespace SchoolManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
@@ -19,62 +16,90 @@ namespace SchoolManagementSystem.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet(Routing.TeacherRouting.List)]
-        public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachers()
+        //[HttpGet(Routing.TeacherRouting.List)]
+        //public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachers()
+        //{
+        //    return await _mediator.Send(new GetAllTeachersQuery());
+        //}
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllTeachers()
         {
-            return await _mediator.Send(new GetAllTeachersQuery());
+            var result = await _mediator.Send(new GetAllTeachersQuery());
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-        [HttpGet(Routing.TeacherRouting.ById)]
-        public async Task<ActionResult<Teacher>> GetTeacherById(int id)
+        [HttpGet("get/{id}")]
+        public async Task<IActionResult> GetTeacherById(int id)
         {
-            var teacher = await _mediator.Send(new GetTeacherByIdQuery(id));
-
-            if (teacher == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(teacher);
-        }
-
-
-        [HttpGet("Dto")]
-        public async Task<ActionResult<IEnumerable<TeacherDto>>> GetTeacherDto()
-        {
-            return await _mediator.Send(new GetTeacherDtoQuery());
+            var result = await _mediator.Send(new GetTeacherByIdQuery { TeacherID = id });
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
 
-        [HttpPut(Routing.TeacherRouting.Update)]
-        public async Task<IActionResult> UpdateTeacher(int id, [FromBody] UpdateTeacherCommand command)
+        [HttpGet("by-department/{departmentId}")]
+        public async Task<IActionResult> GetTeachersByDepartment(int departmentId)
         {
-            if (id != command.TeacherID) return BadRequest("Teacher ID mismatch.");
+            var result = await _mediator.Send(new GetTeachersByDepartmentQuery { DepartmentID = departmentId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
 
+
+        [HttpGet("{teacherId}/courses")]
+        public async Task<IActionResult> GetCoursesByTeacher(int teacherId)
+        {
+            var result = await _mediator.Send(new GetCoursesByTeacherQuery { TeacherID = teacherId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{teacherId}/classrooms")]
+        public async Task<IActionResult> GetClassroomsByTeacher(int teacherId)
+        {
+            var result = await _mediator.Send(new GetClassroomsByTeacherQuery { TeacherID = teacherId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{teacherId}/classrooms/{classroomId}/students")]
+        public async Task<IActionResult> GetStudentsInClassroom(int teacherId, int classroomId)
+        {
+            var result = await _mediator.Send(new GetStudentsInClassroomQuery { TeacherID = teacherId, ClassroomID = classroomId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{teacherId}/courses/{courseId}/exam-results")]
+        public async Task<IActionResult> GetExamResultsByCourse(int teacherId, int courseId)
+        {
+            var result = await _mediator.Send(new GetExamResultsByCourseQuery { TeacherID = teacherId, CourseID = courseId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddTeacher([FromBody] AddTeacherCommand command)
+        {
             var result = await _mediator.Send(command);
-            if (result == null) return NotFound("Teacher not found.");
-
-            return Ok("Teacher updated successfully.");
+            return result.Succeeded ? Ok(CreatedAtAction(nameof(AddTeacher), new { id = result.Data }, result)) : BadRequest(result);
         }
 
-        [HttpDelete(Routing.TeacherRouting.Delete)]
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateTeacher([FromBody] UpdateTeacherCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteTeacher(int id)
         {
-            var result = await _mediator.Send(new DeleteTeacherCommand(id));
-            if (!result) return NotFound("Teacher not found.");
-
-            return Ok("Teacher deleted successfully.");
+            var result = await _mediator.Send(new DeleteTeacherCommand { TeacherID = id });
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
-
 
         [HttpPost("upload")]
         public async Task<IActionResult> UploadFile([FromForm] UploadFileCommand command)
         {
             var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
 
     }

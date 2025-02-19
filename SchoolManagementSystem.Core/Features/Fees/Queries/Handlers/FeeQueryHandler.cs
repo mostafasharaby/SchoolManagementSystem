@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using MediatR;
 using SchoolManagementSystem.Core.Bases;
-using SchoolManagementSystem.Core.Features.Fees.Queries.Dto;
 using SchoolManagementSystem.Core.Features.Fees.Queries.Models;
+using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Fees.Queries.Handlers
 {
     internal class FeeQueryHandler : IRequestHandler<GetFeeByIdQuery, Response<FeeDto>>,
-                                     IRequestHandler<GetAllFeesQuery, Response<List<FeeDto>>>
+                                     IRequestHandler<GetAllFeesQuery, Response<List<FeeDto>>>,
+                                     IRequestHandler<GetOutstandingFeesQuery, Response<List<FeeDto>>>
     {
         private readonly IFeeService _feeService;
         private readonly IMapper _mapper;
@@ -35,6 +36,20 @@ namespace SchoolManagementSystem.Core.Features.Fees.Queries.Handlers
 
             var feeDto = _mapper.Map<FeeDto>(fee);
             return _responseHandler.Success(feeDto);
+        }
+
+        public async Task<Response<List<FeeDto>>> Handle(GetOutstandingFeesQuery request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var fees = await _feeService.GetOutstandingFeesAsync(request.StudentID);
+                var feeDto = _mapper.Map<List<FeeDto>>(fees);
+                return _responseHandler.Success(feeDto);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<FeeDto>>(ex.Message);
+            }
         }
     }
 }

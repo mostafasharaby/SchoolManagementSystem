@@ -46,6 +46,10 @@ namespace SchoolManagementSystem.Infrastructure
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+            services.AddScoped<IExamRepository, ExamRepository>();
+            services.AddScoped<IExamResultRepository, ExamResultRepository>();
+            services.AddScoped<IExamScoreRepository, ExamScoreRepository>();
+            services.AddScoped<IExamTypeRepository, ExamTypeRepository>();
 
 
             services.AddScoped<IUserRolesClaimsRepository, UserRolesClaimsRepository>();
@@ -64,7 +68,6 @@ namespace SchoolManagementSystem.Infrastructure
             {
                 option.UseSqlServer(configuration.GetConnectionString("connection"));
             });
-
 
 
             services.AddIdentity<AppUser, IdentityRole>(options =>

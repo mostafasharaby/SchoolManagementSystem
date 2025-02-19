@@ -1,4 +1,6 @@
-﻿using SchoolManagementSystem.Data.Entities;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Infrastructure.Basics;
 using SchoolManagementSystem.Infrastructure.Data;
@@ -6,9 +8,10 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     public class ClassRoomRepository : GenericRepository<Classroom>, IClassRoomRepository
     {
-
-        public ClassRoomRepository(SchoolContext context) : base(context)
+        private readonly IMapper _mapper;
+        public ClassRoomRepository(SchoolContext context, IMapper mapper) : base(context)
         {
+            _mapper = mapper;
         }
 
         public async Task<List<Classroom>> GetAllClassroomsAsync()
@@ -44,5 +47,30 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             return false;
         }
 
+        public async Task<List<Student>> GetStudentsInClassroomAsync(int classroomId) // will be change to Dto.....
+        {
+            return await _dbContext.Students
+                .Where(s => s.ClassroomID == classroomId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Attendance>> GetAttendanceRecordsAsync(int classroomId)
+        {
+            var result = await _dbContext.Attendances
+                .Where(a => a.ClassroomID == classroomId)
+                .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<Teacher> GetTeacherInClassroomAsync(int classroomId) // will be change to Dto.....
+        {
+            var result = await _dbContext.Classrooms
+                .Where(c => c.ClassroomID == classroomId)
+                .Select(c => c.Teacher)
+                .FirstOrDefaultAsync();
+
+            return result!; //_mapper.Map<Teacher>(result);
+        }
     }
 }

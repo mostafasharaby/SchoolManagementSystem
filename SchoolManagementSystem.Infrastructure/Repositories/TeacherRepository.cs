@@ -1,4 +1,5 @@
-﻿using SchoolManagementSystem.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Basics;
 using SchoolManagementSystem.Infrastructure.Data;
 using SchoolManagementSystem.Infrastructure.Repositories;
@@ -7,48 +8,65 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
 {
     public class TeacherRepository : GenericRepository<Teacher>, ITeacherRepository
     {
-        private readonly SchoolContext _context;
-
         public TeacherRepository(SchoolContext context) : base(context)
         {
-            _context = context;
         }
 
-        public async Task<List<Teacher>> GetAllTeachersAsync()
+        public async Task<List<Course>> GetCoursesByTeacherAsync(int teacherId)
         {
-            return await GetAllAsync();
+            return await _dbContext.TeacherCourses
+                .Where(tc => tc.TeacherID == teacherId)
+                .Select(tc => tc.Course)
+                .ToListAsync();
         }
 
-        public async Task<Teacher> GetTeacherByIdAsync(int teacherId)
+        public async Task<List<Classroom>> GetClassroomsByTeacherAsync(int teacherId)
         {
-            return await GetByIdAsync(teacherId);
+            return await _dbContext.Classrooms
+                .Where(c => c.TeacherID == teacherId)
+                .ToListAsync();
         }
 
-        public async Task AddTeacherAsync(Teacher teacher)
+        public async Task<List<Student>> GetStudentsInClassroomAsync(int teacherId, int classroomId)
         {
-            AddAsync(teacher);
+            return await _dbContext.Classrooms
+                .Where(cs => cs.ClassroomID == classroomId && cs.TeacherID == teacherId)
+                .SelectMany(cs => cs.Students)
+                .ToListAsync();
         }
 
-        public async Task<Teacher> UpdateTeacherAsync(Teacher teacher)
+        public async Task AddAssignmentToCourseAsync(int teacherId, int courseId, string assignmentName, DateTime dueDate)
         {
-            await UpdateAsync(teacher);
-            return teacher;
-        }
+            var course = await _dbContext.Courses
+                    .Include(c => c.TeacherCourses)
+                    .FirstOrDefaultAsync(c => c.CourseID == courseId && c.TeacherCourses.Any(tc => tc.TeacherID == teacherId));
 
-        public async Task<bool> DeleteTeacherAsync(int teacherId)
-        {
-            var teacher = await GetByIdAsync(teacherId);
-            if (teacher == null) return false;
-
-            if (teacher != null)
+            if (course == null)
             {
-                await DeleteAsync(teacher);
-                return true;
+                throw new KeyNotFoundException("Course not found or teacher is not assigned to this course.");
             }
-            return false;
 
+            var assignment = new Assignment
+            {
+                CourseID = courseId,
+                AssignmentName = assignmentName,
+                DueDate = dueDate
+            };
+
+            await _dbContext.Assignments.AddAsync(assignment);
+            await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<List<ExamResult>> GetExamResultsByCourseAsync(int teacherId, int courseId)
+        {
+            return await _dbContext.ExamResults
+                .Where(er => er.Exam.CourseID == courseId && er.Exam.Course.TeacherCourses.Any(i => i.TeacherID == teacherId))
+                .ToListAsync();
+        }
 
+        public async Task<List<Teacher>> GetTeachersByDepartmentAsync(int departmentId)
+        {
+            return await _dbContext.Teachers.Where(i => i.DepartmentID == departmentId).ToListAsync(); ;
+        }
     }
 }

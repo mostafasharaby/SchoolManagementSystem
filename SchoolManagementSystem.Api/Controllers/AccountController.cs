@@ -167,7 +167,6 @@ namespace SchoolManagementSystem.Api.Controllers
             return StatusCode((int)response.StatusCode, response);
         }
 
-
         [HttpGet("LoginWithGoogle")]
         public async Task<IActionResult> LoginWithGoogle()
         {
@@ -190,6 +189,7 @@ namespace SchoolManagementSystem.Api.Controllers
 
             return Ok(new { Message = result });
         }
+
 
 
         [HttpPost("refresh-token")]

@@ -17,14 +17,19 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         public IBorrowedBookRepository BorrowedBooks { get; }
         public IDepartmentRepository Departments { get; }
         public IAssignmentRepository Assignments { get; }
+        public IExamRepository Exams { get; }
+        public IExamScoreRepository ExamScores { get; }
+        public IExamTypeRepository ExamsTypes { get; }
 
         public IUserRolesClaimsRepository UserRolesClaims { get; }
         public ICourseRepository Courses { get; }
+        public IExamResultRepository ExamResults { get; }
 
         public UnitOfWork(SchoolContext context, IClassRoomRepository ClassRoomRepository, IParentRepository parentRepository, ITeacherRepository teacherRepository,
                            IStudentRepository studentRepository, IBorrowedBookRepository borrowedBookRepository, ILibraryRepository libraryRepository,
                            IUserRolesClaimsRepository userRolesClaims, IFeeRepository feeRepository, IAttendanceRepository attendances, IEnrollmentRepository enrollment,
-                           ICourseRepository courses, IDepartmentRepository departments, IAssignmentRepository assignments)
+                           ICourseRepository courses, IDepartmentRepository departments, IAssignmentRepository assignments, IExamRepository exams, IExamResultRepository examResults,
+                           IExamScoreRepository examScores, IExamTypeRepository examsTypes)
 
         {
             _context = context;
@@ -41,6 +46,10 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             Courses = courses;
             Departments = departments;
             Assignments = assignments;
+            Exams = exams;
+            ExamResults = examResults;
+            ExamScores = examScores;
+            ExamsTypes = examsTypes;
         }
 
         public async Task<bool> ExecuteTransactionAsync(Func<Task> action)

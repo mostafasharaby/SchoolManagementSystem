@@ -13,6 +13,29 @@ namespace SchoolManagementSystem.Api.Controllers
     {
         public AssignmentController(IMediator _mediator, ResponseHandler _responseHandler) : base(_mediator, _responseHandler) { }
 
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllAssignments()
+        {
+            var result = await _mediator.Send(new GetAllAssignmentsQuery());
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("get/{id}")]
+        public async Task<IActionResult> GetAssignmentById(int id)
+        {
+            var result = await _mediator.Send(new GetAssignmentByIdQuery { AssignmentID = id });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
+        [HttpGet("by-course/{courseId}")]
+        public async Task<IActionResult> GetAssignmentsByCourse(int courseId)
+        {
+            var result = await _mediator.Send(new GetAssignmentsByCourseQuery { CourseID = courseId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
         [HttpPost("add")]
         public async Task<IActionResult> AddAssignment([FromBody] AddAssignmentCommand command)
         {
@@ -24,51 +47,16 @@ namespace SchoolManagementSystem.Api.Controllers
         public async Task<IActionResult> UpdateAssignment([FromBody] UpdateAssignmentCommand command)
         {
             var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
 
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteAssignment(int id)
         {
             var result = await _mediator.Send(new DeleteAssignmentCommand { AssignmentID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
         }
 
-        [HttpGet("get/{id}")]
-        public async Task<IActionResult> GetAssignmentById(int id)
-        {
-            var result = await _mediator.Send(new GetAssignmentByIdQuery { AssignmentID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllAssignments()
-        {
-            var result = await _mediator.Send(new GetAllAssignmentsQuery());
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpGet("by-course/{courseId}")]
-        public async Task<IActionResult> GetAssignmentsByCourse(int courseId)
-        {
-            var result = await _mediator.Send(new GetAssignmentsByCourseQuery { CourseID = courseId });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
 
 
     }

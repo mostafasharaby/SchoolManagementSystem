@@ -9,6 +9,7 @@ namespace SchoolManagementSystem.Core.Mapping.ClassRoomMapping
             AddClassRoomCommandMapping();
             UpdateClassRoomCommandMapping();
             AddClassroomWithStudentsCommandMapping();
+            ClassRoomQueryMapping();
         }
     }
 }

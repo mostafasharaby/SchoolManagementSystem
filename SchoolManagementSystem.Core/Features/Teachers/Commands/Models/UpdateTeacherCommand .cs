@@ -1,16 +1,11 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Core.Bases;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Models
 {
-    public class UpdateTeacherCommand : IRequest<Teacher>
+    public class UpdateTeacherCommand : TeacherDto, IRequest<Response<string>>
     {
-        public Teacher Teacher { get; }
-        public int TeacherID { get; }
-        public UpdateTeacherCommand(Teacher teacher)
-        {
-            Teacher = teacher;
-            TeacherID = teacher.TeacherID;
-        }
+        public int TeacherID { get; set; }
     }
 }

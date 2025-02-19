@@ -12,56 +12,55 @@ namespace SchoolManagementSystem.Api.Controllers
     {
         public AttendanceController(IMediator _mediator) : base(_mediator) { }
 
-
-
-        [HttpPost("add")]
-        public async Task<IActionResult> AddAttendance([FromBody] AddAttendanceCommand command)
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllAttendances()
         {
-            var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpPut("update")]
-        public async Task<IActionResult> UpdateAttendance([FromBody] UpdateAttendanceCommand command)
-        {
-            var result = await _mediator.Send(command);
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
-        }
-
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteAttendance(int id)
-        {
-            var result = await _mediator.Send(new DeleteAttendanceCommand { AttendanceID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            var result = await _mediator.Send(new GetAllAttendancesQuery());
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("get/{id}")]
         public async Task<IActionResult> GetAttendanceById(int id)
         {
             var result = await _mediator.Send(new GetAttendanceByIdQuery { AttendanceID = id });
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllAttendances()
+        [HttpGet("{classroomId}/attendance-summary")]
+        public async Task<IActionResult> GetAttendanceSummary(int classroomId)
         {
-            var result = await _mediator.Send(new GetAllAttendancesQuery());
-            if (!result.Succeeded)
-                return BadRequest(result);
-
-            return Ok(result);
+            var result = await _mediator.Send(new GetAttendanceSummaryQuery { ClassroomID = classroomId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
+
+        [HttpPost("{classroomId}/attendance")]
+        public async Task<IActionResult> MarkAttendance(int classroomId, [FromBody] MarkAttendanceCommand command)
+        {
+            command.ClassroomID = classroomId;
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddAttendance([FromBody] AddAttendanceCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateAttendance([FromBody] UpdateAttendanceCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteAttendance(int id)
+        {
+            var result = await _mediator.Send(new DeleteAttendanceCommand { AttendanceID = id });
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using SchoolManagementSystem.Core.Features.Students.Queries.Results;
+﻿using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.General;
 

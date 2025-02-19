@@ -16,54 +16,48 @@ namespace SchoolManagementSystem.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{userId}")]
-        public async Task<IActionResult> GetUserClaims(string userId)
-        {
-            var response = await _mediator.Send(new GetUserClaimsByIdQuery { UserId = userId });
-            return Ok(response);
-        }
-
-        [HttpPut("update")]
-        public async Task<IActionResult> UpdateUserClaims([FromBody] UpdateUserClaimsCommand command)
-        {
-            var response = await _mediator.Send(command);
-            return Ok(response);
-        }
-        [HttpPost("add")]
-        public async Task<IActionResult> AddClaim([FromBody] AddUserClaimCommand command)
-        {
-            var response = await _mediator.Send(command);
-            if (!response.Succeeded)
-                return BadRequest(response);
-
-            return Ok(response);
-        }
-
-        [HttpDelete("delete")]
-        public async Task<IActionResult> DeleteClaim([FromBody] DeleteUserClaimCommand command)
-        {
-            var response = await _mediator.Send(command);
-            if (!response.Succeeded)
-                return BadRequest(response);
-
-            return Ok(response);
-        }
-
         [HttpGet("roles-claims")]
         public async Task<IActionResult> GetUserRolesAndClaims()
         {
             var result = await _mediator.Send(new UserRoleClaimQuery());
-            if (!result.Succeeded)
-                return BadRequest(result);
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("roles-claims-grouped")]
         public async Task<IActionResult> GetGroupedUserRoleClaims()
         {
             var result = await _mediator.Send(new GetGroupedUserRoleClaimsQuery());
-            return Ok(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetUserClaims(string userId)
+        {
+            var result = await _mediator.Send(new GetUserClaimsByIdQuery { UserId = userId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateUserClaims([FromBody] UpdateUserClaimsCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+        [HttpPost("add")]
+        public async Task<IActionResult> AddClaim([FromBody] AddUserClaimCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("delete")]
+        public async Task<IActionResult> DeleteClaim([FromBody] DeleteUserClaimCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+
 
 
 

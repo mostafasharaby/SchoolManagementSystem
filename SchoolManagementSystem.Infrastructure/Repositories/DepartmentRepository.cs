@@ -8,11 +8,8 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     internal class DepartmentRepository : GenericRepository<Department>, IDepartmentRepository
     {
-
-        SchoolContext _dbContext;
         public DepartmentRepository(SchoolContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
 
         public async override Task<Department> GetByIdAsync(int id)

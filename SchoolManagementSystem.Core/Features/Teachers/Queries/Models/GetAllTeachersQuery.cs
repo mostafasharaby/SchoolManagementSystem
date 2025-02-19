@@ -1,9 +1,10 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Core.Bases;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Models
 {
-    public class GetAllTeachersQuery : IRequest<List<Teacher>>
+    public class GetAllTeachersQuery : IRequest<Response<List<TeacherDto>>>
     {
     }
 }

@@ -6,8 +6,8 @@ using SchoolManagementSystem.Api.Controllers.Basics;
 using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Students.Commands.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
-using SchoolManagementSystem.Core.Features.Students.Queries.Results;
 using SchoolManagementSystem.Core.Filter;
+using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Api.Controllers

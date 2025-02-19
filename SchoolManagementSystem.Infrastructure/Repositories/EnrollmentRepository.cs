@@ -8,10 +8,8 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     public class EnrollmentRepository : GenericRepository<Enrollment>, IEnrollmentRepository
     {
-        SchoolContext _dbContext;
         public EnrollmentRepository(SchoolContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
         public async override Task<Enrollment> GetByIdAsync(int id)
         {

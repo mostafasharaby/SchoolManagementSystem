@@ -8,10 +8,9 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     internal class BorrowedBookRepository : GenericRepository<BorrowedBook>, IBorrowedBookRepository
     {
-        SchoolContext _dbContext;
+
         public BorrowedBookRepository(SchoolContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext;
         }
 
         public async override Task<BorrowedBook> GetByIdAsync(int id)

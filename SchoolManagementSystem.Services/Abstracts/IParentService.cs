@@ -10,5 +10,8 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> DeleteParentsAsync(int ParentID);
         Task<Parent> GetParentsByIdAsync(int ParentID);
         Task<List<Parent>> GetAllParentsAsync();
+
+        Task<List<Student>> GetStudentsByParentAsync(int parentId);
+        Task<List<Fee>> GetFeePaymentHistoryByParentAsync(int parentId);
     }
 }

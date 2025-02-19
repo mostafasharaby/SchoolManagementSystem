@@ -1,15 +1,11 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Core.Bases;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Models
 {
-    public class GetTeacherByIdQuery : IRequest<Teacher>
+    public class GetTeacherByIdQuery : IRequest<Response<TeacherDto>>
     {
-        public int TeacherID { get; }
-
-        public GetTeacherByIdQuery(int studentID)
-        {
-            TeacherID = studentID;
-        }
+        public int TeacherID { get; set; }
     }
 }
