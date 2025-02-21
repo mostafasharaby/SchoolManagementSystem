@@ -7,14 +7,16 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     internal class CourseService : ICourseService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public CourseService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public CourseService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
-
+            _validationService = validationService;
         }
         public async Task AddCourseAsync(Course course)
         {
+            await _validationService.ValidateDepartmentExistsAsync(course.DepartmentID);
+
             await _unitOfWork.Courses.AddAsync(course);
             await _unitOfWork.CompleteAsync();
         }
@@ -37,72 +39,37 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Assignment>> GetAssignmentsForCourseAsync(int courseId)
         {
-            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
-            if (courseExist == null)
-            {
-                throw new KeyNotFoundException("Course not found.");
-
-            }
+            await _validationService.ValidateCoursesExistsAsync(courseId);
             return await _unitOfWork.Courses.GetAssignmentsForCourseAsync(courseId);
         }
 
         public async Task<Course> GetCourseByIdAsync(int courseId)
         {
-            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
-            if (courseExist == null)
-            {
-                throw new KeyNotFoundException("Course not found.");
-            }
+            await _validationService.ValidateCoursesExistsAsync(courseId);
             return await _unitOfWork.Courses.GetByIdAsync(courseId);
         }
 
         public async Task<List<Course>> GetCoursesByDepartmentAsync(int departmentId)
         {
-            throw new NotImplementedException();
+            return await _unitOfWork.Courses.GetCoursesByDepartmentAsync(departmentId);
         }
 
         public async Task<List<Exam>> GetExamsForCourseAsync(int courseId)
         {
-            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
-            if (courseExist == null)
-            {
-                throw new KeyNotFoundException("Course not found.");
-            }
-
+            await _validationService.ValidateCoursesExistsAsync(courseId);
             return await _unitOfWork.Courses.GetExamsForCourseAsync(courseId);
         }
 
         public async Task<List<Student>> GetStudentsInCourseAsync(int courseId)
         {
-            var courseExist = await _unitOfWork.Courses.GetByIdAsync(courseId);
-            if (courseExist == null)
-            {
-                throw new KeyNotFoundException("Course not found.");
-            }
-
+            await _validationService.ValidateCoursesExistsAsync(courseId);
             return await _unitOfWork.Courses.GetStudentsInCourseAsync(courseId);
         }
 
         public async Task<bool> UpdateCourseAsync(Course course)
         {
-            var attendanceExists = await _unitOfWork.Courses.GetByIdAsync(course.CourseID);
-
-            if (attendanceExists == null)
-            {
-                throw new KeyNotFoundException("Borrowed Book not found.");
-            }
-
-            var departmentExists = await _unitOfWork.Departments.GetByIdAsync(course.DepartmentID);
-            if (departmentExists == null)
-            {
-                throw new KeyNotFoundException("Department not found.");
-            }
-
-            //var classRoomExists = await _unitOfWork.Classrooms.GetByIdAsync(attendance.CourseID);
-            //if (classRoomExists == null)
-            //{
-            //    throw new KeyNotFoundException("Classroom not found.");
-            //}
+            await _validationService.ValidateCoursesExistsAsync(course.CourseID);
+            await _validationService.ValidateDepartmentExistsAsync(course.DepartmentID);
 
             await _unitOfWork.Courses.UpdateAsync(course);
             await _unitOfWork.CompleteAsync();

@@ -27,15 +27,29 @@ namespace SchoolManagementSystem.Core.Features.ClassRooms.Commands.Handlers
         }
         public async Task<Response<string>> Handle(AddClassroomCommand request, CancellationToken cancellationToken)
         {
-            var roomMapper = _mapper.Map<Classroom>(request);
-            var result = _classRoomService.AddclassRoomAsync(roomMapper);
-            return _responseHandler.Created<string>("class room Created successfuly");
+            try
+            {
+                var roomMapper = _mapper.Map<Classroom>(request);
+                await _classRoomService.AddclassRoomAsync(roomMapper);
+                return _responseHandler.Created<string>("class room Created successfuly");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
         public async Task<Response<string>> Handle(UpdateClassroomCommand request, CancellationToken cancellationToken)
         {
-            var classroom = _mapper.Map<Classroom>(request);
-            await _classRoomService.UpdateClassroomAsync(classroom);
-            return _responseHandler.Success("Classroom updated successfully.");
+            try
+            {
+                var classroom = _mapper.Map<Classroom>(request);
+                await _classRoomService.UpdateClassroomAsync(classroom);
+                return _responseHandler.Success("Classroom updated successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(DeleteClassroomCommand request, CancellationToken cancellationToken)

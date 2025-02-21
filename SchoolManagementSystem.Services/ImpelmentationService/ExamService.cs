@@ -7,16 +7,19 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     internal class ExamService : IExamService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public ExamService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public ExamService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
-
+            _validationService = validationService;
         }
 
 
         public async Task AddExamAsync(Exam exam)
         {
+            await _validationService.ValidateCoursesExistsAsync(exam.CourseID);
+            await _validationService.ValidateExamTypeExistsAsync(exam.ExamTypeID);
+
             await _unitOfWork.Exams.AddAsync(exam);
             await _unitOfWork.CompleteAsync();
         }
@@ -44,29 +47,15 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Exam>> GetExamsByCourseAsync(int courseId)
         {
+            await _validationService.ValidateCoursesExistsAsync(courseId);
             return await _unitOfWork.Exams.GetExamsByCourseAsync(courseId);
         }
 
         public async Task<bool> UpdateExamAsync(Exam exam)
         {
-            var attendanceExists = await _unitOfWork.Exams.GetByIdAsync(exam.ExamID);
-
-            if (attendanceExists == null)
-            {
-                throw new KeyNotFoundException("Assignment  not found.");
-            }
-
-            var courseExists = await _unitOfWork.Students.GetByIdAsync(exam.CourseID);
-            if (courseExists == null)
-            {
-                throw new KeyNotFoundException("Course not found.");
-            }
-            var examTypeIDExists = await _unitOfWork.ExamsTypes.GetByIdAsync(exam.ExamTypeID);
-            if (examTypeIDExists == null)
-            {
-                throw new KeyNotFoundException("ExamType not found.");
-            }
-
+            await _validationService.ValidateExamsExistsAsync(exam.ExamID);
+            await _validationService.ValidateCoursesExistsAsync(exam.CourseID);
+            await _validationService.ValidateExamTypeExistsAsync(exam.ExamTypeID);
 
             await _unitOfWork.Exams.UpdateAsync(exam);
             await _unitOfWork.CompleteAsync();

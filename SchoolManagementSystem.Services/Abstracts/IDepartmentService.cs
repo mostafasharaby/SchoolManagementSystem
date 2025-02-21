@@ -9,5 +9,8 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> DeleteDepartmentAsync(int departmentId);
         Task<Department> GetDepartmentByIdAsync(int departmentId);
         Task<List<Department>> GetAllDepartmentsAsync();
+
+        Task<List<Teacher>> GetTeachersByDepartmentAsync(int departmentId);
+        Task<List<Course>> GetCoursesByDepartmentAsync(int departmentId);
     }
 }

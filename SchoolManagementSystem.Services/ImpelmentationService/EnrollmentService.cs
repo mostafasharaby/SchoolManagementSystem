@@ -7,14 +7,17 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     internal class EnrollmentService : IEnrollmentService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public EnrollmentService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public EnrollmentService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
-
+            _validationService = validationService;
         }
         public async Task AddEnrollmentAsync(Enrollment enrollment)
         {
+            await _validationService.ValidateStudentExistsAsync(enrollment.StudentID);
+            await _validationService.ValidateCoursesExistsAsync(enrollment.CourseID);
+
             await _unitOfWork.Enrollments.AddAsync(enrollment);
             await _unitOfWork.CompleteAsync();
         }
@@ -40,27 +43,17 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Enrollments.GetByIdAsync(enrollmentID);
         }
 
+        public async Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(int courseId)
+        {
+            await _validationService.ValidateCoursesExistsAsync(courseId);
+            return await _unitOfWork.Enrollments.GetEnrollmentsByCourseIdAsync(courseId);
+        }
+
         public async Task<bool> UpdateEnrollmentAsync(Enrollment enrollment)
         {
-            var enrollmentExists = await _unitOfWork.Enrollments.GetByIdAsync(enrollment.EnrollmentID);
-
-            if (enrollmentExists == null)
-            {
-                throw new KeyNotFoundException("Borrowed Book not found.");
-            }
-
-            var studentExists = await _unitOfWork.Students.GetByIdAsync(enrollment.StudentID);
-            if (studentExists == null)
-            {
-                throw new KeyNotFoundException("Student not found.");
-            }
-
-            var courseExists = await _unitOfWork.Courses.GetByIdAsync(enrollment.CourseID);
-            if (courseExists == null)
-            {
-                throw new KeyNotFoundException("course not found.");
-            }
-
+            await _validationService.ValidateEnrollExistsAsync(enrollment.EnrollmentID);
+            await _validationService.ValidateStudentExistsAsync(enrollment.StudentID);
+            await _validationService.ValidateCoursesExistsAsync(enrollment.CourseID);
 
             await _unitOfWork.Enrollments.UpdateAsync(enrollment);
             await _unitOfWork.CompleteAsync();

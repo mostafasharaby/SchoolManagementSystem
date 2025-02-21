@@ -8,17 +8,27 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     internal class AttendanceService : IAttendanceService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public AttendanceService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public AttendanceService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
+            _validationService = validationService;
 
         }
         public async Task AddAttendanceAsync(Attendance attendance)
         {
+            await _validationService.ValidateStudentExistsAsync(attendance.StudentID);
+            await _validationService.ValidateClassRoomExistsAsync(attendance.ClassroomID);
             await _unitOfWork.Attendances.AddAsync(attendance);
             await _unitOfWork.CompleteAsync();
         }
+
+        //public async Task DeleteAttendanceAsync(int attendanceId)  that is another way to delete but its cons that is it make 2 calls on DB so i will use the bellow one
+        //{
+        //    await _validationService.ValidateAttendanceExistsAsync(attendanceId);
+        //    await _unitOfWork.Attendances.DeleteByIdAsync(attendanceId);
+        //    await _unitOfWork.CompleteAsync();
+        //}
 
         public async Task<bool> DeleteAttendanceAsync(int attendanceId)
         {
@@ -44,6 +54,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<AttendanceSummaryDto> GetAttendanceSummaryAsync(int classroomId)
         {
+            await _validationService.ValidateClassRoomExistsAsync(classroomId);
             var attendances = await _unitOfWork.Attendances.GetByClassroomAsync(classroomId);
             var summary = new AttendanceSummaryDto
             {
@@ -54,7 +65,6 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
                 AbsentStudents = attendances.Count(a => a.Status == "absent")
             };
             return summary;
-            //  return await _unitOfWork.Attendances.GetByClassroomAsync(classroomId);
         }
 
         public Task MarkAttendanceAsync(int classroomId, DateTime attendanceDate, List<StudentAttendanceDto> studentAttendances)
@@ -75,29 +85,16 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<bool> UpdateAttendanceAsync(Attendance attendance)
         {
-            var attendanceExists = await _unitOfWork.Attendances.GetByIdAsync(attendance.AttendanceID);
-
-            if (attendanceExists == null)
-            {
-                throw new KeyNotFoundException("Borrowed Book not found.");
-            }
-
-            var studentExists = await _unitOfWork.Students.GetByIdAsync(attendance.StudentID);
-            if (studentExists == null)
-            {
-                throw new KeyNotFoundException("Student not found.");
-            }
-
-            var classRoomExists = await _unitOfWork.Classrooms.GetByIdAsync(attendance.ClassroomID);
-            if (classRoomExists == null)
-            {
-                throw new KeyNotFoundException("Classroom not found.");
-            }
+            await _validationService.ValidateAttendanceExistsAsync(attendance.AttendanceID);
+            await _validationService.ValidateStudentExistsAsync(attendance.StudentID);
+            await _validationService.ValidateClassRoomExistsAsync(attendance.ClassroomID);
 
             await _unitOfWork.Attendances.UpdateAsync(attendance);
             await _unitOfWork.CompleteAsync();
 
             return true;
         }
+
+
     }
 }

@@ -24,9 +24,16 @@ namespace SchoolManagementSystem.Core.Features.Courses.Commands.Handlers
 
         public async Task<Response<string>> Handle(AddCourseCommand request, CancellationToken cancellationToken)
         {
-            var course = _mapper.Map<Course>(request);
-            await _courseService.AddCourseAsync(course);
-            return _responseHandler.Created("Course created successfully.");
+            try
+            {
+                var course = _mapper.Map<Course>(request);
+                await _courseService.AddCourseAsync(course);
+                return _responseHandler.Created("Course created successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(UpdateCourseCommand request, CancellationToken cancellationToken)
@@ -40,10 +47,6 @@ namespace SchoolManagementSystem.Core.Features.Courses.Commands.Handlers
             catch (KeyNotFoundException ex)
             {
                 return _responseHandler.NotFound<string>(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
             }
         }
 

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using SchoolManagementSystem.Core.Bases;
-using SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Dto;
 using SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Models;
+using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Handlers
@@ -25,7 +25,7 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Handlers
         {
             var borrowedBook = await _borrowedBookService.GetBorrowedBookByIdAsync(request.BorrowedBookId);
             if (borrowedBook == null)
-                return new Response<BorrowedBookDto>(null, "Borrowed Book not found.");
+                return _responseHandler.NotFound<BorrowedBookDto>("Borrowed Book not found.");
 
             var dto = _mapper.Map<BorrowedBookDto>(borrowedBook);
             return _responseHandler.Success(dto);
@@ -40,9 +40,17 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Handlers
 
         public async Task<Response<List<BorrowedBookDto>>> Handle(GetBorrowedBooksByStudentQuery request, CancellationToken cancellationToken)
         {
-            var borrowedBooks = await _borrowedBookService.GetBorrowedBooksByStudentIdAsync(request.StudentID);
-            var dtoList = _mapper.Map<List<BorrowedBookDto>>(borrowedBooks);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var borrowedBooks = await _borrowedBookService.GetBorrowedBooksByStudentIdAsync(request.StudentID);
+                var dtoList = _mapper.Map<List<BorrowedBookDto>>(borrowedBooks);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<BorrowedBookDto>>(ex.Message);
+
+            }
         }
 
     }

@@ -42,8 +42,6 @@ namespace SchoolManagementSystem.Infrastructure.Data
             modelBuilder.Entity<BorrowedBook>()
                .HasKey(b => b.BorrowID); // Explicitly setting BorrowID as Primary Key
 
-            //modelBuilder.Entity<TeacherDepartment>()
-            //   .HasKey(b => b.DepartmentID);
 
             base.OnModelCreating(modelBuilder);
 

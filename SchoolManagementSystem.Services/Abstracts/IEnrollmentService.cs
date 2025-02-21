@@ -9,5 +9,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> DeleteEnrollmentAsync(int enrollmentID);
         Task<Enrollment?> GetEnrollmentByIdAsync(int enrollmentID);
         Task<List<Enrollment>> GetAllEnrollmentsAsync();
+        Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(int courseId);
+
     }
 }

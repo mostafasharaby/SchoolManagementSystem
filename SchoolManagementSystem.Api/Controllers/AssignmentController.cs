@@ -54,7 +54,7 @@ namespace SchoolManagementSystem.Api.Controllers
         public async Task<IActionResult> DeleteAssignment(int id)
         {
             var result = await _mediator.Send(new DeleteAssignmentCommand { AssignmentID = id });
-            return result.Succeeded ? Ok(result) : BadRequest(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
 

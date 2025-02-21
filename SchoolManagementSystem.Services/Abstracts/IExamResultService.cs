@@ -4,8 +4,8 @@ namespace SchoolManagementSystem.Services.Abstracts
 {
     public interface IExamResultService
     {
-        Task<bool> AddExamResultAsync(ExamResult examResult);
-        Task<bool> UpdateExamResultAsync(ExamResult examResult);
+        Task AddExamResultAsync(ExamResult examResult);
+        Task UpdateExamResultAsync(ExamResult examResult);
         Task<bool> DeleteExamResultAsync(int examResultID);
         Task<ExamResult> GetExamResultByIdAsync(int examResultID);
         Task<List<ExamResult>> GetExamResultsByExamAsync(int examID);

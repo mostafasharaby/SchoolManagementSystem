@@ -17,5 +17,9 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
           .FirstOrDefaultAsync(b => b.EnrollmentID == id);
         }
 
+        public async Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(int courseId)
+        {
+            return await _dbContext.Enrollments.Where(e => e.CourseID == courseId).ToListAsync();
+        }
     }
 }

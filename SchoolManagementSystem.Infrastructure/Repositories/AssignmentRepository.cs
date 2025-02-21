@@ -11,6 +11,12 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         public AssignmentRepository(SchoolContext dbContext) : base(dbContext)
         {
         }
+
+        public async Task<List<Assignment>> GetAssignmentsByCourseIdAsync(int courseId)
+        {
+            return await _dbContext.Assignments.Where(i => i.CourseID == courseId).ToListAsync();
+        }
+
         public async override Task<Assignment> GetByIdAsync(int id)
         {
             return await _dbContext.Assignments.AsNoTracking()

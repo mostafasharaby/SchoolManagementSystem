@@ -9,12 +9,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IFileService _fileService;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IValidationService _validationService;
 
-
-        public StudentService(IFileService fileService, IUnitOfWork unitOfWork)
+        public StudentService(IFileService fileService, IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _fileService = fileService;
             _unitOfWork = unitOfWork;
+            _validationService = validationService;
         }
 
         public async Task<List<Student>> GetStudentAsync()
@@ -74,9 +75,10 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        Task<Student> IStudentService.UpdateStudentAsync(Student student)
+        public async Task<Student> UpdateStudentAsync(Student student)
         {
-            return _unitOfWork.Students.UpdateAsync(student);
+            await _validationService.ValidateStudentExistsAsync(student.StudentID);
+            return await _unitOfWork.Students.UpdateAsync(student);
         }
 
         public IQueryable<Student> GetStudentAsyncQureryable()

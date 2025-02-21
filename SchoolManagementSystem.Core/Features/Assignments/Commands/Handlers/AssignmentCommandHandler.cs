@@ -25,9 +25,16 @@ namespace SchoolManagementSystem.Core.Features.Assignments.Commands.Handlers
 
         public async Task<Response<string>> Handle(AddAssignmentCommand request, CancellationToken cancellationToken)
         {
-            var assignment = _mapper.Map<Assignment>(request);
-            await _assignmentService.AddAssignmentAsync(assignment);
-            return _responseHandler.Created("Assignment created successfully.");
+            try
+            {
+                var assignment = _mapper.Map<Assignment>(request);
+                await _assignmentService.AddAssignmentAsync(assignment);
+                return _responseHandler.Created("Assignment created successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(UpdateAssignmentCommand request, CancellationToken cancellationToken)
@@ -42,17 +49,13 @@ namespace SchoolManagementSystem.Core.Features.Assignments.Commands.Handlers
             {
                 return _responseHandler.NotFound<string>(ex.Message);
             }
-            catch (Exception ex)
-            {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
-            }
         }
 
         public async Task<Response<string>> Handle(DeleteAssignmentCommand request, CancellationToken cancellationToken)
         {
             var result = await _assignmentService.DeleteAssignmentAsync(request.AssignmentID);
             if (!result)
-                return _responseHandler.NotFound<string>("Assignment not found.");
+                return _responseHandler.NotFound<string>("Attendance record not found.");
 
             return _responseHandler.Success("Assignment deleted successfully.");
         }

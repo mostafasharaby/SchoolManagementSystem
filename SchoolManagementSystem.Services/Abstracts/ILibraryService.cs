@@ -9,5 +9,6 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> DeleteLibraryAsync(int LibraryID);
         Task<Library> GetLibraryByIdAsync(int LibraryID);
         Task<List<Library>> GetAllLibrarysAsync();
+
     }
 }

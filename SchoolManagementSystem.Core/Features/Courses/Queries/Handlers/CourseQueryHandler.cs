@@ -44,9 +44,16 @@ namespace SchoolManagementSystem.Core.Features.Courses.Queries.Handlers
 
         public async Task<Response<List<CourseDto>>> Handle(GetCoursesByDepartmentQuery request, CancellationToken cancellationToken)
         {
-            var courses = await _courseService.GetCoursesByDepartmentAsync(request.DepartmentID);
-            var dtoList = _mapper.Map<List<CourseDto>>(courses);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var courses = await _courseService.GetCoursesByDepartmentAsync(request.DepartmentID);
+                var dtoList = _mapper.Map<List<CourseDto>>(courses);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<CourseDto>>(ex.Message);
+            }
         }
 
         public async Task<Response<List<StudentDto>>> Handle(GetStudentsInCourseQuery request, CancellationToken cancellationToken)

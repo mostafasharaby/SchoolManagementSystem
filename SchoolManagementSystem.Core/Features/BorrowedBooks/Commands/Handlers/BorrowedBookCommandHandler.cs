@@ -23,9 +23,16 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Handlers
 
         public async Task<Response<string>> Handle(AddBorrowedBookCommand request, CancellationToken cancellationToken)
         {
-            var borrowedBook = _mapper.Map<BorrowedBook>(request);
-            await _borrowedBookService.AddBorrowedBookAsync(borrowedBook);
-            return _responseHandler.Created(" created successfully");
+            try
+            {
+                var borrowedBook = _mapper.Map<BorrowedBook>(request);
+                await _borrowedBookService.AddBorrowedBookAsync(borrowedBook);
+                return _responseHandler.Created(" created successfully");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(UpdateBorrowedBookCommand request, CancellationToken cancellationToken)  /// issue here !!!
@@ -39,10 +46,6 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Handlers
             catch (KeyNotFoundException ex)
             {
                 return _responseHandler.NotFound<string>(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
             }
         }
 

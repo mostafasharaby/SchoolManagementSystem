@@ -40,9 +40,18 @@ namespace SchoolManagementSystem.Core.Features.Attendances.Queries.Handlers
 
         public async Task<Response<AttendanceSummaryDto>> Handle(GetAttendanceSummaryQuery request, CancellationToken cancellationToken)
         {
-            var summary = await _attendanceService.GetAttendanceSummaryAsync(request.ClassroomID);
-            // var dtoList = _mapper.Map<AttendanceDto>(summary);
-            return _responseHandler.Success(summary);
+            try
+            {
+                var summary = await _attendanceService.GetAttendanceSummaryAsync(request.ClassroomID);
+                // var dtoList = _mapper.Map<AttendanceDto>(summary);
+                return _responseHandler.Success(summary);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<AttendanceSummaryDto>(ex.Message);
+
+            }
+
         }
 
     }

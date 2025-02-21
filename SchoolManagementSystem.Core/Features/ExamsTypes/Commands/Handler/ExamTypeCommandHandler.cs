@@ -8,8 +8,8 @@ using SchoolManagementSystem.Services.Abstracts;
 namespace SchoolManagementSystem.Core.Features.ExamsTypes.Commands.Handler
 {
     public class ExamTypeCommandHandler : IRequestHandler<AddExamTypeCommand, Response<string>>,
-                                            IRequestHandler<UpdateExamTypeCommand, Response<string>>,
-                                            IRequestHandler<DeleteExamTypeCommand, Response<string>>
+                                          IRequestHandler<UpdateExamTypeCommand, Response<string>>,
+                                          IRequestHandler<DeleteExamTypeCommand, Response<string>>
 
 
     {
@@ -27,16 +27,23 @@ namespace SchoolManagementSystem.Core.Features.ExamsTypes.Commands.Handler
         public async Task<Response<string>> Handle(AddExamTypeCommand request, CancellationToken cancellationToken)
         {
             var examType = _mapper.Map<ExamType>(request);
-            var id = await _examTypeService.AddExamTypeAsync(examType);
+            await _examTypeService.AddExamTypeAsync(examType);
             return _responseHandler.Created("Exam Type score added successfully");
         }
 
         public async Task<Response<string>> Handle(UpdateExamTypeCommand request, CancellationToken cancellationToken)
         {
-            var examType = _mapper.Map<ExamType>(request);
-            var result = await _examTypeService.UpdateExamTypeAsync(examType);
-            return result ? _responseHandler.Success("Exam Type updated successfully.") :
-                            _responseHandler.NotFound<string>("Exam Type not found.");
+            try
+            {
+                var examType = _mapper.Map<ExamType>(request);
+                await _examTypeService.UpdateExamTypeAsync(examType);
+                return _responseHandler.Success("Exam Type updated successfully.");
+
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(DeleteExamTypeCommand request, CancellationToken cancellationToken)

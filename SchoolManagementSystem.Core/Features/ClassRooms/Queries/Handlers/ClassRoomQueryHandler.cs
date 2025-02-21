@@ -71,17 +71,16 @@ namespace SchoolManagementSystem.Core.Features.ClassRooms.Queries.Handlers
 
         public async Task<Response<TeacherDto>> Handle(GetClassroomTeacherQuery request, CancellationToken cancellationToken)
         {
-            var teacher = await _classRoomService.GetTeacherInClassroomAsync(request.ClassroomId);
-            //var filter =  teacher != null
-            //   ? _responseHandler.Success(teacher)
-            //   : _responseHandler.NotFound<Teacher>("Teacher not found.");
-            if (teacher == null)
-                return _responseHandler.NotFound<TeacherDto>("ClassroomId not found.");
-
-            var response = _mapper.Map<TeacherDto>(teacher);
-            return _responseHandler.Success(response);
-
+            try
+            {
+                var teacher = await _classRoomService.GetTeacherInClassroomAsync(request.ClassroomId);
+                var response = _mapper.Map<TeacherDto>(teacher);
+                return _responseHandler.Success(response);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<TeacherDto>(ex.Message);
+            }
         }
-
     }
 }

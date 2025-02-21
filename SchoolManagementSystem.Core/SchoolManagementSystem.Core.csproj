@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Library\**" />
+    <EmbeddedResource Remove="Features\Library\**" />
+    <None Remove="Features\Library\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="FluentValidation" Version="12.0.0-preview1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0-preview1" />
@@ -26,12 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Commands\Handlers\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Commands\Models\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Commands\Validator\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Queries\Handlers\" />
-    <Folder Include="Features\aaa - Copy %282%29 - Copy - Copy - Copy\Queries\Models\" />
-    <Folder Include="Features\Departments\Commands\Validator\" />
     <Folder Include="Features\Authentication\Queries\" />
     <Folder Include="Mapping\AssignmentMapping\QueryMapping\" />
     <Folder Include="Mapping\AuthMapping\QueryMapping\" />

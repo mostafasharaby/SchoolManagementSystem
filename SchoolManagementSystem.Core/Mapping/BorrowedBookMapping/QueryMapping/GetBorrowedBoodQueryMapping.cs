@@ -1,4 +1,4 @@
-﻿using SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Dto;
+﻿using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Data.Entities;
 
 namespace SchoolManagementSystem.Core.Mapping.BorrowedBookMapping

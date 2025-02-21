@@ -42,16 +42,31 @@ namespace SchoolManagementSystem.Core.Features.ExamsScore.Queries.Handler
 
         public async Task<Response<List<ExamScoreDto>>> Handle(GetExamScoresByExamQuery request, CancellationToken cancellationToken)
         {
-            var examScores = await _examScoreService.GetExamScoresByExamIdAsync(request.ExamID);
-            var dtoList = _mapper.Map<List<ExamScoreDto>>(examScores);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var examScores = await _examScoreService.GetExamScoresByExamIdAsync(request.ExamID);
+                var dtoList = _mapper.Map<List<ExamScoreDto>>(examScores);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ExamScoreDto>>(ex.Message);
+
+            }
         }
 
         public async Task<Response<List<ExamScoreDto>>> Handle(GetExamScoresByStudentQuery request, CancellationToken cancellationToken)
         {
-            var examScores = await _examScoreService.GetExamScoresByStudentIdAsync(request.StudentID);
-            var dtoList = _mapper.Map<List<ExamScoreDto>>(examScores);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var examScores = await _examScoreService.GetExamScoresByStudentIdAsync(request.StudentID);
+                var dtoList = _mapper.Map<List<ExamScoreDto>>(examScores);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ExamScoreDto>>(ex.Message);
+            }
         }
     }
 

@@ -28,9 +28,16 @@ namespace SchoolManagementSystem.Core.Features.Attendances.Commands.Handlers
 
         public async Task<Response<string>> Handle(AddAttendanceCommand request, CancellationToken cancellationToken)
         {
-            var attendance = _mapper.Map<Attendance>(request);
-            await _attendanceService.AddAttendanceAsync(attendance);
-            return _responseHandler.Created("Attendance record created successfully.");
+            try
+            {
+                var attendance = _mapper.Map<Attendance>(request);
+                await _attendanceService.AddAttendanceAsync(attendance);
+                return _responseHandler.Created("Attendance record created successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(UpdateAttendanceCommand request, CancellationToken cancellationToken)
@@ -44,10 +51,6 @@ namespace SchoolManagementSystem.Core.Features.Attendances.Commands.Handlers
             catch (KeyNotFoundException ex)
             {
                 return _responseHandler.NotFound<string>(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
             }
         }
 

@@ -50,6 +50,7 @@ namespace SchoolManagementSystem.Infrastructure
             services.AddScoped<IExamResultRepository, ExamResultRepository>();
             services.AddScoped<IExamScoreRepository, ExamScoreRepository>();
             services.AddScoped<IExamTypeRepository, ExamTypeRepository>();
+            services.AddScoped<IGradeRepository, GradeRepository>();
 
 
             services.AddScoped<IUserRolesClaimsRepository, UserRolesClaimsRepository>();

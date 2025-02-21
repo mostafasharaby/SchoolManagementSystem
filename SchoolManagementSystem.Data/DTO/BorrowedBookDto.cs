@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Dto
+﻿namespace SchoolManagementSystem.Data.DTO
 {
     public class BorrowedBookDto
     {

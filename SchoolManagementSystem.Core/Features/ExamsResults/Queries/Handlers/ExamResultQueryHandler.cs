@@ -26,7 +26,7 @@ namespace SchoolManagementSystem.Core.Features.ExamsResults.Queries.Handlers
         {
             var examResult = await _examResultService.GetExamResultByIdAsync(request.ExamResultID);
             if (examResult == null)
-                return new Response<ExamResultDto>(null, "Exam result not found.");
+                return _responseHandler.NotFound<ExamResultDto>("Exam result not found.");
 
             var dto = _mapper.Map<ExamResultDto>(examResult);
             return _responseHandler.Success(dto);
@@ -34,16 +34,30 @@ namespace SchoolManagementSystem.Core.Features.ExamsResults.Queries.Handlers
 
         public async Task<Response<List<ExamResultDto>>> Handle(GetExamResultsByExamQuery request, CancellationToken cancellationToken)
         {
-            var examResults = await _examResultService.GetExamResultsByExamAsync(request.ExamID);
-            var dtoList = _mapper.Map<List<ExamResultDto>>(examResults);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var examResults = await _examResultService.GetExamResultsByExamAsync(request.ExamID);
+                var dtoList = _mapper.Map<List<ExamResultDto>>(examResults);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ExamResultDto>>(ex.Message);
+            }
         }
 
         public async Task<Response<List<ExamResultDto>>> Handle(GetExamResultsByStudentQuery request, CancellationToken cancellationToken)
         {
-            var examResults = await _examResultService.GetExamResultsByStudentAsync(request.StudentID);
-            var dtoList = _mapper.Map<List<ExamResultDto>>(examResults);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var examResults = await _examResultService.GetExamResultsByStudentAsync(request.StudentID);
+                var dtoList = _mapper.Map<List<ExamResultDto>>(examResults);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ExamResultDto>>(ex.Message);
+            }
         }
 
         public async Task<Response<List<ExamResultDto>>> Handle(GetAllExamResultsQuery request, CancellationToken cancellationToken)

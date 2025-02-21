@@ -25,12 +25,16 @@ namespace SchoolManagementSystem.Core.Features.Assignments.Queries.Handlers
 
         public async Task<Response<AssignmentDto>> Handle(GetAssignmentByIdQuery request, CancellationToken cancellationToken)
         {
-            var assignment = await _assignmentService.GetAssignmentByIdAsync(request.AssignmentID);
-            if (assignment == null)
-                return _responseHandler.NotFound<AssignmentDto>("Assignment not found.");
-
-            var dto = _mapper.Map<AssignmentDto>(assignment);
-            return _responseHandler.Success(dto);
+            try
+            {
+                var assignment = await _assignmentService.GetAssignmentByIdAsync(request.AssignmentID);
+                var dto = _mapper.Map<AssignmentDto>(assignment);
+                return _responseHandler.Success(dto);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<AssignmentDto>(ex.Message);
+            }
         }
 
         public async Task<Response<List<AssignmentDto>>> Handle(GetAllAssignmentsQuery request, CancellationToken cancellationToken)
@@ -42,10 +46,16 @@ namespace SchoolManagementSystem.Core.Features.Assignments.Queries.Handlers
 
         public async Task<Response<List<AssignmentDto>>> Handle(GetAssignmentsByCourseQuery request, CancellationToken cancellationToken)
         {
-            var assignments = await _assignmentService.GetAssignmentsByCourseIdAsync(request.CourseID);
-            var dtoList = _mapper.Map<List<AssignmentDto>>(assignments);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var assignments = await _assignmentService.GetAssignmentsByCourseIdAsync(request.CourseID);
+                var dtoList = _mapper.Map<List<AssignmentDto>>(assignments);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<AssignmentDto>>(ex.Message);
+            }
         }
-
     }
 }

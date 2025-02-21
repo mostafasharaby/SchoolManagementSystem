@@ -7,14 +7,18 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class ClassRoomService : IClassRoomService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public ClassRoomService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public ClassRoomService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
+            _validationService = validationService;
         }
 
         public async Task AddclassRoomAsync(Classroom classroom)
         {
+            await _validationService.ValidateTeacherExistsAsync(classroom.TeacherID);
+            await _validationService.ValidateGradeExistsAsync(classroom.GradeID);
+
             await _unitOfWork.Classrooms.AddAsync(classroom);
             await _unitOfWork.CompleteAsync(); // Saves changes to the database
         }
@@ -22,6 +26,9 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task UpdateClassroomAsync(Classroom classroom)
         {
+            await _validationService.ValidateTeacherExistsAsync(classroom.TeacherID);
+            await _validationService.ValidateGradeExistsAsync(classroom.GradeID);
+
             await _unitOfWork.Classrooms.UpdateAsync(classroom);
             await _unitOfWork.CompleteAsync();
         }
@@ -64,27 +71,20 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Student>> GetStudentsInClassroomAsync(int classroomId)
         {
-            var classRoomExist = await _unitOfWork.Classrooms.GetByIdAsync(classroomId);
-            if (classRoomExist == null)
-            {
-                throw new KeyNotFoundException("Classroom id not found.");
-            }
+            await _validationService.ValidateClassRoomExistsAsync(classroomId);
 
             return await _unitOfWork.Classrooms.GetStudentsInClassroomAsync(classroomId);
         }
 
         public async Task<List<Attendance>> GetAttendanceRecordsAsync(int classroomId)
         {
-            var classRoomExist = await _unitOfWork.Classrooms.GetByIdAsync(classroomId);
-            if (classRoomExist == null)
-            {
-                throw new KeyNotFoundException("Classroom id not found.");
-            }
+            await _validationService.ValidateClassRoomExistsAsync(classroomId);
             return await _unitOfWork.Classrooms.GetAttendanceRecordsAsync(classroomId);
         }
 
         public async Task<Teacher> GetTeacherInClassroomAsync(int classroomId)
         {
+            await _validationService.ValidateClassRoomExistsAsync(classroomId);
             return await _unitOfWork.Classrooms.GetTeacherInClassroomAsync(classroomId);
         }
 

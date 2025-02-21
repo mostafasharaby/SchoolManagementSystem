@@ -20,6 +20,7 @@ namespace SchoolManagementSystem.Infrastructure.Abstracts
         IExamScoreRepository ExamScores { get; }
         IExamTypeRepository ExamsTypes { get; }
         IExamResultRepository ExamResults { get; }
+        IGradeRepository Grades { get; }
         // GenericRepository<Fee> Fee { get; }
         IUserRolesClaimsRepository UserRolesClaims { get; }
         Task<bool> ExecuteTransactionAsync(Func<Task> action);

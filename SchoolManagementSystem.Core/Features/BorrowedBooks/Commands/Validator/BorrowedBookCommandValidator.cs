@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Models;
-using SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Dto;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Validator
 {

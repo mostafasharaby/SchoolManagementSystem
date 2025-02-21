@@ -7,31 +7,20 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class ExamScoreService : IExamScoreService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public ExamScoreService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public ExamScoreService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
-
+            _validationService = validationService;
         }
 
-        public async Task<bool> AddExamScoreAsync(ExamScore ExamScore)
+        public async Task AddExamScoreAsync(ExamScore ExamScore)
         {
-            var examExists = await _unitOfWork.ExamScores.GetByIdAsync(ExamScore.ExamID);
-            if (examExists == null)
-            {
-                throw new KeyNotFoundException("Exam not found.");
-            }
-
-            var studentExists = await _unitOfWork.Students.GetByIdAsync(ExamScore.StudentID);
-            if (studentExists == null)
-            {
-                throw new KeyNotFoundException("Student not found.");
-            }
-
+            await _validationService.ValidateExamsExistsAsync(ExamScore.ExamID);
+            await _validationService.ValidateStudentExistsAsync(ExamScore.StudentID);
 
             await _unitOfWork.ExamScores.AddAsync(ExamScore);
             await _unitOfWork.CompleteAsync();
-            return true;
         }
 
         public async Task<bool> DeleteExamScoreAsync(int id)
@@ -57,39 +46,25 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<ExamScore>> GetExamScoresByExamIdAsync(int examId)
         {
+            await _validationService.ValidateExamsExistsAsync(examId);
             return await _unitOfWork.ExamScores.GetExamScoresByExamIdAsync(examId);
         }
 
         public async Task<List<ExamScore>> GetExamScoresByStudentIdAsync(int studentId)
         {
+            await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.ExamScores.GetExamScoresByStudentIdAsync(studentId);
         }
 
-        public async Task<bool> UpdateExamScoreAsync(ExamScore ExamScore)
+        public async Task UpdateExamScoreAsync(ExamScore ExamScore)
         {
-            var attendanceExists = await _unitOfWork.ExamScores.GetByIdAsync(ExamScore.ExamScoreID);
-
-            if (attendanceExists == null)
-            {
-                throw new KeyNotFoundException("examResult  not found.");
-            }
-
-            var examExists = await _unitOfWork.Exams.GetByIdAsync(ExamScore.ExamID);
-            if (examExists == null)
-            {
-                throw new KeyNotFoundException("Exam not found.");
-            }
-
-            var studentExists = await _unitOfWork.Students.GetByIdAsync(ExamScore.StudentID);
-            if (studentExists == null)
-            {
-                throw new KeyNotFoundException("Student not found.");
-            }
+            await _validationService.ValidateExamsScoreExistsAsync(ExamScore.ExamScoreID);
+            await _validationService.ValidateStudentExistsAsync(ExamScore.StudentID);
+            await _validationService.ValidateExamsExistsAsync(ExamScore.ExamID);
 
             await _unitOfWork.ExamScores.UpdateAsync(ExamScore);
             await _unitOfWork.CompleteAsync();
 
-            return true;
         }
     }
 }

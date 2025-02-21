@@ -32,9 +32,16 @@ namespace SchoolManagementSystem.Core.Features.Parents.Commands.Handlers
 
         public async Task<Response<string>> Handle(UpdateParentCommand request, CancellationToken cancellationToken)
         {
-            var parent = _mapper.Map<Parent>(request);
-            await _parentService.UpdateParentsAsync(parent);
-            return _responseHandler.Success("Parent updated successfully.");
+            try
+            {
+                var parent = _mapper.Map<Parent>(request);
+                await _parentService.UpdateParentsAsync(parent);
+                return _responseHandler.Success("Parent updated successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(DeleteParentCommand request, CancellationToken cancellationToken)

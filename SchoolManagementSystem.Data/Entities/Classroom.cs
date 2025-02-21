@@ -4,8 +4,8 @@
     {
         public int ClassroomID { get; set; } // Primary Key (non-nullable)
         public string? ClassroomName { get; set; }
-        public int? GradeID { get; set; } // Foreign Key (nullable)
-        public int? TeacherID { get; set; } // Foreign Key (nullable)
+        public int GradeID { get; set; } // Foreign Key (nullable)
+        public int TeacherID { get; set; } // Foreign Key (nullable)
 
         // Navigation Properties
         public Grade? Grade { get; set; }

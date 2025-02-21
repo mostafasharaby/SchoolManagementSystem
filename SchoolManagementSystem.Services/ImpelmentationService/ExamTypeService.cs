@@ -7,24 +7,18 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     internal class ExamTypeService : IExamTypeService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IValidationService _validationService;
 
-        public ExamTypeService(IUnitOfWork unitOfWork)
+        public ExamTypeService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
-
+            _validationService = validationService;
         }
 
-        public async Task<bool> AddExamTypeAsync(ExamType examType)
+        public async Task AddExamTypeAsync(ExamType examType)
         {
-            var examExists = await _unitOfWork.ExamsTypes.GetByIdAsync(examType.ExamTypeID);
-            if (examExists == null)
-            {
-                throw new KeyNotFoundException("Exam not found.");
-            }
-
             await _unitOfWork.ExamsTypes.AddAsync(examType);
             await _unitOfWork.CompleteAsync();
-            return true;
         }
 
         public async Task<bool> DeleteExamTypeAsync(int examTypeID)
@@ -43,31 +37,17 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.ExamsTypes.GetAllAsync();
         }
 
-        public async Task<ExamType?> GetExamTypeByIdAsync(int examTypeID)
+        public async Task<ExamType> GetExamTypeByIdAsync(int examTypeID)
         {
             return await _unitOfWork.ExamsTypes.GetByIdAsync(examTypeID);
         }
 
-        public async Task<bool> UpdateExamTypeAsync(ExamType examType)
+        public async Task UpdateExamTypeAsync(ExamType examType)
         {
-            var attendanceExists = await _unitOfWork.ExamsTypes.GetByIdAsync(examType.ExamTypeID);
-
-            if (attendanceExists == null)
-            {
-                throw new KeyNotFoundException("examType  not found.");
-            }
-
-            var examExists = await _unitOfWork.Exams.GetByIdAsync(examType.ExamTypeID);
-            if (examExists == null)
-            {
-                throw new KeyNotFoundException("Exam not found.");
-            }
-
+            await _validationService.ValidateExamTypeExistsAsync(examType.ExamTypeID);
 
             await _unitOfWork.ExamsTypes.UpdateAsync(examType);
             await _unitOfWork.CompleteAsync();
-
-            return true;
         }
     }
 }

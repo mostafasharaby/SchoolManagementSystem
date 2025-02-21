@@ -24,15 +24,29 @@ namespace SchoolManagementSystem.Core.Features.Fees.Commands.Handlers
 
         public async Task<Response<string>> Handle(CreateFeeCommand request, CancellationToken cancellationToken)
         {
-            var fee = _mapper.Map<Fee>(request);
-            var feeID = _feeService.AddFeesAsync(fee);
-            return _responseHandler.Created(" created successfully");
+            try
+            {
+                var fee = _mapper.Map<Fee>(request);
+                await _feeService.AddFeesAsync(fee);
+                return _responseHandler.Created("created successfully");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
         public async Task<Response<string>> Handle(UpdateFeeCommand request, CancellationToken cancellationToken)
         {
-            var fee = _mapper.Map<Fee>(request);
-            await _feeService.UpdatelFeesAsync(fee);
-            return _responseHandler.Success("Fee updated successfully.");
+            try
+            {
+                var fee = _mapper.Map<Fee>(request);
+                await _feeService.UpdatelFeesAsync(fee);
+                return _responseHandler.Success("Fee updated successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
         public async Task<Response<string>> Handle(DeleteFeeCommand request, CancellationToken cancellationToken)
         {

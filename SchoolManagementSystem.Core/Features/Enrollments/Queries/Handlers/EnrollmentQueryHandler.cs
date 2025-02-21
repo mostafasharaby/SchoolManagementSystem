@@ -8,7 +8,9 @@ using SchoolManagementSystem.Services.Abstracts;
 namespace SchoolManagementSystem.Core.Features.Enrollments.Queries.Handlers
 {
     public class EnrollmentQueryHandler : IRequestHandler<GetEnrollmentByIdQuery, Response<EnrollmentDto>>,
-                                      IRequestHandler<GetAllEnrollmentsQuery, Response<List<EnrollmentDto>>>
+                                          IRequestHandler<GetAllEnrollmentsQuery, Response<List<EnrollmentDto>>>,
+                                          IRequestHandler<GetEnrollmentsByCourseIdQuery, Response<List<EnrollmentDto>>>
+
     {
         private readonly IEnrollmentService _enrollmentService;
         private readonly IMapper _mapper;
@@ -37,6 +39,21 @@ namespace SchoolManagementSystem.Core.Features.Enrollments.Queries.Handlers
             var dtoList = _mapper.Map<List<EnrollmentDto>>(enrollments);
             return _responseHandler.Success(dtoList);
         }
+        public async Task<Response<List<EnrollmentDto>>> Handle(GetEnrollmentsByCourseIdQuery request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var enrollments = await _enrollmentService.GetEnrollmentsByCourseIdAsync(request.CourseID);
+                var dtoList = _mapper.Map<List<EnrollmentDto>>(enrollments);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<EnrollmentDto>>(ex.Message);
+            }
+
+        }
+
     }
 
 }

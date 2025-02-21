@@ -8,5 +8,6 @@ namespace SchoolManagementSystem.Infrastructure.Abstracts
         Task<List<Student>> GetStudentsInCourseAsync(int courseId);
         Task<List<Assignment>> GetAssignmentsForCourseAsync(int courseId);
         Task<List<Exam>> GetExamsForCourseAsync(int courseId);
+        Task<List<Course>> GetCoursesByDepartmentAsync(int departmentId);
     }
 }

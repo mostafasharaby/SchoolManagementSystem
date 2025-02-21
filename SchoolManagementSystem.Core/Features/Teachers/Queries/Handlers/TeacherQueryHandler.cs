@@ -10,10 +10,10 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Handlers
     internal class TeacherQueryHandler : IRequestHandler<GetTeacherByIdQuery, Response<TeacherDto>>,
                                          IRequestHandler<GetAllTeachersQuery, Response<List<TeacherDto>>>,
                                          IRequestHandler<GetTeachersByDepartmentQuery, Response<List<TeacherDto>>>,
-                                           IRequestHandler<GetCoursesByTeacherQuery, Response<List<CourseDto>>>,
-                                           IRequestHandler<GetClassroomsByTeacherQuery, Response<List<ClassroomDto>>>,
-                                           IRequestHandler<GetStudentsInClassroomQuery, Response<List<StudentDto>>>,
-                                           IRequestHandler<GetExamResultsByCourseQuery, Response<List<ExamResultDto>>>
+                                         IRequestHandler<GetCoursesByTeacherQuery, Response<List<CourseDto>>>,
+                                         IRequestHandler<GetClassroomsByTeacherQuery, Response<List<ClassroomDto>>>,
+                                         IRequestHandler<GetStudentsInClassroomQuery, Response<List<StudentDto>>>,
+                                         IRequestHandler<GetExamResultsByCourseQuery, Response<List<ExamResultDto>>>
     {
         private readonly ITeacherService _teacherService;
         private readonly IMapper _mapper;
@@ -45,37 +45,72 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Handlers
 
         public async Task<Response<List<TeacherDto>>> Handle(GetTeachersByDepartmentQuery request, CancellationToken cancellationToken)
         {
-            var teachers = await _teacherService.GetTeachersByDepartmentAsync(request.DepartmentID);
-            var dtoList = _mapper.Map<List<TeacherDto>>(teachers);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var teachers = await _teacherService.GetTeachersByDepartmentAsync(request.DepartmentID);
+                var dtoList = _mapper.Map<List<TeacherDto>>(teachers);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<TeacherDto>>(ex.Message);
+            }
         }
 
         public async Task<Response<List<CourseDto>>> Handle(GetCoursesByTeacherQuery request, CancellationToken cancellationToken)
         {
-            var courses = await _teacherService.GetCoursesByTeacherAsync(request.TeacherID);
-            var response = _mapper.Map<List<CourseDto>>(courses);
-            return _responseHandler.Success(response);
+            try
+            {
+                var courses = await _teacherService.GetCoursesByTeacherAsync(request.TeacherID);
+                var response = _mapper.Map<List<CourseDto>>(courses);
+                return _responseHandler.Success(response);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<CourseDto>>(ex.Message);
+            }
         }
 
         public async Task<Response<List<ClassroomDto>>> Handle(GetClassroomsByTeacherQuery request, CancellationToken cancellationToken)
         {
-            var classrooms = await _teacherService.GetClassroomsByTeacherAsync(request.TeacherID);
-            var response = _mapper.Map<List<ClassroomDto>>(classrooms);
-            return _responseHandler.Success(response);
+            try
+            {
+                var classrooms = await _teacherService.GetClassroomsByTeacherAsync(request.TeacherID);
+                var response = _mapper.Map<List<ClassroomDto>>(classrooms);
+                return _responseHandler.Success(response);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ClassroomDto>>(ex.Message);
+            }
         }
 
         public async Task<Response<List<StudentDto>>> Handle(GetStudentsInClassroomQuery request, CancellationToken cancellationToken)
         {
-            var students = await _teacherService.GetStudentsInClassroomAsync(request.TeacherID, request.ClassroomID);
-            var response = _mapper.Map<List<StudentDto>>(students);
-            return _responseHandler.Success(response);
+            try
+            {
+                var students = await _teacherService.GetStudentsInClassroomAsync(request.TeacherID, request.ClassroomID);
+                var response = _mapper.Map<List<StudentDto>>(students);
+                return _responseHandler.Success(response);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<StudentDto>>(ex.Message);
+            }
         }
 
         public async Task<Response<List<ExamResultDto>>> Handle(GetExamResultsByCourseQuery request, CancellationToken cancellationToken)
         {
-            var examResults = await _teacherService.GetExamResultsByCourseAsync(request.TeacherID, request.CourseID);
-            var response = _mapper.Map<List<ExamResultDto>>(examResults);
-            return _responseHandler.Success(response);
+            try
+            {
+                var examResults = await _teacherService.GetExamResultsByCourseAsync(request.TeacherID, request.CourseID);
+                var response = _mapper.Map<List<ExamResultDto>>(examResults);
+                return _responseHandler.Success(response);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ExamResultDto>>(ex.Message);
+            }
         }
 
     }

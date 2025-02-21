@@ -9,7 +9,8 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Handlers
 {
     internal class TeacherCommandHandler : IRequestHandler<AddTeacherCommand, Response<string>>,
                                             IRequestHandler<UpdateTeacherCommand, Response<string>>,
-                                            IRequestHandler<DeleteTeacherCommand, Response<string>>
+                                            IRequestHandler<DeleteTeacherCommand, Response<string>>,
+                                            IRequestHandler<AddAssignmentToCourseCommand, Response<string>>
     {
         private readonly ITeacherService _teacherService;
         private readonly IMapper _mapper;
@@ -34,9 +35,22 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Handlers
             {
                 return _responseHandler.NotFound<string>(ex.Message);
             }
+        }
+
+        public async Task<Response<string>> Handle(AddAssignmentToCourseCommand request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                await _teacherService.AddAssignmentToCourseAsync(request.TeacherId, request.CourseId, request.AssignmentName, request.DueDate);
+                return _responseHandler.Success("Assignment added to course successfully");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
             catch (Exception ex)
             {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
+                return _responseHandler.BadRequest<string>(ex.Message);
             }
         }
 
@@ -51,10 +65,6 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Handlers
             catch (KeyNotFoundException ex)
             {
                 return _responseHandler.NotFound<string>(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
             }
         }
 

@@ -7,15 +7,16 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class ParentService : IParentService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public ParentService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public ParentService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
+            _validationService = validationService;
         }
         public async Task AddParentAsync(Parent Parent)
         {
             await _unitOfWork.Parents.AddAsync(Parent);
-            await _unitOfWork.CompleteAsync(); // Saves changes to the database
+            await _unitOfWork.CompleteAsync();
         }
 
         public async Task<bool> DeleteParentsAsync(int ParentID)
@@ -29,7 +30,6 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-
         public async Task<List<Parent>> GetAllParentsAsync()
         {
             return await _unitOfWork.Parents.GetAllAsync();
@@ -37,12 +37,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Fee>> GetFeePaymentHistoryByParentAsync(int parentId)
         {
-            var parentExist = await _unitOfWork.Parents.GetByIdAsync(parentId);
-            if (parentExist == null)
-            {
-                throw new KeyNotFoundException("Parent not found.");
-            }
-
+            await _validationService.ValidateParentExistsAsync(parentId);
             return await _unitOfWork.Parents.GetFeePaymentHistoryByParentAsync(parentId);
         }
 
@@ -53,16 +48,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Student>> GetStudentsByParentAsync(int parentId)
         {
-            var parentExist = await _unitOfWork.Parents.GetByIdAsync(parentId);
-            if (parentExist == null)
-            {
-                throw new KeyNotFoundException("Parent not found.");
-            }
+            await _validationService.ValidateParentExistsAsync(parentId);
             return await _unitOfWork.Parents.GetStudentsByParentAsync(parentId);
         }
 
         public async Task UpdateParentsAsync(Parent Parent)
         {
+            await _validationService.ValidateParentExistsAsync(Parent.ParentID);
             await _unitOfWork.Parents.UpdateAsync(Parent);
             await _unitOfWork.CompleteAsync();
         }

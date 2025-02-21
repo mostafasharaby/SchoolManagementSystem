@@ -12,8 +12,6 @@
         public string? TeacherEmail { get; set; }
         public int DepartmentID { get; set; }
         public int TeacherTypeID { get; set; }
-
-
         public Department? Department { get; set; }
         public TeacherType? TeacherType { get; set; }
         //public ICollection<Course>? Courses { get; set; }

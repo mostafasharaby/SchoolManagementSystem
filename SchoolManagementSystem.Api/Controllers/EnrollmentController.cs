@@ -28,6 +28,12 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
+        [HttpGet("course/{courseId}")]
+        public async Task<IActionResult> GetEnrollmentsByCourseId(int courseId)
+        {
+            var result = await _mediator.Send(new GetEnrollmentsByCourseIdQuery { CourseID = courseId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
 
         [HttpPost("add")]
         public async Task<IActionResult> AddEnrollment([FromBody] AddEnrollmentCommand command)

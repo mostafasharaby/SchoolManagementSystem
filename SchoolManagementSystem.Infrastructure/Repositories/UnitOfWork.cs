@@ -20,7 +20,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         public IExamRepository Exams { get; }
         public IExamScoreRepository ExamScores { get; }
         public IExamTypeRepository ExamsTypes { get; }
-
+        public IGradeRepository Grades { get; }
         public IUserRolesClaimsRepository UserRolesClaims { get; }
         public ICourseRepository Courses { get; }
         public IExamResultRepository ExamResults { get; }
@@ -29,7 +29,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
                            IStudentRepository studentRepository, IBorrowedBookRepository borrowedBookRepository, ILibraryRepository libraryRepository,
                            IUserRolesClaimsRepository userRolesClaims, IFeeRepository feeRepository, IAttendanceRepository attendances, IEnrollmentRepository enrollment,
                            ICourseRepository courses, IDepartmentRepository departments, IAssignmentRepository assignments, IExamRepository exams, IExamResultRepository examResults,
-                           IExamScoreRepository examScores, IExamTypeRepository examsTypes)
+                           IExamScoreRepository examScores, IExamTypeRepository examsTypes, IGradeRepository grades)
 
         {
             _context = context;
@@ -50,6 +50,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             ExamResults = examResults;
             ExamScores = examScores;
             ExamsTypes = examsTypes;
+            Grades = grades;
         }
 
         public async Task<bool> ExecuteTransactionAsync(Func<Task> action)

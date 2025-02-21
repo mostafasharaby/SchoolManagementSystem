@@ -24,9 +24,17 @@ namespace SchoolManagementSystem.Core.Features.Enrollments.Commands.Handlers
 
         public async Task<Response<string>> Handle(AddEnrollmentCommand request, CancellationToken cancellationToken)
         {
-            var enrollment = _mapper.Map<Enrollment>(request);
-            await _enrollmentService.AddEnrollmentAsync(enrollment);
-            return _responseHandler.Created("Enrollment created successfully.");
+            try
+            {
+                var enrollment = _mapper.Map<Enrollment>(request);
+                await _enrollmentService.AddEnrollmentAsync(enrollment);
+                return _responseHandler.Created("Enrollment created successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+
+            }
         }
 
         public async Task<Response<string>> Handle(UpdateEnrollmentCommand request, CancellationToken cancellationToken)

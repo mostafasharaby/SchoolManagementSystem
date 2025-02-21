@@ -42,5 +42,9 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Course>> GetCoursesByDepartmentAsync(int departmentId)
+        {
+            return await _dbContext.Courses.Where(e => e.DepartmentID == departmentId).ToListAsync();
+        }
     }
 }

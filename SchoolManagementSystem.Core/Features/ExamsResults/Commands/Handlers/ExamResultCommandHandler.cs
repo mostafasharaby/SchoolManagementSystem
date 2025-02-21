@@ -35,10 +35,6 @@ namespace SchoolManagementSystem.Core.Features.ExamsResults.Commands.Handlers
             {
                 return _responseHandler.NotFound<string>(ex.Message);
             }
-            catch (Exception ex)
-            {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
-            }
         }
 
         public async Task<Response<string>> Handle(UpdateExamResultCommand request, CancellationToken cancellationToken)
@@ -52,10 +48,6 @@ namespace SchoolManagementSystem.Core.Features.ExamsResults.Commands.Handlers
             catch (KeyNotFoundException ex)
             {
                 return _responseHandler.NotFound<string>(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return _responseHandler.BadRequest<string>("An unexpected error occurred: " + ex.Message);
             }
         }
 

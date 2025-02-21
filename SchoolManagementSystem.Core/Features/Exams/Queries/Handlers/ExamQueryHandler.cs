@@ -40,10 +40,16 @@ namespace SchoolManagementSystem.Core.Features.Exams.Queries.Handlers
 
         public async Task<Response<List<ExamDto>>> Handle(GetExamsByCourseQuery request, CancellationToken cancellationToken)
         {
-            var exams = await _examService.GetExamsByCourseAsync(request.CourseID);
-            var dtoList = _mapper.Map<List<ExamDto>>(exams);
-            return _responseHandler.Success(dtoList);
+            try
+            {
+                var exams = await _examService.GetExamsByCourseAsync(request.CourseID);
+                var dtoList = _mapper.Map<List<ExamDto>>(exams);
+                return _responseHandler.Success(dtoList);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<List<ExamDto>>(ex.Message);
+            }
         }
-
     }
 }

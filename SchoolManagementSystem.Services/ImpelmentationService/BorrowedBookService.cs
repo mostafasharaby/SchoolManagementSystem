@@ -7,15 +7,18 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class BorrowedBookService : IBorrowedBookService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public BorrowedBookService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public BorrowedBookService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
-
+            _validationService = validationService;
         }
         public async Task AddBorrowedBookAsync(BorrowedBook borrowedBook)
         {
             var checkid = _unitOfWork.BorrowedBooks.GetByIdAsync(borrowedBook.BorrowID);
+            await _validationService.ValidateLibraryExistsAsync(borrowedBook.LibraryID);
+            await _validationService.ValidateStudentExistsAsync(borrowedBook.StudentID);
+
             await _unitOfWork.BorrowedBooks.AddAsync(borrowedBook);
             await _unitOfWork.CompleteAsync();
         }
@@ -43,51 +46,25 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(int studentId)
         {
+            await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.BorrowedBooks.GetBorrowedBooksByStudentIdAsync(studentId);
         }
 
-        //public async Task<bool> UpdateBorrowedBookAsync(BorrowedBook borrowedBook)
-        //{
-        //    var borrowedBookExists = await _unitOfWork.BorrowedBooks.GetByIdAsync(borrowedBook.BorrowID);
-        //    var studentExists = await _unitOfWork.Students.GetByIdAsync(borrowedBook.StudentID);
-        //    var libraryExists = await _unitOfWork.Library.GetByIdAsync(borrowedBook.LibraryID);
-
-        //    if (studentExists == null || libraryExists == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    await _unitOfWork.BorrowedBooks.UpdateAsync(borrowedBook);
-        //    await _unitOfWork.CompleteAsync();
-
-        //    return true;
-        //}
         public async Task<bool> UpdateBorrowedBookAsync(BorrowedBook borrowedBook)
         {
-            var borrowedBookExists = await _unitOfWork.BorrowedBooks.GetByIdAsync(borrowedBook.BorrowID);
-
-            if (borrowedBookExists == null)
-            {
-                throw new KeyNotFoundException("Borrowed Book not found.");
-            }
-
-            var studentExists = await _unitOfWork.Students.GetByIdAsync(borrowedBook.StudentID);
-            if (studentExists == null)
-            {
-                throw new KeyNotFoundException("Student not found.");
-            }
-
-            var libraryExists = await _unitOfWork.Library.GetByIdAsync(borrowedBook.LibraryID);
-            if (libraryExists == null)
-            {
-                throw new KeyNotFoundException("Library not found.");
-            }
+            await _validationService.ValidateBorrowedBookExistsAsync(borrowedBook.BorrowID);
+            await _validationService.ValidateLibraryExistsAsync(borrowedBook.LibraryID);
+            await _validationService.ValidateStudentExistsAsync(borrowedBook.StudentID);
 
             await _unitOfWork.BorrowedBooks.UpdateAsync(borrowedBook);
             await _unitOfWork.CompleteAsync();
 
             return true;
         }
+
+
+
+
 
 
     }

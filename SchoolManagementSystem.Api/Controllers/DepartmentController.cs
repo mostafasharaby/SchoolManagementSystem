@@ -27,6 +27,20 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
+        [HttpGet("{departmentId}/teachers")]
+        public async Task<IActionResult> GetTeachersByDepartment(int departmentId)
+        {
+            var result = await _mediator.Send(new GetTeachersByDepartmentQuery { DepartmentID = departmentId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{departmentId}/courses")]
+        public async Task<IActionResult> GetCoursesByDepartment(int departmentId)
+        {
+            var result = await _mediator.Send(new GetCoursesByDepartmentQuery { DepartmentID = departmentId });
+            return result.Succeeded ? Ok(result) : NotFound(result);
+        }
+
 
         [HttpPost("add")]
         public async Task<IActionResult> AddDepartment([FromBody] AddDepartmentCommand command)

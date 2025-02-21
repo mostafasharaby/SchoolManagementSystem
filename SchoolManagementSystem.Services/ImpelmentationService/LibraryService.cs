@@ -7,15 +7,16 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class LibraryService : ILibraryService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public LibraryService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public LibraryService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
+            _validationService = validationService;
         }
         public async Task AddLibraryAsync(Library Library)
         {
             await _unitOfWork.Library.AddAsync(Library);
-            await _unitOfWork.CompleteAsync(); // Saves changes to the database
+            await _unitOfWork.CompleteAsync();
         }
 
         public async Task<bool> DeleteLibraryAsync(int LibraryID)
@@ -41,6 +42,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task UpdateLibraryAsync(Library Library)
         {
+            await _validationService.ValidateLibraryExistsAsync(Library.LibraryID);
             await _unitOfWork.Library.UpdateAsync(Library);
             await _unitOfWork.CompleteAsync();
         }

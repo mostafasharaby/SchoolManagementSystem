@@ -25,9 +25,16 @@ namespace SchoolManagementSystem.Core.Features.Exams.Commands.Handlers
 
         public async Task<Response<string>> Handle(AddExamCommand request, CancellationToken cancellationToken)
         {
-            var exam = _mapper.Map<Exam>(request);
-            await _examService.AddExamAsync(exam);
-            return _responseHandler.Created("Exam created successfully.");
+            try
+            {
+                var exam = _mapper.Map<Exam>(request);
+                await _examService.AddExamAsync(exam);
+                return _responseHandler.Created("Exam created successfully.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return _responseHandler.NotFound<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> Handle(UpdateExamCommand request, CancellationToken cancellationToken)

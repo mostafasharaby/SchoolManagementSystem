@@ -7,15 +7,18 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     public class FeeService : IFeeService
     {
         private readonly IUnitOfWork _unitOfWork;
-
-        public FeeService(IUnitOfWork unitOfWork)
+        private readonly IValidationService _validationService;
+        public FeeService(IUnitOfWork unitOfWork, IValidationService validationService)
         {
             _unitOfWork = unitOfWork;
+            _validationService = validationService;
         }
         public async Task AddFeesAsync(Fee Fees)
         {
+            await _validationService.ValidateStudentExistsAsync(Fees.StudentID);
+
             await _unitOfWork.Fee.AddAsync(Fees);
-            await _unitOfWork.CompleteAsync(); // Saves changes to the database
+            await _unitOfWork.CompleteAsync();
         }
 
         public async Task<bool> DeletelFeesAsync(int FeesId)
@@ -41,17 +44,15 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<List<Fee>> GetOutstandingFeesAsync(int studentId)
         {
-            var studentExist = await _unitOfWork.Students.GetByIdAsync(studentId);
-            if (studentExist == null)
-            {
-                throw new KeyNotFoundException("Student not found.");
-            }
+            await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.Fee.GetOutstandingFeesAsync(studentId);
         }
 
 
         public async Task UpdatelFeesAsync(Fee Fee)
         {
+            await _validationService.ValidateStudentExistsAsync(Fee.StudentID);
+
             await _unitOfWork.Fee.UpdateAsync(Fee);
             await _unitOfWork.CompleteAsync();
         }
