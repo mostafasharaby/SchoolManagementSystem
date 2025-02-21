@@ -4,6 +4,6 @@
     {
         public string? ClassroomName { get; set; }
         public int? GradeID { get; set; }
-        public int? TeacherID { get; set; }
+        public string? TeacherID { get; set; }
     }
 }

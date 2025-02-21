@@ -4,7 +4,7 @@ using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Models
 {
-    public class GetStudentByIdQuery : IRequest<Response<StudentDto>>
+    public class GetStudentCoursesQuery : IRequest<Response<List<CourseDto>>>
     {
         public int StudentID { get; set; }
     }

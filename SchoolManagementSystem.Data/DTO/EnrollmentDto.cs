@@ -2,7 +2,7 @@
 {
     public class EnrollmentDto
     {
-        public int StudentID { get; set; }
+        public string? StudentID { get; set; }
         public int CourseID { get; set; }
         public DateTime EnrollmentDate { get; set; }
     }

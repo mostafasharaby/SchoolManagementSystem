@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SchoolManagementSystem.Data.Entities.Identity;
 using SchoolManagementSystem.Data.Responses;
+using SchoolManagementSystem.Infrastructure.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -10,15 +11,16 @@ using System.Text;
 
 namespace SchoolManagementSystem.Infrastructure.JwtServices
 {
-    public class JwtService : IJwtService
+    public class JwtService : IJwtService    // i will change it to https://chatgpt.com/share/67b7ef81-c3a0-8007-ad8b-56426187b8c4
     {
         private readonly IConfiguration _configuration;
         private readonly UserManager<AppUser> _userManager;
-
-        public JwtService(IConfiguration configuration, UserManager<AppUser> userManager)
+        private readonly SchoolContext _context;
+        public JwtService(IConfiguration configuration, UserManager<AppUser> userManager, SchoolContext context)
         {
             _configuration = configuration;
             _userManager = userManager;
+            _context = context;
         }
 
         public AuthResponse GenerateJwtToken(AppUser user)
@@ -156,6 +158,21 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
             user.RefreshTokenExpiryTime = refreshTokenExpiry;
             _userManager.UpdateAsync(user).Wait();
         }
+        //private async Task StoreRefreshToken(AppUser user, string refreshToken, DateTime refreshTokenExpiry, string ipAddress)
+        //{
+        //    var refreshTokenEntity = new RefreshToken
+        //    {
+        //        Token = refreshToken,
+        //        ExpiryTime = refreshTokenExpiry,
+        //        CreatedByIp = ipAddress,
+        //        AppUserId = user.Id
+        //    };
+
+        //    _context.RefreshTokens.Add(refreshTokenEntity); // Save to DB
+        //    await _context.SaveChangesAsync();
+        //}
+
+
         private void ValidateRefreshToken(AppUser user, string refreshToken)
         {
             if (user == null)
@@ -167,6 +184,18 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
             if (user.RefreshTokenExpiryTime <= DateTime.UtcNow)
                 throw new SecurityTokenException("Refresh token has expired");
         }
+        //private async Task<RefreshToken> ValidateRefreshToken(AppUser user, string refreshToken)
+        //{
+        //    var storedToken = await _context.RefreshTokens
+        //        .FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.AppUserId == user.Id);
+
+        //    if (storedToken == null || storedToken.IsUsed || storedToken.IsRevoked || storedToken.ExpiryTime <= DateTime.UtcNow)
+        //        throw new SecurityTokenException("Invalid or expired refresh token.");
+
+        //    return storedToken;
+        //}
+
+
 
 
         private ClaimsPrincipal GetClaimsPrincipalFromExpiredToken(string token, JwtSecurityTokenHandler tokenHandler, byte[] key)

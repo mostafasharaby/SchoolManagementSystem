@@ -16,5 +16,12 @@ namespace SchoolManagementSystem.Services.Abstracts
         IQueryable<Student> GetStudentAsyncQureryable();
         IQueryable<Student> GetStudentAsyncFilter(string search);
         IQueryable<Student> GetStudentAsyncOrderd(StudentOrderingEnum order);
+        // new        
+        Task EnrollStudentInCourseAsync(int studentId, int courseId);
+        Task<List<Course>> GetStudentCoursesAsync(int studentId);
+        Task<List<Attendance>> GetStudentAttendanceAsync(int studentId);
+        Task<List<ExamResult>> GetStudentExamResultsAsync(int studentId);
+        Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(int studentId);
+        Task<List<Fee>> GetStudentFeeHistoryAsync(int studentId);
     }
 }

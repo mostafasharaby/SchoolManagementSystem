@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SchoolManagementSystem.Core.Features.Files.Commands.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Commands.Models;
 using SchoolManagementSystem.Core.Features.Teachers.Queries.Models;
 namespace SchoolManagementSystem.Api.Controllers
@@ -81,6 +80,22 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(CreatedAtAction(nameof(AddTeacher), new { id = result.Data }, result)) : BadRequest(result);
         }
 
+        [HttpPost("add-assignment")]
+        public async Task<IActionResult> AddAssignmentToCourse([FromBody] AddAssignmentToCourseCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Succeeded ? Ok(CreatedAtAction(nameof(AddTeacher), new { id = result.Data }, result)) : BadRequest(result);
+        }
+
+
+        //[HttpPost("upload")]
+        //public async Task<IActionResult> UploadFile([FromForm] UploadFileCommand command)
+        //{
+        //    var result = await _mediator.Send(command);
+        //    return result.Succeeded ? Ok(result) : BadRequest(result);
+        //}
+
+
         [HttpPut("update")]
         public async Task<IActionResult> UpdateTeacher([FromBody] UpdateTeacherCommand command)
         {
@@ -95,12 +110,7 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-        [HttpPost("upload")]
-        public async Task<IActionResult> UploadFile([FromForm] UploadFileCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return result.Succeeded ? Ok(result) : BadRequest(result);
-        }
+
 
     }
 }

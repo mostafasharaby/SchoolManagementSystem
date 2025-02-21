@@ -11,6 +11,7 @@ namespace SchoolManagementSystem.Infrastructure.Data
         //public SchoolContext() { }
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
 
+        // public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -40,7 +41,7 @@ namespace SchoolManagementSystem.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BorrowedBook>()
-               .HasKey(b => b.BorrowID); // Explicitly setting BorrowID as Primary Key
+               .HasKey(b => b.BorrowID);
 
 
             base.OnModelCreating(modelBuilder);
@@ -51,9 +52,13 @@ namespace SchoolManagementSystem.Infrastructure.Data
                .HasNoKey();
 
 
+            modelBuilder.Entity<Student>().ToTable("Students"); // for TPT 
+            modelBuilder.Entity<Teacher>().ToTable("Teachers"); // for TPT 
+
             modelBuilder.Entity<TeacherCourse>()
                .HasKey(tc => new { tc.TeacherID, tc.CourseID });
             // modelBuilder.ApplyConfiguration(new StudentConfig());  the 4-way 
+
         }
         /// <summary>
         /// Only 4 Ways to Mapp Object Model to Storage Model

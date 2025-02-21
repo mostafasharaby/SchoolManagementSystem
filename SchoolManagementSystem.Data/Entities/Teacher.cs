@@ -1,8 +1,10 @@
-﻿namespace SchoolManagementSystem.Data.Entities
+﻿using SchoolManagementSystem.Data.Entities.Identity;
+
+namespace SchoolManagementSystem.Data.Entities
 {
-    public class Teacher
+    public class Teacher : AppUser
     {
-        public int TeacherID { get; set; }
+        //   public int TeacherID { get; set; }
         public string? TeacherFirstName { get; set; }
         public string? TeacherLastName { get; set; }
         public DateTime? TeacherDateOfBirth { get; set; }

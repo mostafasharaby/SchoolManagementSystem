@@ -6,62 +6,86 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
 {
     public class StudentRepository : GenericRepository<Student>, IStudentRepository
     {
-        private readonly SchoolContext _context;
 
         public StudentRepository(SchoolContext context) : base(context)
         {
-            _context = context;
         }
 
         public async Task<List<Student>> GetAllStudentsAsync()
         {
-            return await _context.Students.Include(st => st.Parent)
+            return await _dbContext.Students.Include(st => st.Parent)
                                           .Include(st => st.Classroom)
                                             .ThenInclude(t => t.Teacher)
                                           .ToListAsync();
         }
 
 
-        public async Task<Student> GetStudentByIdResponseAsync(int studentId)
+        public async Task<Student?> GetStudentByIdResponseAsync(string studentId)
         {
-            return await _context.Students
+            return await _dbContext.Students
                          .Include(st => st.Parent)
                          .Include(st => st.Classroom)
-                         .FirstOrDefaultAsync(st => st.StudentID == studentId);
+                         .FirstOrDefaultAsync(st => st.Id == studentId);
 
         }
 
-
-        public async Task<Student> GetStudentByIdAsync(int studentId)
+        public async Task EnrollStudentInCourseAsync(string studentId, int courseId)
         {
-            return await GetByIdAsync(studentId);
-        }
-        public async Task<Student> GetStudentByNameAsync(string name)
-        {
-            return await GetByNameAsync(name);
-        }
-        public async Task AddStudentAsync(Student student)
-        {
-            await AddAsync(student);
-        }
-
-
-        public async Task<Student> UpdateStudentAsync(Student student)
-        {
-            await UpdateAsync(student);
-            return student;
-        }
-
-        public async Task<bool> DeleteStudentAsync(int studentId)
-        {
-            var student = await GetByIdAsync(studentId);
-            if (student != null)
+            var courseEnrollment = new Enrollment
             {
-                await DeleteAsync(student);
-                return true;
-            }
-            return false;
+                StudentID = studentId,
+                CourseID = courseId,
+                EnrollmentDate = DateTime.UtcNow
+            };
+
+            _dbContext.Enrollments.Add(courseEnrollment);
+            await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<List<Course>> GetStudentCoursesAsync(string studentId)
+        {
+            var courses = await _dbContext.Enrollments
+                .Where(sc => sc.StudentID == studentId)
+                .Select(sc => sc.Course)
+                .ToListAsync();
+
+            return courses;
+        }
+
+        public async Task<List<Attendance>> GetStudentAttendanceAsync(string studentId)
+        {
+            var attendanceRecords = await _dbContext.Attendances
+                .Where(a => a.StudentID == studentId)
+                .ToListAsync();
+
+            return attendanceRecords;
+        }
+
+        public async Task<List<ExamResult>> GetStudentExamResultsAsync(string studentId)
+        {
+            var examResults = await _dbContext.ExamResults
+                .Where(er => er.StudentID == studentId)
+                .ToListAsync();
+
+            return examResults;
+        }
+
+        public async Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(string studentId)
+        {
+            var borrowedBooks = await _dbContext.BorrowedBooks
+                .Where(bb => bb.StudentID == studentId)
+                .ToListAsync();
+
+            return borrowedBooks;
+        }
+
+        public async Task<List<Fee>> GetStudentFeeHistoryAsync(string studentId)
+        {
+            var feePayments = await _dbContext.Fees
+                .Where(fp => fp.StudentID == studentId)
+                .ToListAsync();
+
+            return feePayments;
+        }
     }
 }

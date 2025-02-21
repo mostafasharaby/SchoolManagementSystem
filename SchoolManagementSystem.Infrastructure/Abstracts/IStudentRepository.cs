@@ -5,11 +5,13 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
     public interface IStudentRepository : IGenericRepository<Student>
     {
         Task<List<Student>> GetAllStudentsAsync();
-        Task<Student> GetStudentByIdResponseAsync(int studentId);
-        //IQueryable<Student> GetAllStudentsAsyncQueryable();
-        //Task<Student> GetStudentByIdAsync(int studentId);
-        //Task AddStudentAsync(Student student);
-        //Task<Student> UpdateStudentAsync(Student student);
-        //Task<bool> DeleteStudentAsync(int studentId);
+        Task<Student> GetStudentByIdResponseAsync(string studentId);
+        Task EnrollStudentInCourseAsync(string studentId, int courseId);
+        Task<List<Course>> GetStudentCoursesAsync(string studentId);
+        Task<List<Attendance>> GetStudentAttendanceAsync(string studentId);
+        Task<List<ExamResult>> GetStudentExamResultsAsync(string studentId);
+        Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(string studentId);
+        Task<List<Fee>> GetStudentFeeHistoryAsync(string studentId);
+
     }
 }

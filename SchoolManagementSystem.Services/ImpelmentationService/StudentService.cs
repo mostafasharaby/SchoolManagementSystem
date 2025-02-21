@@ -34,32 +34,36 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         }
 
 
-        public async Task<Student?> AddStudentAsync(Student student)
+        public async Task<Student> AddStudentAsync(Student student)
         {
-            var studentExists = _unitOfWork.Students.GetTableNoTracking()
-                .Any(i => i.StudentFirstNameAr == student.StudentFirstNameAr || i.StudentFirstNameEn == student.StudentFirstNameEn);
 
-            if (studentExists)
-            {
-                return null;
-            }
+            //var studentExists = _unitOfWork.Students.GetTableNoTracking()
+            //    .Any(i => i.StudentFirstNameAr == student.StudentFirstNameAr || i.StudentFirstNameEn == student.StudentFirstNameEn);
+
+            //if (studentExists)
+            //{
+            //    return null;
+            //}
+            await _validationService.ValidateParentExistsAsync(student.ParentID);
+            await _validationService.ValidateClassRoomExistsAsync(student.ClassroomID);
+
             return await _unitOfWork.Students.AddAsync(student);
         }
 
 
-        public async Task<Student?> AddStudentWithImageAsync(Student student, IFormFile file)
+        public async Task<Student> AddStudentWithImageAsync(Student student, IFormFile file)
         {
             var studentExists = _unitOfWork.Students.GetTableNoTracking()
                 .Any(i => i.StudentFirstNameAr == student.StudentFirstNameAr || i.StudentFirstNameEn == student.StudentFirstNameEn);
 
             if (studentExists)
             {
-                return null;
+                return null!;
             }
             student.Image = await _fileService.UploadFileAsync(file, "uploads");
             if (student.Image == null)
             {
-                return null;
+                return null!;
             }
             return await _unitOfWork.Students.AddAsync(student);
         }
@@ -113,5 +117,40 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             };
         }
 
+        public async Task EnrollStudentInCourseAsync(int studentId, int courseId)
+        {
+            await _validationService.ValidateStudentExistsAsync(studentId);
+            await _unitOfWork.Students.EnrollStudentInCourseAsync(studentId, courseId);
+        }
+
+        public async Task<List<Course>> GetStudentCoursesAsync(int studentId)
+        {
+            await _validationService.ValidateStudentExistsAsync(studentId);
+            return await _unitOfWork.Students.GetStudentCoursesAsync(studentId);
+        }
+
+        public async Task<List<Attendance>> GetStudentAttendanceAsync(int studentId)
+        {
+            await _validationService.ValidateStudentExistsAsync(studentId);
+            return await _unitOfWork.Students.GetStudentAttendanceAsync(studentId);
+        }
+
+        public async Task<List<ExamResult>> GetStudentExamResultsAsync(int studentId)
+        {
+            await _validationService.ValidateStudentExistsAsync(studentId);
+            return await _unitOfWork.Students.GetStudentExamResultsAsync(studentId);
+        }
+
+        public async Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(int studentId)
+        {
+            await _validationService.ValidateStudentExistsAsync(studentId);
+            return await _unitOfWork.Students.GetStudentBorrowedBooksAsync(studentId);
+        }
+
+        public async Task<List<Fee>> GetStudentFeeHistoryAsync(int studentId)
+        {
+            await _validationService.ValidateStudentExistsAsync(studentId);
+            return await _unitOfWork.Students.GetStudentFeeHistoryAsync(studentId);
+        }
     }
 }

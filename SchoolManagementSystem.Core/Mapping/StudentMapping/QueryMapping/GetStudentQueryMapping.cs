@@ -8,7 +8,9 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
     {
         public void getStudentDtoQueryMapping()
         {
-            CreateMap<Student, StudentDto>()
+            CreateMap<Student, StudentDto>();
+
+            CreateMap<Student, Student_Teacher_ClassRomm_Parent_Dto>()
             .ForMember(dest => dest.StudentFirstName, opt => opt.MapFrom(new LocalizedResolver<Student>(
                 s => s.StudentFirstNameAr,
                 s => s.StudentFirstNameEn)))

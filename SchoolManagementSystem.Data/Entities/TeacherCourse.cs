@@ -2,7 +2,7 @@
 {
     public class TeacherCourse
     {
-        public int TeacherID { get; set; }
+        public string TeacherID { get; set; }
         public Teacher? Teacher { get; set; }
 
         public int CourseID { get; set; }

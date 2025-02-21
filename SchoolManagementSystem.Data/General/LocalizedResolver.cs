@@ -2,6 +2,7 @@
 
 namespace SchoolManagementSystem.Data.General
 {
+
     public class LocalizedEntityGeneral
     {
         public string GetCultureLanguage(string ArabicText, string EnglishText)

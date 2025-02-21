@@ -14,19 +14,19 @@ namespace SchoolManagementSystem.Api.Controllers
         public ParentController(IMediator _mediator, ResponseHandler _responseHandler) : base(_mediator, _responseHandler) { }
 
 
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllParents(CancellationToken cancellationToken)
-        {
-            var result = await _mediator.Send(new GetAllParentsQuery(), cancellationToken);
-            return result.Succeeded ? Ok(result) : NotFound(result);
-        }
+        //[HttpGet("all")]
+        //public async Task<IActionResult> GetAllParents(CancellationToken cancellationToken)
+        //{
+        //    var result = await _mediator.Send(new GetAllParentsQuery(), cancellationToken);
+        //    return result.Succeeded ? Ok(result) : NotFound(result);
+        //}
 
-        [HttpGet("get/{id}")]
-        public async Task<IActionResult> GetParentById(int id, CancellationToken cancellationToken)
-        {
-            var result = await _mediator.Send(new GetParentByIdQuery(id), cancellationToken);
-            return result.Succeeded ? Ok(result) : NotFound(result);
-        }
+        //[HttpGet("get/{id}")]
+        //public async Task<IActionResult> GetParentById(int id, CancellationToken cancellationToken)
+        //{
+        //    var result = await _mediator.Send(new GetParentByIdQuery(id), cancellationToken);
+        //    return result.Succeeded ? Ok(result) : NotFound(result);
+        //}
 
         [HttpGet("{parentId}/students")]
         public async Task<IActionResult> GetStudentsByParent(int parentId)
@@ -50,19 +50,19 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(result) : BadRequest(result);
         }
 
-        [HttpPut("update")]
-        public async Task<IActionResult> UpdateParent([FromBody] UpdateParentCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return result.Succeeded ? Ok(result) : BadRequest(result);
-        }
+        //[HttpPut("update")]
+        //public async Task<IActionResult> UpdateParent([FromBody] UpdateParentCommand command)
+        //{
+        //    var result = await _mediator.Send(command);
+        //    return result.Succeeded ? Ok(result) : BadRequest(result);
+        //}
 
 
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteParent(int id)
-        {
-            var result = await _mediator.Send(new DeleteParentCommand { ParentID = id });
-            return result.Succeeded ? Ok(result) : BadRequest(result);
-        }
+        //[HttpDelete("delete/{id}")]
+        //public async Task<IActionResult> DeleteParent(int id)
+        //{
+        //    var result = await _mediator.Send(new DeleteParentCommand { ParentID = id });
+        //    return result.Succeeded ? Ok(result) : BadRequest(result);
+        //}
     }
 }

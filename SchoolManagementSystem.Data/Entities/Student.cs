@@ -1,24 +1,21 @@
-﻿using SchoolManagementSystem.Data.General;
+﻿using SchoolManagementSystem.Data.Entities.Identity;
 
 namespace SchoolManagementSystem.Data.Entities
 {
-    public class Student : LocalizedEntityGeneral
+    public class Student : AppUser
     {
-        public int StudentID { get; set; }
+        //   public int StudentID { get; set; }
         public string? StudentFirstNameAr { get; set; }
         public string? StudentFirstNameEn { get; set; }
-
         public string? StudentLastNameAr { get; set; }
         public string? StudentLastNameEn { get; set; }
         public DateTime? StudentDateOfBirth { get; set; }
         public string? StudentGender { get; set; }
         public string? StudentAddress { get; set; }
-        public string? StudentPhoneNumber { get; set; }
-        public string? StudentEmail { get; set; }
         public string? Image { get; set; }
 
-        public int? ParentID { get; set; }
-        public int? ClassroomID { get; set; }
+        public int ParentID { get; set; }
+        public int ClassroomID { get; set; }
 
         public Parent? Parent { get; set; }
         public Classroom? Classroom { get; set; }

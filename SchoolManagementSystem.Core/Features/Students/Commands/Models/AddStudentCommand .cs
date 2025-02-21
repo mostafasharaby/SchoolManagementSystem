@@ -1,15 +1,10 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Data.Entities;
+using SchoolManagementSystem.Core.Bases;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.Students.Commands.Models
 {
-    public class AddStudentCommand : IRequest<Student>
+    public class AddStudentCommand : StudentDto, IRequest<Response<string>>
     {
-        public Student Student { get; }
-        public AddStudentCommand(Student student)
-        {
-            Student = student;
-
-        }
     }
 }

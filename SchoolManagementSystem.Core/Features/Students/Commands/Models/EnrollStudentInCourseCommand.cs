@@ -3,10 +3,9 @@ using SchoolManagementSystem.Core.Bases;
 
 namespace SchoolManagementSystem.Core.Features.Students.Commands.Models
 {
-    public class DeleteStudentCommand : IRequest<Response<string>>
+    public class EnrollStudentInCourseCommand : IRequest<Response<string>>
     {
         public int StudentID { get; set; }
+        public int CourseID { get; set; }
     }
-
 }
-

@@ -2,7 +2,7 @@
 {
     public class StudentAttendanceDto
     {
-        public int StudentID { get; set; }
+        public string? StudentID { get; set; }
         public string? AttendanceStatus { get; set; }
     }
 }
