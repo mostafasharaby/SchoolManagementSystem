@@ -77,7 +77,7 @@ namespace SchoolManagementSystem.Core.Features.Claims.Commands.Handler
                 return _responseHandler.BadRequest<string>("Claim cannot be null");
 
 
-            var existingClaim = _claimService.ClaimTypeExistsAsync(user, request.Claim.Type);
+            var existingClaim = await _claimService.ClaimTypeExistsAsync(user, request.Claim.Type);
             if (existingClaim == null)
                 return _responseHandler.BadRequest<string>($"Claim type '{request.Claim.Type}' does not exist for this user.");
 

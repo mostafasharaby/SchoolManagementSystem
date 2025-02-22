@@ -140,7 +140,7 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-
+        [Authorize(Policy = "admin")]
         [HttpPut("update-user/{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateAppUserCommand command)
         {
@@ -186,11 +186,5 @@ namespace SchoolManagementSystem.Api.Controllers
             var result = await _mediator.Send(command);
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
-
-
-
-
-
-
     }
 }

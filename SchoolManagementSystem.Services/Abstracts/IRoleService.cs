@@ -14,7 +14,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> RemoveAllRolesAsync(AppUser user);
         Task<bool> AssignRoleAsync(AppUser user, string roleName);
 
-        Task<int> GetUserCountByRoleAsync(string roleName);
+        Task<int> GetUserCountByRoleAsync(string roleName);  // stored procedure
 
     }
 }

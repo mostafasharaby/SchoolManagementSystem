@@ -16,11 +16,8 @@ namespace SchoolManagementSystem.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
-
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-
             builder.Services.AddSingleton<SharedResource>();
             #region Swagger Registration
             builder.Services.AddSwaggerGen(c =>
@@ -64,8 +61,6 @@ namespace SchoolManagementSystem.Api
             builder.Services.AddCoreDependencyInjection();
             builder.Services.AddAuthenticationServices(builder.Configuration);
             #endregion
-
-
             #region Logger configuration 
             // Step 1: Configure Serilog
             Log.Logger = new LoggerConfiguration()
@@ -83,9 +78,6 @@ namespace SchoolManagementSystem.Api
             builder.Host.UseSerilog(); // Step 2: Use Serilog as the logging provider
 
             #endregion
-
-
-
 
 
             var app = builder.Build();
@@ -120,7 +112,6 @@ namespace SchoolManagementSystem.Api
 
             app.UseHttpsRedirection();
             app.UseMiddleware<ExceptionHandlingMiddleware>(); //  custom middleware for error handling
-
 
             app.UseSerilogRequestLogging(); // Logs HTTP requests automatically
 

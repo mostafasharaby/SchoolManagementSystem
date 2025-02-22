@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagementSystem.Api.Controllers.Basics;
 using SchoolManagementSystem.Core.Bases;
@@ -76,7 +77,7 @@ namespace SchoolManagementSystem.Api.Controllers
         //    return NewResult(_responseHandler.Success(student));
         //}
 
-
+        // [Authorize(Roles = "admin")]
         [HttpGet("all")]
         public async Task<IActionResult> GetAllStudents()
         {
@@ -87,6 +88,7 @@ namespace SchoolManagementSystem.Api.Controllers
             return Ok(result);
         }
 
+        [Authorize(Policy = "PermissionPolicy")]
         [HttpGet("get/{id}")]
         public async Task<IActionResult> GetStudentById(string id)
         {

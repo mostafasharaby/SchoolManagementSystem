@@ -32,7 +32,7 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
             var claims = GetClaimsForUser(user);
             var signingCredentials = GetSigningCredentials();
 
-            var accessTokenExpiry = DateTime.UtcNow.AddSeconds(30);
+            var accessTokenExpiry = DateTime.UtcNow.AddSeconds(20);
             var refreshTokenExpiry = DateTime.UtcNow.AddHours(12);
             var (accessToken, tokenExpirationTime) = CreateJwtToken(claims, signingCredentials, accessTokenExpiry);
             var refreshToken = GenerateRefreshToken();

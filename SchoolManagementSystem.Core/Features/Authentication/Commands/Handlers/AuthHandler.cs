@@ -88,7 +88,7 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
 
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
             var encodedToken = WebUtility.UrlEncode(resetToken);
-            var resetLink = $"http://localhost:4200/auth/reset-password?token={encodedToken}&email={request.Email}";
+            //var resetLink = $"http://localhost:4200/auth/reset-password?token={encodedToken}&email={request.Email}";
 
             var message = new Message(new[] { user.Email }, "Forgot Password Link", resetToken);
 
