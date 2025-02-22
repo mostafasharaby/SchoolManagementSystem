@@ -6,10 +6,10 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
     public interface ITeacherRepository : IGenericRepository<Teacher>
     {
         Task<List<Teacher>> GetTeachersByDepartmentAsync(int departmentId);
-        Task<List<Course>> GetCoursesByTeacherAsync(int teacherId);
-        Task<List<Classroom>> GetClassroomsByTeacherAsync(int teacherId);
-        Task<List<Student>> GetStudentsInClassroomAsync(int teacherId, int classroomId);
-        Task AddAssignmentToCourseAsync(int teacherId, int courseId, string assignmentName, DateTime dueDate);
-        Task<List<ExamResult>> GetExamResultsByCourseAsync(int teacherId, int courseId);
+        Task<List<Course>> GetCoursesByTeacherAsync(string teacherId);
+        Task<List<Classroom>> GetClassroomsByTeacherAsync(string teacherId);
+        Task<List<Student>> GetStudentsInClassroomAsync(string teacherId, int classroomId);
+        Task AddAssignmentToCourseAsync(string teacherId, int courseId, string assignmentName, DateTime dueDate);
+        Task<List<ExamResult>> GetExamResultsByCourseAsync(string teacherId, int courseId);
     }
 }

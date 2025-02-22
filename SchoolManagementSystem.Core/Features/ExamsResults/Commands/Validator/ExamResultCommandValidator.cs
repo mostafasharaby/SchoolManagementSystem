@@ -9,7 +9,7 @@ namespace SchoolManagementSystem.Core.Features.ExamsResults.Commands.Validator
         public ExamResultCommandValidator()
         {
             RuleFor(x => x.StudentID)
-                .GreaterThan(0).WithMessage("Student ID must be a valid positive number.");
+                .Empty().WithMessage("Student ID must be valid.");
 
             RuleFor(x => x.ExamID)
                 .GreaterThan(0).WithMessage("Exam ID must be a valid positive number.");

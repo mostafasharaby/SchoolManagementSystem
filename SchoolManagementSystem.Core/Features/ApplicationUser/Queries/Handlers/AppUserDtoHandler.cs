@@ -3,8 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Models;
-using SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Results;
 using SchoolManagementSystem.Core.Wrapper;
+using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Data.Entities.Identity;
 
 namespace SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Handlers

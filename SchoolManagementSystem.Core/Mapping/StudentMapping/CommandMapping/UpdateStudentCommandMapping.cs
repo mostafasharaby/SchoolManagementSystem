@@ -8,7 +8,7 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
         public void UpdateStudentProfile()
         {
             CreateMap<UpdateStudentCommandWithValidation, Student>()
-            .ForMember(dest => dest.StudentID, opt => opt.MapFrom(src => src.StudentID))
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.StudentID))
             .ForMember(dest => dest.StudentFirstNameEn, opt => opt.MapFrom(src => src.StudentFirstNameEn))
             .ForMember(dest => dest.StudentLastNameEn, opt => opt.MapFrom(src => src.StudentLastNameEn))
             .ForMember(dest => dest.StudentFirstNameAr, opt => opt.MapFrom(src => src.StudentFirstNameAr))

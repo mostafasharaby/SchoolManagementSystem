@@ -12,7 +12,7 @@
                 .GreaterThan(0).WithMessage("Exam ID must be valid.");
 
             RuleFor(x => x.StudentID)
-                .GreaterThan(0).WithMessage("Student ID must be valid.");
+                .Empty().WithMessage("Student ID must be valid.");
 
             RuleFor(x => x.Score)
                 .InclusiveBetween(0, 100).WithMessage("Score must be between 0 and 100.");

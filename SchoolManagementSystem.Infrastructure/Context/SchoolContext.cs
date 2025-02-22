@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Entities.Identity;
+using SchoolManagementSystem.Data.Entities.RefreshToken;
 using SchoolManagementSystem.Data.Views;
 
 namespace SchoolManagementSystem.Infrastructure.Data
@@ -11,7 +12,7 @@ namespace SchoolManagementSystem.Infrastructure.Data
         //public SchoolContext() { }
         public SchoolContext(DbContextOptions<SchoolContext> options) : base(options) { }
 
-        // public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }
@@ -50,6 +51,25 @@ namespace SchoolManagementSystem.Infrastructure.Data
                .Entity<UserRolesClaimsView>()
                .ToView("UserRolesClaimsView") // Explicitly map to the view
                .HasNoKey();
+
+            modelBuilder.Entity<TeacherCourse>()
+               .HasOne(tc => tc.Teacher)
+               .WithMany(t => t.TeacherCourses)
+               .HasForeignKey(tc => tc.TeacherID)
+               .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<TeacherCourse>()
+                .HasOne(tc => tc.Course)
+                .WithMany(c => c.TeacherCourses)
+                .HasForeignKey(tc => tc.CourseID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Student>()
+                .HasOne(s => s.Classroom)
+                .WithMany(c => c.Students)
+                .HasForeignKey(s => s.ClassroomID)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
 
             modelBuilder.Entity<Student>().ToTable("Students"); // for TPT 

@@ -9,11 +9,10 @@ namespace SchoolManagementSystem.Data.Entities.RefreshToken
         public DateTime ExpiryTime { get; set; }
         public bool IsRevoked { get; set; } = false;
         public bool IsUsed { get; set; } = false;
-        public string CreatedByIp { get; set; } = string.Empty;
         public string? ReplacedByToken { get; set; }
 
-        public string AppUserId { get; set; }
-        public AppUser AppUser { get; set; }
+        public string? AppUserId { get; set; }
+        public AppUser? AppUser { get; set; }
     }
 
 }

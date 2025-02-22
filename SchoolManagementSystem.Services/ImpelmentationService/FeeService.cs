@@ -42,7 +42,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Fee.GetByIdAsync(FeesId);
         }
 
-        public async Task<List<Fee>> GetOutstandingFeesAsync(int studentId)
+        public async Task<List<Fee>> GetOutstandingFeesAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.Fee.GetOutstandingFeesAsync(studentId);

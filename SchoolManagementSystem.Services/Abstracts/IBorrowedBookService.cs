@@ -9,7 +9,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> DeleteBorrowedBookAsync(int borrowedBookId);
         Task<BorrowedBook> GetBorrowedBookByIdAsync(int BorrowedBookId);
         Task<List<BorrowedBook>> GetAllBorrowedBooksAsync();
-        Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(int studentId);
+        Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(string studentId);
 
     }
 }

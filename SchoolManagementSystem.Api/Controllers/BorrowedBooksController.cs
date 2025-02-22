@@ -31,7 +31,7 @@ namespace SchoolManagementSystem.Api.Controllers
 
 
         [HttpGet("by-student/{studentId}")]
-        public async Task<IActionResult> GetBorrowedBooksByStudent(int studentId)
+        public async Task<IActionResult> GetBorrowedBooksByStudent(string studentId)
         {
             var query = new GetBorrowedBooksByStudentQuery { StudentID = studentId };
             var result = await _mediator.Send(query);

@@ -6,6 +6,6 @@ namespace SchoolManagementSystem.Core.Features.Students.Queries.Models
 {
     public class GetStudentBorrowedBooksQuery : IRequest<Response<List<BorrowedBookDto>>>
     {
-        public int StudentID { get; set; }
+        public string? StudentID { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
           .FirstOrDefaultAsync(b => b.BorrowID == id);
 
         }
-        public async Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(int studentId)
+        public async Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(string studentId)
         {
             return await _dbContext.BorrowedBooks
                 .Where(b => b.StudentID == studentId)

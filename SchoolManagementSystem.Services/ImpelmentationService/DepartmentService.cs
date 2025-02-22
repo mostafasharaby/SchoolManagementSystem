@@ -22,7 +22,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         public async Task<bool> UpdateDepartmentAsync(Department department)
         {
             await _validationService.ValidateDepartmentExistsAsync(department.DepartmentID);
-            await _validationService.ValidateTeacherExistsAsync(department.Teachers!.FirstOrDefault()!.TeacherID);
+            await _validationService.ValidateTeacherExistsAsync(department.Teachers!.FirstOrDefault()!.Id);
             await _validationService.ValidateCoursesExistsAsync(department.Courses!.FirstOrDefault()!.CourseID);
 
             await _unitOfWork.Departments.UpdateAsync(department);

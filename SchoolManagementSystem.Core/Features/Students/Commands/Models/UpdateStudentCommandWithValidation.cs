@@ -5,7 +5,7 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Models
 {
     public class UpdateStudentCommandWithValidation : IRequest<Student>
     {
-        public int StudentID { get; set; }
+        public string? StudentID { get; set; }
         public string? StudentFirstNameEn { get; set; }
         public string? StudentLastNameAr { get; set; }
         public string? StudentFirstNameAr { get; set; }

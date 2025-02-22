@@ -9,7 +9,7 @@ namespace SchoolManagementSystem.Core.Features.Enrollments.Commands.Validator
         public EnrollmentCommandValidator()
         {
             RuleFor(x => x.StudentID)
-                .GreaterThan(0).WithMessage("Student ID is required and must be a valid positive number.");
+                .Empty().WithMessage("Student ID is required ");
 
             RuleFor(x => x.CourseID)
                 .GreaterThan(0).WithMessage("Course ID is required and must be a valid positive number.");

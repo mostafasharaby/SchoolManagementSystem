@@ -2,12 +2,11 @@
 {
     public class ExamScore
     {
-        public int ExamScoreID { get; set; } // Primary Key (non-nullable)
-        public int ExamID { get; set; } // Foreign Key (nullable)
-        public string StudentID { get; set; } // Foreign Key (nullable)
+        public int ExamScoreID { get; set; }
+        public int ExamID { get; set; }
+        public string StudentID { get; set; }
         public decimal? Score { get; set; }
 
-        // Navigation Properties
         public Exam? Exam { get; set; }
         public Student? Student { get; set; }
     }

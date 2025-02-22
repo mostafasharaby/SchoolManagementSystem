@@ -10,7 +10,7 @@ namespace SchoolManagementSystem.Core.Features.Fees.Commands.Validators
         {
             RuleFor(x => x.StudentID)
                 .NotNull().WithMessage("Student ID is required.")
-                .GreaterThan(0).WithMessage("Student ID must be a valid positive number.");
+               .Empty().WithMessage("Student ID must be valid.");
 
             RuleFor(x => x.Amount)
                 .NotNull().WithMessage("Amount is required.")

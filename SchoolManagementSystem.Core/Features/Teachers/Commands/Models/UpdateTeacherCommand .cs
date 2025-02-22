@@ -6,6 +6,6 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Models
 {
     public class UpdateTeacherCommand : TeacherDto, IRequest<Response<string>>
     {
-        public int TeacherID { get; set; }
+        public string? TeacherID { get; set; }
     }
 }

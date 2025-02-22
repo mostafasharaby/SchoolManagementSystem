@@ -18,10 +18,9 @@
         public DateTime? StudentDateOfBirth { get; set; }
         public string? StudentGender { get; set; }
         public string? StudentAddress { get; set; }
-        public string? StudentPhoneNumber { get; set; }
-        public string? StudentEmail { get; set; }
+
         public string? Image { get; set; }
         public int ParentID { get; set; }
-        public int? ClassroomID { get; set; }
+        public int ClassroomID { get; set; }
     }
 }

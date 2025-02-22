@@ -8,6 +8,8 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         Task<List<T>> GetAllAsync();
         Task DeleteRangeAsync(ICollection<T> entities);
         Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdStringAsync(string id);
+
         public Task<bool> ExistsAsync<T>(Expression<Func<T, bool>> predicate) where T : class;
         Task<T> GetByNameAsync(string name);
         Task SaveChangesAsync();
@@ -22,6 +24,7 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         Task UpdateRangeAsync(ICollection<T> entities);
         Task DeleteAsync(T entity);
         Task<bool> DeleteByIdAsync(int id);
+        Task<bool> DeleteByIdStringAsync(string id);
         string Exsitance(string message);
 
     }

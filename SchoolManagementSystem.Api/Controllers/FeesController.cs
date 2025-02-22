@@ -22,7 +22,7 @@ namespace SchoolManagementSystem.Api.Controllers
         }
 
         [HttpGet("{studentId}/outstanding-fees")]
-        public async Task<IActionResult> GetOutstandingFees(int studentId)
+        public async Task<IActionResult> GetOutstandingFees(string studentId)
         {
             var result = await _mediator.Send(new GetOutstandingFeesQuery { StudentID = studentId });
             return result.Succeeded ? Ok(result) : NotFound(result);

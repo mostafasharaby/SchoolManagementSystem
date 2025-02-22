@@ -6,7 +6,7 @@ namespace SchoolManagementSystem.Infrastructure.Abstracts
     public interface IExamResultRepository : IGenericRepository<ExamResult>
     {
         Task<List<ExamResult>> GetExamResultsByExamAsync(int examID);
-        Task<List<ExamResult>> GetExamResultsByStudentAsync(int studentID);
+        Task<List<ExamResult>> GetExamResultsByStudentAsync(string studentID);
 
     }
 }

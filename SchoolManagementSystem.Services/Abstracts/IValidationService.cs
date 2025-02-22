@@ -2,14 +2,14 @@
 {
     public interface IValidationService
     {
-        Task ValidateStudentExistsAsync(int studentID);
+        Task ValidateStudentExistsAsync(string studentID);
         Task ValidateLibraryExistsAsync(int libraryID);
         Task ValidateAssignmentExistsAsync(int AssignmentID);
         Task ValidateCoursesExistsAsync(int CourseID);
         Task ValidateBorrowedBookExistsAsync(int borrowID);
         Task ValidateClassRoomExistsAsync(int ClassRoomId);
         Task ValidateDepartmentExistsAsync(int DepartmentID);
-        Task ValidateTeacherExistsAsync(int TeacherId);
+        Task ValidateTeacherExistsAsync(string TeacherId);
         Task ValidateExamsExistsAsync(int examID);
         Task ValidateExamsScoreExistsAsync(int ExamScoreID);
         Task ValidateExamTypeExistsAsync(int examTypeID);

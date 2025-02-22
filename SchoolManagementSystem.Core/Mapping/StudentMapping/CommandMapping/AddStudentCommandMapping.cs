@@ -9,6 +9,7 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
         public void AddStudentProfile()
         {
             CreateMap<StudentDto, Student>();
+            CreateMap<AddStudentCommand, Student>();
 
             CreateMap<AddStudentCommandWithResponse, Student>()
                 .ForMember(des => des.ClassroomID, op => op.MapFrom(src => src.ClassroomIDDD))

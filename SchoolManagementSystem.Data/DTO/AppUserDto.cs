@@ -1,4 +1,4 @@
-﻿namespace SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Results
+﻿namespace SchoolManagementSystem.Data.DTO
 {
     public class AppUserDto
     {

@@ -6,6 +6,6 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Queries.Models
 {
     public class GetTeacherByIdQuery : IRequest<Response<TeacherDto>>
     {
-        public int TeacherID { get; set; }
+        public string? TeacherID { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             return scores;
         }
 
-        public async Task<List<ExamScore>> GetExamScoresByStudentIdAsync(int studentId)
+        public async Task<List<ExamScore>> GetExamScoresByStudentIdAsync(string studentId)
         {
             var scores = await _dbContext.ExamScores.Where(s => s.StudentID == studentId).ToListAsync();
             return scores;

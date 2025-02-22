@@ -6,6 +6,6 @@ namespace SchoolManagementSystem.Infrastructure.Abstracts
     public interface IExamScoreRepository : IGenericRepository<ExamScore>
     {
         Task<List<ExamScore>> GetExamScoresByExamIdAsync(int examId);
-        Task<List<ExamScore>> GetExamScoresByStudentIdAsync(int studentId);
+        Task<List<ExamScore>> GetExamScoresByStudentIdAsync(string studentId);
     }
 }

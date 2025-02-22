@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SchoolManagementSystem.Data.Entities.Identity;
+using SchoolManagementSystem.Data.Entities.RefreshToken;
 using SchoolManagementSystem.Data.Responses;
 using SchoolManagementSystem.Infrastructure.Data;
 using System.IdentityModel.Tokens.Jwt;
@@ -23,20 +25,20 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
             _context = context;
         }
 
-        public AuthResponse GenerateJwtToken(AppUser user)
+        public async Task<AuthResponse> GenerateJwtToken(AppUser user)
         {
             ValidateUser(user);
 
             var claims = GetClaimsForUser(user);
             var signingCredentials = GetSigningCredentials();
 
-            var accessTokenExpiry = DateTime.UtcNow.AddHours(2);
+            var accessTokenExpiry = DateTime.UtcNow.AddSeconds(30);
             var refreshTokenExpiry = DateTime.UtcNow.AddHours(12);
             var (accessToken, tokenExpirationTime) = CreateJwtToken(claims, signingCredentials, accessTokenExpiry);
             var refreshToken = GenerateRefreshToken();
 
-            UpdateUserTokens(user, accessToken, tokenExpirationTime, refreshToken, refreshTokenExpiry);
-
+            await UpdateUserTokens(user, accessToken, tokenExpirationTime, refreshToken, refreshTokenExpiry);
+            await StoreRefreshToken(user, refreshToken, refreshTokenExpiry);
             return new AuthResponse
             {
                 Token = accessToken,
@@ -110,7 +112,7 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
             }
         }
 
-        public AuthResponse RefreshToken(string expiredToken, string refreshToken)
+        public async Task<AuthResponse> RefreshToken(string expiredToken, string refreshToken)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]);
@@ -124,14 +126,23 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
                 if (string.IsNullOrEmpty(userId))
                     throw new SecurityTokenException("Invalid token");
 
-                var user = _userManager.FindByIdAsync(userId).Result;
-                ValidateRefreshToken(user, refreshToken);
+
+                var user = await _userManager.FindByIdAsync(userId);
+                var storedToken = await ValidateRefreshToken(user, refreshToken);
+
+
+                storedToken.IsUsed = true;
+                storedToken.ReplacedByToken = GenerateRefreshToken();
+                await _context.SaveChangesAsync();
 
                 var refreshTokenExpiry = DateTime.UtcNow.AddMinutes(2);
                 var (newAccessToken, newAccessTokenExpiry) = CreateJwtToken(principal.Claims, GetSigningCredentials(), refreshTokenExpiry);
                 var newRefreshToken = GenerateRefreshToken();
 
-                UpdateUserTokens(user, newAccessToken, newAccessTokenExpiry, newRefreshToken, refreshTokenExpiry);
+
+                await UpdateUserTokens(user, newAccessToken, newAccessTokenExpiry, newRefreshToken, refreshTokenExpiry);
+                await StoreRefreshToken(user, newRefreshToken, DateTime.UtcNow.AddHours(12));
+                await RevokeRefreshTokenAsync(refreshToken); //Revoke the old refresh token
 
                 return new AuthResponse
                 {
@@ -150,52 +161,60 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
             }
         }
 
-        private void UpdateUserTokens(AppUser user, string accessToken, DateTime accessTokenExpiry, string refreshToken, DateTime refreshTokenExpiry)
+        private async Task UpdateUserTokens(AppUser user, string accessToken, DateTime accessTokenExpiry, string refreshToken, DateTime refreshTokenExpiry)
         {
             user.Token = accessToken;
             user.TokenExpiryTime = accessTokenExpiry;
             user.RefreshToken = refreshToken;
             user.RefreshTokenExpiryTime = refreshTokenExpiry;
-            _userManager.UpdateAsync(user).Wait();
+            await _userManager.UpdateAsync(user);
         }
-        //private async Task StoreRefreshToken(AppUser user, string refreshToken, DateTime refreshTokenExpiry, string ipAddress)
-        //{
-        //    var refreshTokenEntity = new RefreshToken
-        //    {
-        //        Token = refreshToken,
-        //        ExpiryTime = refreshTokenExpiry,
-        //        CreatedByIp = ipAddress,
-        //        AppUserId = user.Id
-        //    };
-
-        //    _context.RefreshTokens.Add(refreshTokenEntity); // Save to DB
-        //    await _context.SaveChangesAsync();
-        //}
-
-
-        private void ValidateRefreshToken(AppUser user, string refreshToken)
+        private async Task StoreRefreshToken(AppUser user, string refreshToken, DateTime refreshTokenExpiry)
         {
-            if (user == null)
-                throw new SecurityTokenException("User not found");
+            var refreshTokenEntity = new RefreshToken
+            {
+                Token = refreshToken,
+                ExpiryTime = refreshTokenExpiry,
+                AppUserId = user.Id
+            };
 
-            if (user.RefreshToken != refreshToken)
-                throw new SecurityTokenException("Invalid refresh token");
-
-            if (user.RefreshTokenExpiryTime <= DateTime.UtcNow)
-                throw new SecurityTokenException("Refresh token has expired");
+            _context.RefreshTokens.Add(refreshTokenEntity);
+            await _context.SaveChangesAsync();
         }
-        //private async Task<RefreshToken> ValidateRefreshToken(AppUser user, string refreshToken)
+
+        public async Task RevokeRefreshTokenAsync(string token)
+        {
+            var refreshToken = await _context.RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == token);
+            if (refreshToken != null)
+            {
+                refreshToken.IsRevoked = true;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+
+
+        //private void ValidateRefreshToken(AppUser user, string refreshToken)
         //{
-        //    var storedToken = await _context.RefreshTokens
-        //        .FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.AppUserId == user.Id);
+        //    if (user == null)
+        //        throw new SecurityTokenException("User not found");
 
-        //    if (storedToken == null || storedToken.IsUsed || storedToken.IsRevoked || storedToken.ExpiryTime <= DateTime.UtcNow)
-        //        throw new SecurityTokenException("Invalid or expired refresh token.");
+        //    if (user.RefreshToken != refreshToken)
+        //        throw new SecurityTokenException("Invalid refresh token");
 
-        //    return storedToken;
+        //    if (user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+        //        throw new SecurityTokenException("Refresh token has expired");
         //}
+        private async Task<RefreshToken> ValidateRefreshToken(AppUser user, string refreshToken)
+        {
+            var storedToken = await _context.RefreshTokens
+                .FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.AppUserId == user.Id);
 
+            if (storedToken == null || storedToken.IsUsed || storedToken.IsRevoked || storedToken.ExpiryTime <= DateTime.UtcNow)
+                throw new SecurityTokenException("Invalid or expired refresh token.");
 
+            return storedToken;
+        }
 
 
         private ClaimsPrincipal GetClaimsPrincipalFromExpiredToken(string token, JwtSecurityTokenHandler tokenHandler, byte[] key)

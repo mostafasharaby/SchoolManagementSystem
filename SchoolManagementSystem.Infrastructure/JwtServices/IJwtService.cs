@@ -5,7 +5,7 @@ namespace SchoolManagementSystem.Infrastructure.JwtServices
 {
     public interface IJwtService
     {
-        AuthResponse GenerateJwtToken(AppUser user);
-        AuthResponse RefreshToken(string expiredToken, string refreshToken);
+        Task<AuthResponse> GenerateJwtToken(AppUser user);
+        Task<AuthResponse> RefreshToken(string expiredToken, string refreshToken);
     }
 }

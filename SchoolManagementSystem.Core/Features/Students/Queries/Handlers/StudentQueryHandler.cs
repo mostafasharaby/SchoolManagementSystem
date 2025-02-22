@@ -4,15 +4,14 @@ using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
 using SchoolManagementSystem.Core.Wrapper;
 using SchoolManagementSystem.Data.DTO;
-using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
 {
 
     public class StudentQueryHandler : IRequestHandler<GetStudentByIdQuery, Response<StudentDto>>,
-                                        IRequestHandler<GetAllStudentsQuery, Response<List<StudentDto>>>,
-                                        IRequestHandler<GetStudentsPaginatedQuery, PaginatedResult<Student>>,
+                                        IRequestHandler<GetAllStudentsQuery, Response<List<Student_Teacher_ClassRomm_Parent_Dto>>>,
+                                        IRequestHandler<GetStudentsPaginatedQuery, PaginatedResult<StudentDto>>,
                                         IRequestHandler<GetStudentCoursesQuery, Response<List<CourseDto>>>,
                                         IRequestHandler<GetStudentAttendanceQuery, Response<List<AttendanceDto>>>,
                                         IRequestHandler<GetStudentExamResultsQuery, Response<List<ExamResultDto>>>,
@@ -40,25 +39,40 @@ namespace SchoolManagementSystem.Core.Features.Students.Queries.Handlers
             return _responseHandler.Success(dto);
         }
 
-        public async Task<Response<List<StudentDto>>> Handle(GetAllStudentsQuery request, CancellationToken cancellationToken)
+        public async Task<Response<List<Student_Teacher_ClassRomm_Parent_Dto>>> Handle(GetAllStudentsQuery request, CancellationToken cancellationToken)
         {
-            var students = await _studentService.GetStudentAsync();
-            var dtoList = _mapper.Map<List<StudentDto>>(students);
+            var students = await _studentService.GetStudentsAsync();
+            var dtoList = _mapper.Map<List<Student_Teacher_ClassRomm_Parent_Dto>>(students);
             return _responseHandler.Success(dtoList);
         }
 
-        public Task<PaginatedResult<Student>> Handle(GetStudentsPaginatedQuery request, CancellationToken cancellationToken)
+        public Task<PaginatedResult<StudentDto>> Handle(GetStudentsPaginatedQuery request, CancellationToken cancellationToken)
         {
-            var list = _studentService.GetStudentAsyncOrderd(request.OrderBy); // Now ordering is handled
-
+            var list = _studentService.GetStudentAsyncOrderd(request.OrderBy);
+            var listMapped = _mapper.ProjectTo<StudentDto>(list);
             if (!string.IsNullOrWhiteSpace(request.Search))
             {
-                list = _studentService.GetStudentAsyncFilter(request.Search);
+                var filterMapper = _studentService.GetStudentAsyncFilter(request.Search);
+                listMapped = _mapper.ProjectTo<StudentDto>(filterMapper);
+
             }
-
-            return list.ToPaginatedListAsync(request.PageNumber, request.PageSize);
-
+            return listMapped.ToPaginatedListAsync(request.PageNumber, request.PageSize);
         }
+
+        //public Task<PaginatedResult<StudentDto>> Handle(GetStudentsPaginatedQuery request, CancellationToken cancellationToken)
+        //{
+        //    var list = _studentService.GetStudentAsyncOrderd(request.OrderBy)
+        //        .ProjectTo<StudentDto>(_mapper.ConfigurationProvider); // Use AutoMapper Projection
+
+        //    if (!string.IsNullOrWhiteSpace(request.Search))
+        //    {
+        //        list = _studentService.GetStudentAsyncFilter(request.Search)
+        //            .ProjectTo<StudentDto>(_mapper.ConfigurationProvider); // Use Projection for filtered results
+        //    }
+
+        //    return list.ToPaginatedListAsync(request.PageNumber, request.PageSize);
+        //}
+
 
         public async Task<Response<List<CourseDto>>> Handle(GetStudentCoursesQuery request, CancellationToken cancellationToken)
         {

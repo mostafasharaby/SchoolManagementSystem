@@ -25,7 +25,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             .ToListAsync();
         }
 
-        public async Task<List<ExamResult>> GetExamResultsByStudentAsync(int studentID)
+        public async Task<List<ExamResult>> GetExamResultsByStudentAsync(string studentID)
         {
             return await _dbContext.ExamResults
            .Where(er => er.StudentID == studentID)

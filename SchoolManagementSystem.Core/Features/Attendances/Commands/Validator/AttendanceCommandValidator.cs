@@ -9,7 +9,7 @@ namespace SchoolManagementSystem.Core.Features.Attendances.Commands.Validator
         public AttendanceCommandValidator()
         {
             RuleFor(x => x.StudentID)
-                .GreaterThan(0).WithMessage("Student ID is required and must be a valid positive number.");
+                .NotEmpty().WithMessage("Student ID is required.");
 
             RuleFor(x => x.ClassroomID)
                 .GreaterThan(0).WithMessage("Classroom ID is required and must be a valid positive number.");

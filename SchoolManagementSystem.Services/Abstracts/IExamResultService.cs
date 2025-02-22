@@ -9,7 +9,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<bool> DeleteExamResultAsync(int examResultID);
         Task<ExamResult> GetExamResultByIdAsync(int examResultID);
         Task<List<ExamResult>> GetExamResultsByExamAsync(int examID);
-        Task<List<ExamResult>> GetExamResultsByStudentAsync(int studentID);
+        Task<List<ExamResult>> GetExamResultsByStudentAsync(string studentID);
         Task<List<ExamResult>> GetAllExamResultsAsync();
     }
 }

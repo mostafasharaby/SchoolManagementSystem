@@ -10,7 +10,8 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Validator
         {
             RuleFor(x => x.StudentID)
                 .NotNull().WithMessage("Student ID is required.")
-                .GreaterThan(0).WithMessage("Student ID must be a valid positive number.");
+                .Empty().WithMessage("Student ID is required ");
+
 
             RuleFor(x => x.LibraryID)
                 .NotNull().WithMessage("Library ID is required.")

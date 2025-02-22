@@ -1,4 +1,5 @@
 ﻿using SchoolManagementSystem.Core.Features.ApplicationUser.Commands.Models;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Data.Entities.Identity;
 
 namespace SchoolManagementSystem.Core.Mapping.AppUserMapping
@@ -7,9 +8,16 @@ namespace SchoolManagementSystem.Core.Mapping.AppUserMapping
     {
         public void AppUserRegisteration()
         {
-            CreateMap<RegisterCommand, AppUser>()
-           .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
-           .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+            CreateMap<RegisterAdminCommand, AppUser>();
+            CreateMap<RegisterTeacherCommand, Teacher>();
+            CreateMap<RegisterStudentCommand, Student>();
+
+            // CreateMap<RegisterCommand, Student>()
+            //.ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName))
+            //     ;
+            // //              .ForMember(i=>i.PhoneNumber,c=>c.MapFrom(i=>i.pa;
+            // CreateMap<RegisterCommand, Teacher>();
+
         }
     }
 }

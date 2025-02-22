@@ -35,7 +35,7 @@ namespace SchoolManagementSystem.Api.Controllers
         }
 
         [HttpGet("get/student-exams/{studentId}")]
-        public async Task<IActionResult> GetExamResultsByStudent(int studentId)
+        public async Task<IActionResult> GetExamResultsByStudent(string studentId)
         {
             var result = await _mediator.Send(new GetExamResultsByStudentQuery { StudentID = studentId });
             return result.Succeeded ? Ok(result) : NotFound(result);

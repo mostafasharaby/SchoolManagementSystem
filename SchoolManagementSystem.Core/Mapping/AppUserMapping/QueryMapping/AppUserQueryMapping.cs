@@ -1,4 +1,4 @@
-﻿using SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Results;
+﻿using SchoolManagementSystem.Data.DTO;
 using SchoolManagementSystem.Data.Entities.Identity;
 
 namespace SchoolManagementSystem.Core.Mapping.AppUserMapping

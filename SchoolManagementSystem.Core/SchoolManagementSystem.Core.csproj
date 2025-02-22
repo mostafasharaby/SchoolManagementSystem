@@ -38,4 +38,8 @@
     <Folder Include="Mapping\ParentMapping\QueryMapping\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Features\ApplicationUser\Commands\Models\RegisterAdminCommand.cs" />
+  </ItemGroup>
+
 </Project>

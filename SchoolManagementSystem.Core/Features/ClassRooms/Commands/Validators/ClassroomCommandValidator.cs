@@ -18,7 +18,8 @@ namespace SchoolManagementSystem.Core.Features.ClassRooms.Commands.Validators
 
             RuleFor(x => x.TeacherID)
                 .NotNull().WithMessage("Teacher ID is required.")
-                .GreaterThan(0).WithMessage("Teacher ID must be a valid positive number.");
+                .NotEmpty().WithMessage("Student ID is required.");
+
         }
     }
 

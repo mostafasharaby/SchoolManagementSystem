@@ -17,7 +17,7 @@ namespace SchoolManagementSystem.Core.Features.Courses.Commands.Validator
                 .When(x => !string.IsNullOrWhiteSpace(x.Description));
 
             RuleFor(x => x.TeacherID)
-                .GreaterThan(0).WithMessage("Teacher ID must be a valid positive number.");
+                .Empty().WithMessage("Student ID is required ");
 
             RuleFor(x => x.DepartmentID)
                 .GreaterThan(0).WithMessage("Department ID must be a valid positive number.");

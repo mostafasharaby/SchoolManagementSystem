@@ -1,5 +1,4 @@
 ﻿using AngularApi.Services;
-using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -27,24 +26,22 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
 
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly IMapper _mapper;
         private readonly ResponseHandler _responseHandler;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly IEmailService _emailService;
         private readonly IJwtService _jwtService;
         private readonly IGoogleService _googleService;
-        public AuthHandler(UserManager<AppUser> userManager, IMapper mapper, ResponseHandler responseHandler,
-                          IHttpContextAccessor httpContextAccessor, IEmailService emailService, IJwtService jwtService,
-                          IGoogleService googleService)
+        private readonly IEmailService _emailService;
+        public AuthHandler(UserManager<AppUser> userManager, ResponseHandler responseHandler,
+                          IHttpContextAccessor httpContextAccessor, IJwtService jwtService,
+                          IGoogleService googleService, IEmailService emailService)
 
         {
             _userManager = userManager;
-            _mapper = mapper;
             _responseHandler = responseHandler;
             _httpContextAccessor = httpContextAccessor;
-            _emailService = emailService;
             _jwtService = jwtService;
             _googleService = googleService;
+            _emailService = emailService;
         }
 
         public async Task<Response<AuthResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -53,16 +50,16 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
             var existingUser = await _userManager.FindByEmailAsync(request.Email);
             if (existingUser == null)
             {
-                return _responseHandler.BadRequest<AuthResponse>("Invalid email or password.");
+                return _responseHandler.BadRequest<AuthResponse>("Invalid email .");
             }
 
             var isPasswordValid = await _userManager.CheckPasswordAsync(existingUser, request.Password);
             if (!isPasswordValid)
             {
-                return _responseHandler.BadRequest<AuthResponse>("Invalid email or password.");
+                return _responseHandler.BadRequest<AuthResponse>("Invalid password.");
             }
 
-            var authResponse = _jwtService.GenerateJwtToken(existingUser);
+            var authResponse = await _jwtService.GenerateJwtToken(existingUser);
             return _responseHandler.Success(authResponse);
         }
 
@@ -91,22 +88,22 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
 
             var resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
             var encodedToken = WebUtility.UrlEncode(resetToken);
-            //var resetLink = $"http://localhost:4200/auth/reset-password?token={encodedToken}&email={request.Email}";
+            var resetLink = $"http://localhost:4200/auth/reset-password?token={encodedToken}&email={request.Email}";
 
-            //var message = new Message(new[] { user.Email }, "Forgot Password Link", resetLink);
+            var message = new Message(new[] { user.Email }, "Forgot Password Link", resetToken);
 
-            //try
-            //{
-            //    _emailService.SendEmail(message);
-            //    return _responseHandler.Success("Password reset link sent successfully.");
-            //}
-            //catch (Exception)
-            //{
-            //    return _responseHandler.BadRequest<string>("Failed to send email.");
-            //}
+            try
+            {
+                _emailService.SendEmail(message);
+                return _responseHandler.Success("Password reset link sent successfully.");
+            }
+            catch (Exception)
+            {
+                return _responseHandler.BadRequest<string>("Failed to send email.");
+            }
 
 
-            return _responseHandler.Success(resetToken);
+            //  return _responseHandler.Success(resetToken);
         }
 
         public async Task<Response<string>> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
@@ -158,7 +155,7 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
 
             try
             {
-                var authResponse = _jwtService.RefreshToken(request.AccessToken, request.RefreshToken);
+                var authResponse = await _jwtService.RefreshToken(request.AccessToken, request.RefreshToken);
 
                 return _responseHandler.Success(authResponse);
             }

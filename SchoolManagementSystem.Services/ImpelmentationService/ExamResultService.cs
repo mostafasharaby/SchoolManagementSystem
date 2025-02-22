@@ -48,7 +48,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.ExamResults.GetExamResultsByExamAsync(examID);
         }
 
-        public async Task<List<ExamResult>> GetExamResultsByStudentAsync(int studentID)
+        public async Task<List<ExamResult>> GetExamResultsByStudentAsync(string studentID)
         {
             await _validationService.ValidateStudentExistsAsync(studentID);
             return await _unitOfWork.ExamResults.GetExamResultsByStudentAsync(studentID);

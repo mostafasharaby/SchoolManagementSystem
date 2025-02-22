@@ -44,7 +44,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.BorrowedBooks.GetByIdAsync(BorrowedBookId);
         }
 
-        public async Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(int studentId)
+        public async Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.BorrowedBooks.GetBorrowedBooksByStudentIdAsync(studentId);

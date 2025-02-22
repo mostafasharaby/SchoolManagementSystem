@@ -2,12 +2,12 @@
 {
     public class Classroom
     {
-        public int ClassroomID { get; set; } // Primary Key (non-nullable)
+        public int ClassroomID { get; set; }
         public string? ClassroomName { get; set; }
-        public int GradeID { get; set; } // Foreign Key (nullable)
-        public string TeacherID { get; set; } // Foreign Key (nullable)
+        public int GradeID { get; set; }
+        public string? TeacherID { get; set; }
 
-        // Navigation Properties
+
         public Grade? Grade { get; set; }
         public Teacher? Teacher { get; set; }
         public ICollection<Student>? Students { get; set; }

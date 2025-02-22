@@ -13,7 +13,7 @@ namespace SchoolManagementSystem.Core.Features.Students.Commands.Validator
         public void ApplyValidation()
         {
             RuleFor(x => x.StudentID)
-                .GreaterThan(0).WithMessage("Student ID is required and must be greater than zero.");
+                .Empty().WithMessage("Student ID is required ");
 
             RuleFor(x => x.StudentFirstNameEn)
                 .NotEmpty().WithMessage("Student first name is required.")

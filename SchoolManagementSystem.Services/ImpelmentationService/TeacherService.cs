@@ -23,9 +23,9 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return true;
         }
 
-        public async Task<bool> DeleteTeacherAsync(int teacherID)
+        public async Task<bool> DeleteTeacherAsync(string teacherID)
         {
-            var deletedStudent = await _unitOfWork.Teachers.DeleteByIdAsync(teacherID);
+            var deletedStudent = await _unitOfWork.Teachers.DeleteByIdStringAsync(teacherID);
             if (deletedStudent)
             {
                 await _unitOfWork.CompleteAsync();
@@ -34,9 +34,9 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<Teacher> GetTeachersByIdAsync(int teacherID)
+        public async Task<Teacher> GetTeachersByIdAsync(string teacherID)
         {
-            return await _unitOfWork.Teachers.GetByIdAsync(teacherID);
+            return await _unitOfWork.Teachers.GetByIdStringAsync(teacherID);
         }
 
         public async Task<List<Teacher>> GetTeachersAsync()
@@ -58,31 +58,31 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return true;
         }
 
-        public async Task<List<Course>> GetCoursesByTeacherAsync(int teacherId)
+        public async Task<List<Course>> GetCoursesByTeacherAsync(string teacherId)
         {
             await _validationService.ValidateTeacherExistsAsync(teacherId);
             return await _unitOfWork.Teachers.GetCoursesByTeacherAsync(teacherId); ;
         }
 
-        public async Task<List<Classroom>> GetClassroomsByTeacherAsync(int teacherId)
+        public async Task<List<Classroom>> GetClassroomsByTeacherAsync(string teacherId)
         {
             await _validationService.ValidateTeacherExistsAsync(teacherId);
             return await _unitOfWork.Teachers.GetClassroomsByTeacherAsync(teacherId); ;
         }
 
-        public async Task AddAssignmentToCourseAsync(int teacherId, int courseId, string assignmentName, DateTime dueDate)
+        public async Task AddAssignmentToCourseAsync(string teacherId, int courseId, string assignmentName, DateTime dueDate)
         {
             await CheckForTeacherAndCourse(teacherId, courseId);
             await _unitOfWork.Teachers.AddAssignmentToCourseAsync(teacherId, courseId, assignmentName, dueDate);
         }
 
-        public async Task<List<ExamResult>> GetExamResultsByCourseAsync(int teacherId, int courseId)
+        public async Task<List<ExamResult>> GetExamResultsByCourseAsync(string teacherId, int courseId)
         {
             await CheckForTeacherAndCourse(teacherId, courseId);
             return await _unitOfWork.Teachers.GetExamResultsByCourseAsync(teacherId, courseId);
         }
 
-        public async Task<List<Student>> GetStudentsInClassroomAsync(int teacherId, int classroomId)
+        public async Task<List<Student>> GetStudentsInClassroomAsync(string teacherId, int classroomId)
         {
             await _validationService.ValidateTeacherExistsAsync(teacherId);
             await _validationService.ValidateClassRoomExistsAsync(classroomId);
@@ -90,7 +90,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Teachers.GetStudentsInClassroomAsync(teacherId, classroomId);
         }
 
-        public async Task CheckForTeacherAndCourse(int teacherId, int courseId)
+        public async Task CheckForTeacherAndCourse(string teacherId, int courseId)
         {
             await _validationService.ValidateTeacherExistsAsync(teacherId);
             await _validationService.ValidateCoursesExistsAsync(courseId);

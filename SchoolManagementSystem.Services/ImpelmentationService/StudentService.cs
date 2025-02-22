@@ -18,17 +18,17 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             _validationService = validationService;
         }
 
-        public async Task<List<Student>> GetStudentAsync()
+        public async Task<List<Student>> GetStudentsAsync()
         {
             return await _unitOfWork.Students.GetAllStudentsAsync(); // related to studentRepository not Generic one 
         }
 
-        public async Task<Student> GetStudentAsyncByID(int studentID)
+        public async Task<Student> GetStudentAsyncByID(string studentID)
         {
-            return await _unitOfWork.Students.GetByIdAsync(studentID);
+            return await _unitOfWork.Students.GetByIdStringAsync(studentID);
         }
 
-        public async Task<Student> GetStudentAsyncByIDResponse(int studentID)
+        public async Task<Student> GetStudentAsyncByIDResponse(string studentID)
         {
             return await _unitOfWork.Students.GetStudentByIdResponseAsync(studentID);
         }
@@ -68,9 +68,9 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Students.AddAsync(student);
         }
 
-        public async Task<bool> DeleteStudentAsync(int studentID)
+        public async Task<bool> DeleteStudentAsync(string studentID)
         {
-            var deletedStudent = await _unitOfWork.Students.DeleteByIdAsync(studentID);
+            var deletedStudent = await _unitOfWork.Students.DeleteByIdStringAsync(studentID);
             if (deletedStudent)
             {
                 await _unitOfWork.CompleteAsync();
@@ -81,7 +81,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
         public async Task<Student> UpdateStudentAsync(Student student)
         {
-            await _validationService.ValidateStudentExistsAsync(student.StudentID);
+            await _validationService.ValidateStudentExistsAsync(student.Id);
             return await _unitOfWork.Students.UpdateAsync(student);
         }
 
@@ -107,8 +107,8 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
 
             return order switch
             {
-                StudentOrderingEnum.up2down => students.OrderBy(s => s.StudentID),
-                StudentOrderingEnum.down2up => students.OrderByDescending(s => s.StudentID),
+                StudentOrderingEnum.up2down => students.OrderBy(s => s.Id),
+                StudentOrderingEnum.down2up => students.OrderByDescending(s => s.Id),
                 StudentOrderingEnum.NameUp2Down => students.OrderBy(s => s.StudentFirstNameAr)
                                                            .ThenBy(s => s.StudentFirstNameEn),
                 StudentOrderingEnum.NameDownUp => students.OrderByDescending(s => s.StudentFirstNameAr)
@@ -117,37 +117,37 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             };
         }
 
-        public async Task EnrollStudentInCourseAsync(int studentId, int courseId)
+        public async Task EnrollStudentInCourseAsync(string studentId, int courseId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             await _unitOfWork.Students.EnrollStudentInCourseAsync(studentId, courseId);
         }
 
-        public async Task<List<Course>> GetStudentCoursesAsync(int studentId)
+        public async Task<List<Course>> GetStudentCoursesAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.Students.GetStudentCoursesAsync(studentId);
         }
 
-        public async Task<List<Attendance>> GetStudentAttendanceAsync(int studentId)
+        public async Task<List<Attendance>> GetStudentAttendanceAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.Students.GetStudentAttendanceAsync(studentId);
         }
 
-        public async Task<List<ExamResult>> GetStudentExamResultsAsync(int studentId)
+        public async Task<List<ExamResult>> GetStudentExamResultsAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.Students.GetStudentExamResultsAsync(studentId);
         }
 
-        public async Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(int studentId)
+        public async Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.Students.GetStudentBorrowedBooksAsync(studentId);
         }
 
-        public async Task<List<Fee>> GetStudentFeeHistoryAsync(int studentId)
+        public async Task<List<Fee>> GetStudentFeeHistoryAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.Students.GetStudentFeeHistoryAsync(studentId);

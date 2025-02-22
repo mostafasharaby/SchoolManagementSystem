@@ -6,6 +6,6 @@ namespace SchoolManagementSystem.Core.Features.Students.Queries.Models
 {
     public class GetStudentExamResultsQuery : IRequest<Response<List<ExamResultDto>>>
     {
-        public int StudentID { get; set; }
+        public string? StudentID { get; set; }
     }
 }

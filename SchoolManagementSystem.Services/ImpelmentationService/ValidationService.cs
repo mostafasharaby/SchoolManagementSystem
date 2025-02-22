@@ -19,9 +19,20 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
                 throw new KeyNotFoundException($"{entityName} not found.");
             }
         }
+        private async Task ValidateEntityStringExistsAsync<T>(Func<string, Task<T>> getByIdFunc, string id, string entityName) // very clever idea :)
+        {
+            if (await getByIdFunc(id) == null)
+            {
+                throw new KeyNotFoundException($"{entityName} not found.");
+            }
+        }
 
-        public Task ValidateStudentExistsAsync(int studentID) =>
-            ValidateEntityExistsAsync(_unitOfWork.Students.GetByIdAsync, studentID, "Student");
+
+        public Task ValidateStudentExistsAsync(string studentID) =>
+            ValidateEntityStringExistsAsync(_unitOfWork.Students.GetByIdStringAsync, studentID, "Student");
+
+        public Task ValidateTeacherExistsAsync(string TeacherId) =>
+           ValidateEntityStringExistsAsync(_unitOfWork.Teachers.GetByIdStringAsync, TeacherId, "Teacher");
 
         public Task ValidateLibraryExistsAsync(int libraryID) =>
             ValidateEntityExistsAsync(_unitOfWork.Library.GetByIdAsync, libraryID, "Library");
@@ -41,8 +52,6 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         public Task ValidateDepartmentExistsAsync(int DepartmentID) =>
             ValidateEntityExistsAsync(_unitOfWork.Departments.GetByIdAsync, DepartmentID, "Department");
 
-        public Task ValidateTeacherExistsAsync(int TeacherId) =>
-            ValidateEntityExistsAsync(_unitOfWork.Teachers.GetByIdAsync, TeacherId, "Teacher");
 
         public Task ValidateExamsExistsAsync(int examID) =>
             ValidateEntityExistsAsync(_unitOfWork.Exams.GetByIdAsync, examID, "Exam");

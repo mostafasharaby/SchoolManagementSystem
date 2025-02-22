@@ -50,7 +50,7 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.ExamScores.GetExamScoresByExamIdAsync(examId);
         }
 
-        public async Task<List<ExamScore>> GetExamScoresByStudentIdAsync(int studentId)
+        public async Task<List<ExamScore>> GetExamScoresByStudentIdAsync(string studentId)
         {
             await _validationService.ValidateStudentExistsAsync(studentId);
             return await _unitOfWork.ExamScores.GetExamScoresByStudentIdAsync(studentId);

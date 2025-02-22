@@ -12,7 +12,7 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
         {
         }
 
-        public async Task<List<Course>> GetCoursesByTeacherAsync(int teacherId)
+        public async Task<List<Course>> GetCoursesByTeacherAsync(string teacherId)
         {
             return await _dbContext.TeacherCourses
                 .Where(tc => tc.TeacherID == teacherId)
@@ -20,14 +20,14 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
                 .ToListAsync();
         }
 
-        public async Task<List<Classroom>> GetClassroomsByTeacherAsync(int teacherId)
+        public async Task<List<Classroom>> GetClassroomsByTeacherAsync(string teacherId)
         {
             return await _dbContext.Classrooms
                 .Where(c => c.TeacherID == teacherId)
                 .ToListAsync();
         }
 
-        public async Task<List<Student>> GetStudentsInClassroomAsync(int teacherId, int classroomId)
+        public async Task<List<Student>> GetStudentsInClassroomAsync(string teacherId, int classroomId)
         {
             return await _dbContext.Classrooms
                 .Where(cs => cs.ClassroomID == classroomId && cs.TeacherID == teacherId)
@@ -35,7 +35,7 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
                 .ToListAsync();
         }
 
-        public async Task AddAssignmentToCourseAsync(int teacherId, int courseId, string assignmentName, DateTime dueDate)
+        public async Task AddAssignmentToCourseAsync(string teacherId, int courseId, string assignmentName, DateTime dueDate)
         {
             var course = await _dbContext.Courses
                     .Include(c => c.TeacherCourses)
@@ -57,7 +57,7 @@ namespace SchoolManagementSystem.Infrastructure.RepositoryImpelementation
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<ExamResult>> GetExamResultsByCourseAsync(int teacherId, int courseId)
+        public async Task<List<ExamResult>> GetExamResultsByCourseAsync(string teacherId, int courseId)
         {
             return await _dbContext.ExamResults
                 .Where(er => er.Exam.CourseID == courseId && er.Exam.Course.TeacherCourses.Any(i => i.TeacherID == teacherId))

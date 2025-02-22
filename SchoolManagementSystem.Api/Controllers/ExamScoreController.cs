@@ -17,7 +17,7 @@ namespace SchoolManagementSystem.Api.Controllers
         public async Task<IActionResult> GetAllExamScores()
         {
             var result = await _mediator.Send(new GetExamScoresQuery());
-            return result.Succeeded ? Ok(result) : BadRequest(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
 
@@ -25,21 +25,21 @@ namespace SchoolManagementSystem.Api.Controllers
         public async Task<IActionResult> GetExamScoreById(int id)
         {
             var result = await _mediator.Send(new GetExamScoreByIdQuery { ExamScoreID = id });
-            return result.Succeeded ? Ok(result) : BadRequest(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("exam/{examId}")]
         public async Task<IActionResult> GetExamScoresByExam(int examId)
         {
             var result = await _mediator.Send(new GetExamScoresByExamQuery { ExamID = examId });
-            return result.Succeeded ? Ok(result) : BadRequest(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("student/{studentId}")]
-        public async Task<IActionResult> GetExamScoresByStudent(int studentId)
+        public async Task<IActionResult> GetExamScoresByStudent(string studentId)
         {
             var result = await _mediator.Send(new GetExamScoresByStudentQuery { StudentID = studentId });
-            return result.Succeeded ? Ok(result) : BadRequest(result);
+            return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpPost("add")]

@@ -9,7 +9,7 @@ namespace SchoolManagementSystem.Core.Mapping.StudentMapping
         public void StudentByIdResponseMapping()
         {
             CreateMap<Student, StudentByIdResponse>()
-            .ForMember(dest => dest.StudentID, opt => opt.MapFrom(src => src.StudentID))
+            .ForMember(dest => dest.StudentID, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.StudentFirstName, opt => opt.MapFrom(new LocalizedResolver<Student>(
                 s => s.StudentFirstNameAr,
                 s => s.StudentFirstNameEn)))

@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Results;
 using SchoolManagementSystem.Core.Wrapper;
+using SchoolManagementSystem.Data.DTO;
 
 namespace SchoolManagementSystem.Core.Features.ApplicationUser.Queries.Models
 {

@@ -4,6 +4,7 @@ using SchoolManagementSystem.Api.Controllers.Basics;
 using SchoolManagementSystem.Core.Bases;
 using SchoolManagementSystem.Core.Features.Students.Commands.Models;
 using SchoolManagementSystem.Core.Features.Students.Queries.Models;
+using SchoolManagementSystem.Core.Filter;
 
 namespace SchoolManagementSystem.Api.Controllers
 {
@@ -76,8 +77,6 @@ namespace SchoolManagementSystem.Api.Controllers
         //}
 
 
-
-
         [HttpGet("all")]
         public async Task<IActionResult> GetAllStudents()
         {
@@ -89,7 +88,7 @@ namespace SchoolManagementSystem.Api.Controllers
         }
 
         [HttpGet("get/{id}")]
-        public async Task<IActionResult> GetStudentById(int id)
+        public async Task<IActionResult> GetStudentById(string id)
         {
             var result = await _mediator.Send(new GetStudentByIdQuery { StudentID = id });
             if (!result.Succeeded)
@@ -98,49 +97,57 @@ namespace SchoolManagementSystem.Api.Controllers
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
+        [ServiceFilter(typeof(AuthFilter))]
+        [HttpGet("ListWithPagination")]
+        public async Task<IActionResult> GetStudentsWithPagination([FromQuery] GetStudentsPaginatedQuery studentsPaginatedQuery)
+        {
+            var studentPagination = await _mediator.Send(studentsPaginatedQuery);
+            var response = _responseHandler.Success(studentPagination);
+            response.Meta = response.Data.Data.Count();
+            return NewResult(response);
+        }
+
         [HttpGet("{studentId}/courses")]
-        public async Task<IActionResult> GetStudentCourses(int studentId)
+        public async Task<IActionResult> GetStudentCourses(string studentId)
         {
             var result = await _mediator.Send(new GetStudentCoursesQuery { StudentID = studentId });
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("{studentId}/attendance")]
-        public async Task<IActionResult> GetStudentAttendance(int studentId)
+        public async Task<IActionResult> GetStudentAttendance(string studentId)
         {
             var result = await _mediator.Send(new GetStudentAttendanceQuery { StudentID = studentId });
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("{studentId}/exam-results")]
-        public async Task<IActionResult> GetStudentExamResults(int studentId)
+        public async Task<IActionResult> GetStudentExamResults(string studentId)
         {
             var result = await _mediator.Send(new GetStudentExamResultsQuery { StudentID = studentId });
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
         [HttpGet("{studentId}/fee-history")]
-        public async Task<IActionResult> GetStudentFeeHistory(int studentId)
+        public async Task<IActionResult> GetStudentFeeHistory(string studentId)
         {
             var result = await _mediator.Send(new GetStudentFeeHistoryQuery { StudentID = studentId });
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 
-
-        [HttpPost("add")]
-        public async Task<IActionResult> AddStudent([FromBody] AddStudentCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetStudentById), new { id = result }, new { Id = result });
-        }
+        //[HttpPost("register/student")]
+        //public async Task<IActionResult> AddStudent([FromBody] AddStudentCommand command)
+        //{
+        //    var result = await _mediator.Send(command);
+        //    return result.Succeeded ? Ok(result) : BadRequest(result);
+        //}
 
         [HttpPost("{studentId}/enroll")]
-        public async Task<IActionResult> EnrollStudentInCourse(int studentId, [FromBody] int courseId)
+        public async Task<IActionResult> EnrollStudentInCourse(string studentId, [FromBody] int courseId)
         {
             var result = await _mediator.Send(new EnrollStudentInCourseCommand { StudentID = studentId, CourseID = courseId });
             return result.Succeeded ? Ok(result) : BadRequest(result);
         }
-
 
         [HttpPut("update")]
         public async Task<IActionResult> UpdateStudent([FromBody] UpdateStudentCommand command)
@@ -150,7 +157,7 @@ namespace SchoolManagementSystem.Api.Controllers
         }
 
         [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> DeleteStudent(int id)
+        public async Task<IActionResult> DeleteStudent(string id)
         {
             var result = await _mediator.Send(new DeleteStudentCommand { StudentID = id });
             return result.Succeeded ? Ok(result) : NotFound(result);

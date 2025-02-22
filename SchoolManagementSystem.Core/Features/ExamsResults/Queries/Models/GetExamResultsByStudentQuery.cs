@@ -6,7 +6,7 @@ namespace SchoolManagementSystem.Core.Features.ExamsResults.Queries.Models
 {
     public class GetExamResultsByStudentQuery : IRequest<Response<List<ExamResultDto>>>
     {
-        public int StudentID { get; set; }
+        public string StudentID { get; set; }
     }
 
 }

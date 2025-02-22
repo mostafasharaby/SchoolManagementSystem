@@ -64,7 +64,7 @@ namespace SchoolManagementSystem.Core.Features.ClassRooms.Commands.Handlers
         public async Task<Response<string>> Handle(AddClassroomWithStudentsCommand request, CancellationToken cancellationToken)
         {
             var classroom = _mapper.Map<Classroom>(request);
-            var students = await _studentService.GetStudentAsync();
+            var students = await _studentService.GetStudentsAsync();
 
             var result = await _classRoomService.AddClassroomWithStudentsAsync(classroom, students);
 

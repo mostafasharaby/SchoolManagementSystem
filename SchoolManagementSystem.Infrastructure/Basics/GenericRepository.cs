@@ -19,6 +19,10 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }
+        public async Task<T> GetByIdStringAsync(string id)
+        {
+            return await _dbContext.Set<T>().FindAsync(id);
+        }
 
         public virtual async Task<T> GetByNameAsync(string name)
         {
@@ -69,6 +73,18 @@ namespace SchoolManagementSystem.Infrastructure.Basics
             return true;
         }
 
+        public async Task<bool> DeleteByIdStringAsync(string id)
+        {
+            var entity = await GetByIdStringAsync(id);
+            if (entity == null)
+            {
+                Log.Error($"{typeof(T).Name} with ID {id} not found.");
+                return false;
+            }
+
+            _dbContext.Set<T>().Remove(entity);
+            return true;
+        }
 
 
         public virtual async Task DeleteRangeAsync(ICollection<T> entities)
@@ -123,6 +139,8 @@ namespace SchoolManagementSystem.Infrastructure.Basics
         {
             return await _dbContext.Set<T>().AnyAsync(predicate);
         }
+
+
     }
 
 }

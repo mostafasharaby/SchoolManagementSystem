@@ -7,7 +7,7 @@ namespace SchoolManagementSystem.Services.Abstracts
         Task<List<ExamScore>> GetAllExamScoresAsync();
         Task<ExamScore?> GetExamScoreByIdAsync(int id);
         Task<List<ExamScore>> GetExamScoresByExamIdAsync(int examId);
-        Task<List<ExamScore>> GetExamScoresByStudentIdAsync(int studentId);
+        Task<List<ExamScore>> GetExamScoresByStudentIdAsync(string studentId);
         Task AddExamScoreAsync(ExamScore ExamScore);
         Task UpdateExamScoreAsync(ExamScore ExamScore);
         Task<bool> DeleteExamScoreAsync(int id);

@@ -7,7 +7,7 @@ using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Handlers
 {
-    internal class TeacherCommandHandler : IRequestHandler<AddTeacherCommand, Response<string>>,
+    internal class TeacherCommandHandler : //IRequestHandler<AddTeacherCommand, Response<string>>,
                                             IRequestHandler<UpdateTeacherCommand, Response<string>>,
                                             IRequestHandler<DeleteTeacherCommand, Response<string>>,
                                             IRequestHandler<AddAssignmentToCourseCommand, Response<string>>
@@ -23,19 +23,19 @@ namespace SchoolManagementSystem.Core.Features.Teachers.Commands.Handlers
             _teacherService = teacherService;
         }
 
-        public async Task<Response<string>> Handle(AddTeacherCommand request, CancellationToken cancellationToken)
-        {
-            try
-            {
-                var teacher = _mapper.Map<Teacher>(request);
-                await _teacherService.AddTeacherAsync(teacher);
-                return _responseHandler.Created("Teacher created successfully");
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return _responseHandler.NotFound<string>(ex.Message);
-            }
-        }
+        //public async Task<Response<string>> Handle(AddTeacherCommand request, CancellationToken cancellationToken)
+        //{
+        //    try
+        //    {
+        //        var teacher = _mapper.Map<Teacher>(request);
+        //        await _teacherService.AddTeacherAsync(teacher);
+        //        return _responseHandler.Created("Teacher created successfully");
+        //    }
+        //    catch (KeyNotFoundException ex)
+        //    {
+        //        return _responseHandler.NotFound<string>(ex.Message);
+        //    }
+        //}
 
         public async Task<Response<string>> Handle(AddAssignmentToCourseCommand request, CancellationToken cancellationToken)
         {
