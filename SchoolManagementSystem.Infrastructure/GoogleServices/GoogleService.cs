@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using SchoolManagementSystem.Data.Entities.Identity;
+using SchoolManagementSystem.Data.Responses;
 using SchoolManagementSystem.Infrastructure.JwtServices;
 using System.Security.Claims;
 
@@ -26,7 +27,7 @@ namespace SchoolManagementSystem.Infrastructure.GoogleServices
             return new AuthenticationProperties { RedirectUri = redirectUri };
         }
 
-        public async Task<string> GoogleLoginCallbackAsync()
+        public async Task<AuthResponse> GoogleLoginCallbackAsync()
         {
             // i used this as i configured  DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;  at program.cs without it it will give an exception 
             // AuthenticateAsync("SchemeName").  SchemeName  => CookieAuthenticationDefaults.AuthenticationScheme
@@ -56,7 +57,7 @@ namespace SchoolManagementSystem.Infrastructure.GoogleServices
                 await _userManager.AddLoginAsync(user, new UserLoginInfo("Google", externalUser.FindFirstValue(ClaimTypes.NameIdentifier)!, "Google"));
             }
             var authResponse = await _jwtService.GenerateJwtToken(user);
-            return authResponse.Token!;
+            return authResponse;
         }
     }
 }

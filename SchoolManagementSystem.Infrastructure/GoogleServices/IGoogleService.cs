@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using SchoolManagementSystem.Data.Responses;
 
 namespace SchoolManagementSystem.Infrastructure.GoogleServices
 {
     public interface IGoogleService
     {
         AuthenticationProperties GetGoogleLoginProperties(string redirectUri);
-        Task<string> GoogleLoginCallbackAsync();
+        Task<AuthResponse> GoogleLoginCallbackAsync();
     }
 }

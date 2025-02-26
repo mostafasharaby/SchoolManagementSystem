@@ -20,7 +20,7 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
                                  IRequestHandler<ForgotPasswordCommand, Response<string>>,
                                  IRequestHandler<ResetPasswordCommand, Response<string>>,
                                  IRequestHandler<GoogleLoginCommand, AuthenticationProperties>,
-                                 IRequestHandler<GoogleLoginCallbackCommand, string>,
+                                 IRequestHandler<GoogleLoginCallbackCommand, AuthResponse>,
                                  IRequestHandler<ConfirmEmailCommand, Response<AppUser>>,
                                  IRequestHandler<RefreshTokenCommand, Response<AuthResponse>>
 
@@ -127,7 +127,7 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
             //Task.FromResult -> return the result asynchronously. 
         }
 
-        public async Task<string> Handle(GoogleLoginCallbackCommand request, CancellationToken cancellationToken)
+        public async Task<AuthResponse> Handle(GoogleLoginCallbackCommand request, CancellationToken cancellationToken)
         {
             return await _googleService.GoogleLoginCallbackAsync();
         }
@@ -164,6 +164,7 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
                 return _responseHandler.BadRequest<AuthResponse>($"Token refresh failed: {ex.Message}");
             }
         }
+
 
     }
 }
