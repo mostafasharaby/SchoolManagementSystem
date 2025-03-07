@@ -6,7 +6,6 @@ The **School Management System** is a backend service built with **ASP.NET Core*
 
 ## 🚀 Features
 
-✅ **Full CRUD Operations** for Students, Teachers, Classes, and Borrowed Books  
 ✅ **Clean Architecture** (Domain, Application, Infrastructure, Presentation)  
 ✅ **CQRS with MediatR** for better separation of commands & queries  
 ✅ **Repository & Unit of Work Pattern** for efficient data handling  
@@ -16,6 +15,7 @@ The **School Management System** is a backend service built with **ASP.NET Core*
 ✅ **JWT Authentication & Role-based Authorization**  
 ✅ **Swagger UI** for API documentation  
 ✅ **Global Exception Handling & Logging**  
+✅ Generic Caching Service to handle multiple entities dynamically for optimized performance
 
 ---
 
