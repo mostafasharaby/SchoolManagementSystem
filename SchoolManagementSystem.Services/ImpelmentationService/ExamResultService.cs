@@ -8,10 +8,14 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public ExamResultService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+
+        public ExamResultService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddExamResultAsync(ExamResult examResult)
         {
@@ -32,15 +36,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<ExamResult>> GetAllExamResultsAsync()
-        {
-            return await _unitOfWork.ExamResults.GetAllAsync();
-        }
+        public async Task<List<ExamResult>> GetAllExamResultsAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("ExamResults", _unitOfWork.ExamResults.GetAllAsync, 30);
 
-        public async Task<ExamResult> GetExamResultByIdAsync(int examResultID)
-        {
-            return await _unitOfWork.ExamResults.GetByIdAsync(examResultID);
-        }
+        public async Task<ExamResult> GetExamResultByIdAsync(int examResultID) =>
+            await _unitOfWork.ExamResults.GetByIdAsync(examResultID);
 
         public async Task<List<ExamResult>> GetExamResultsByExamAsync(int examID)
         {

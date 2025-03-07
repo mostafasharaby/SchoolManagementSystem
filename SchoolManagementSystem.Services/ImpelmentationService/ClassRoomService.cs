@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public ClassRoomService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public ClassRoomService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
 
         public async Task AddclassRoomAsync(Classroom classroom)
@@ -44,15 +47,12 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<Classroom> GetClassroomByIdAsync(int classroomID)
-        {
-            return await _unitOfWork.Classrooms.GetByIdAsync(classroomID);
-        }
+        public async Task<Classroom> GetClassroomByIdAsync(int classroomID) =>
+            await _unitOfWork.Classrooms.GetByIdAsync(classroomID);
 
-        public async Task<List<Classroom>> GetAllClassroomsAsync()
-        {
-            return await _unitOfWork.Classrooms.GetAllAsync();
-        }
+        public async Task<List<Classroom>> GetAllClassroomsAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Classrooms", _unitOfWork.Classrooms.GetAllAsync, 30);
+
 
         public async Task<bool> AddClassroomWithStudentsAsync(Classroom classroom, List<Student> students)
         {

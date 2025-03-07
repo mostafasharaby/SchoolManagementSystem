@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public FeeService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public FeeService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddFeesAsync(Fee Fees)
         {
@@ -32,15 +35,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<Fee>> GetAllFeessAsync()
-        {
-            return await _unitOfWork.Fee.GetAllAsync();
-        }
+        public async Task<List<Fee>> GetAllFeessAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Fees", _unitOfWork.Fee.GetAllAsync, 30);
 
-        public async Task<Fee> GetFeesByIdAsync(int FeesId)
-        {
-            return await _unitOfWork.Fee.GetByIdAsync(FeesId);
-        }
+        public async Task<Fee> GetFeesByIdAsync(int FeesId) =>
+            await _unitOfWork.Fee.GetByIdAsync(FeesId);
 
         public async Task<List<Fee>> GetOutstandingFeesAsync(string studentId)
         {

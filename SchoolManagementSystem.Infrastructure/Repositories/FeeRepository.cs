@@ -12,12 +12,10 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
         }
 
-        public async Task<List<Fee>> GetOutstandingFeesAsync(string studentId)
-        {
-            return await _dbContext.Fees
+        public async Task<List<Fee>> GetOutstandingFeesAsync(string studentId) =>
+            await _dbContext.Fees
             .Where(f => f.StudentID == studentId)//  && !f.IsPaid) will be add soon
             .ToListAsync();
 
-        }
     }
 }

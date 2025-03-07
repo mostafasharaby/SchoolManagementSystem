@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public DepartmentService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public DepartmentService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddDepartmentAsync(Department department)
         {
@@ -42,15 +45,12 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<Department> GetDepartmentByIdAsync(int departmentId)
-        {
-            return await _unitOfWork.Departments.GetByIdAsync(departmentId);
-        }
+        public async Task<Department> GetDepartmentByIdAsync(int departmentId) =>
+            await _unitOfWork.Departments.GetByIdAsync(departmentId);
 
-        public async Task<List<Department>> GetAllDepartmentsAsync()
-        {
-            return await _unitOfWork.Departments.GetAllAsync();
-        }
+        public async Task<List<Department>> GetAllDepartmentsAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Departments", _unitOfWork.Departments.GetAllAsync, 30);
+
 
         public async Task<List<Teacher>> GetTeachersByDepartmentAsync(int departmentId)
         {

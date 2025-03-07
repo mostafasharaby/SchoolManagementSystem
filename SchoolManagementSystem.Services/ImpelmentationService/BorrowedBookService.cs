@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public BorrowedBookService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public BorrowedBookService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddBorrowedBookAsync(BorrowedBook borrowedBook)
         {
@@ -34,15 +37,12 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<BorrowedBook>> GetAllBorrowedBooksAsync()
-        {
-            return await _unitOfWork.BorrowedBooks.GetAllAsync();
-        }
+        public async Task<List<BorrowedBook>> GetAllBorrowedBooksAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Exams", _unitOfWork.BorrowedBooks.GetAllAsync, 30);
 
-        public async Task<BorrowedBook> GetBorrowedBookByIdAsync(int BorrowedBookId)
-        {
-            return await _unitOfWork.BorrowedBooks.GetByIdAsync(BorrowedBookId);
-        }
+        public async Task<BorrowedBook> GetBorrowedBookByIdAsync(int BorrowedBookId) =>
+            await _unitOfWork.BorrowedBooks.GetByIdAsync(BorrowedBookId);
+
 
         public async Task<List<BorrowedBook>> GetBorrowedBooksByStudentIdAsync(string studentId)
         {

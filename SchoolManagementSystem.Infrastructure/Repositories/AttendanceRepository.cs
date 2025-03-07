@@ -12,23 +12,15 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
         }
 
-        public async Task AddRangeAsync(List<Attendance> attendances)
-        {
+        public async Task AddRangeAsync(List<Attendance> attendances) =>
             await _dbContext.Attendances.AddRangeAsync(attendances);
-            //     await _dbContext.SaveChangesAsync();
-        }
 
-        public async Task<List<Attendance>> GetByClassroomAsync(int classroomId)
-        {
-            return await _dbContext.Attendances
-             .Where(a => a.ClassroomID == classroomId)
-             .ToListAsync();
-        }
+        public async Task<List<Attendance>> GetByClassroomAsync(int classroomId) =>
+            await _dbContext.Attendances
+                .Where(a => a.ClassroomID == classroomId)
+                .ToListAsync();
 
-        public async override Task<Attendance> GetByIdAsync(int id)
-        {
-            return await _dbContext.Attendances.AsNoTracking()
-          .FirstOrDefaultAsync(b => b.AttendanceID == id);
-        }
+        public async override Task<Attendance> GetByIdAsync(int id) =>
+            await _dbContext.Attendances.AsNoTracking().FirstOrDefaultAsync(b => b.AttendanceID == id);
     }
 }

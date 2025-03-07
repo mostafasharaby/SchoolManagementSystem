@@ -8,11 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
+        private readonly ICacheService _cacheService;
 
-        public ExamTypeService(IUnitOfWork unitOfWork, IValidationService validationService)
+        public ExamTypeService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
 
         public async Task AddExamTypeAsync(ExamType examType)
@@ -32,15 +34,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<ExamType>> GetAllExamTypesAsync()
-        {
-            return await _unitOfWork.ExamsTypes.GetAllAsync();
-        }
+        public async Task<List<ExamType>> GetAllExamTypesAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("ExamTypes", _unitOfWork.ExamsTypes.GetAllAsync, 30);
 
-        public async Task<ExamType> GetExamTypeByIdAsync(int examTypeID)
-        {
-            return await _unitOfWork.ExamsTypes.GetByIdAsync(examTypeID);
-        }
+        public async Task<ExamType> GetExamTypeByIdAsync(int examTypeID) =>
+            await _unitOfWork.ExamsTypes.GetByIdAsync(examTypeID);
 
         public async Task UpdateExamTypeAsync(ExamType examType)
         {

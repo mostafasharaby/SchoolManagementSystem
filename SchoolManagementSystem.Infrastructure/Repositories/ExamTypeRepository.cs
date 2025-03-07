@@ -12,11 +12,9 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
         }
 
-        public async override Task<ExamType> GetByIdAsync(int id)
-        {
-            return await _dbContext.ExamTypes.AsNoTracking()
-          .FirstOrDefaultAsync(b => b.ExamTypeID == id);
-        }
+        public async override Task<ExamType> GetByIdAsync(int id) =>
+            await _dbContext.ExamTypes.AsNoTracking()
+            .FirstOrDefaultAsync(b => b.ExamTypeID == id);
 
     }
 }

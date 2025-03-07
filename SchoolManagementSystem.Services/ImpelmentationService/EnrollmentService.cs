@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public EnrollmentService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public EnrollmentService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddEnrollmentAsync(Enrollment enrollment)
         {
@@ -33,15 +36,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<Enrollment>> GetAllEnrollmentsAsync()
-        {
-            return await _unitOfWork.Enrollments.GetAllAsync();
-        }
+        public async Task<List<Enrollment>> GetAllEnrollmentsAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Enrollments", _unitOfWork.Enrollments.GetAllAsync, 30);
 
-        public async Task<Enrollment?> GetEnrollmentByIdAsync(int enrollmentID)
-        {
-            return await _unitOfWork.Enrollments.GetByIdAsync(enrollmentID);
-        }
+
+        public async Task<Enrollment?> GetEnrollmentByIdAsync(int enrollmentID) =>
+            await _unitOfWork.Enrollments.GetByIdAsync(enrollmentID);
+
 
         public async Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(int courseId)
         {

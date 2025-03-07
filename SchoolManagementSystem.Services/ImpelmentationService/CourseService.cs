@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public CourseService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public CourseService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddCourseAsync(Course course)
         {
@@ -32,10 +35,9 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<Course>> GetAllCoursesAsync()
-        {
-            return await _unitOfWork.Courses.GetAllAsync();
-        }
+        public async Task<List<Course>> GetAllCoursesAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Courses", _unitOfWork.Courses.GetAllAsync, 30);
+
 
         public async Task<List<Assignment>> GetAssignmentsForCourseAsync(int courseId)
         {
@@ -49,10 +51,9 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Courses.GetByIdAsync(courseId);
         }
 
-        public async Task<List<Course>> GetCoursesByDepartmentAsync(int departmentId)
-        {
-            return await _unitOfWork.Courses.GetCoursesByDepartmentAsync(departmentId);
-        }
+        public async Task<List<Course>> GetCoursesByDepartmentAsync(int departmentId) =>
+            await _unitOfWork.Courses.GetCoursesByDepartmentAsync(departmentId);
+
 
         public async Task<List<Exam>> GetExamsForCourseAsync(int courseId)
         {

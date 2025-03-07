@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public ExamScoreService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public ExamScoreService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
 
         public async Task AddExamScoreAsync(ExamScore ExamScore)
@@ -34,15 +37,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<ExamScore>> GetAllExamScoresAsync()
-        {
-            return await _unitOfWork.ExamScores.GetAllAsync();
-        }
+        public async Task<List<ExamScore>> GetAllExamScoresAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("ExamScores", _unitOfWork.ExamScores.GetAllAsync, 30);
 
-        public async Task<ExamScore?> GetExamScoreByIdAsync(int id)
-        {
-            return await _unitOfWork.ExamScores.GetByIdAsync(id);
-        }
+        public async Task<ExamScore?> GetExamScoreByIdAsync(int id) =>
+            await _unitOfWork.ExamScores.GetByIdAsync(id);
 
         public async Task<List<ExamScore>> GetExamScoresByExamIdAsync(int examId)
         {

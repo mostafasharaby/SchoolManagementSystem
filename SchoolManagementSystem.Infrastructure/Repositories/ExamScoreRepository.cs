@@ -11,23 +11,19 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         public ExamScoreRepository(SchoolContext dbContext) : base(dbContext)
         {
         }
-        public async override Task<ExamScore> GetByIdAsync(int id)
-        {
-            return await _dbContext.ExamScores.AsNoTracking()
-          .FirstOrDefaultAsync(b => b.ExamScoreID == id);
-        }
-        public async Task<List<ExamScore>> GetExamScoresByExamIdAsync(int examId)
-        {
-            var scores = await _dbContext.ExamScores.Where(s => s.ExamID == examId).ToListAsync();
-            return scores;
-        }
+        public async override Task<ExamScore> GetByIdAsync(int id) =>
+            await _dbContext.ExamScores.AsNoTracking()
+            .FirstOrDefaultAsync(b => b.ExamScoreID == id);
 
-        public async Task<List<ExamScore>> GetExamScoresByStudentIdAsync(string studentId)
-        {
-            var scores = await _dbContext.ExamScores.Where(s => s.StudentID == studentId).ToListAsync();
-            return scores;
-        }
+        public async Task<List<ExamScore>> GetExamScoresByExamIdAsync(int examId) =>
+            await _dbContext.ExamScores
+            .Where(er => er.ExamID == examId)
+            .ToListAsync();
 
+        public async Task<List<ExamScore>> GetExamScoresByStudentIdAsync(string studentId) =>
+            await _dbContext.ExamScores
+            .Where(er => er.StudentID == studentId)
+            .ToListAsync();
 
     }
 }

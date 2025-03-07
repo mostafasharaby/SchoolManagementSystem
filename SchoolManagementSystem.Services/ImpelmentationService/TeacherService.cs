@@ -9,10 +9,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public TeacherService(IUnitOfWork unitOfWork, SchoolContext context, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public TeacherService(IUnitOfWork unitOfWork, SchoolContext context, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
 
         public async Task<bool> AddTeacherAsync(Teacher teacher)
@@ -34,15 +37,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<Teacher> GetTeachersByIdAsync(string teacherID)
-        {
-            return await _unitOfWork.Teachers.GetByIdStringAsync(teacherID);
-        }
+        public async Task<Teacher> GetTeachersByIdAsync(string teacherID) =>
+            await _unitOfWork.Teachers.GetByIdStringAsync(teacherID);
 
-        public async Task<List<Teacher>> GetTeachersAsync()
-        {
-            return await _unitOfWork.Teachers.GetAllAsync();
-        }
+        public async Task<List<Teacher>> GetTeachersAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Teachers", _unitOfWork.Teachers.GetAllAsync, 30);
 
         public async Task<List<Teacher>> GetTeachersByDepartmentAsync(int departmentId)
         {

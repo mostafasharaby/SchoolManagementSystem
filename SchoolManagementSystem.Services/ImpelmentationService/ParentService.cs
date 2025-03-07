@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public ParentService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public ParentService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddParentAsync(Parent Parent)
         {
@@ -30,20 +33,16 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<Parent>> GetAllParentsAsync()
-        {
-            return await _unitOfWork.Parents.GetAllAsync();
-        }
+        public async Task<List<Parent>> GetAllParentsAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Parents", _unitOfWork.Parents.GetAllAsync, 30);
+
+        public async Task<Parent> GetParentsByIdAsync(int ParentID) =>
+            await _unitOfWork.Parents.GetByIdAsync(ParentID);
 
         public async Task<List<Fee>> GetFeePaymentHistoryByParentAsync(int parentId)
         {
             await _validationService.ValidateParentExistsAsync(parentId);
             return await _unitOfWork.Parents.GetFeePaymentHistoryByParentAsync(parentId);
-        }
-
-        public async Task<Parent> GetParentsByIdAsync(int ParentID)
-        {
-            return await _unitOfWork.Parents.GetByIdAsync(ParentID);
         }
 
         public async Task<List<Student>> GetStudentsByParentAsync(int parentId)

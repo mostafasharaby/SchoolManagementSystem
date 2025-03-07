@@ -11,23 +11,17 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
         }
 
-        public async Task<List<Student>> GetAllStudentsAsync()
-        {
-            return await _dbContext.Students.Include(st => st.Parent)
-                                          .Include(st => st.Classroom)
-                                            .ThenInclude(t => t.Teacher)
-                                          .ToListAsync();
-        }
+        public async Task<List<Student>> GetAllStudentsAsync() =>
+            await _dbContext.Students.Include(st => st.Parent)
+                                      .Include(st => st.Classroom)
+                                        .ThenInclude(t => t.Teacher)
+                                      .ToListAsync();
 
-
-        public async Task<Student?> GetStudentByIdResponseAsync(string studentId)
-        {
-            return await _dbContext.Students
-                         .Include(st => st.Parent)
-                         .Include(st => st.Classroom)
-                         .FirstOrDefaultAsync(st => st.Id == studentId);
-
-        }
+        public async Task<Student?> GetStudentByIdResponseAsync(string studentId) =>
+            await _dbContext.Students
+                .Include(st => st.Parent)
+                .Include(st => st.Classroom)
+                .FirstOrDefaultAsync(st => st.Id == studentId);
 
         public async Task EnrollStudentInCourseAsync(string studentId, int courseId)
         {
@@ -42,50 +36,32 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<Course>> GetStudentCoursesAsync(string studentId)
-        {
-            var courses = await _dbContext.Enrollments
+        public async Task<List<Course>> GetStudentCoursesAsync(string studentId) =>
+            await _dbContext.Enrollments
                 .Where(sc => sc.StudentID == studentId)
                 .Select(sc => sc.Course)
                 .ToListAsync();
 
-            return courses;
-        }
-
-        public async Task<List<Attendance>> GetStudentAttendanceAsync(string studentId)
-        {
-            var attendanceRecords = await _dbContext.Attendances
+        public async Task<List<Attendance>> GetStudentAttendanceAsync(string studentId) =>
+            await _dbContext.Attendances
                 .Where(a => a.StudentID == studentId)
                 .ToListAsync();
 
-            return attendanceRecords;
-        }
-
-        public async Task<List<ExamResult>> GetStudentExamResultsAsync(string studentId)
-        {
-            var examResults = await _dbContext.ExamResults
+        public async Task<List<ExamResult>> GetStudentExamResultsAsync(string studentId) =>
+            await _dbContext.ExamResults
                 .Where(er => er.StudentID == studentId)
                 .ToListAsync();
 
-            return examResults;
-        }
-
-        public async Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(string studentId)
-        {
-            var borrowedBooks = await _dbContext.BorrowedBooks
+        public async Task<List<BorrowedBook>> GetStudentBorrowedBooksAsync(string studentId) =>
+            await _dbContext.BorrowedBooks
                 .Where(bb => bb.StudentID == studentId)
                 .ToListAsync();
 
-            return borrowedBooks;
-        }
 
-        public async Task<List<Fee>> GetStudentFeeHistoryAsync(string studentId)
-        {
-            var feePayments = await _dbContext.Fees
+        public async Task<List<Fee>> GetStudentFeeHistoryAsync(string studentId) =>
+            await _dbContext.Fees
                 .Where(fp => fp.StudentID == studentId)
                 .ToListAsync();
 
-            return feePayments;
-        }
     }
 }

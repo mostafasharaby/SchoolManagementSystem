@@ -10,29 +10,24 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         private readonly IFileService _fileService;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
+        private readonly ICacheService _cacheService;
 
-        public StudentService(IFileService fileService, IUnitOfWork unitOfWork, IValidationService validationService)
+        public StudentService(IFileService fileService, IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _fileService = fileService;
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
 
-        public async Task<List<Student>> GetStudentsAsync()
-        {
-            return await _unitOfWork.Students.GetAllStudentsAsync(); // related to studentRepository not Generic one 
-        }
+        public async Task<List<Student>> GetStudentsAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Students", _unitOfWork.Students.GetAllStudentsAsync, 30); // related to studentRepository not Generic one        
 
-        public async Task<Student> GetStudentAsyncByID(string studentID)
-        {
-            return await _unitOfWork.Students.GetByIdStringAsync(studentID);
-        }
+        public async Task<Student> GetStudentAsyncByID(string studentID) =>
+            await _unitOfWork.Students.GetByIdStringAsync(studentID);
 
-        public async Task<Student> GetStudentAsyncByIDResponse(string studentID)
-        {
-            return await _unitOfWork.Students.GetStudentByIdResponseAsync(studentID);
-        }
-
+        public async Task<Student> GetStudentAsyncByIDResponse(string studentID) =>
+            await _unitOfWork.Students.GetStudentByIdResponseAsync(studentID);
 
         public async Task<Student> AddStudentAsync(Student student)
         {
@@ -85,10 +80,8 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return await _unitOfWork.Students.UpdateAsync(student);
         }
 
-        public IQueryable<Student> GetStudentAsyncQureryable()
-        {
-            return _unitOfWork.Students.GetTableNoTracking().AsQueryable();
-        }
+        public IQueryable<Student> GetStudentAsyncQureryable() =>
+            _unitOfWork.Students.GetTableNoTracking().AsQueryable();
 
         public IQueryable<Student> GetStudentAsyncFilter(string search)
         {

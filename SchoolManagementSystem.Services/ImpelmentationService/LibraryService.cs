@@ -8,10 +8,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public LibraryService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public LibraryService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cacheService = cacheService;
         }
         public async Task AddLibraryAsync(Library Library)
         {
@@ -30,15 +33,11 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<Library>> GetAllLibrarysAsync()
-        {
-            return await _unitOfWork.Library.GetAllAsync();
-        }
+        public async Task<List<Library>> GetAllLibrarysAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Library", _unitOfWork.Library.GetAllAsync, 30);
 
-        public async Task<Library> GetLibraryByIdAsync(int LibraryID)
-        {
-            return await _unitOfWork.Library.GetByIdAsync(LibraryID);
-        }
+        public async Task<Library> GetLibraryByIdAsync(int LibraryID) =>
+            await _unitOfWork.Library.GetByIdAsync(LibraryID);
 
         public async Task UpdateLibraryAsync(Library Library)
         {

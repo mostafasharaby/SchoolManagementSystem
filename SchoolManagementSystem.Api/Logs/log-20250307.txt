@@ -1,0 +1,863 @@
+2025-03-07 22:36:49.523 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 22:36:49.570 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 22:36:49.576 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 22:36:50.178 +02:00 [INF] Executed DbCommand (114ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 22:36:50.264 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 22:36:50.274 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 22:36:50.458 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 22:36:50.634 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 22:36:50.722 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 22:36:50.726 +02:00 [INF] Hosting environment: Development
+2025-03-07 22:36:50.729 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 22:36:51.221 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger - null null
+2025-03-07 22:36:51.414 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger - 301 0 null 196.9226ms
+2025-03-07 22:36:51.423 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 22:36:51.496 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 71.8683ms
+2025-03-07 22:36:51.506 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/swagger-ui.css - null null
+2025-03-07 22:36:51.507 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/swagger-ui-standalone-preset.js - null null
+2025-03-07 22:36:51.507 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/swagger-ui-bundle.js - null null
+2025-03-07 22:36:51.507 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 22:36:51.538 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-03-07 22:36:51.538 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-03-07 22:36:51.540 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 32.8429ms
+2025-03-07 22:36:51.544 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/swagger-ui.css - 200 152034 text/css 37.8519ms
+2025-03-07 22:36:51.546 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 38.9131ms
+2025-03-07 22:36:51.557 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-03-07 22:36:51.572 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 22:36:51.575 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 68.141ms
+2025-03-07 22:36:51.625 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.2267ms
+2025-03-07 22:36:51.841 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 22:36:51.882 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/favicon-32x32.png - null null
+2025-03-07 22:36:51.892 +02:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-03-07 22:36:51.895 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/favicon-32x32.png - 200 628 image/png 12.7552ms
+2025-03-07 22:36:51.951 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 109.6734ms
+2025-03-07 22:37:26.868 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/Users - null null
+2025-03-07 22:37:26.880 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 22:37:28.069 +02:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (admin)
+2025-03-07 22:37:28.075 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-03-07 22:37:28.081 +02:00 [INF] HTTP GET /api/Account/Users responded 401 in 1187.5313 ms
+2025-03-07 22:37:28.086 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/Users - 401 0 null 1218.4247ms
+2025-03-07 22:39:12.404 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 22:39:12.431 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 22:39:12.460 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 22:39:12.915 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 22:39:13.015 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 22:39:13.038 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 569.034ms
+2025-03-07 22:39:13.045 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 22:39:13.049 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 632.2291 ms
+2025-03-07 22:39:13.053 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 649.009ms
+2025-03-07 23:01:28.722 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:01:28.761 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:01:28.766 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:01:29.139 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:01:29.200 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:01:29.211 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:01:29.342 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:01:29.421 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:01:29.486 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:01:29.491 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:01:29.495 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:01:29.833 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:01:29.976 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 143.739ms
+2025-03-07 23:01:29.987 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:01:29.988 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:01:30.013 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 24.871ms
+2025-03-07 23:01:30.036 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.0621ms
+2025-03-07 23:01:30.227 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:01:30.291 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 64.375ms
+2025-03-07 23:01:49.193 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:01:49.205 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:01:49.253 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:01:49.270 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:01:49.420 +02:00 [INF] exams results not in cache
+2025-03-07 23:01:49.544 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:01:49.646 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:01:49.673 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 375.0457ms
+2025-03-07 23:01:49.692 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:01:49.708 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 477.7900 ms
+2025-03-07 23:01:49.721 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 528.3393ms
+2025-03-07 23:02:09.077 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:02:12.654 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:02:12.657 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:02:12.667 +02:00 [INF] exams results in cache
+2025-03-07 23:02:12.672 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:02:12.680 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 17.0277ms
+2025-03-07 23:02:12.685 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:02:12.687 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 34.7078 ms
+2025-03-07 23:02:12.695 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 3618.3001ms
+2025-03-07 23:02:20.230 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:02:24.346 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:02:24.350 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:02:24.366 +02:00 [INF] exams results not in cache
+2025-03-07 23:02:24.388 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:02:24.396 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:02:24.404 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 51.6946ms
+2025-03-07 23:02:24.432 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:02:24.446 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 102.6719 ms
+2025-03-07 23:02:24.471 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 4240.3417ms
+2025-03-07 23:02:32.003 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:02:35.314 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:02:35.316 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:02:35.319 +02:00 [INF] exams results in cache
+2025-03-07 23:02:35.321 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:02:35.361 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 41.8723ms
+2025-03-07 23:02:35.365 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:02:35.367 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 52.6951 ms
+2025-03-07 23:02:35.370 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 3366.66ms
+2025-03-07 23:03:15.619 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:03:15.682 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:03:15.686 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:03:16.260 +02:00 [INF] Executed DbCommand (39ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:03:16.340 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:03:16.358 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:03:16.521 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:03:16.732 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:03:16.802 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:03:16.813 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:03:16.816 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:03:17.480 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:03:17.882 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 416.5044ms
+2025-03-07 23:03:17.935 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:03:17.935 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:03:17.950 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 14.9358ms
+2025-03-07 23:03:17.988 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 53.176ms
+2025-03-07 23:03:18.243 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:03:18.381 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 137.2151ms
+2025-03-07 23:03:28.665 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:03:28.684 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:03:28.808 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:03:28.831 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:04:18.920 +02:00 [INF] exams results not in cache
+2025-03-07 23:04:27.699 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:05:19.027 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:05:21.584 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 112743.6158ms
+2025-03-07 23:05:21.590 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:05:21.596 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 112899.5359 ms
+2025-03-07 23:05:21.608 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 112942.9477ms
+2025-03-07 23:05:35.992 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:05:36.033 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:05:36.038 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:05:36.601 +02:00 [INF] Executed DbCommand (47ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:05:36.726 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:05:36.738 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:05:37.019 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:05:37.269 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:05:37.368 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:05:37.371 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:05:37.373 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:05:37.560 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:05:37.895 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 349.5761ms
+2025-03-07 23:05:37.939 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:05:37.939 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:05:37.948 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 9.1133ms
+2025-03-07 23:05:37.995 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 56.9212ms
+2025-03-07 23:05:38.048 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:05:38.131 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 83.0588ms
+2025-03-07 23:05:49.118 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:05:49.139 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:05:49.256 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:05:49.290 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:05:59.393 +02:00 [INF] exams results not in cache
+2025-03-07 23:05:59.735 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:06:01.218 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:06:01.250 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 11946.2971ms
+2025-03-07 23:06:01.258 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:06:01.262 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 12113.8388 ms
+2025-03-07 23:06:01.277 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 12159.852ms
+2025-03-07 23:06:09.510 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:06:09.535 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:06:09.538 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:06:12.590 +02:00 [INF] exams results in cache
+2025-03-07 23:06:18.740 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:06:18.751 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 9206.8233ms
+2025-03-07 23:06:18.755 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:06:18.757 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 9224.7363 ms
+2025-03-07 23:06:18.761 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 9250.6743ms
+2025-03-07 23:06:31.605 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:06:31.619 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:06:31.625 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:06:37.802 +02:00 [INF] exams results not in cache
+2025-03-07 23:06:37.826 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:06:37.840 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:06:37.886 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 6256.4111ms
+2025-03-07 23:06:37.923 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:06:37.956 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 6341.3742 ms
+2025-03-07 23:06:37.986 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 6380.7729ms
+2025-03-07 23:06:40.422 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:06:40.428 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:06:40.435 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:06:42.249 +02:00 [INF] exams results in cache
+2025-03-07 23:06:42.254 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:06:42.302 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 1802.3375ms
+2025-03-07 23:06:42.312 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:06:42.326 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 1897.8209 ms
+2025-03-07 23:06:42.369 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 1946.8898ms
+2025-03-07 23:12:18.750 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:12:20.079 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:12:20.084 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:12:20.499 +02:00 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:12:20.569 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:12:20.576 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:12:20.672 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:12:20.741 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:12:20.793 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:12:20.797 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:12:20.799 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:12:21.132 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:12:21.347 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 216.0478ms
+2025-03-07 23:12:21.365 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:12:21.382 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 16.6917ms
+2025-03-07 23:12:21.396 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:12:21.443 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.9373ms
+2025-03-07 23:12:21.536 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:12:21.621 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 85.0465ms
+2025-03-07 23:12:28.744 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:28.758 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:12:28.793 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:28.808 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:28.937 +02:00 [INF] exams results not in cache
+2025-03-07 23:12:29.063 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:12:29.189 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:29.219 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 403.3282ms
+2025-03-07 23:12:29.225 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:29.279 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 508.5893 ms
+2025-03-07 23:12:29.324 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 580.2199ms
+2025-03-07 23:12:31.452 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:31.465 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:31.475 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:31.532 +02:00 [INF] exams results in cache
+2025-03-07 23:12:31.551 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:31.568 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 39.6322ms
+2025-03-07 23:12:31.581 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:31.596 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 132.6955 ms
+2025-03-07 23:12:31.618 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 165.9049ms
+2025-03-07 23:12:32.426 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:32.438 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:32.446 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:32.513 +02:00 [INF] exams results in cache
+2025-03-07 23:12:32.515 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:32.550 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 52.6888ms
+2025-03-07 23:12:32.563 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:32.579 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 144.8937 ms
+2025-03-07 23:12:32.611 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 184.7182ms
+2025-03-07 23:12:33.332 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:33.341 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:33.343 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:33.361 +02:00 [INF] exams results in cache
+2025-03-07 23:12:33.398 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:33.436 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 75.1997ms
+2025-03-07 23:12:33.462 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:33.484 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 143.9559 ms
+2025-03-07 23:12:33.511 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 178.5581ms
+2025-03-07 23:12:34.114 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:34.122 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:34.124 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:34.130 +02:00 [INF] exams results in cache
+2025-03-07 23:12:34.132 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:34.179 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 49.3162ms
+2025-03-07 23:12:34.208 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:34.233 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 110.6714 ms
+2025-03-07 23:12:34.264 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 149.669ms
+2025-03-07 23:12:34.945 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:34.953 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:34.955 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:35.017 +02:00 [INF] exams results in cache
+2025-03-07 23:12:35.055 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:35.109 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 92.4053ms
+2025-03-07 23:12:35.138 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:35.167 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 214.3117 ms
+2025-03-07 23:12:35.206 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 260.6237ms
+2025-03-07 23:12:36.033 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:36.040 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:36.043 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:36.106 +02:00 [INF] exams results in cache
+2025-03-07 23:12:36.140 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:36.204 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 98.111ms
+2025-03-07 23:12:36.238 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:36.271 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 230.3577 ms
+2025-03-07 23:12:36.302 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 269.1445ms
+2025-03-07 23:12:36.976 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:36.984 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:36.993 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:37.081 +02:00 [INF] exams results in cache
+2025-03-07 23:12:37.116 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:37.190 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 108.6752ms
+2025-03-07 23:12:37.219 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:37.261 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 277.7430 ms
+2025-03-07 23:12:37.292 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 316.3639ms
+2025-03-07 23:12:43.364 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:43.374 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:43.379 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:43.384 +02:00 [INF] exams results in cache
+2025-03-07 23:12:43.385 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:43.389 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 5.1559ms
+2025-03-07 23:12:43.392 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:43.394 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 20.1558 ms
+2025-03-07 23:12:43.397 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 32.5978ms
+2025-03-07 23:12:44.174 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:44.183 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:44.184 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:44.189 +02:00 [INF] exams results in cache
+2025-03-07 23:12:44.191 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:44.194 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 5.1362ms
+2025-03-07 23:12:44.197 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:44.199 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 16.8343 ms
+2025-03-07 23:12:44.202 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 28.1959ms
+2025-03-07 23:12:45.020 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:45.026 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:45.028 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:45.032 +02:00 [INF] exams results in cache
+2025-03-07 23:12:45.034 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:45.038 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 6.584ms
+2025-03-07 23:12:45.042 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:45.044 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 18.2878 ms
+2025-03-07 23:12:45.047 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 27.2431ms
+2025-03-07 23:12:45.793 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:45.804 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:45.808 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:45.816 +02:00 [INF] exams results in cache
+2025-03-07 23:12:45.820 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:45.826 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 10.9457ms
+2025-03-07 23:12:45.831 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:45.834 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 29.6688 ms
+2025-03-07 23:12:45.839 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 45.3234ms
+2025-03-07 23:12:46.754 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:46.759 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:46.761 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:46.766 +02:00 [INF] exams results in cache
+2025-03-07 23:12:46.768 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:46.772 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 6.3824ms
+2025-03-07 23:12:46.775 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:46.777 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 17.6866 ms
+2025-03-07 23:12:46.780 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 26.1107ms
+2025-03-07 23:12:47.343 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:47.350 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:47.352 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:47.357 +02:00 [INF] exams results in cache
+2025-03-07 23:12:47.360 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:47.363 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 6.4783ms
+2025-03-07 23:12:47.366 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:47.368 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 18.2239 ms
+2025-03-07 23:12:47.372 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 29.3379ms
+2025-03-07 23:12:48.187 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:12:48.194 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:48.196 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:12:48.201 +02:00 [INF] exams results in cache
+2025-03-07 23:12:48.204 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:12:48.210 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 9.767ms
+2025-03-07 23:12:48.214 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:12:48.218 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 24.3920 ms
+2025-03-07 23:12:48.222 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 34.8763ms
+2025-03-07 23:13:02.883 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:13:10.159 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:10.161 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:13:10.179 +02:00 [INF] exams results not in cache
+2025-03-07 23:13:10.193 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:13:10.205 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:13:10.219 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 40.3395ms
+2025-03-07 23:13:10.243 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:10.263 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 103.7805 ms
+2025-03-07 23:13:10.291 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 7407.2708ms
+2025-03-07 23:13:14.223 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:13:18.294 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:18.297 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:13:18.301 +02:00 [INF] exams results in cache
+2025-03-07 23:13:18.303 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:13:18.349 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 48.8147ms
+2025-03-07 23:13:18.353 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:18.355 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 61.2267 ms
+2025-03-07 23:13:18.358 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 4134.6558ms
+2025-03-07 23:13:21.948 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:13:21.957 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:21.962 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:13:21.973 +02:00 [INF] exams results in cache
+2025-03-07 23:13:21.976 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:13:21.979 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 6.1703ms
+2025-03-07 23:13:21.981 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:22.020 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 63.9000 ms
+2025-03-07 23:13:22.056 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 108.2644ms
+2025-03-07 23:13:26.859 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:13:29.593 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:29.629 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:13:29.633 +02:00 [INF] exams results in cache
+2025-03-07 23:13:29.635 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:13:29.638 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 5.1841ms
+2025-03-07 23:13:29.641 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:29.649 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 56.2989 ms
+2025-03-07 23:13:29.653 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 2794.4026ms
+2025-03-07 23:13:34.038 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:13:35.983 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:35.985 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:13:35.989 +02:00 [INF] exams results in cache
+2025-03-07 23:13:35.991 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:13:36.009 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 20.4142ms
+2025-03-07 23:13:36.012 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:36.020 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 37.9583 ms
+2025-03-07 23:13:36.031 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 1993.3504ms
+2025-03-07 23:13:58.336 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:13:58.345 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:58.346 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:13:58.353 +02:00 [INF] exams results not in cache
+2025-03-07 23:13:58.364 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:13:58.423 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:13:58.461 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 108.4155ms
+2025-03-07 23:13:58.480 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:13:58.497 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 152.1306 ms
+2025-03-07 23:13:58.506 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 169.8649ms
+2025-03-07 23:14:12.736 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:14:15.641 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:14:15.644 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:14:15.649 +02:00 [INF] exams results in cache
+2025-03-07 23:14:15.681 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:14:15.685 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 36.1499ms
+2025-03-07 23:14:15.688 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:14:15.690 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 49.6733 ms
+2025-03-07 23:14:15.693 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 2957.0221ms
+2025-03-07 23:14:58.090 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:14:58.098 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:14:58.102 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:14:58.110 +02:00 [INF] exams results not in cache
+2025-03-07 23:14:58.122 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:14:58.128 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:14:58.131 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 21.0658ms
+2025-03-07 23:14:58.142 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:14:58.144 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 45.9005 ms
+2025-03-07 23:14:58.147 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 57.1368ms
+2025-03-07 23:15:05.918 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:15:05.925 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:15:05.928 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:15:05.931 +02:00 [INF] exams results in cache
+2025-03-07 23:15:05.939 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:15:05.942 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 11.4357ms
+2025-03-07 23:15:05.945 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:15:05.947 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 23.0800 ms
+2025-03-07 23:15:05.958 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 39.9426ms
+2025-03-07 23:16:44.531 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:16:44.541 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:16:44.544 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:16:44.558 +02:00 [INF] exams results not in cache
+2025-03-07 23:16:44.569 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:16:44.577 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:16:44.586 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 28.7744ms
+2025-03-07 23:16:44.591 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:16:44.620 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 78.5174 ms
+2025-03-07 23:16:44.626 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 94.2707ms
+2025-03-07 23:17:18.317 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:17:18.368 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:17:18.374 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:17:18.838 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:17:18.902 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:17:18.908 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:17:19.007 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:17:19.073 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:17:19.131 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:17:19.132 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:17:19.135 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:17:19.145 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:17:19.348 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 217.6661ms
+2025-03-07 23:17:19.374 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:17:19.384 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:17:19.396 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 11.7186ms
+2025-03-07 23:17:19.426 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.7153ms
+2025-03-07 23:17:19.524 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:17:19.618 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 94.3085ms
+2025-03-07 23:19:12.800 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:19:12.822 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 22.6797ms
+2025-03-07 23:19:12.855 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:19:12.855 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:19:12.870 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 14.3487ms
+2025-03-07 23:19:12.877 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.9613ms
+2025-03-07 23:19:12.950 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:19:13.027 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 77.0532ms
+2025-03-07 23:19:34.723 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:34.735 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:19:34.787 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:34.802 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:34.933 +02:00 [INF] exams results not in cache
+2025-03-07 23:19:35.068 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:19:35.133 +02:00 [WRN] pass time : 200
+2025-03-07 23:19:35.190 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:35.214 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 401.8939ms
+2025-03-07 23:19:35.218 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:35.224 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 468.0984 ms
+2025-03-07 23:19:35.231 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 507.4422ms
+2025-03-07 23:19:40.606 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:43.006 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:43.021 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:43.031 +02:00 [INF] exams results in cache
+2025-03-07 23:19:43.037 +02:00 [WRN] pass time : 5
+2025-03-07 23:19:43.042 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:43.052 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 25.2276ms
+2025-03-07 23:19:43.067 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:43.089 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 85.4847 ms
+2025-03-07 23:19:43.114 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 2507.0571ms
+2025-03-07 23:19:48.923 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:48.934 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:48.941 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:48.965 +02:00 [INF] exams results in cache
+2025-03-07 23:19:48.969 +02:00 [WRN] pass time : 3
+2025-03-07 23:19:48.972 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:48.978 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 31.7655ms
+2025-03-07 23:19:48.984 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:48.986 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 54.9770 ms
+2025-03-07 23:19:48.991 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 67.7551ms
+2025-03-07 23:19:51.933 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:51.941 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:51.944 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:51.951 +02:00 [INF] exams results in cache
+2025-03-07 23:19:51.962 +02:00 [WRN] pass time : 10
+2025-03-07 23:19:51.986 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:52.024 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 73.6515ms
+2025-03-07 23:19:52.037 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:52.072 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 131.5950 ms
+2025-03-07 23:19:52.077 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 144.1271ms
+2025-03-07 23:19:53.608 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:53.615 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:53.619 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:53.660 +02:00 [INF] exams results in cache
+2025-03-07 23:19:53.662 +02:00 [WRN] pass time : 2
+2025-03-07 23:19:53.682 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:53.710 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 51.0738ms
+2025-03-07 23:19:53.730 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:53.760 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 145.0930 ms
+2025-03-07 23:19:53.767 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 159.0203ms
+2025-03-07 23:19:54.638 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:54.647 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:54.651 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:54.727 +02:00 [INF] exams results in cache
+2025-03-07 23:19:54.734 +02:00 [WRN] pass time : 7
+2025-03-07 23:19:54.737 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:54.765 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 38.8947ms
+2025-03-07 23:19:54.803 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:54.835 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 187.2311 ms
+2025-03-07 23:19:54.852 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 213.7524ms
+2025-03-07 23:19:55.263 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:55.273 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:55.278 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:55.316 +02:00 [INF] exams results in cache
+2025-03-07 23:19:55.338 +02:00 [WRN] pass time : 22
+2025-03-07 23:19:55.364 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:55.410 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 94.7189ms
+2025-03-07 23:19:55.434 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:55.468 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 194.7093 ms
+2025-03-07 23:19:55.479 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 215.2869ms
+2025-03-07 23:19:55.943 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:55.951 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:55.956 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:55.966 +02:00 [INF] exams results in cache
+2025-03-07 23:19:55.980 +02:00 [WRN] pass time : 13
+2025-03-07 23:19:56.002 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:56.035 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 69.259ms
+2025-03-07 23:19:56.061 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:56.090 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 138.4766 ms
+2025-03-07 23:19:56.123 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 180.0127ms
+2025-03-07 23:19:56.413 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:56.423 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:56.426 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:56.437 +02:00 [INF] exams results in cache
+2025-03-07 23:19:56.453 +02:00 [WRN] pass time : 16
+2025-03-07 23:19:56.477 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:56.502 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 65.6514ms
+2025-03-07 23:19:56.526 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:56.547 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 124.7127 ms
+2025-03-07 23:19:56.553 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 139.8821ms
+2025-03-07 23:19:57.226 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:19:57.235 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:57.240 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:19:57.284 +02:00 [INF] exams results in cache
+2025-03-07 23:19:57.306 +02:00 [WRN] pass time : 22
+2025-03-07 23:19:57.328 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:19:57.353 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 70.2456ms
+2025-03-07 23:19:57.385 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:19:57.425 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 190.2042 ms
+2025-03-07 23:19:57.435 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 208.6784ms
+2025-03-07 23:20:13.876 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:20:13.884 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:20:13.890 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:20:13.951 +02:00 [INF] exams results not in cache
+2025-03-07 23:20:13.992 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[ExamID], [e].[CourseID], [e].[Date], [e].[ExamName], [e].[ExamTypeID], [c].[CourseID], [c].[CourseName], [c].[DepartmentID], [c].[Description], [c].[TeacherID], [e0].[ExamTypeID], [e0].[TypeName]
+FROM [Exams] AS [e]
+INNER JOIN [Courses] AS [c] ON [e].[CourseID] = [c].[CourseID]
+INNER JOIN [ExamTypes] AS [e0] ON [e].[ExamTypeID] = [e0].[ExamTypeID]
+2025-03-07 23:20:14.033 +02:00 [WRN] pass time : 82
+2025-03-07 23:20:14.036 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[System.Collections.Generic.List`1[[SchoolManagementSystem.Data.DTO.ExamDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-03-07 23:20:14.046 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 94.8273ms
+2025-03-07 23:20:14.071 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:20:14.096 +02:00 [INF] HTTP GET /api/Exam/all responded 200 in 212.1570 ms
+2025-03-07 23:20:14.118 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 200 null application/json; charset=utf-8 242.1585ms
+2025-03-07 23:48:28.281 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:48:41.776 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:48:41.798 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:48:42.315 +02:00 [INF] Executed DbCommand (33ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:48:42.391 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:48:42.407 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:48:42.577 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:48:42.663 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:48:42.719 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:48:42.724 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:48:42.729 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:48:43.362 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:48:43.571 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 214.1162ms
+2025-03-07 23:48:43.586 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:48:43.599 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 12.9028ms
+2025-03-07 23:48:43.623 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:48:43.659 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.5505ms
+2025-03-07 23:48:43.733 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:48:43.834 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 101.0054ms
+2025-03-07 23:49:01.830 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:49:01.845 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:49:01.893 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:49:01.904 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:49:02.029 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api) in 116.1008ms
+2025-03-07 23:49:02.033 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:49:02.036 +02:00 [ERR] HTTP GET /api/Exam/all responded 500 in 168.8277 ms
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SchoolManagementSystem.Services.ImpelmentationService.ExamService.GetAllExamsAsync() in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Services\ImpelmentationService\ExamService.cs:line 76
+   at SchoolManagementSystem.Core.Features.Exams.Queries.Handlers.ExamQueryHandler.Handle(GetAllExamsQuery request, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Features\Exams\Queries\Handlers\ExamQueryHandler.cs:line 36
+   at SchoolManagementSystem.Core.Behavoir.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Behavoir\ValidationBehavior.cs:line 40
+   at SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams() in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api\Controllers\ExamController.cs:line 19
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-03-07 23:49:02.197 +02:00 [ERR] Unhandled exception occurred.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SchoolManagementSystem.Services.ImpelmentationService.ExamService.GetAllExamsAsync() in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Services\ImpelmentationService\ExamService.cs:line 76
+   at SchoolManagementSystem.Core.Features.Exams.Queries.Handlers.ExamQueryHandler.Handle(GetAllExamsQuery request, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Features\Exams\Queries\Handlers\ExamQueryHandler.cs:line 36
+   at SchoolManagementSystem.Core.Behavoir.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Behavoir\ValidationBehavior.cs:line 40
+   at SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams() in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api\Controllers\ExamController.cs:line 19
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at SchoolManagementSystem.Api.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api\Middleware\ExceptionHandlingMiddleware.cs:line 21
+2025-03-07 23:49:02.597 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Exam/all - 500 null application/json 767.3727ms
+2025-03-07 23:49:33.216 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:49:56.203 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:49:56.208 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:49:56.770 +02:00 [INF] Executed DbCommand (47ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:49:56.848 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:49:56.856 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:49:57.043 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:49:57.228 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:49:57.327 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:49:57.332 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:49:57.336 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:49:57.648 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:49:58.030 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 400.4838ms
+2025-03-07 23:49:58.079 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:49:58.079 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:49:58.116 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 37.3126ms
+2025-03-07 23:49:58.165 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 86.4508ms
+2025-03-07 23:49:58.237 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:49:58.387 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 150.4446ms
+2025-03-07 23:50:11.505 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:50:11.523 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:50:11.639 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:50:11.663 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:53:04.988 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:53:05.033 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:53:05.038 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:53:05.569 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:53:05.638 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:53:05.645 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:53:05.806 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:53:05.997 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:53:06.069 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:53:06.080 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:53:06.083 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:53:06.646 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:53:07.036 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 403.7701ms
+2025-03-07 23:53:07.073 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:53:07.077 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:53:07.085 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 12.4892ms
+2025-03-07 23:53:07.135 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 58.1502ms
+2025-03-07 23:53:07.205 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:53:07.284 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 78.8755ms
+2025-03-07 23:53:15.811 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:53:15.832 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:53:15.950 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:53:15.978 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).
+2025-03-07 23:55:02.990 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:55:03.043 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:55:03.049 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-07 23:55:03.649 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:55:03.719 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:55:03.726 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-07 23:55:03.889 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-07 23:55:04.096 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-07 23:55:04.161 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-07 23:55:04.172 +02:00 [INF] Hosting environment: Development
+2025-03-07 23:55:04.177 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-07 23:55:04.705 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-07 23:55:05.074 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 383.7531ms
+2025-03-07 23:55:05.122 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-07 23:55:05.122 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-07 23:55:05.130 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 7.9901ms
+2025-03-07 23:55:05.178 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 55.9988ms
+2025-03-07 23:55:05.239 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-07 23:55:05.388 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 149.3199ms
+2025-03-07 23:57:12.222 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Exam/all - null null
+2025-03-07 23:57:12.256 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-07 23:57:12.359 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.ExamController.GetAllExams (SchoolManagementSystem.Api)'
+2025-03-07 23:57:12.375 +02:00 [INF] Route matched with {action = "GetAllExams", controller = "Exam"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllExams() on controller SchoolManagementSystem.Api.Controllers.ExamController (SchoolManagementSystem.Api).

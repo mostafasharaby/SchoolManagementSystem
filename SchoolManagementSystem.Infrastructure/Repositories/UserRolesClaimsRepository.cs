@@ -11,9 +11,7 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         {
         }
 
-        public async Task<List<UserRolesClaimsView>> GetAllUserRoleClaims()
-        {
-            return await GetAllAsync();
-        }
+        public async Task<List<UserRolesClaimsView>> GetAllUserRoleClaims() =>
+            await GetAllAsync();
     }
 }

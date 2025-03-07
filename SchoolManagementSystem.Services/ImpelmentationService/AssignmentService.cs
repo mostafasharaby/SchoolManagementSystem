@@ -1,4 +1,6 @@
-﻿using SchoolManagementSystem.Data.Entities;
+﻿using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
+using SchoolManagementSystem.Data.Entities;
 using SchoolManagementSystem.Infrastructure.Abstracts;
 using SchoolManagementSystem.Services.Abstracts;
 
@@ -8,10 +10,18 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public AssignmentService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly IMemoryCache _cache;
+        private readonly ILogger<AssignmentService> _logger;
+        private readonly ICacheService _cacheService;
+
+
+        public AssignmentService(IUnitOfWork unitOfWork, IValidationService validationService, IMemoryCache cache, ILogger<AssignmentService> logger, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
+            _cache = cache;
+            _logger = logger;
+            _cacheService = cacheService;
         }
 
         public async Task AddAssignmentAsync(Assignment assignment)
@@ -38,10 +48,39 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
             return false;
         }
 
-        public async Task<List<Assignment>> GetAllAssignmentsAsync()
-        {
-            return await _unitOfWork.Assignments.GetAllAsync();
-        }
+        //public async Task<List<Assignment>> GetAllAssignmentsAsync() // first way 
+        //{
+        //    return await _unitOfWork.Assignments.GetAllAsync();
+        //}
+
+        //public async Task<List<Assignment>> GetAllAssignmentsAsync() // second way with caching 
+        //{
+        //    string cacheKey = "Exams";
+        //    var clock = new Stopwatch();
+        //    clock.Start();
+
+        //    if (_cache.TryGetValue(cacheKey, out List<Assignment>? assignmentList) && assignmentList != null)
+        //    {
+        //        _logger.LogInformation("exams results in cache");
+        //    }
+        //    else
+        //    {
+        //        _logger.LogInformation("exams results not in cache");
+        //        assignmentList = await _unitOfWork.Assignments.GetAllAsync();
+        //        //_cache.Set(cacheKey, examList);
+        //        _cache.Set(cacheKey, assignmentList, new MemoryCacheEntryOptions
+        //        {
+        //            AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30)
+        //        });
+        //    }
+        //    clock.Stop();
+        //    _logger.LogWarning("pass time : " + clock.ElapsedMilliseconds);
+        //    return assignmentList!;
+        //}
+
+        // third way with caching and delegate
+        public async Task<List<Assignment>> GetAllAssignmentsAsync() =>
+         await _cacheService.GetOrAddToCacheAsync("Exams", _unitOfWork.Assignments.GetAllAsync, 30);
 
         public async Task<Assignment> GetAssignmentByIdAsync(int assignmentId)
         {

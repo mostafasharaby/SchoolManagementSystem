@@ -9,11 +9,13 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IValidationService _validationService;
-        public AttendanceService(IUnitOfWork unitOfWork, IValidationService validationService)
+        private readonly ICacheService _cacheService;
+
+        public AttendanceService(IUnitOfWork unitOfWork, IValidationService validationService, ICacheService cacheService)
         {
             _unitOfWork = unitOfWork;
             _validationService = validationService;
-
+            _cacheService = cacheService;
         }
         public async Task AddAttendanceAsync(Attendance attendance)
         {
@@ -42,15 +44,16 @@ namespace SchoolManagementSystem.Services.ImpelmentationService
         }
 
 
-        public async Task<List<Attendance>> GetAllAttendancesAsync()
-        {
-            return await _unitOfWork.Attendances.GetAllAsync();
-        }
+        //public async Task<List<Attendance>> GetAllAttendancesAsync()
+        //{
+        //    return await _unitOfWork.Attendances.GetAllAsync();
+        //}
+        public async Task<List<Attendance>> GetAllAttendancesAsync() =>
+            await _cacheService.GetOrAddToCacheAsync("Exams", _unitOfWork.Attendances.GetAllAsync, 30);
 
-        public async Task<Attendance?> GetAttendanceByIdAsync(int attendanceId)
-        {
-            return await _unitOfWork.Attendances.GetByIdAsync(attendanceId);
-        }
+        public async Task<Attendance?> GetAttendanceByIdAsync(int attendanceId) =>
+            await _unitOfWork.Attendances.GetByIdAsync(attendanceId);
+
 
         public async Task<AttendanceSummaryDto> GetAttendanceSummaryAsync(int classroomId)
         {

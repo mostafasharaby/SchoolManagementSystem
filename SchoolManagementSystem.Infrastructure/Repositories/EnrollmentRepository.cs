@@ -11,15 +11,14 @@ namespace SchoolManagementSystem.Infrastructure.Repositories
         public EnrollmentRepository(SchoolContext dbContext) : base(dbContext)
         {
         }
-        public async override Task<Enrollment> GetByIdAsync(int id)
-        {
-            return await _dbContext.Enrollments.AsNoTracking()
-          .FirstOrDefaultAsync(b => b.EnrollmentID == id);
-        }
+        public async override Task<Enrollment> GetByIdAsync(int id) =>
+            await _dbContext.Enrollments.AsNoTracking()
+            .FirstOrDefaultAsync(b => b.EnrollmentID == id);
 
-        public async Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(int courseId)
-        {
-            return await _dbContext.Enrollments.Where(e => e.CourseID == courseId).ToListAsync();
-        }
+        public async Task<List<Enrollment>> GetEnrollmentsByCourseIdAsync(int courseId) =>
+            await _dbContext.Enrollments
+            .Where(e => e.CourseID == courseId)
+            .ToListAsync();
+
     }
 }

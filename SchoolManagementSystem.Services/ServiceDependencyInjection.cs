@@ -11,6 +11,8 @@ namespace SchoolManagementSystem.Services
         public static void AddServiceDependencyInjection(this IServiceCollection services)
         {
             services.AddScoped<IValidationService, ValidationService>(); // order is important
+            services.AddScoped<ICacheService, CacheService>();
+
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IRoleService, RoleService>();
@@ -31,6 +33,8 @@ namespace SchoolManagementSystem.Services
             services.AddScoped<IExamResultService, ExamResultService>();
             services.AddScoped<IExamScoreService, ExamScoreService>();
             services.AddScoped<IExamTypeService, ExamTypeService>();
+
+            services.AddMemoryCache();
 
 
         }
