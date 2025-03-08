@@ -20,6 +20,7 @@ namespace SchoolManagementSystem.Core
             services.AddTransient<ResponseHandler>(); // 
             services.AddScoped<AuthFilter>();
 
+
         }
 
     }

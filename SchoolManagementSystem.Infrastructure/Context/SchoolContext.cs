@@ -41,11 +41,10 @@ namespace SchoolManagementSystem.Infrastructure.Data
         public DbSet<UserRolesClaimsView> UserRolesClaimsView { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<BorrowedBook>()
                .HasKey(b => b.BorrowID);
-
-
-            base.OnModelCreating(modelBuilder);
 
             modelBuilder
                .Entity<UserRolesClaimsView>()
@@ -70,7 +69,9 @@ namespace SchoolManagementSystem.Infrastructure.Data
                 .HasForeignKey(s => s.ClassroomID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-
+            modelBuilder.Entity<Student>()  // i used that as i make sort on student alot so i need an index 
+                .HasIndex(i => new { i.StudentFirstNameAr, i.StudentFirstNameEn, i.StudentLastNameAr, i.StudentLastNameEn })
+                .IsUnique();
 
             modelBuilder.Entity<Student>().ToTable("Students"); // for TPT 
             modelBuilder.Entity<Teacher>().ToTable("Teachers"); // for TPT 

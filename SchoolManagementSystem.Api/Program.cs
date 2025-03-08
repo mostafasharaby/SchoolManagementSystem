@@ -79,6 +79,13 @@ namespace SchoolManagementSystem.Api
 
             #endregion
 
+            //builder.Services.Configure<IdentityOptions>(op =>
+            //{
+            //    op.Lockout.MaxFailedAccessAttempts = 2;
+            //    op.Lockout.AllowedForNewUsers = true;
+            //    op.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+            //});
+
 
             var app = builder.Build();
 

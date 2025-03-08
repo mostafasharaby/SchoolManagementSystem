@@ -53,13 +53,21 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
                 return _responseHandler.BadRequest<AuthResponse>("Invalid email .");
             }
 
+            if (await _userManager.IsLockedOutAsync(existingUser))
+            {
+                return _responseHandler.BadRequest<AuthResponse>("Account is locked. Try again later.");
+            }
+
             var isPasswordValid = await _userManager.CheckPasswordAsync(existingUser, request.Password);
             if (!isPasswordValid)
             {
+                await _userManager.AccessFailedAsync(existingUser); // look at the prperty AccessFailed in aspUser table in database :)
                 return _responseHandler.BadRequest<AuthResponse>("Invalid password.");
             }
 
+
             var authResponse = await _jwtService.GenerateJwtToken(existingUser);
+            await _userManager.ResetAccessFailedCountAsync(existingUser);
             return _responseHandler.Success(authResponse);
         }
 

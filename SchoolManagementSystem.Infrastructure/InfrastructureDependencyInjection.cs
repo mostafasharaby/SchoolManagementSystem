@@ -52,7 +52,6 @@ namespace SchoolManagementSystem.Infrastructure
             services.AddScoped<IExamTypeRepository, ExamTypeRepository>();
             services.AddScoped<IGradeRepository, GradeRepository>();
 
-
             services.AddScoped<IUserRolesClaimsRepository, UserRolesClaimsRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             #endregion
@@ -78,6 +77,13 @@ namespace SchoolManagementSystem.Infrastructure
             .AddEntityFrameworkStores<SchoolContext>()
             .AddDefaultTokenProviders();
 
+
+            services.Configure<IdentityOptions>(op =>
+            {
+                op.Lockout.MaxFailedAccessAttempts = 5;
+                op.Lockout.AllowedForNewUsers = true;
+                op.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(40);
+            });
 
             // Step 1: Add localization services
             #region  Localization

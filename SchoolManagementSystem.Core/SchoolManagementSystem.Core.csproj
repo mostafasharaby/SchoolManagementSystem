@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Authentication\Queries\" />
     <Folder Include="Mapping\AssignmentMapping\QueryMapping\" />
     <Folder Include="Mapping\AuthMapping\QueryMapping\" />
     <Folder Include="Mapping\ParentMapping\QueryMapping\" />

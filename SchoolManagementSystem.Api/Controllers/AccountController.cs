@@ -13,8 +13,7 @@ namespace SchoolManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    /*
-     * 
+    /*     
      {  
       "email": "noor@example.com",
       "password": "P@ssw0rd!"

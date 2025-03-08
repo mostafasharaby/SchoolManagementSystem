@@ -20,7 +20,7 @@ public class CacheService : ICacheService
 
         if (_cache.TryGetValue(cacheKey, out List<T>? cachedData) && cachedData != null)
         {
-            _logger.LogInformation("{CacheKey} found in cache.", cacheKey);
+            _logger.LogInformation($"{cacheKey} found in cache.", cacheKey);
         }
         else
         {
