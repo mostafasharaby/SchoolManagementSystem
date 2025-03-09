@@ -435,3 +435,31 @@ WHERE [a].[NormalizedName] = @__normalizedName_0
 2025-03-09 06:55:28.511 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.4096ms
 2025-03-09 06:55:28.574 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
 2025-03-09 06:55:28.641 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 66.9623ms
+2025-03-09 06:58:40.117 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:58:40.180 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:58:40.186 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:58:40.614 +02:00 [INF] Executed DbCommand (28ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:58:40.689 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:58:40.695 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:58:40.807 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:58:40.875 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:58:40.932 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:58:40.936 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:58:40.940 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:58:41.047 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:58:41.212 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 165.8848ms
+2025-03-09 06:58:41.225 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:58:41.226 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:58:41.243 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 17.4852ms
+2025-03-09 06:58:41.268 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 42.6288ms
+2025-03-09 06:58:41.473 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:58:41.576 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 102.7928ms
