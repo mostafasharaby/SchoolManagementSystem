@@ -8,6 +8,7 @@ namespace SchoolManagementSystem.Core.Mapping.BorrowedBookMapping
         public void GetBorrowedBoodQueryMapping()
         {
             CreateMap<BorrowedBook, BorrowedBookDto>();
+            CreateMap<BorrowedBook, BorrowedBookDto2>();
         }
     }
 }

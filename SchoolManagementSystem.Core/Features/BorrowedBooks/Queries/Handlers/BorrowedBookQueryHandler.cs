@@ -7,7 +7,7 @@ using SchoolManagementSystem.Services.Abstracts;
 
 namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Handlers
 {
-    internal class BorrowedBookQueryHandler : IRequestHandler<GetBorrowedBookByIdQuery, Response<BorrowedBookDto>>,
+    internal class BorrowedBookQueryHandler : IRequestHandler<GetBorrowedBookByIdQuery, Response<BorrowedBookDto2>>,
                                               IRequestHandler<GetAllBorrowedBooksQuery, Response<List<BorrowedBookDto>>>,
                                               IRequestHandler<GetBorrowedBooksByStudentQuery, Response<List<BorrowedBookDto>>>
     {
@@ -21,13 +21,13 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Handlers
             _borrowedBookService = borrowedBookService;
         }
 
-        public async Task<Response<BorrowedBookDto>> Handle(GetBorrowedBookByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Response<BorrowedBookDto2>> Handle(GetBorrowedBookByIdQuery request, CancellationToken cancellationToken)
         {
             var borrowedBook = await _borrowedBookService.GetBorrowedBookByIdAsync(request.BorrowedBookId);
             if (borrowedBook == null)
-                return _responseHandler.NotFound<BorrowedBookDto>("Borrowed Book not found.");
+                return _responseHandler.NotFound<BorrowedBookDto2>("Borrowed Book not found.");
 
-            var dto = _mapper.Map<BorrowedBookDto>(borrowedBook);
+            var dto = _mapper.Map<BorrowedBookDto2>(borrowedBook);
             return _responseHandler.Success(dto);
         }
 
