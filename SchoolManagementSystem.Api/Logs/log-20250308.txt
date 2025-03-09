@@ -3027,3 +3027,423 @@ WHERE [a].[NormalizedName] = @__normalizedName_0
 2025-03-08 06:56:33.852 +02:00 [INF] Application started. Press Ctrl+C to shut down.
 2025-03-08 06:56:33.857 +02:00 [INF] Hosting environment: Development
 2025-03-08 06:56:33.862 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-08 07:03:32.611 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:03:32.686 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:03:32.694 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:03:33.347 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:03:33.450 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:03:33.459 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:03:33.630 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-08 07:03:33.736 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-08 07:03:33.836 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-08 07:03:33.841 +02:00 [INF] Hosting environment: Development
+2025-03-08 07:03:33.844 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-08 07:06:52.597 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5253/api/Account/login - application/json 74
+2025-03-08 07:06:52.725 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-08 07:06:52.744 +02:00 [INF] CORS policy execution successful.
+2025-03-08 07:06:52.808 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.Login (SchoolManagementSystem.Api)'
+2025-03-08 07:06:52.855 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(SchoolManagementSystem.Core.Features.Authentication.Commands.Models.LoginCommand) on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:06:53.263 +02:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-03-08 07:06:53.468 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-03-08 07:06:53.796 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@p18='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p19='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (DbType = DateTime2), @p16='?' (DbType = Boolean), @p17='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [Token] = @p14, [TokenExpiryTime] = @p15, [TwoFactorEnabled] = @p16, [UserName] = @p17
+OUTPUT 1
+WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
+2025-03-08 07:06:53.930 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.Responses.AuthResponse, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:06:54.026 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.Login (SchoolManagementSystem.Api) in 1139.4523ms
+2025-03-08 07:06:54.045 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.Login (SchoolManagementSystem.Api)'
+2025-03-08 07:06:54.079 +02:00 [INF] HTTP POST /api/Account/login responded 400 in 1332.9409 ms
+2025-03-08 07:06:54.128 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5253/api/Account/login - 400 null application/json; charset=utf-8 1532.5082ms
+2025-03-08 07:07:30.053 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - null null
+2025-03-08 07:07:30.097 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:07:30.121 +02:00 [INF] Route matched with {action = "LoginWithGoogle", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginWithGoogle() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:07:30.209 +02:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2025-03-08 07:07:30.244 +02:00 [INF] AuthenticationScheme: Google was challenged.
+2025-03-08 07:07:30.251 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api) in 88.2716ms
+2025-03-08 07:07:30.268 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:07:30.300 +02:00 [INF] HTTP GET /api/Account/login-With-Google responded 302 in 207.4717 ms
+2025-03-08 07:07:30.311 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - 302 0 null 258.6251ms
+2025-03-08 07:07:36.221 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - null null
+2025-03-08 07:07:36.315 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:07:36.325 +02:00 [INF] Route matched with {action = "LoginWithGoogle", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginWithGoogle() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:07:36.353 +02:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2025-03-08 07:07:36.364 +02:00 [INF] AuthenticationScheme: Google was challenged.
+2025-03-08 07:07:36.374 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api) in 29.3158ms
+2025-03-08 07:07:36.404 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:07:36.434 +02:00 [INF] HTTP GET /api/Account/login-With-Google responded 302 in 122.4460 ms
+2025-03-08 07:07:36.444 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - 302 0 null 223.4237ms
+2025-03-08 07:08:48.438 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:08:48.584 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:08:48.597 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:08:50.103 +02:00 [INF] Executed DbCommand (99ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:08:50.371 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:08:50.381 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:08:50.717 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-08 07:08:51.073 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-08 07:08:51.212 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-08 07:08:51.224 +02:00 [INF] Hosting environment: Development
+2025-03-08 07:08:51.227 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-08 07:08:51.846 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-08 07:08:52.317 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 478.5506ms
+2025-03-08 07:08:52.336 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-08 07:08:52.350 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 14.3058ms
+2025-03-08 07:08:52.371 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-08 07:08:52.456 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 85.212ms
+2025-03-08 07:08:52.546 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-08 07:08:52.760 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 213.9373ms
+2025-03-08 07:08:57.601 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - null null
+2025-03-08 07:08:57.619 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-08 07:08:57.778 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:08:57.832 +02:00 [INF] Route matched with {action = "LoginWithGoogle", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginWithGoogle() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:08:57.927 +02:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2025-03-08 07:08:57.952 +02:00 [INF] AuthenticationScheme: Google was challenged.
+2025-03-08 07:08:57.960 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api) in 100.2481ms
+2025-03-08 07:08:57.980 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:08:58.004 +02:00 [INF] HTTP GET /api/Account/login-With-Google responded 302 in 368.6438 ms
+2025-03-08 07:08:58.030 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - 302 0 null 429.3741ms
+2025-03-08 07:09:03.289 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - null null
+2025-03-08 07:09:03.318 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:09:03.332 +02:00 [INF] Route matched with {action = "LoginWithGoogle", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginWithGoogle() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:09:03.371 +02:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2025-03-08 07:09:03.384 +02:00 [INF] AuthenticationScheme: Google was challenged.
+2025-03-08 07:09:03.404 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api) in 38.3939ms
+2025-03-08 07:09:03.434 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:09:03.472 +02:00 [INF] HTTP GET /api/Account/login-With-Google responded 302 in 158.7585 ms
+2025-03-08 07:09:03.506 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - 302 0 null 217.2521ms
+2025-03-08 07:09:12.247 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/signin-google?state=CfDJ8HIq4qz2bxNFpYrJMFKyQef5Nu7EOAVbsJsMtn6cMrbqpriMIV70jWt818focEZJdZhE6-vSYIKQ_4XtLpsUurxME3-8IeBBvTD245uQFp7ZK1bjLTUG2f0JRZ7Y3fK-hNP04aoBrOd6yhHs_GlPAjp7KzPVV9Ym33p8DdhTEFU70ORkf_Vgeix5EMvOGtUYCN1BlKLmi4FPcVMQKiF28AyFYJi2XrO42obt6ZqBMLIpg7zLX5NT1IaIHauekrFARlb05J0uGUg-xxYgJyvsQAxDnmHOy6NTOzKDVkarLo2HMjPJ_RWO5ZTnQyAjp7Vr74-IAWNXe6B4g9cBkoisf18&code=4%2F0AQSTgQE8qhtvT9e8f_mX_aEUl0xd2Pu57XSlzG0tTP_0X4zrv3H88Wbths8sK2nEl-MRKA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=1&prompt=none - null null
+2025-03-08 07:09:13.396 +02:00 [INF] AuthenticationScheme: Cookies signed in.
+2025-03-08 07:09:13.409 +02:00 [INF] HTTP GET /signin-google responded 302 in 1080.4932 ms
+2025-03-08 07:09:13.443 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/signin-google?state=CfDJ8HIq4qz2bxNFpYrJMFKyQef5Nu7EOAVbsJsMtn6cMrbqpriMIV70jWt818focEZJdZhE6-vSYIKQ_4XtLpsUurxME3-8IeBBvTD245uQFp7ZK1bjLTUG2f0JRZ7Y3fK-hNP04aoBrOd6yhHs_GlPAjp7KzPVV9Ym33p8DdhTEFU70ORkf_Vgeix5EMvOGtUYCN1BlKLmi4FPcVMQKiF28AyFYJi2XrO42obt6ZqBMLIpg7zLX5NT1IaIHauekrFARlb05J0uGUg-xxYgJyvsQAxDnmHOy6NTOzKDVkarLo2HMjPJ_RWO5ZTnQyAjp7Vr74-IAWNXe6B4g9cBkoisf18&code=4%2F0AQSTgQE8qhtvT9e8f_mX_aEUl0xd2Pu57XSlzG0tTP_0X4zrv3H88Wbths8sK2nEl-MRKA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=1&prompt=none - 302 0 null 1196.0023ms
+2025-03-08 07:09:13.526 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/Google-Login-Call-back - null null
+2025-03-08 07:09:13.568 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api)'
+2025-03-08 07:09:13.611 +02:00 [INF] Route matched with {action = "GoogleLoginCallback", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GoogleLoginCallback() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:11:11.839 +02:00 [INF] Executed DbCommand (43ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-03-08 07:11:33.081 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-03-08 07:11:33.151 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-03-08 07:11:33.349 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-03-08 07:11:33.559 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@p18='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p19='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (DbType = DateTime2), @p16='?' (DbType = Boolean), @p17='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [Token] = @p14, [TokenExpiryTime] = @p15, [TwoFactorEnabled] = @p16, [UserName] = @p17
+OUTPUT 1
+WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
+2025-03-08 07:11:33.753 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([AppUserId], [ExpiryTime], [IsRevoked], [IsUsed], [ReplacedByToken], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-03-08 07:11:33.865 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[SchoolManagementSystem.Data.Responses.AuthResponse, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:11:33.939 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api) in 140295.7034ms
+2025-03-08 07:11:33.983 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api)'
+2025-03-08 07:11:34.054 +02:00 [INF] HTTP GET /api/Account/Google-Login-Call-back responded 200 in 140488.8841 ms
+2025-03-08 07:11:34.120 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/Google-Login-Call-back - 200 null application/json; charset=utf-8 140593.2945ms
+2025-03-08 07:11:34.335 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/favicon.ico - null null
+2025-03-08 07:11:34.373 +02:00 [INF] HTTP GET /favicon.ico responded 404 in 17.2378 ms
+2025-03-08 07:11:34.378 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/favicon.ico - 404 0 null 42.1026ms
+2025-03-08 07:11:34.395 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5253/favicon.ico, Response status code: 404
+2025-03-08 07:13:00.770 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/confirm-email?userId=c6793f5b-4ed3-45e1-ac48-85229aa576eb&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImM2NzkzZjViLTRlZDMtNDVlMS1hYzQ4LTg1MjI5YWE1NzZlYiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1vc3RhZmFzaGFyYWJ5MThAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Ik1vc3RhZmFfU2hhcmFieV9lNzkwIiwianRpIjoiMzQzNjZlYmItZmRjZS00ZDYyLWI5NTktNjFjNjA4ZTg4Y2NjIiwiZXhwIjoxNzQxNDEwNzEzLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTMiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.mneKABz5VOVAEkxa6XdM3g5bHYvIE5rFhsYg21IsrEc%22%2C%20%20%20%20%20%22tokenExpiryTime%22%3A%20%222025-03-08T05%3A11%3A53Z - null null
+2025-03-08 07:13:00.812 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api)'
+2025-03-08 07:13:00.842 +02:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ConfirmEmail(System.String, System.String) on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:13:01.017 +02:00 [INF] Executed DbCommand (36ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[Id] = @__p_0
+2025-03-08 07:13:01.201 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.Entities.Identity.AppUser, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:13:01.246 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api) in 380.63ms
+2025-03-08 07:13:01.254 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api)'
+2025-03-08 07:13:01.263 +02:00 [INF] HTTP GET /api/Account/confirm-email responded 400 in 451.4755 ms
+2025-03-08 07:13:01.280 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/confirm-email?userId=c6793f5b-4ed3-45e1-ac48-85229aa576eb&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImM2NzkzZjViLTRlZDMtNDVlMS1hYzQ4LTg1MjI5YWE1NzZlYiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1vc3RhZmFzaGFyYWJ5MThAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Ik1vc3RhZmFfU2hhcmFieV9lNzkwIiwianRpIjoiMzQzNjZlYmItZmRjZS00ZDYyLWI5NTktNjFjNjA4ZTg4Y2NjIiwiZXhwIjoxNzQxNDEwNzEzLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTMiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.mneKABz5VOVAEkxa6XdM3g5bHYvIE5rFhsYg21IsrEc%22%2C%20%20%20%20%20%22tokenExpiryTime%22%3A%20%222025-03-08T05%3A11%3A53Z - 400 null application/json; charset=utf-8 510.907ms
+2025-03-08 07:14:22.162 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:14:22.265 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:14:22.275 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:14:23.556 +02:00 [INF] Executed DbCommand (89ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:14:23.780 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:14:23.798 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:14:24.268 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-08 07:14:24.736 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-08 07:14:24.936 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-08 07:14:24.954 +02:00 [INF] Hosting environment: Development
+2025-03-08 07:14:24.961 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-08 07:14:25.616 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-08 07:14:26.260 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 660.0371ms
+2025-03-08 07:14:26.311 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-08 07:14:26.311 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-08 07:14:26.321 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 10.2766ms
+2025-03-08 07:14:26.419 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 108.2664ms
+2025-03-08 07:14:26.507 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-08 07:14:26.767 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 260.1128ms
+2025-03-08 07:14:32.113 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - null null
+2025-03-08 07:14:32.134 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-08 07:14:32.325 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:14:32.372 +02:00 [INF] Route matched with {action = "LoginWithGoogle", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginWithGoogle() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:14:32.472 +02:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2025-03-08 07:14:32.523 +02:00 [INF] AuthenticationScheme: Google was challenged.
+2025-03-08 07:14:32.539 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api) in 134.9166ms
+2025-03-08 07:14:32.554 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:14:32.590 +02:00 [INF] HTTP GET /api/Account/login-With-Google responded 302 in 430.2321 ms
+2025-03-08 07:14:32.616 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - 302 0 null 503.8285ms
+2025-03-08 07:14:37.309 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - null null
+2025-03-08 07:14:37.339 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:14:37.359 +02:00 [INF] Route matched with {action = "LoginWithGoogle", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginWithGoogle() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:14:37.386 +02:00 [INF] Executing ChallengeResult with authentication schemes (["Google"]).
+2025-03-08 07:14:37.394 +02:00 [INF] AuthenticationScheme: Google was challenged.
+2025-03-08 07:14:37.408 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api) in 29.0747ms
+2025-03-08 07:14:37.421 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.LoginWithGoogle (SchoolManagementSystem.Api)'
+2025-03-08 07:14:37.438 +02:00 [INF] HTTP GET /api/Account/login-With-Google responded 302 in 103.7040 ms
+2025-03-08 07:14:37.456 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/login-With-Google - 302 0 null 147.3915ms
+2025-03-08 07:14:44.997 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/signin-google?state=CfDJ8HIq4qz2bxNFpYrJMFKyQefhLnXzoM6qIGyL7g7Y5WL0xpVFEAfLBUEfEEnI-4EeuY63dtMmftakg9AoY68DpKuT2vhpmMu_ZIDhpVPROeq1zEQUGt-3KbzyUbjpgToC_dNAxinlYzeCYWIiDmiI6sNFTAOZoUwboUyCyd7-fAOy2KAf0Nc3P8vNAJc2C6WVcTFnYP6gxXKTauZ_Rd71fdr7qb6eT858BYhsOQNg2aVMVmaTY0PyegLWv5-agXxpxmpU6bJZCTHLYaRjoDXzzWuXs_0es8RbDpA4yh7CgKSG7mw_8pOIHrZIrCaBcZ-y8_DtKSnWaVELqd8atCid11o&code=4%2F0AQSTgQGrN0ohV5quPW3Rch_Pk5bZl2IXdV5D4R2RviMbycZKUDIfkuTDypv-fl1qalyKrw&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=1&prompt=none - null null
+2025-03-08 07:14:46.203 +02:00 [INF] AuthenticationScheme: Cookies signed in.
+2025-03-08 07:14:46.216 +02:00 [INF] HTTP GET /signin-google responded 302 in 1137.1464 ms
+2025-03-08 07:14:46.250 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/signin-google?state=CfDJ8HIq4qz2bxNFpYrJMFKyQefhLnXzoM6qIGyL7g7Y5WL0xpVFEAfLBUEfEEnI-4EeuY63dtMmftakg9AoY68DpKuT2vhpmMu_ZIDhpVPROeq1zEQUGt-3KbzyUbjpgToC_dNAxinlYzeCYWIiDmiI6sNFTAOZoUwboUyCyd7-fAOy2KAf0Nc3P8vNAJc2C6WVcTFnYP6gxXKTauZ_Rd71fdr7qb6eT858BYhsOQNg2aVMVmaTY0PyegLWv5-agXxpxmpU6bJZCTHLYaRjoDXzzWuXs_0es8RbDpA4yh7CgKSG7mw_8pOIHrZIrCaBcZ-y8_DtKSnWaVELqd8atCid11o&code=4%2F0AQSTgQGrN0ohV5quPW3Rch_Pk5bZl2IXdV5D4R2RviMbycZKUDIfkuTDypv-fl1qalyKrw&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=1&prompt=none - 302 0 null 1254.0034ms
+2025-03-08 07:14:46.313 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/Google-Login-Call-back - null null
+2025-03-08 07:14:46.350 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api)'
+2025-03-08 07:14:46.387 +02:00 [INF] Route matched with {action = "GoogleLoginCallback", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GoogleLoginCallback() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:14:49.142 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-03-08 07:14:49.596 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-03-08 07:14:49.641 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-03-08 07:14:49.723 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-03-08 07:14:50.025 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@p18='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p19='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (DbType = DateTime2), @p16='?' (DbType = Boolean), @p17='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [Token] = @p14, [TokenExpiryTime] = @p15, [TwoFactorEnabled] = @p16, [UserName] = @p17
+OUTPUT 1
+WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
+2025-03-08 07:14:50.314 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([AppUserId], [ExpiryTime], [IsRevoked], [IsUsed], [ReplacedByToken], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-03-08 07:14:50.404 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[SchoolManagementSystem.Data.Responses.AuthResponse, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:14:50.452 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api) in 4023.0392ms
+2025-03-08 07:14:50.488 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api)'
+2025-03-08 07:14:50.526 +02:00 [INF] HTTP GET /api/Account/Google-Login-Call-back responded 200 in 4178.7251 ms
+2025-03-08 07:14:50.571 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/Google-Login-Call-back - 200 null application/json; charset=utf-8 4258.1668ms
+2025-03-08 07:15:35.613 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/confirm-email?userId=c6793f5b-4ed3-45e1-ac48-85229aa576eb&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImM2NzkzZjViLTRlZDMtNDVlMS1hYzQ4LTg1MjI5YWE1NzZlYiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1vc3RhZmFzaGFyYWJ5MThAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Ik1vc3RhZmFfU2hhcmFieV9lNzkwIiwianRpIjoiZTEwNGI2ZmYtOGExMy00OGMzLWFiMDAtNjhiZWI2OGQ1NDQwIiwiZXhwIjoxNzQxNDEyMDg5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTMiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.3Yiy1KVgxSqdExbS8Gn2XLSS6eejwbg1FdZY7uPc14o - null null
+2025-03-08 07:15:35.635 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api)'
+2025-03-08 07:15:35.677 +02:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ConfirmEmail(System.String, System.String) on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:15:35.839 +02:00 [INF] Executed DbCommand (33ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[Id] = @__p_0
+2025-03-08 07:15:35.991 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.Entities.Identity.AppUser, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:15:36.020 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api) in 335.0842ms
+2025-03-08 07:15:36.025 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api)'
+2025-03-08 07:15:36.030 +02:00 [INF] HTTP GET /api/Account/confirm-email responded 400 in 395.8674 ms
+2025-03-08 07:15:36.042 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/confirm-email?userId=c6793f5b-4ed3-45e1-ac48-85229aa576eb&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImM2NzkzZjViLTRlZDMtNDVlMS1hYzQ4LTg1MjI5YWE1NzZlYiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1vc3RhZmFzaGFyYWJ5MThAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Ik1vc3RhZmFfU2hhcmFieV9lNzkwIiwianRpIjoiZTEwNGI2ZmYtOGExMy00OGMzLWFiMDAtNjhiZWI2OGQ1NDQwIiwiZXhwIjoxNzQxNDEyMDg5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTMiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.3Yiy1KVgxSqdExbS8Gn2XLSS6eejwbg1FdZY7uPc14o - 400 null application/json; charset=utf-8 428.9587ms
+2025-03-08 07:18:25.488 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/Google-Login-Call-back - null null
+2025-03-08 07:18:25.517 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api)'
+2025-03-08 07:18:25.525 +02:00 [INF] Route matched with {action = "GoogleLoginCallback", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GoogleLoginCallback() on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:18:25.588 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2025-03-08 07:18:25.649 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2025-03-08 07:18:25.765 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2025-03-08 07:18:25.838 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2025-03-08 07:18:25.996 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[@p18='?' (Size = 450), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p19='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (DbType = DateTime2), @p16='?' (DbType = Boolean), @p17='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [RefreshToken] = @p11, [RefreshTokenExpiryTime] = @p12, [SecurityStamp] = @p13, [Token] = @p14, [TokenExpiryTime] = @p15, [TwoFactorEnabled] = @p16, [UserName] = @p17
+OUTPUT 1
+WHERE [Id] = @p18 AND [ConcurrencyStamp] = @p19;
+2025-03-08 07:18:26.143 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = DateTime2), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([AppUserId], [ExpiryTime], [IsRevoked], [IsUsed], [ReplacedByToken], [Token])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-03-08 07:18:26.212 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[SchoolManagementSystem.Data.Responses.AuthResponse, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:18:26.236 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api) in 683.5336ms
+2025-03-08 07:18:26.278 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.GoogleLoginCallback (SchoolManagementSystem.Api)'
+2025-03-08 07:18:26.299 +02:00 [INF] HTTP GET /api/Account/Google-Login-Call-back responded 200 in 782.6931 ms
+2025-03-08 07:18:26.338 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/Google-Login-Call-back - 200 null application/json; charset=utf-8 850.2947ms
+2025-03-08 07:19:02.056 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/confirm-email?userId=c6793f5b-4ed3-45e1-ac48-85229aa576eb&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImM2NzkzZjViLTRlZDMtNDVlMS1hYzQ4LTg1MjI5YWE1NzZlYiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1vc3RhZmFzaGFyYWJ5MThAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Ik1vc3RhZmFfU2hhcmFieV9lNzkwIiwianRpIjoiNWJiYjRkMzMtMWRkNC00N2UyLWJhODUtYzZjMzcwMjE1YWRiIiwiZXhwIjoxNzQxNDEyMzA1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTMiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.193Hi0RkfwaTRcy-x-NOriv1wc08TU5R_iqgb3PZnp8 - null null
+2025-03-08 07:19:02.135 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api)'
+2025-03-08 07:19:02.146 +02:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ConfirmEmail(System.String, System.String) on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:19:06.332 +02:00 [INF] Executed DbCommand (95ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[Id] = @__p_0
+2025-03-08 07:29:51.882 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:29:51.932 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:29:51.935 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-08 07:29:52.697 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:29:52.806 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:29:52.814 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-08 07:29:52.989 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-08 07:29:53.214 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-08 07:29:53.402 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-08 07:29:53.411 +02:00 [INF] Hosting environment: Development
+2025-03-08 07:29:53.419 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-08 07:29:53.737 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-08 07:29:54.035 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 298.9651ms
+2025-03-08 07:29:54.079 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-08 07:29:54.109 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 30.298ms
+2025-03-08 07:29:54.152 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-08 07:29:54.258 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 105.928ms
+2025-03-08 07:29:54.467 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-08 07:29:54.670 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 203.3779ms
+2025-03-08 07:30:03.102 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5253/api/Account/refresh-token - application/json 724
+2025-03-08 07:30:03.117 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-08 07:30:03.130 +02:00 [INF] CORS policy execution successful.
+2025-03-08 07:30:03.266 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.RefreshToken (SchoolManagementSystem.Api)'
+2025-03-08 07:30:03.330 +02:00 [INF] Route matched with {action = "RefreshToken", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshToken(SchoolManagementSystem.Core.Features.Authentication.Commands.Models.RefreshTokenCommand) on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:30:03.639 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.Responses.AuthResponse, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:30:03.705 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.RefreshToken (SchoolManagementSystem.Api) in 338.5169ms
+2025-03-08 07:30:03.713 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.RefreshToken (SchoolManagementSystem.Api)'
+2025-03-08 07:30:03.724 +02:00 [INF] HTTP POST /api/Account/refresh-token responded 400 in 591.6759 ms
+2025-03-08 07:30:03.734 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5253/api/Account/refresh-token - 400 null application/json; charset=utf-8 632.2096ms
+2025-03-08 07:30:37.857 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/Account/confirm-email?userId=c6793f5b-4ed3-45e1-ac48-85229aa576eb&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImM2NzkzZjViLTRlZDMtNDVlMS1hYzQ4LTg1MjI5YWE1NzZlYiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1vc3RhZmFzaGFyYWJ5MThAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Ik1vc3RhZmFfU2hhcmFieV9lNzkwIiwianRpIjoiNWJiYjRkMzMtMWRkNC00N2UyLWJhODUtYzZjMzcwMjE1YWRiIiwiZXhwIjoxNzQxNDEyMzA1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTMiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.193Hi0RkfwaTRcy-x-NOriv1wc08TU5R_iqgb3PZnp8 - null null
+2025-03-08 07:30:37.892 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api)'
+2025-03-08 07:30:37.918 +02:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ConfirmEmail(System.String, System.String) on controller SchoolManagementSystem.Api.Controllers.AccountController (SchoolManagementSystem.Api).
+2025-03-08 07:30:38.729 +02:00 [INF] Executed DbCommand (529ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[RefreshToken], [a].[RefreshTokenExpiryTime], [a].[SecurityStamp], [a].[Token], [a].[TokenExpiryTime], [a].[TwoFactorEnabled], [a].[UserName], [s].[ClassroomID], [s].[Image], [s].[ParentID], [s].[StudentAddress], [s].[StudentDateOfBirth], [s].[StudentFirstNameAr], [s].[StudentFirstNameEn], [s].[StudentGender], [s].[StudentLastNameAr], [s].[StudentLastNameEn], [t].[DepartmentID], [t].[TeacherAddress], [t].[TeacherDateOfBirth], [t].[TeacherEmail], [t].[TeacherFirstName], [t].[TeacherGender], [t].[TeacherLastName], [t].[TeacherPhoneNumber], [t].[TeacherTypeID], CASE
+    WHEN [t].[Id] IS NOT NULL THEN N'Teacher'
+    WHEN [s].[Id] IS NOT NULL THEN N'Student'
+END AS [Discriminator]
+FROM [AspNetUsers] AS [a]
+LEFT JOIN [Students] AS [s] ON [a].[Id] = [s].[Id]
+LEFT JOIN [Teachers] AS [t] ON [a].[Id] = [t].[Id]
+WHERE [a].[Id] = @__p_0
+2025-03-08 07:30:38.878 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.Entities.Identity.AppUser, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-08 07:30:38.902 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api) in 975.435ms
+2025-03-08 07:30:38.924 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.AccountController.ConfirmEmail (SchoolManagementSystem.Api)'
+2025-03-08 07:30:38.947 +02:00 [INF] HTTP GET /api/Account/confirm-email responded 400 in 1058.6736 ms
+2025-03-08 07:30:38.989 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/Account/confirm-email?userId=c6793f5b-4ed3-45e1-ac48-85229aa576eb&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImM2NzkzZjViLTRlZDMtNDVlMS1hYzQ4LTg1MjI5YWE1NzZlYiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Im1vc3RhZmFzaGFyYWJ5MThAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6Ik1vc3RhZmFfU2hhcmFieV9lNzkwIiwianRpIjoiNWJiYjRkMzMtMWRkNC00N2UyLWJhODUtYzZjMzcwMjE1YWRiIiwiZXhwIjoxNzQxNDEyMzA1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUyNTMiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.193Hi0RkfwaTRcy-x-NOriv1wc08TU5R_iqgb3PZnp8 - 400 null application/json; charset=utf-8 1131.8618ms

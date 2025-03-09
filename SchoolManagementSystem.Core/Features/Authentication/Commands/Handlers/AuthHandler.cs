@@ -146,7 +146,7 @@ namespace SchoolManagementSystem.Core.Features.Authentication.Commands.Handlers
             if (user == null)
                 return _responseHandler.BadRequest<AppUser>("User not found.");
 
-            var result = await _userManager.ConfirmEmailAsync(user, request.Token);
+            var result = await _userManager.ConfirmEmailAsync(user, request.Token); // this will make the property ConfirmEmail in the aspUser table in database to be true
 
             if (!result.Succeeded)
                 return _responseHandler.BadRequest<AppUser>("Email confirmation failed");
