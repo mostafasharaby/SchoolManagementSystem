@@ -33,12 +33,12 @@ namespace SchoolManagementSystem.Core.Features.BorrowedBooks.Commands.Validator
         public AddBorrowedBookCommandValidator() : base() { }
     }
 
-    public class UpdateBorrowedBookCommandValidator : BorrowedBookCommandValidator<UpdateBorrowedBookCommand>
-    {
-        public UpdateBorrowedBookCommandValidator()
-        {
-            RuleFor(x => x.BorrowID)
-                .GreaterThan(0).WithMessage("Borrow ID is required and must be a valid positive number.");
-        }
-    }
+    //public class UpdateBorrowedBookCommandValidator : BorrowedBookCommandValidator<UpdateBorrowedBookCommand>
+    //{
+    //    public UpdateBorrowedBookCommandValidator()
+    //    {
+    //        RuleFor(x => x.BorrowID)
+    //            .GreaterThan(0).WithMessage("Borrow ID is required and must be a valid positive number.");
+    //    }
+    //}
 }

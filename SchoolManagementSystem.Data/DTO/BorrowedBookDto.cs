@@ -8,5 +8,10 @@
         public DateTime? ReturnDate { get; set; }
     }
 
-
+    public record BorrowedBookDto2(string? StudentID, int? LibraryID, DateTime? BorrowDate, DateTime? ReturnDate)
+    {
+        public BorrowedBookDto2() : this(null, null, null, null)
+        {
+        }
+    }
 }
