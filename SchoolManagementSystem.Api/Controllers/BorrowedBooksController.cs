@@ -25,7 +25,7 @@ namespace SchoolManagementSystem.Api.Controllers
         [HttpGet("get/{id}")]
         public async Task<IActionResult> GetBorrowedBookById(int id)
         {
-            var result = await _mediator.Send(new GetBorrowedBookByIdQuery { BorrowedBookId = id });
+            var result = await _mediator.Send(new GetBorrowedBookByIdQuery(id));
             return result.Succeeded ? Ok(result) : NotFound(result);
         }
 

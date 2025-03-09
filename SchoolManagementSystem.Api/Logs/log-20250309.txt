@@ -54,3 +54,356 @@ WHERE [a].[NormalizedName] = @__normalizedName_0
 2025-03-09 06:18:51.378 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.8575ms
 2025-03-09 06:18:51.434 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
 2025-03-09 06:18:51.510 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.0376ms
+2025-03-09 06:26:26.211 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:26:26.255 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:26:26.260 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:26:26.668 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:26:26.744 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:26:26.754 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:26:26.856 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:26:26.955 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:26:27.031 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:26:27.036 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:26:27.040 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:26:27.210 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:26:27.362 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 152.7467ms
+2025-03-09 06:26:27.374 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:26:27.379 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:26:27.417 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 37.8866ms
+2025-03-09 06:26:27.425 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.758ms
+2025-03-09 06:26:27.498 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:26:27.573 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 75.154ms
+2025-03-09 06:26:42.146 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:26:42.163 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 17.1661ms
+2025-03-09 06:26:42.201 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:26:42.201 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:26:42.224 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.5108ms
+2025-03-09 06:26:42.233 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 31.1792ms
+2025-03-09 06:26:42.367 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:26:42.445 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 78.0371ms
+2025-03-09 06:26:55.945 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - null null
+2025-03-09 06:26:55.958 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-09 06:26:57.179 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:26:57.200 +02:00 [INF] Route matched with {action = "GetBorrowedBookById", controller = "BorrowedBooks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBorrowedBookById(Int32) on controller SchoolManagementSystem.Api.Controllers.BorrowedBooksController (SchoolManagementSystem.Api).
+2025-03-09 06:26:57.571 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BorrowID], [b].[BorrowDate], [b].[LibraryID], [b].[ReturnDate], [b].[StudentID]
+FROM [BorrowedBooks] AS [b]
+WHERE [b].[BorrowID] = @__id_0
+2025-03-09 06:26:57.619 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.DTO.BorrowedBookDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-09 06:26:57.650 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api) in 427.2647ms
+2025-03-09 06:26:57.654 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:26:57.674 +02:00 [INF] HTTP GET /api/BorrowedBooks/get/2 responded 200 in 1695.3714 ms
+2025-03-09 06:26:57.691 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - 200 null application/json; charset=utf-8 1745.9618ms
+2025-03-09 06:39:41.020 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:39:41.066 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:39:41.070 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:39:45.358 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:39:45.464 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:39:45.475 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:39:45.630 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:39:45.719 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:39:45.783 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:39:45.789 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:39:45.793 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:41:08.045 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:08.092 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:08.095 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:08.577 +02:00 [INF] Executed DbCommand (30ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:08.651 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:08.658 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:08.755 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:41:08.824 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:41:08.885 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:41:08.889 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:41:08.892 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:41:12.102 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:12.141 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:12.145 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:12.520 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:12.588 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:12.593 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:12.694 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:41:12.755 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:41:12.804 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:41:12.807 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:41:12.809 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:41:13.029 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:41:13.224 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 199.1584ms
+2025-03-09 06:41:13.239 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:41:13.247 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 8.5824ms
+2025-03-09 06:41:13.261 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:41:13.302 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.1228ms
+2025-03-09 06:41:13.385 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:41:13.465 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 79.9974ms
+2025-03-09 06:41:30.709 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:30.755 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:30.762 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:31.172 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:31.241 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:31.248 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:31.347 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:41:31.417 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:41:31.474 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:41:31.478 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:41:31.480 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:41:57.293 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:57.346 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:57.351 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:41:57.754 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:57.819 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:57.830 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:41:57.969 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:41:58.037 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:41:58.091 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:41:58.095 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:41:58.099 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:43:47.237 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:43:47.278 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:43:47.283 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:43:47.671 +02:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:43:47.743 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:43:47.750 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:43:47.848 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:43:47.919 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:43:47.973 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:43:47.979 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:43:47.984 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:43:48.643 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:43:48.862 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 223.6633ms
+2025-03-09 06:43:48.877 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:43:48.893 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 15.6734ms
+2025-03-09 06:43:48.918 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:43:48.959 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 41.1874ms
+2025-03-09 06:43:49.030 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:43:49.129 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 99.3398ms
+2025-03-09 06:43:57.598 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - null null
+2025-03-09 06:43:57.612 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-09 06:43:57.655 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:43:57.697 +02:00 [INF] Route matched with {action = "GetBorrowedBookById", controller = "BorrowedBooks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBorrowedBookById(Int32) on controller SchoolManagementSystem.Api.Controllers.BorrowedBooksController (SchoolManagementSystem.Api).
+2025-03-09 06:43:57.973 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BorrowID], [b].[BorrowDate], [b].[LibraryID], [b].[ReturnDate], [b].[StudentID]
+FROM [BorrowedBooks] AS [b]
+WHERE [b].[BorrowID] = @__id_0
+2025-03-09 06:43:58.046 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.DTO.BorrowedBookDto, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-09 06:43:58.081 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api) in 347.1386ms
+2025-03-09 06:43:58.090 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:43:58.099 +02:00 [INF] HTTP GET /api/BorrowedBooks/get/2 responded 200 in 471.3559 ms
+2025-03-09 06:43:58.118 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - 200 null application/json; charset=utf-8 519.9845ms
+2025-03-09 06:48:44.489 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:48:44.529 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:48:44.533 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:48:44.971 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:48:45.031 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:48:45.038 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:48:45.129 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:48:45.192 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:48:45.246 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:48:45.250 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:48:45.253 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:48:45.552 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:48:45.759 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 209.4674ms
+2025-03-09 06:48:45.772 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:48:45.776 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:48:45.786 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 14.0189ms
+2025-03-09 06:48:45.825 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.7443ms
+2025-03-09 06:48:45.892 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:48:45.970 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 78.0194ms
+2025-03-09 06:49:41.621 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:49:41.689 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:49:41.694 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:49:42.204 +02:00 [INF] Executed DbCommand (29ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:49:42.288 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:49:42.296 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:49:42.426 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:49:42.516 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:49:42.582 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:49:42.585 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:49:42.588 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:49:42.646 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:49:42.829 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 184.5157ms
+2025-03-09 06:49:42.853 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:49:42.854 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:49:42.874 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 19.656ms
+2025-03-09 06:49:42.900 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.4526ms
+2025-03-09 06:49:42.988 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:49:43.059 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 70.7328ms
+2025-03-09 06:49:51.007 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - null null
+2025-03-09 06:49:51.024 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-09 06:49:51.070 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:49:51.097 +02:00 [INF] Route matched with {action = "GetBorrowedBookById", controller = "BorrowedBooks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBorrowedBookById(Int32) on controller SchoolManagementSystem.Api.Controllers.BorrowedBooksController (SchoolManagementSystem.Api).
+2025-03-09 06:49:51.346 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BorrowID], [b].[BorrowDate], [b].[LibraryID], [b].[ReturnDate], [b].[StudentID]
+FROM [BorrowedBooks] AS [b]
+WHERE [b].[BorrowID] = @__id_0
+2025-03-09 06:49:51.382 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api) in 275.5326ms
+2025-03-09 06:49:51.388 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:49:51.400 +02:00 [ERR] HTTP GET /api/BorrowedBooks/get/2 responded 500 in 360.4087 ms
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+BorrowedBook -> BorrowedBookDto2
+SchoolManagementSystem.Data.Entities.BorrowedBook -> SchoolManagementSystem.Data.DTO.BorrowedBookDto2
+   at lambda_method77(Closure, Object, BorrowedBookDto2, ResolutionContext)
+   at SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Handlers.BorrowedBookQueryHandler.Handle(GetBorrowedBookByIdQuery request, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Features\BorrowedBooks\Queries\Handlers\BorrowedBookQueryHandler.cs:line 30
+   at SchoolManagementSystem.Core.Behavoir.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Behavoir\ValidationBehavior.cs:line 40
+   at SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById(Int32 id) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api\Controllers\BorrowedBooksController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2025-03-09 06:49:51.500 +02:00 [ERR] Unhandled exception occurred.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+BorrowedBook -> BorrowedBookDto2
+SchoolManagementSystem.Data.Entities.BorrowedBook -> SchoolManagementSystem.Data.DTO.BorrowedBookDto2
+   at lambda_method77(Closure, Object, BorrowedBookDto2, ResolutionContext)
+   at SchoolManagementSystem.Core.Features.BorrowedBooks.Queries.Handlers.BorrowedBookQueryHandler.Handle(GetBorrowedBookByIdQuery request, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Features\BorrowedBooks\Queries\Handlers\BorrowedBookQueryHandler.cs:line 30
+   at SchoolManagementSystem.Core.Behavoir.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Core\Behavoir\ValidationBehavior.cs:line 40
+   at SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById(Int32 id) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api\Controllers\BorrowedBooksController.cs:line 28
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at SchoolManagementSystem.Api.Middleware.ExceptionHandlingMiddleware.InvokeAsync(HttpContext context) in D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api\Middleware\ExceptionHandlingMiddleware.cs:line 21
+2025-03-09 06:49:51.548 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - 500 null application/json 540.7121ms
+2025-03-09 06:50:25.122 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:50:25.181 +02:00 [WRN] No store type was specified for the decimal property 'Score' on entity type 'ExamScore'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:50:25.184 +02:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Fee'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-09 06:50:25.674 +02:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:50:25.754 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:50:25.761 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2025-03-09 06:50:25.882 +02:00 [INF] User profile is available. Using 'C:\Users\5g\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-09 06:50:25.962 +02:00 [INF] Now listening on: http://localhost:5253
+2025-03-09 06:50:26.028 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-09 06:50:26.033 +02:00 [INF] Hosting environment: Development
+2025-03-09 06:50:26.038 +02:00 [INF] Content root path: D:\My_Projects\SchoolManagementSystem\SchoolManagementSystem.Api
+2025-03-09 06:50:26.053 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/index.html - null null
+2025-03-09 06:50:26.242 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/index.html - 200 null text/html;charset=utf-8 190.4828ms
+2025-03-09 06:50:26.256 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_vs/browserLink - null null
+2025-03-09 06:50:26.264 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-09 06:50:26.287 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_framework/aspnetcore-browser-refresh.js - 200 13804 application/javascript; charset=utf-8 23.1808ms
+2025-03-09 06:50:26.319 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.418ms
+2025-03-09 06:50:26.369 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - null null
+2025-03-09 06:50:26.449 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 80.0534ms
+2025-03-09 06:50:32.402 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - null null
+2025-03-09 06:50:32.421 +02:00 [WRN] Failed to determine the https port for redirect.
+2025-03-09 06:50:32.468 +02:00 [INF] Executing endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:50:32.494 +02:00 [INF] Route matched with {action = "GetBorrowedBookById", controller = "BorrowedBooks"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetBorrowedBookById(Int32) on controller SchoolManagementSystem.Api.Controllers.BorrowedBooksController (SchoolManagementSystem.Api).
+2025-03-09 06:50:32.751 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [b].[BorrowID], [b].[BorrowDate], [b].[LibraryID], [b].[ReturnDate], [b].[StudentID]
+FROM [BorrowedBooks] AS [b]
+WHERE [b].[BorrowID] = @__id_0
+2025-03-09 06:50:32.803 +02:00 [INF] Executing OkObjectResult, writing value of type 'SchoolManagementSystem.Core.Bases.Response`1[[SchoolManagementSystem.Data.DTO.BorrowedBookDto2, SchoolManagementSystem.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-09 06:50:32.833 +02:00 [INF] Executed action SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api) in 326.9722ms
+2025-03-09 06:50:32.840 +02:00 [INF] Executed endpoint 'SchoolManagementSystem.Api.Controllers.BorrowedBooksController.GetBorrowedBookById (SchoolManagementSystem.Api)'
+2025-03-09 06:50:32.846 +02:00 [INF] HTTP GET /api/BorrowedBooks/get/2 responded 200 in 414.8987 ms
+2025-03-09 06:50:32.857 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5253/api/BorrowedBooks/get/2 - 200 null application/json; charset=utf-8 455.3524ms
